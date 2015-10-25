@@ -1,4 +1,4 @@
-package dataService.dataFactoryService;
+package dataService.DataFactoryService;
 
 public interface DataFactoryService {
 

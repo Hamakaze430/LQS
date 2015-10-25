@@ -1,4 +1,4 @@
-package data.dataFactory;
+package data.DataFactory;
 
 public class DataFactory {
 
