@@ -7,55 +7,62 @@ public class UserVO {
 	
 	private String position;
 	private String authority;
+	private HallVO hall;
 	
-	public UserVO (String name,String id,String password,String position,String authority){
+	public UserVO (String name,String id,String password,String position,String authority,HallVO hall){
 		this.id=id;
 		this.password=password;
 		this.name=name;
 		this.position=position;
 		this.authority=authority;
+		this.hall = hall;
 	}
-	private String getName(){
+	public String getName(){
 		return name;
 	}
 	
-	private void setName(String name){
+	public void setName(String name){
 		this.name=name;
 	}
 	
-	private String getID(){
+	public String getID(){
 		return id;
 	}
 	
-	private void setID(String id){
+	public void setID(String id){
 		this.id=id;
 	}
 	
-	private String getPassword(){
+	public String getPassword(){
 		return password;
 	}
 	
-	private void setPassword(String password){
+	public void setPassword(String password){
 		this.password=password;
 	}
 	
-	private String getPosition(){
+	public String getPosition(){
 		return position;
 	}
 	
-	private void setPosition(String position){
+	public void setPosition(String position){
 		this.position=position;
 	}
 	
-	private String getAuthority(){
+	public String getAuthority(){
 		return authority;
 	}
 	
-	private void setAuthority(String authority){
+	public void setAuthority(String authority){
 		this.authority=authority;
 	}
 	
+	public HallVO getHall(){
+		return hall;
+	}
 	
-	
+	public String getHallId(){
+		return hall.getId();
+	}
 	
 }

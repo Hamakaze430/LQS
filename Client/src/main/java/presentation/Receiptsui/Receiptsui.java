@@ -10,11 +10,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import businessLogicService.ReceiptsblService.ReceiptsblService;
+import vo.UserVO;
 
 public class Receiptsui extends JPanel{
 	private ReceiptsblService bl;
 	private ReceiptPanel one;
-	public Receiptsui(ReceiptsblService bl){
+	private UserVO user;
+	public Receiptsui(ReceiptsblService bl,UserVO user){
+		this.user = user;
 		this.bl = bl;
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		
@@ -26,7 +29,10 @@ public class Receiptsui extends JPanel{
 	
 	private void initDisplay(int type) {
 		// TODO Auto-generated method stub
-		one = new ReceiptPanel(type);
+		switch (type){
+		case 0: one = new LoadingPanel(user); break;
+		default: break;
+		}
 		this.add(one);
 	}
 	

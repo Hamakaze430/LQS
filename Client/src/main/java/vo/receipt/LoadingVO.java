@@ -33,6 +33,8 @@ public class LoadingVO extends ReceiptVO{
 	public LoadingVO(UserVO user){
 		this.user = user;
 		this.date = new Date();
+		this.hallId = user.getHallId();
+		this.id  = "";
 	}
 	
 	public String getDate(){
@@ -42,6 +44,20 @@ public class LoadingVO extends ReceiptVO{
 	
 	public String getHallId(){
 		return hallId;
+	}
+	
+	public String getPartId(){
+		return id;
+	}
+	
+	public String getForeId(){
+		DateFormat format = new SimpleDateFormat("yyyyMMdd");
+		return hallId+format.format(date);
+	}
+	
+	public String getAllId(){
+		DateFormat format = new SimpleDateFormat("yyyyMMdd");
+		return hallId+format.format(date)+id;
 	}
 	
 }
