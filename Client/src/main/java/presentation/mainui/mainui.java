@@ -27,8 +27,6 @@ public class mainui {
 			
 			ReceiptsblService bl = new ReceiptsblStub();
 			Receiptsui panel = new Receiptsui(bl);
-			
-		
 			frame.getContentPane().add(panel);
 			frame.setVisible(true);
 		}

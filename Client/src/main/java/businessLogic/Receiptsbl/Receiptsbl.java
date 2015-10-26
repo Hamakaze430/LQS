@@ -1,5 +1,7 @@
 package businessLogic.Receiptsbl;
 
-public class Receiptsbl {
+import businessLogicService.ReceiptsblService.ReceiptsblService;
+
+public class Receiptsbl implements ReceiptsblService {
 
 }
