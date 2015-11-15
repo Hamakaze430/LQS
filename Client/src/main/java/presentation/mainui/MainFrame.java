@@ -5,20 +5,17 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import businessLogic.CarAndDriverbl.CarAndDriverbl;
-import businessLogic.CarAndDriverbl.stub.CarAndDriverblStub;
-import businessLogic.LogisticsInfoSearchbl.stub.LogisticsInfoSearchblStub;
-import businessLogic.Receiptsbl.stub.ReceiptsblStub;
-import businessLogicService.CarAndDriverblService.CarAndDriverblService;
-import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
-import businessLogicService.ReceiptsblService.ReceiptsblService;
-import presentation.CarAndDriverui.CarAndDriverui;
-import presentation.LogisticsInfoSearchui.LogisticsInfoSearchui;
-import presentation.Receiptsui.Receiptsui;
+import presentation.Receiptsui.ReceiptPanel;
+import vo.FormType;
 import vo.HallVO;
-import vo.UserVO;
+import vo.UserBaseVO;
 
 public class MainFrame extends JFrame {
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 		public MainFrame(){
 			
 			this.setSize(1024, 768);
@@ -31,11 +28,13 @@ public class MainFrame extends JFrame {
 //			LogisticsInfoSearchblService bl = new LogisticsInfoSearchblStub();
 //			LogisticsInfoSearchui panel = new LogisticsInfoSearchui(bl);
 			
-//			ReceiptsblService bl = new ReceiptsblStub();
-//			HallVO hall = new HallVO("鼓楼营业厅","南京鼓楼","025001");
-//			UserVO user = new UserVO("王飞","161250001","asdgdfhghh","营业厅业务员","营业厅业务员",hall);
-//			Receiptsui panel = new Receiptsui(bl,user);
-			this.add(new WelcomePanel(),BorderLayout.CENTER);
+			
+			HallVO hall = new HallVO("鼓楼营业厅","南京鼓楼","025001");
+			UserBaseVO user = new UserBaseVO("王飞",hall);
+			ReceiptPanel panel = new ReceiptPanel(user);
+			panel.newReceipt(FormType.装车单);
+			//this.add(new WelcomePanel(),BorderLayout.CENTER);
+			this.add(panel);
 			this.setVisible(true);
 		}
 }
