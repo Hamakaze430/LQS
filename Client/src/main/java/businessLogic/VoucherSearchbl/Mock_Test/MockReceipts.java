@@ -14,9 +14,9 @@ public class MockReceipts  extends Receiptsbl{
 		ReceiptsID[1]="1230000002";
 		ReceiptsID[2]="1230000003";
 		
-		Date[0]="2015-1-1";
-		Date[1]="2015-1-1";
-		Date[2]="2015-1-1";
+		Date[0]="2015/1/1";
+		Date[1]="2015/1/1";
+		Date[2]="2015/1/1";
 		
 		ReceiptsType[0]="Voucher";
 		ReceiptsType[1]="Voucher";
@@ -38,7 +38,7 @@ public class MockReceipts  extends Receiptsbl{
 	public String showVouchers(){
 		String str="";
 		for(int i=0;i<3;i++){
-			if(Date[i]=="2015-1-1"&&ReceiptsType[i]=="Voucher"&&Hall[i]=="025001"){
+			if(Date[i]=="2015/1/1"&&ReceiptsType[i]=="Voucher"&&Hall[i]=="025001"){
 				str+=ReceiptsID[i]+" "+Price[i]+"\n";
 			}
 		}
@@ -49,7 +49,7 @@ public class MockReceipts  extends Receiptsbl{
 	public double getPrice(){
 		double total=0;
 		for(int i=0;i<3;i++){
-			if(Date[i]=="2015-1-1"&&ReceiptsType[i]=="Voucher"&&Hall[i]=="025001"){
+			if(Date[i]=="2015/1/1"&&ReceiptsType[i]=="Voucher"&&Hall[i]=="025001"){
 				total+=Price[i];				
 			}
 		}
