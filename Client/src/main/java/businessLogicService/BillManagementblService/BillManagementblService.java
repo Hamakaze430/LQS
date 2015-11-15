@@ -11,7 +11,7 @@ public interface BillManagementblService {
 
     public UserVO getWorkers();
 
-    public CarAndDriverVO getCars();
+    public CarVO getCars();
 
     public CommodityVO getStorage();
 
