@@ -1,0 +1,20 @@
+INDEX VERSION 1.127+C:\Users\TOSHIBA\Desktop\LQS\.metadata\.plugins\org.eclipse.jdt.core
+4159687619.index
+3429203775.index
+313611081.index
+4034865375.index
+1721280315.index
+3450198372.index
+454917774.index
+2912772980.index
+2060883553.index
+970652439.index
+3438896156.index
+2714590019.index
+2501520862.index
+889931050.index
+137624701.index
+632673796.index
+3835002138.index
+4112479019.index
+3009077469.index
