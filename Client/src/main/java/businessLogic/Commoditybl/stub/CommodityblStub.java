@@ -1,6 +1,6 @@
 package businessLogic.Commoditybl.stub;
 
-public interface CommodityblService _Stud implements CommodityblService{
+public interface CommodityblService_Stud implements CommodityblService{
 	int commodityid;
 	String commoditydateofin;
 	String commodityspecie;

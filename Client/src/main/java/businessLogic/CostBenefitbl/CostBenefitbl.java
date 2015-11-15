@@ -7,7 +7,6 @@ public class CostBenefitbl {
     int profit;
 
     public String getdate(){
-
         return message;
     }
 
