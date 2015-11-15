@@ -1,36 +1,30 @@
 package businessLogic.BankAccountbl.stub;
 
+import vo.BankAccountVO;
+import businessLogicService.BankAccountblService.BankAccountblService;
 
-public interface BankAccountblService_Stud  implements BankAccountblService{
+
+public class BankAccountblStub  implements BankAccountblService{
 	String bankaccountid;
 	String bankaccountbalance;
-	
-	public BankAccountblService_Stud(String bai,String bab){
-		bankaccountid = bai;
-		bankaccountbalance = bab;
+	public BankAccountVO findBankAccountInfo(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public boolean addBankAccountVO(BankAccountVO bankaccount) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public boolean deleteBankAccountVO(BankAccountVO bankaccount) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	public boolean updateBankAccountVO(BankAccountVO bankaccount) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
-	public BankAccountVO getBankAccountID(String bankaccountid){
-		return new BankAccountVO(bankaccountid);
-	}
 	
-	public BankAccountVO getBankAccountBalance(String bankaccountbalance){
-		return new BankAccountVO(bankaccountbalance);
-	}
-	
-	public ResultMessage addBankAccount(String bankaccountid,String bankaccountbalance){
-		if(bankaccountid == 00001)
-			return ResultMessage.Exist;
-		else return ResultMessage.NotExist;
-	}
-	
-	public ResultMessage deleteBankAccount(String bankaccount,String bankaccountbalance){
-		
-	}
-	
-	public class BankAccountView{
-		
-	}
 	
 
 }
