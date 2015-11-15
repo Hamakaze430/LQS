@@ -1,5 +1,7 @@
-package dataService.DataFactoryService;
+package dataService.dataFactoryService;
 
-public interface DataFactoryService {
+import java.rmi.Remote;
+
+public interface DataFactoryService extends Remote {
 
 }
