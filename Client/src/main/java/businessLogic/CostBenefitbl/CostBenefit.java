@@ -1,6 +1,6 @@
 package businessLogic.CostBenefitbl;
 
-public class CostBenefitbl {
+public class CostBenefit {
     String message;
     int cost;
     int benefit;

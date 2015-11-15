@@ -1,6 +1,6 @@
 package businessLogic.Salesbl;
 
-public class Salesbl {
+public class Sales {
     String message;
     Boolean state;
 

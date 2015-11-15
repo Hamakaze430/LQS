@@ -1,6 +1,6 @@
 package businessLogic.BillManagementbl;
 
-public class BillManagementbl {
+public class BillManagement {
     String message;
 
     public String create(){
