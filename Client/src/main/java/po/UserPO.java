@@ -2,6 +2,16 @@ package po;
 
 import java.io.Serializable;
 
+<<<<<<< Updated upstream
+=======
+
+public class UserPO implements Serializable {
+    int id;
+    String name;
+    String password;
+    String job;
+
+>>>>>>> Stashed changes
 public class UserPO implements Serializable{
 	int id;
 	String password;
