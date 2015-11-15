@@ -4,18 +4,18 @@ package vo;
  * Created by admin on 15/10/25.
  */
 public class BankAccountVO {
-	private long id;
+	private String id;
 	private String name;
 	private double balance;
 	
-	public BankAccountVO(long id,String name,double balance){
+	public BankAccountVO(String id,String name,double balance){
 		this.id=id;
 		this.name=name;
 		this.balance=balance;
 		
 	}
 	
-	public long getID(){
+	public String getID(){
 		return id;
 	}
 	

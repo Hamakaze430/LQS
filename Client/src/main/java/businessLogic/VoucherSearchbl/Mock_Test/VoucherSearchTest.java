@@ -9,7 +9,6 @@ import businessLogic.Receiptsbl.Receiptsbl;
 public class VoucherSearchTest {
 	
 	
-	@SuppressWarnings("deprecation")
 	@Test
 	public void test(){
 		Receiptsbl receipts=new MockReceipts();

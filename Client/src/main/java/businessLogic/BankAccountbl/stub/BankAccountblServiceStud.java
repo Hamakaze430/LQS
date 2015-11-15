@@ -7,7 +7,7 @@ import businessLogicService.BankAccountblService.BankAccountblService;
 public class BankAccountblServiceStud  implements BankAccountblService{
 	String bankaccountid;
 	String bankaccountbalance;
-	public BankAccountVO findBankAccountInfo(long id) {
+	public BankAccountVO findBankAccountInfo(String id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -23,7 +23,6 @@ public class BankAccountblServiceStud  implements BankAccountblService{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
 	
 
 }
