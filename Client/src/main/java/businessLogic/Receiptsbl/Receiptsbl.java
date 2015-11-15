@@ -7,6 +7,7 @@ import init.RMIHelper;
 public class Receiptsbl implements ReceiptsblService {
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	public String showVouchers() {
 		return null;
@@ -17,6 +18,8 @@ public class Receiptsbl implements ReceiptsblService {
 	}
 
 =======
+=======
+>>>>>>> origin/master
 	private DataFactoryService df;
 	public Receiptsbl(){
 		df = RMIHelper.getDataFactory();
@@ -26,5 +29,8 @@ public class Receiptsbl implements ReceiptsblService {
 		return null;
 	}
 	
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 }
