@@ -1,10 +1,18 @@
 package presentation.mainui;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
+import java.awt.Image;
+import java.util.Enumeration;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 import javax.swing.WindowConstants;
+import javax.swing.plaf.FontUIResource;
 
+import presentation.CarAndDriverui.CarAndDriverui;
+import presentation.LogisticsInfoSearchui.LogisticsPanel;
 import presentation.Receiptsui.ReceiptPanel;
 import vo.FormType;
 import vo.HallVO;
@@ -18,8 +26,22 @@ public class MainFrame extends JFrame {
 
 		public MainFrame(){
 			
+			Font font = new Font("微软雅黑",Font.PLAIN,15);
+		    FontUIResource fontRes = new FontUIResource(font);
+		    for(Enumeration keys = UIManager.getDefaults().keys(); keys.hasMoreElements();){
+		        Object key = keys.nextElement();
+		        Object value = UIManager.get(key);
+		        if(value instanceof FontUIResource)
+		            UIManager.put(key, fontRes);
+		    }
+			
+			
 			this.setSize(1024, 768);
+			//this.setUndecorated(true);
+			Image image = new ImageIcon("src/main/java/image/icon.png").getImage();//指定图标文件的相对路径
+			this.setIconImage(image);
 			this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+			this.setTitle("XX快递物流系统");
 			this.setLocationRelativeTo(null);
 			
 //			CarAndDriverblService bl = new CarAndDriverblStub();
@@ -29,13 +51,15 @@ public class MainFrame extends JFrame {
 //			LogisticsInfoSearchui panel = new LogisticsInfoSearchui(bl);
 			
 			
-			HallVO hall = new HallVO("鼓楼营业厅","南京鼓楼","025001");
-			UserBaseVO user = new UserBaseVO("王飞",hall);
-			ReceiptPanel panel = new ReceiptPanel(user);
-			panel.newReceipt(FormType.装车单);
-			//this.add(new WelcomePanel(),BorderLayout.CENTER);
-			this.add(panel);
-			this.setVisible(true);
+//			HallVO hall = new HallVO("鼓楼营业厅","南京鼓楼","025001");
+//			UserBaseVO user = new UserBaseVO("王飞",hall);
+//			ReceiptPanel panel = new ReceiptPanel(user);
+//			panel.newReceipt(FormType.装车单);
+//			this.add(panel);
+			
+		}
+		public void addWelcomePanel(){
+			this.getContentPane().add(new WelcomePanel());
 		}
 }
 

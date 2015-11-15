@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import businessLogic.CarAndDriverbl.stub.CarAndDriverblStub;
 import businessLogicService.CarAndDriverblService.CarAndDriverblService;
 import vo.CarVO;
 import vo.DriverVO;
@@ -27,8 +29,9 @@ public class CarAndDriverui extends JPanel {
 	private DriverPanel driverPanel;
 	
 	
-	public CarAndDriverui(CarAndDriverblService bl){
-		this.bl = bl;
+	public CarAndDriverui(){
+		bl = new CarAndDriverblStub();
+		//this.setSize(1024,768);
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		this.initChoose();
 		this.initMenu();

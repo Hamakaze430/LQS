@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class LogisticsVO {
 	private String id;
-	private ArrayList<State> state;
+	private ArrayList<LogisticsState> state;
 	
-	public LogisticsVO(String id, ArrayList<State> state){
+	public LogisticsVO(String id, ArrayList<LogisticsState> state){
 		this.id = id;
 		this.state = state;
 	}
@@ -18,14 +18,14 @@ public class LogisticsVO {
 		this.id = id;
 	}
 	
-	public ArrayList<State> getState(){
+	public ArrayList<LogisticsState> getState(){
 		return state;
 	}
-	public void setState(ArrayList<State> state){
+	public void setState(ArrayList<LogisticsState> state){
 		this.state = state;
 	}
 	
-	public void addState(State state){
+	public void addState(LogisticsState state){
 		this.state.add(state);
 	}
 }

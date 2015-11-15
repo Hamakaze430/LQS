@@ -1,9 +1,9 @@
 package presentation.LogisticsInfoSearchui;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -12,16 +12,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
+import businessLogic.LogisticsInfoSearchbl.stub.LogisticsInfoSearchblStub;
 import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
 import vo.LogisticsVO;
-import vo.State;
+import vo.LogisticsState;
 
-public class LogisticsInfoSearchui extends JPanel {
+public class LogisticsPanel extends JPanel {
 	/**
 	 * 
 	 */
@@ -32,16 +32,48 @@ public class LogisticsInfoSearchui extends JPanel {
 	private JTextArea text;
 	private JLabel idLabel;
 	private JPanel display;
-	public LogisticsInfoSearchui(LogisticsInfoSearchblService bl){
-		this.bl = bl;
-		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
-		
+	public LogisticsPanel(){
+		bl = new LogisticsInfoSearchblStub();
+		this.setSize(1024,768);
+		this.setLayout(null);
+		this.initbg();
 		this.initInput();
 		this.initDisplay();
-		
-		this.validate();
+		this.setVisible(true);
 	}
 	
+	private void initbg() {
+		JLabel bg = new JLabel("这也是背景图片",JLabel.CENTER);
+		bg.setBounds(0, 0, this.getWidth(), this.getHeight());
+		this.add(bg);
+	}
+
+	final int BUTTON_WIDTH = 200;
+	final int BUTTON_HEIGHT = 40;
+	final int LEFT_PADDING = 30;
+	final int TOP_PADDING = 50;
+	final int BUTTOM_PADDING = 100;
+	final int PADDING_HORIZATION = 30;
+	
+	private void initInput(){
+		JLabel label = new JLabel("请输入您的快递单号: ");
+		orderNumber = new JTextField(15);
+		JButton searchButton = new JButton("查询");
+		searchButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0) {
+				searchInfo();
+			}
+		});
+		
+		JPanel inputPanel = new JPanel();
+		inputPanel.setBounds(LEFT_PADDING, TOP_PADDING, this.getWidth(), BUTTON_HEIGHT);
+		inputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+		inputPanel.add(label);
+		inputPanel.add(orderNumber);
+		inputPanel.add(searchButton);
+		
+		this.add(inputPanel);
+	}
 	private void initDisplay() {
 		
 		
@@ -51,36 +83,22 @@ public class LogisticsInfoSearchui extends JPanel {
 		text.setBorder(tb);
 		JScrollPane scrollPane = new JScrollPane(text);
 		
-		idLabel = new JLabel("订单条形码号: ");
+		idLabel = new JLabel("·订单条形码号:");
 		
 	    display = new JPanel();
+//	    display.setOpaque(true);
+//	    display.setBackground(Color.BLACK);
+	    display.setBounds(2*LEFT_PADDING, 
+	    				  TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION,
+	    				  300,
+	    				  this.getHeight() - (TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION) - BUTTOM_PADDING
+	    );
 	    display.setLayout(new BoxLayout(display,BoxLayout.Y_AXIS));
 	    display.add(idLabel);
 	    display.add(scrollPane);
 	    display.setVisible(false);
 		this.add(display);
-	}
-
-	private void initInput(){
-		JLabel label = new JLabel("输入订单条形码号: ");
-		orderNumber = new JTextField(10);
-		
-		JButton searchButton = new JButton("查询");
-		searchButton.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent arg0) {
-				searchInfo();
-			}
-		});
-		
-		JPanel inputPanel = new JPanel();
-		inputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-		inputPanel.add(label);
-		inputPanel.add(orderNumber);
-		inputPanel.add(searchButton);
-		
-		this.add(inputPanel);
-	}
-	
+	}	
 	private void searchInfo() {
 		// TODO Auto-generated method stub
 		String order = orderNumber.getText();
@@ -102,9 +120,9 @@ public class LogisticsInfoSearchui extends JPanel {
 		orderNumber.setText("");
 		text.setText("");
 		//显示物流信息
-		idLabel.setText("订单条形码号: " + order);
-		for (State state: logistics.getState()){
-			text.append(state.toString()+"\n");
+		idLabel.setText("·订单条形码号: " + order);
+		for (LogisticsState state: logistics.getState()){
+			text.append("· "+state.toString()+"\n");
 		}
 		display.setVisible(true);
 		

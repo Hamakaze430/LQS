@@ -1,6 +1,6 @@
 package vo;
 
-public enum State {
+public enum LogisticsState {
 	//快递员已收件,到达寄件人营业厅,到达寄件人中转中心,到达收件人中转中心,到达收件人营业厅,派件中,收件人已收件
 	快递员已收件("快递员已收件"),到达寄件人营业厅("到达寄件人营业厅"),
 	到达寄件人中转中心("到达寄件人中转中心"),到达收件人中转中心("到达收件人中转中心"),
@@ -8,7 +8,7 @@ public enum State {
 	
 	private String s;
 	
-	private State(String s){
+	private LogisticsState(String s){
 		this.s = s;
 	}
 	
