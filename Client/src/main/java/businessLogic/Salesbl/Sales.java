@@ -1,17 +1,27 @@
 package businessLogic.Salesbl;
 
+import java.util.ArrayList;
+import po.*;
+
 public class Sales {
     String message;
     Boolean state;
+    String start;
+    String end;
+    ArrayList<ReceiptPO> receipts=new ArrayList<ReceiptPO>();
+    DateController dc=new DateController();
+
+    public Sales(String start, String end){
+        this.start=start;
+        this.end=end;
+    }
 
     public String getStartDate(){
-
-        return message;
+        return dc.getStartDate();
     }
 
     public String getEndDate(){
-
-        return message;
+        return dc.getEndDate();
     }
 
     public Boolean checkDate(String start, String end){
