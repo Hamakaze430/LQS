@@ -3,11 +3,11 @@ package po;
 import java.io.Serializable;
 
 public class CarPO implements Serializable{
-	int id;
+	String id;
 	String platenumber; 
 	String timeinuse;
 	
-	public CarPO(int i,String pn,String tiu){
+	public CarPO(String i,String pn,String tiu){
 		id = i;
 		platenumber = pn;
 		timeinuse = tiu;
