@@ -8,6 +8,8 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import businessLogicService.UserblService.UserblService;
+
 public class Userui extends JPanel{
 private static final long serialVersionUID = 1L;
 	

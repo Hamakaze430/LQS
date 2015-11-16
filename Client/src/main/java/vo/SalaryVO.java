@@ -1,3 +1,4 @@
+package vo;
 
 public class SalaryVO {
 	private double salary;

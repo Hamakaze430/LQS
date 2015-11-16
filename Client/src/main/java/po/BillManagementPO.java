@@ -1,6 +1,9 @@
 package po;
 
-import vo.*;
+import java.util.*;
+
+import businessLogic.BillManagementbl.BillManagement;
+import po.*;
 
 import java.io.Serializable;
 
@@ -10,11 +13,27 @@ import java.io.Serializable;
 public class BillManagementPO implements Serializable {
     String date;
     String name;
-    UserVO users;
-    CarVO cars;
-    DriverVO drivers;
-    CommodityVO storage;
-    BankAccountVO account;
+    ArrayList<UserPO> users;
+    ArrayList<CarPO> cars;
+    ArrayList<DriverPO> drivers;
+    ArrayList<CommodityPO> commodities;
+    ArrayList<BankAccountPO> accounts;
+//    UserVO users;
+//    CarVO cars;
+//    DriverVO drivers;
+//    CommodityVO storage;
+//    BankAccountVO account;
+
+    public BillManagementPO(String date, String name, ArrayList<UserPO> u, ArrayList<CarPO> c,
+                   ArrayList<DriverPO> d, ArrayList<CommodityPO> cy, ArrayList<BankAccountPO> ba){
+        this.date=date;
+        this.name=name;
+        users=u;
+        cars=c;
+        drivers=d;
+        commodities=cy;
+        accounts=ba;
+    }
 
     public String getDate(){
         return date;
@@ -24,23 +43,43 @@ public class BillManagementPO implements Serializable {
         return name;
     }
 
-    public UserVO getWorkers(){
+    public ArrayList<UserPO> getUsers(){
         return users;
     }
 
-    public CarVO getCars(){
+    public ArrayList<CarPO> getCars(){
         return cars;
     }
 
-    public DriverVO getDrivers(){
+    public ArrayList<DriverPO> getDrivers(){
         return drivers;
     }
 
-    public CommodityVO getStorage(){
-        return storage;
+    public ArrayList<CommodityPO> getCommoditys(){
+        return commodities;
     }
 
-    public BankAccountVO getAccountInfo(){
-        return account;
+    public ArrayList<BankAccountPO> getAccounts(){
+        return accounts;
     }
+//
+//    public UserVO getWorkers(){
+//        return users;
+//    }
+//
+//    public CarVO getCars(){
+//        return cars;
+//    }
+//
+//    public DriverVO getDrivers(){
+//        return drivers;
+//    }
+//
+//    public CommodityVO getStorage(){
+//        return storage;
+//    }
+//
+//    public BankAccountVO getAccountInfo(){
+//        return account;
+//    }
 }

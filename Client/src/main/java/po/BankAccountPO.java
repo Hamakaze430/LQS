@@ -3,16 +3,16 @@ package po;
 import java.io.Serializable;
 
 public class BankAccountPO implements Serializable {
-    int id;
+    String id;
     String name;
-    double balance;
+    String balance;
 
-    public BankAccountPO(String name, double balance){
+    public BankAccountPO(String name, String balance){
         this.name=name;
         this.balance=balance;
     }
 
-    public int getID(){
+    public String getID(){
         return id;
     }
 
@@ -20,7 +20,7 @@ public class BankAccountPO implements Serializable {
         return name;
     }
 
-    public double getBalance(){
+    public String getBalance(){
         return balance;
     }
 

@@ -1,5 +1,11 @@
+package presentation.Userui;
+
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import vo.UserVO;
 
 
 public class showPanel extends JPanel{
@@ -12,7 +18,7 @@ private static final long serialVersionUID = 1L;
 	private JButton viewConstruction;
 	
 	
-	public CarPanel(){
+	public showPanel(){
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		mainLabel = new JLabel();
 		nameLabel = new JLabel();

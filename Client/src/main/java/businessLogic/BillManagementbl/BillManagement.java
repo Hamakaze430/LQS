@@ -4,7 +4,7 @@ public class BillManagement {
     String message;
 
     public String create(){
-
+        message="create";
         return message;
     }
 
