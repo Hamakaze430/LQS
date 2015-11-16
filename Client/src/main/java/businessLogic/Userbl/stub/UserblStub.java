@@ -1,20 +1,36 @@
 package businessLogic.Userbl.stub;
 
-import vo.UserVO;
-import businessLogicService.UserblService.UserblService;
-
-public class UserblStub implements UserblService{
+public interface UserblService _Stud implements UserblService{
 	int userid;
 	String userpassword;
 	String userpersonalinfo;
 	String usercompetence;
 	
-	public boolean addUser(UserVO user) {
-		// TODO Auto-generated method stub
-		return false;
+	public UserVO getUserByID(int userid){
+		return new UserVO(userpassword,userpersonalinfo,usercompetence);
 	}
 	
+	public ResultMessage addUser(int userid){
+		if(receiptname == 141250064)
+			return ResultMessage.Exist;
+		else return ResultMessage.NotExist;
+	}
 	
+	public String getUserPassword(int userid){
+		return userpassword;
+	}
+	
+	public String getUserPersonalInfo(int userid){
+		return userpersonalinfo;
+	}
+	
+	public String getUserCompetence(int userid){
+		return usercompetence;
+	}
+	
+	public class UserView{
+		
+	}
 	
 
 }
