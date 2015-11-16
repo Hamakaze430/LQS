@@ -13,7 +13,7 @@ public class CarPO implements Serializable{
 		timeinuse = tiu;
 	}
 	
-	public int getID(){
+	public String getID(){
 		return id;
 	}
 	

@@ -1,14 +1,22 @@
 package vo;
 
 public class SalaryVO {
+	private String position;
 	private double salary;
-	private double bonus;
 	
-	public SalaryVO(double salary,double bonus){
+	
+	public SalaryVO(String position,double salary){
+		this.position=position;
 		this.salary=salary;
-		this.bonus=bonus;
+		
+	}
+	public String getPosition(){
+		return position;
 	}
 	
+	public void setPosition(String position){
+		this.position = position;
+	}
 	public double getsalary(){
 		return salary;
 	}
@@ -17,11 +25,5 @@ public class SalaryVO {
 		this.salary = salary;
 	}
 	
-	public double getbonus(){
-		return bonus;
-	}
 	
-	public void setbonus(double bonus){
-		this.bonus = bonus;
-	}
 }

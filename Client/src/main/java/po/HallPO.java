@@ -3,20 +3,30 @@ package po;
 import java.io.Serializable;
 
 public class HallPO implements Serializable{
-	int id;
-	String city;
-	
-	public HallPO(int i,String c){
-		id = i;
-		city = c;
+	public String name;
+	public String location;
+	public String id;
+	public HallPO(String name, String location, String id){
+		this.name = name;
+		this.location = location;
+		this.id = id;
 	}
-	
-	public int getID(){
+	public String getName(){
+		return name;
+	}
+	public void setName(String name){
+		this.name=name;
+	}
+	public String getLocation(){
+		return location;
+	}
+	public void setLocation(String location){
+		this.location=location;
+	}
+	public String getID(){
 		return id;
 	}
-	
-	public String getCity(){
-		return city;
+	public void setID(String name){
+		this.id=id;
 	}
-
 }

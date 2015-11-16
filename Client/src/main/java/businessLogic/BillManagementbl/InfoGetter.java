@@ -37,27 +37,27 @@ public class InfoGetter {
     }
 
     public ArrayList<UserPO> getUsers(){
-        ArrayList<UserPO> u＝new ArrayList<UserPO>()
+        ArrayList<UserPO> u=new ArrayList<UserPO>()
         return u;
     }
 
     public ArrayList<CarPO> getCars(){
-        ArrayList<CarPO> c＝new ArrayList<CarPO>()
+        ArrayList<CarPO> c=new ArrayList<CarPO>()
         return c;
     }
 
     public ArrayList<DriverPO> getDrivers(){
-        ArrayList<DriverPO> d＝new ArrayList<DriverPO>()
+        ArrayList<DriverPO> d=new ArrayList<DriverPO>()
         return d;
     }
 
     public ArrayList<CommodityPO> getStorage(){
-        ArrayList<CommodityPO> cy＝new ArrayList<CommodityPO>()
+        ArrayList<CommodityPO> cy=new ArrayList<CommodityPO>()
         return cy;
     }
 
     public ArrayList<BankAccountPO> getAccount(){
-        ArrayList<BankAccountPO> ba＝new ArrayList<BankAccountPO>()
+        ArrayList<BankAccountPO> ba=new ArrayList<BankAccountPO>()
         return ba;
     }
 }

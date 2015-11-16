@@ -17,7 +17,7 @@ public class CommodityPO implements Serializable {
 		price = p;
 	}
 
-	public int getID() {
+	public String getID() {
 		return id;
 	}
 

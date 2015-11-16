@@ -5,7 +5,13 @@ import dataService.dataFactoryService.DataFactoryService;
 
 public class Receiptsbl implements ReceiptsblService {
 	
-
+	public String getName(){
+		return "";
+	}
+	
+	public String getCreater(){
+		return "";
+	}
 	
 	public String showVouchers() {
 		return null;

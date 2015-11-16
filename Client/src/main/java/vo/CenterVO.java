@@ -1,10 +1,10 @@
 package vo;
 
-public class HallVO {
+public class CenterVO {
 	public String name;
 	public String location;
 	public String id;
-	public HallVO(String name, String location, String id){
+	public CenterVO(String name, String location, String id){
 		this.name = name;
 		this.location = location;
 		this.id = id;
