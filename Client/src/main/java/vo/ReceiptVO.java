@@ -8,7 +8,8 @@ import java.util.Date;
 public class ReceiptVO {
     private String type;
     private String date;
-
+    private ReceiptState state;
+ 
     public String getType(){
         return type;
     }

@@ -1,5 +1,6 @@
 package presentation.mainui;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,25 +8,34 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import init.Client;
+import presentation.LogisticsInfoSearchui.LogisticsPanel;
 
 public class WelcomePanel extends JPanel {
 	private JButton logistics;
 	private JButton login;
 	public WelcomePanel(){	
 		
-		this.setSize(900,600);
+		this.setSize(1024,768);
+		//this.setBackground(Color.BLACK);
 		this.setLayout(null);
 		init();
 	}
 	
-	final int BUTTON_WIDTH = 100;
-	final int BUTTON_HEIGHT = 20;
-	final int RIGHT_PADDING = 20;
-	final int BOTTOM_PADDING = 15;
-	final int PADDING_HORIZATION = 20;
+	final int BUTTON_WIDTH = 200;
+	final int BUTTON_HEIGHT = 40;
+	final int RIGHT_PADDING = 100;
+	final int BOTTOM_PADDING = 150;
+	final int PADDING_HORIZATION = 30;
 	
 	private void init() {
+		JLabel bg = new JLabel("这是背景图片",JLabel.CENTER);
+		bg.setBounds(0,0,this.getWidth(),this.getHeight());
+		
+		
 		logistics = new JButton("物流查询");
 		login = new JButton("用户登录");
 		login.setBounds(
@@ -42,6 +52,7 @@ public class WelcomePanel extends JPanel {
 		);
 		login.addMouseListener(new LoginMouseListener());
 		logistics.addMouseListener(new LogisticsMouseListener());
+		this.add(bg);
 		this.add(login);
 		this.add(logistics);
 		
@@ -80,6 +91,10 @@ public class WelcomePanel extends JPanel {
 
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
+			WelcomePanel.this.setVisible(false);
+			
+			Client.frame.add(new LogisticsPanel());
+			Client.frame.repaint();
 			
 		}
 
