@@ -113,7 +113,7 @@ public class LogisticsPanel extends JPanel {
 		LogisticsVO logistics = bl.search(order);
 		//查无商品
 		if(logistics == null){
-			JOptionPane.showMessageDialog(null, "找不到对应的订单信息","", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "找不到对应的订单信息(请输1234567890)","", JOptionPane.ERROR_MESSAGE);
 			return;
 		}
 		//清空输入
@@ -122,7 +122,7 @@ public class LogisticsPanel extends JPanel {
 		//显示物流信息
 		idLabel.setText("·订单条形码号: " + order);
 		for (LogisticsState state: logistics.getState()){
-			text.append("· "+state.toString()+"\n");
+			text.append("  · "+state.toString()+"\n");
 		}
 		display.setVisible(true);
 		

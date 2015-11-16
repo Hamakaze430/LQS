@@ -3,10 +3,9 @@ package presentation.Receiptsui;
 import javax.swing.JPanel;
 
 import businessLogic.Receiptsbl.Receiptsbl;
-import businessLogic.Receiptsbl.stub.ReceiptsblStub;
+import businessLogic.Userbl.Userbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
 import vo.FormType;
-import vo.UserBaseVO;
 
 public class ReceiptPanel extends JPanel{
 	/**
@@ -14,15 +13,14 @@ public class ReceiptPanel extends JPanel{
 	 */	
 	private static final long serialVersionUID = 1L;
 	public ReceiptsblService bl;
-	public final UserBaseVO user;
-	public ReceiptPanel(UserBaseVO user){
-		bl = new ReceiptsblStub();
-		this.user = user;	
+	public ReceiptPanel(Userbl user){
+		bl = new Receiptsbl(user);
+		
 	}
 	public void newReceipt(FormType type){
 		switch(type){
 		case 寄件单: break;
-		case 装车单: this.add(new LoadingPanel(this));
+		case 装车单: this.add(new LoadingPanel(bl));
 		case 营业厅到达单: break;
 		case 中转单: break;
 		case 中转中心到达单: break;

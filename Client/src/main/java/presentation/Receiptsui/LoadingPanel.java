@@ -12,6 +12,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import businessLogic.Receiptsbl.Receiptsbl;
+import businessLogicService.ReceiptsblService.ReceiptsblService;
+
 
 
 public class LoadingPanel extends JPanel{
@@ -22,29 +25,27 @@ public class LoadingPanel extends JPanel{
 	/**
 	 * 
 	 */
-	private ReceiptPanel parent;
-	public LoadingPanel(ReceiptPanel parent){
-		this.parent = parent;
+	private ReceiptsblService bl;
+	public LoadingPanel(ReceiptsblService bl){
+		this.bl = bl;
 		init();
 		
 	}
 	private void init() {
 		// TODO Auto-generated method stub
-		DateFormat formatter1 = new SimpleDateFormat("yyyy.MM.dd");
-		DateFormat formatter2 = new SimpleDateFormat("yyyyMMdd");
-		Date currentDate = new Date();
+		
 		
 		JLabel dateLabel = new JLabel("装车日期: ");
 		JTextField date = new JTextField(7);
 		date.setHorizontalAlignment(JTextField.CENTER);
 		
-		date.setText(formatter1.format(currentDate));
+		date.setText(bl.getCurrentTime());
 		date.setEditable(false);
 		
 		JLabel hallIdLabel = new JLabel("营业厅编号: ");
 		JTextField hallId = new JTextField(5);
 		hallId.setHorizontalAlignment(JTextField.CENTER);
-		hallId.setText(parent.user.hall.id);
+		hallId.setText(bl.getHallId());
 		hallId.setEditable(false);
 		
 		JLabel idLabel = new JLabel("汽运编号: ");
@@ -53,8 +54,8 @@ public class LoadingPanel extends JPanel{
 		
 		id.setText(
 				hallId.getText()
-				+formatter2.format(currentDate)
-				+parent.bl.getLoadingId()
+				+bl.changeDateFormat(date.getText())
+				+bl.getLoadingId()
 		);
 
 		id.setEditable(false);
