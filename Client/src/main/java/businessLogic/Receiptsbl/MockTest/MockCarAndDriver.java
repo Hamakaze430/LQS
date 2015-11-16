@@ -3,7 +3,6 @@ package businessLogic.Receiptsbl.MockTest;
 import java.util.ArrayList;
 
 import businessLogic.CarAndDriverbl.CarAndDriverbl;
-import vo.CarVO;
 
 public class MockCarAndDriver extends CarAndDriverbl{
 	

@@ -1,5 +1,7 @@
 package businessLogicService.CarAndDriverblService;
 
+import java.util.ArrayList;
+
 import vo.CarVO;
 import vo.DriverVO;
 
@@ -58,6 +60,8 @@ public interface CarAndDriverblService {
 	 * @return
 	 */
 	public boolean deleteDriverInfo(DriverVO driver);
+
+	public ArrayList<String> findAllCarInfo(String hallId);
 	
 	
 }

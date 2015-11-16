@@ -1,5 +1,7 @@
 package businessLogic.CarAndDriverbl;
 
+import java.util.ArrayList;
+
 import businessLogicService.CarAndDriverblService.CarAndDriverblService;
 import vo.CarVO;
 import vo.DriverVO;
@@ -44,6 +46,11 @@ public class CarAndDriverbl implements CarAndDriverblService {
 	public boolean deleteDriverInfo(DriverVO driver) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	public ArrayList<String> findAllCarInfo(String hallId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

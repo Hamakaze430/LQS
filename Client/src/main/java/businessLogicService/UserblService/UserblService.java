@@ -1,5 +1,7 @@
 package businessLogicService.UserblService;
 
+import vo.UserVO;
+
 public interface UserblService {
 	/**
 	 * 新建用户
@@ -7,6 +9,12 @@ public interface UserblService {
 	 * @return
 	 */
 	public boolean addUser(UserVO user);
+
+	public String getHallId();
+
+	public String getHallName();
+
+	public String getHallName();
 	
 	
 	
