@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workingSetManager>
 <workingSet editPageId="org.eclipse.ui.resourceWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1447570438994_1" label="LQS" name="LQS">
-<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Client" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Server" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/Client" type="4"/>
 </workingSet>
 <workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1447570418222_0" label="Window Working Set" name="Aggregate for window 1447570418221"/>
 </workingSetManager>

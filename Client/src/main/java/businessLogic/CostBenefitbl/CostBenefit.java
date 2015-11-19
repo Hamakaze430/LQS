@@ -1,5 +1,8 @@
 package businessLogic.CostBenefitbl;
 
+import po.receipts.*;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class CostBenefit {
@@ -7,6 +10,9 @@ public class CostBenefit {
     int cost;
     int benefit;
     int profit;
+    ArrayList<PaymentPO> payment=new ArrayList<PaymentPO>();
+    ArrayList<IncomePO> income=new ArrayList<IncomePO>();
+    ReceiptsGetter rg=new ReceiptsGetter();
     Calculator calculator=new Calculator();
 
     public String getdate(String message){
@@ -21,6 +27,8 @@ public class CostBenefit {
         else
             return null;
     }
+
+
 
     public int showCost(String date){
 

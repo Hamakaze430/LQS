@@ -5,7 +5,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import dataService.dataFactoryService.DataFactoryService;
+import dataService.DataFactoryService.DataFactoryService;
 
 
 public class RMIHelper {

@@ -13,7 +13,7 @@ public class MockInfoGetter extends InfoGetter{
     public BillManagementPO getAll(String message){
         if(message.equals("create")){
             BillManagementPO bill=new BillManagementPO(this.getDate()
-                    , this.getName(), this.getUsers(), this.getCars(),
+                    , this.getName(), this.getWorkers(), this.getCars(),
                     this.getDrivers(), this.getStorage(), this.getAccount());
             return bill;
         }
@@ -41,6 +41,13 @@ public class MockInfoGetter extends InfoGetter{
         ArrayList<CarPO> cl=new ArrayList<CarPO>();
         cl.add(c);
         return cl;
+    }
+    
+    public ArrayList<DriverPO> getDrivers(){
+        DriverPO d=new DriverPO("001", "苏yy","男", "1985/10/07","1333333333","31345");
+        ArrayList<DriverPO> dl=new ArrayList<DriverPO>();
+        dl.add(d);
+        return dl;
     }
 
     public ArrayList<CommodityPO> getStorage(){
