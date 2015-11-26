@@ -2,6 +2,9 @@ package init;
 
 import javax.swing.JOptionPane;
 
+import businessLogic.Userbl.Loginbl;
+import businessLogicService.UserblService.LoginblService;
+import presentation.Userui.LoginPanel;
 import presentation.mainui.MainFrame;
 
 public class Client {
@@ -20,7 +23,9 @@ public class Client {
 //	            );
 //		}
 		frame = new MainFrame();
-		frame.addWelcomePanel();
+		LoginblService bl = new Loginbl();
+		frame.add(new LoginPanel(bl));
+		//frame.addWelcomePanel();
 		frame.setVisible(true);
 	}
 }
