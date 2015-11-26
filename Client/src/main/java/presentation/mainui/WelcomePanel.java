@@ -92,8 +92,9 @@ public class WelcomePanel extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			WelcomePanel.this.setVisible(false);
-			
+			Client.frame.remove(WelcomePanel.this);
 			Client.frame.add(new LogisticsPanel());
+			
 			Client.frame.repaint();
 			
 		}

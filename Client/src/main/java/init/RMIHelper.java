@@ -10,7 +10,7 @@ import dataService.dataFactoryService.DataFactoryService;
 
 public class RMIHelper {
 
-    private static final String IP = "localhost"; 
+    private static final String IP = "127.0.0.1"; 
 
     private static boolean inited = false;
 
@@ -31,7 +31,7 @@ public class RMIHelper {
 
     private static void initObjects() throws MalformedURLException, RemoteException, NotBoundException {
         String urlPrefix = "rmi://" + IP + "/";
-        df = (DataFactoryService) Naming.lookup(urlPrefix + "dataFactoryService-dataService");
+        df = (DataFactoryService) Naming.lookup(urlPrefix + "DataFactory-Server");
     }
 
     public static DataFactoryService getDataFactory() {

@@ -1,12 +1,20 @@
-package vo;
+package po;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class LogisticsVO {
-	private String id;
+public class LogisticsPO implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private String id;//快递单号
 	private List<String> state;
 	
-	public LogisticsVO(String id, List<String> state){
+	public LogisticsPO(String id, List<String> state){
 		this.id = id;
 		this.state = state;
 	}
@@ -14,6 +22,7 @@ public class LogisticsVO {
 	public String getId(){
 		return id;
 	}
+	
 	public void setId(String id){
 		this.id = id;
 	}
@@ -21,6 +30,7 @@ public class LogisticsVO {
 	public List<String> getState(){
 		return state;
 	}
+	
 	public void setState(List<String> state){
 		this.state = state;
 	}
