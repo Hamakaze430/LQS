@@ -8,6 +8,7 @@ import dataService.DataFactoryService.DataFactory;
 import dataService.DataFactoryService.DataFactoryService;
 import presentation.Userui.LoginPanel;
 import presentation.mainui.MainFrame;
+import presentation.mainui.WelcomePanel;
 
 public class Client {
 	public static MainFrame frame;

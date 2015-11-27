@@ -1,56 +1,62 @@
 package businessLogic.BillManagementbl;
 
-public class BillManagement {
+import vo.BankAccountVO;
+import vo.CarVO;
+import vo.CommodityVO;
+import vo.UserVO;
+import businessLogicService.BillManagementblService.BillManagementblService;
+
+import java.util.*;
+
+public class BillManagement implements BillManagementblService{
     String message;
 
     public String create(){
-        message="create";
-        return message;
+    	return "create";
     }
 
     public String getDate(){
-
-        return message;
+    	Calendar c=Calendar.getInstance();
+        int year=c.get(Calendar.YEAR);
+        int month=c.get(Calendar.MONTH);
+        int day=c.get(Calendar.DATE);
+        String date=String.valueOf(year)+"/"+String.valueOf(month)+"/"+String.valueOf(day);
+        return date;
     }
 
     public String getName(){
-
-        return message;
+    	
     }
 
-    public String getWorkers(){
-
-        return message;
+    public ArrayList<UserVO> getWorkers(){
+    	
     }
 
-    public String getCars(){
-
-        return message;
+    public ArrayList<CarVO> getCars(){
+    	
     }
 
-    public String getStorage(){
-
-        return message;
+    public ArrayList<CommodityVO> getStorage(){
+    	
     }
 
-    public String getAccountInfo(){
-
-        return message;
+    public ArrayList<BankAccountVO> getAccountInfo(){
+    	
     }
 
     public void save(){
-
+    	
     }
 
     public void check(){
-
+    	
     }
 
     public void pass(){
-
+    	
     }
 
     public void fail(){
-
+    	
     }
 }

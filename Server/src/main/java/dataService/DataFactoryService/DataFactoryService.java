@@ -4,8 +4,9 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
+import po.*;
 
-public interface DataFactoryService extends Remote {
+public interface DataFactoryService {
 	
-	LogisticsDataService getLogisticsDataService() throws RemoteException;
+	
 }

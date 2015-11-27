@@ -2,7 +2,7 @@ package businessLogicService.CostBenefitblService;
 
 public interface CostBenefitblService {
 
-    public String getDate();
+    public String getDate(String message);
 
     public int showCost(String date);
 
