@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import data.dataFactory.DataFactory;
+import data.DataFactory.DataFactory;
 
 public class RMIHelper {
 
@@ -33,7 +33,7 @@ public class RMIHelper {
                 String name = entry.getKey();
                 Class<? extends UnicastRemoteObject> clazz = entry.getValue();
                 UnicastRemoteObject proxy = clazz.newInstance();
-                Naming.rebind("rmi://127.0.0.1/"+name, proxy);
+                Naming.rebind(name, proxy);
             }
             inited = true;
         } catch (Exception e) {

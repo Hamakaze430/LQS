@@ -5,12 +5,13 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import dataService.dataFactoryService.DataFactoryService;
+import dataService.DataFactoryService.DataFactoryService;
+
 
 
 public class RMIHelper {
 
-    private static final String IP = "127.0.0.1"; 
+    private static final String IP = "localhost"; 
 
     private static boolean inited = false;
 

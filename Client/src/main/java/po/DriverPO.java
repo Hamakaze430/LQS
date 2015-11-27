@@ -3,28 +3,27 @@ package po;
 import java.io.Serializable;
 
 public class DriverPO implements Serializable{
-	int id;
+	String id;
 	String name;
-	char sex;
+	String sex;
 	String birthdate;
-	String idnumber;
 	String phonenumber;
 	String license;
 
-	public DriverPO(int i,String n,char c,String bd,String in,String pn,String l){
+	public DriverPO(String i,String n,String c,String bd,String pn,String l){
 		id = i;
 		name = n;
+		sex=c;
 		birthdate = bd;
-		idnumber = in;
 		phonenumber = pn;
 		license = l;
 		}
 	
-	public int getID(){
+	public String getID(){
 		return id;
 	}
 	
-	public char getSex(){
+	public String getSex(){
 		return sex;
 	}
 	
@@ -32,9 +31,9 @@ public class DriverPO implements Serializable{
 		return birthdate;
 	}
 	
-	public String getIDNumber(){
-		return idnumber;
-	}
+//	public String getIDNumber(){
+//		return idnumber;
+//	}
 	
 	public String getPhoneNumber(){
 		return phonenumber;

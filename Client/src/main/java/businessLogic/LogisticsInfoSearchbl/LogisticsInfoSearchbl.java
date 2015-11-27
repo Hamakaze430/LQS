@@ -2,7 +2,7 @@ package businessLogic.LogisticsInfoSearchbl;
 
 
 import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
-import dataService.dataFactoryService.DataFactoryService;
+import dataService.DataFactoryService.DataFactoryService;
 import init.RMIHelper;
 import po.LogisticsPO;
 import vo.LogisticsVO;
