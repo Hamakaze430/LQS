@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class BankAccountPO implements Serializable {
     String id;
     String name;
-    String balance;
+    double balance;
 
-    public BankAccountPO(String name, String balance){
+    public BankAccountPO(String name, double balance){
         this.name=name;
         this.balance=balance;
     }
@@ -20,7 +20,7 @@ public class BankAccountPO implements Serializable {
         return name;
     }
 
-    public String getBalance(){
+    public double getBalance(){
         return balance;
     }
 
