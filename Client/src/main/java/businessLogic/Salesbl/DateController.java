@@ -5,7 +5,7 @@ package businessLogic.Salesbl;
  */
 public class DateController {
 
-    public String getStartDate(String input){
+    public String getStartDate(String input){	
         if(checkStyle(input)){
             return input;
         }
