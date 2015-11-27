@@ -7,17 +7,13 @@ import data.LogisticsInfoSearchdata.LogisticsDataServiceTextFileImpl;
 import dataService.DataFactoryService.DataFactoryService;
 import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
 
-public class DataFactory extends UnicastRemoteObject implements DataFactoryService{
-	
-	public DataFactory() throws RemoteException {
-		
-		super();
-		System.out.println("new DataFactory()");
-	}
+public class DataFactory implements DataFactoryService{
 
+	@Override
 	public LogisticsDataService getLogisticsDataService() throws RemoteException {
-		LogisticsDataService data = new LogisticsDataServiceTextFileImpl();
-		return data;
+		// TODO Auto-generated method stub
+		return null;
 	}
-
+	
+	
 }

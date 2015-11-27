@@ -4,7 +4,7 @@ import java.rmi.Remote;
 
 import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
 
-public interface DataFactoryService extends Remote {
+public interface DataFactoryService{
 	
 	LogisticsDataService getLogisticsDataService();
 }
