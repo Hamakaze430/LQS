@@ -1,7 +1,7 @@
 package businessLogic.LogisticsInfoSearchbl;
 
 import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
-import dataService.dataFactoryService.DataFactoryService;
+import dataService.DataFactoryService.DataFactoryService;
 import vo.LogisticsVO;
 
 public class LogisticsInfoSearchbl implements LogisticsInfoSearchblService {
