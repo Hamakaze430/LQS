@@ -1,9 +1,11 @@
 package businessLogic.Salesbl;
 
 import java.util.ArrayList;
+
+import businessLogicService.SalesblService.SalesblService;
 import po.*;
 
-public class Sales {
+public class Sales implements SalesblService{
     String message;
     Boolean state;
     String start;

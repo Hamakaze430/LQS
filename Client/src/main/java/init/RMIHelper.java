@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import dataService.DataFactoryService.DataFactoryService;
 
 
+
 public class RMIHelper {
 
     private static final String IP = "localhost"; 
@@ -31,7 +32,7 @@ public class RMIHelper {
 
     private static void initObjects() throws MalformedURLException, RemoteException, NotBoundException {
         String urlPrefix = "rmi://" + IP + "/";
-        df = (DataFactoryService) Naming.lookup(urlPrefix + "dataFactoryService-dataService");
+        df = (DataFactoryService) Naming.lookup(urlPrefix + "DataFactory-Server");
     }
 
     public static DataFactoryService getDataFactory() {

@@ -5,7 +5,9 @@ import po.receipts.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class CostBenefit {
+import businessLogicService.CostBenefitblService.CostBenefitblService;
+
+public class CostBenefit implements CostBenefitblService{
     String message;
     int cost;
     int benefit;
@@ -13,9 +15,9 @@ public class CostBenefit {
     ArrayList<PaymentPO> payment=new ArrayList<PaymentPO>();
     ArrayList<IncomePO> income=new ArrayList<IncomePO>();
     ReceiptsGetter rg=new ReceiptsGetter();
-    Calculator calculator=new Calculator();
+    Calculator calculator=new Calculator(payment, income);
 
-    public String getdate(String message){
+    public String getDate(String message){
         if(message.equals("get")){  //get date and pass on to calculator
             Calendar c=Calendar.getInstance();
             int year=c.get(Calendar.YEAR);
@@ -27,8 +29,6 @@ public class CostBenefit {
         else
             return null;
     }
-
-
 
     public int showCost(String date){
 
@@ -54,4 +54,5 @@ public class CostBenefit {
 
         return message;
     }
+
 }

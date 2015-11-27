@@ -1,12 +1,12 @@
 package vo;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class LogisticsVO {
 	private String id;
-	private ArrayList<LogisticsState> state;
+	private List<String> state;
 	
-	public LogisticsVO(String id, ArrayList<LogisticsState> state){
+	public LogisticsVO(String id, List<String> state){
 		this.id = id;
 		this.state = state;
 	}
@@ -18,14 +18,14 @@ public class LogisticsVO {
 		this.id = id;
 	}
 	
-	public ArrayList<LogisticsState> getState(){
+	public List<String> getState(){
 		return state;
 	}
-	public void setState(ArrayList<LogisticsState> state){
+	public void setState(List<String> state){
 		this.state = state;
 	}
 	
-	public void addState(LogisticsState state){
+	public void addState(String state){
 		this.state.add(state);
 	}
 }

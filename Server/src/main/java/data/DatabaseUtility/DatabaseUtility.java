@@ -1,5 +1,5 @@
 package data.DatabaseUtility;
 
-public class DatabeseUtility {
+public class DatabaseUtility {
 
 }

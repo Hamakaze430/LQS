@@ -16,10 +16,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-import businessLogic.LogisticsInfoSearchbl.stub.LogisticsInfoSearchblStub;
+import businessLogic.LogisticsInfoSearchbl.LogisticsInfoSearchbl;
 import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
+import init.Client;
+import presentation.mainui.WelcomePanel;
 import vo.LogisticsVO;
-import vo.LogisticsState;
 
 public class LogisticsPanel extends JPanel {
 	/**
@@ -33,21 +34,17 @@ public class LogisticsPanel extends JPanel {
 	private JLabel idLabel;
 	private JPanel display;
 	public LogisticsPanel(){
-		bl = new LogisticsInfoSearchblStub();
+		bl = new LogisticsInfoSearchbl();
 		this.setSize(1024,768);
 		this.setLayout(null);
 		this.initbg();
 		this.initInput();
 		this.initDisplay();
+		this.initReturn();
 		this.setVisible(true);
 	}
 	
-	private void initbg() {
-		JLabel bg = new JLabel("这也是背景图片",JLabel.CENTER);
-		bg.setBounds(0, 0, this.getWidth(), this.getHeight());
-		this.add(bg);
-	}
-
+	
 	final int BUTTON_WIDTH = 200;
 	final int BUTTON_HEIGHT = 40;
 	final int LEFT_PADDING = 30;
@@ -55,6 +52,31 @@ public class LogisticsPanel extends JPanel {
 	final int BUTTOM_PADDING = 100;
 	final int PADDING_HORIZATION = 30;
 	
+	private void initReturn() {
+		JButton back = new JButton("返回");
+		back.setBounds(this.getWidth()-2*LEFT_PADDING-BUTTON_WIDTH, 
+				       this.getHeight()-2*TOP_PADDING-BUTTON_HEIGHT, 
+				       BUTTON_WIDTH, BUTTON_HEIGHT);
+		
+		
+		back.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				Client.frame.add(new WelcomePanel());
+				Client.frame.remove(LogisticsPanel.this);
+				Client.frame.repaint();
+			}
+		});
+		
+		this.add(back);
+		
+	}
+
+	private void initbg() {
+		JLabel bg = new JLabel("这也是背景图片",JLabel.CENTER);
+		bg.setBounds(0, 0, this.getWidth(), this.getHeight());
+		this.add(bg);
+	}
+
 	private void initInput(){
 		JLabel label = new JLabel("请输入您的快递单号: ");
 		orderNumber = new JTextField(15);
@@ -121,8 +143,8 @@ public class LogisticsPanel extends JPanel {
 		text.setText("");
 		//显示物流信息
 		idLabel.setText("·订单条形码号: " + order);
-		for (LogisticsState state: logistics.getState()){
-			text.append("  · "+state.toString()+"\n");
+		for (String state: logistics.getState()){
+			text.append("  · "+state+"\n");
 		}
 		display.setVisible(true);
 		
