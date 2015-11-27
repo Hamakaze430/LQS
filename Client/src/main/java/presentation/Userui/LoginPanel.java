@@ -1,5 +1,7 @@
 package presentation.Userui;
 
+import init.Client;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -27,7 +29,9 @@ import javax.swing.border.EmptyBorder;
 
 
 
+
 import presentation.mainui.PictureLabel;
+import presentation.mainui.WelcomePanel;
 import vo.LoginVO;
 import businessLogic.Userbl.Loginbl;
 import businessLogicService.UserblService.LoginblService;
@@ -151,7 +155,9 @@ public class LoginPanel extends JPanel{
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+				LoginPanel.this.setVisible(false);	
+				Client.frame.add(new WelcomePanel());
+				Client.frame.repaint();
 			}
 
 			public void mousePressed(MouseEvent e) {
@@ -210,7 +216,7 @@ public class LoginPanel extends JPanel{
 		g.drawImage(im.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);   
 	}
 	
-	private void setIcon(String file,JButton iconButton){
+	public static void setIcon(String file,JButton iconButton){
 		ImageIcon icon = new ImageIcon(file);
 		Image temp = icon.getImage().getScaledInstance(iconButton.getWidth(), iconButton.getHeight(), icon.getImage().SCALE_DEFAULT);
 		icon = new ImageIcon(temp);

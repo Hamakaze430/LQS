@@ -6,6 +6,7 @@ import businessLogic.Userbl.Loginbl;
 import businessLogicService.UserblService.LoginblService;
 import presentation.Userui.LoginPanel;
 import presentation.mainui.MainFrame;
+import presentation.mainui.WelcomePanel;
 
 public class Client {
 	public static MainFrame frame;
@@ -44,7 +45,7 @@ public class Client {
 //		}
 		frame = new MainFrame();
 		LoginblService bl = new Loginbl();
-		frame.add(new LoginPanel(bl));
+		frame.add(new WelcomePanel());
 		//frame.addWelcomePanel();
 		frame.setVisible(true);
 >>>>>>> 6628ac314f99ded4799782b5734186c50147dc20
