@@ -2,6 +2,7 @@ package data.DataFactory;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+
 import po.*;
 import data.LogisticsInfoSearchdata.LogisticsDataServiceTextFileImpl;
 import dataService.DataFactoryService.DataFactoryService;
@@ -68,5 +69,15 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryServi
 	public BillManagementPO getBM(String date) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public ReceiptPO getReceiptbyDate(String date) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void writeLog(String log) {
+		// TODO Auto-generated method stub
+		
 	}
 }

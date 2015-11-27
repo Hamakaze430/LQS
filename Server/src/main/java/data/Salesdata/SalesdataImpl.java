@@ -3,7 +3,7 @@ package data.Salesdata;
 import po.SalesPO;
 import dataService.SalesdataService.SalesdataService;
 
-public class Salesdata implements SalesdataService{
+public class SalesdataImpl implements SalesdataService{
 
 	public void save() {
 		// TODO Auto-generated method stub

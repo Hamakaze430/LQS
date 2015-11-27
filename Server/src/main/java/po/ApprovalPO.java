@@ -7,11 +7,11 @@ import java.io.Serializable;
  */
 public class ApprovalPO implements Serializable {
 	public String name;
-	public String creater;
+	public String creator;
 	
-	public ApprovalPO(String name,String creater){
+	public ApprovalPO(String name,String creator){
 		this.name=name;
-		this.creater=creater;
+		this.creator=creator;
 	}
 	
 	public String getName(){
@@ -20,11 +20,11 @@ public class ApprovalPO implements Serializable {
 	public void setName(String name){
 		this.name=name;
 	}
-	public String getCreater(){
-		return creater;
+	public String getCreator(){
+		return creator;
 	}
-	public void setCreater(String creater){
-		this.creater=creater;
+	public void setCreator(String creater){
+		this.creator=creator;
 	}
 }
 

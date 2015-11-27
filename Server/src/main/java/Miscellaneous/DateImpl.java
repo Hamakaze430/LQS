@@ -1,12 +1,12 @@
 package Miscellaneous;
 
-public class Date {
+public class DateImpl {
 
 	private String year;
 	private String month;
 	private String day;
 	
-	public Date(String input){	//format: "year/month/day"
+	public DateImpl(String input){	//format: "year/month/day"
 		String[] after=input.split("\\/");
 		this.year=after[0];
 		this.month=after[1];

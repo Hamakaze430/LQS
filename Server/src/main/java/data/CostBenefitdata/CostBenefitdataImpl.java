@@ -6,14 +6,14 @@ import java.util.*;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
-public class CostBenefitdata extends UnicastRemoteObject implements CostBenefitdataService{
+public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBenefitdataService{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public CostBenefitdata() throws RemoteException {
+	public CostBenefitdataImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}

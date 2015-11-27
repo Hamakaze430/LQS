@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 public class VoucherSearchPO implements Serializable {
     String hall;
+    //String date;
     String date;
     double price;
 

@@ -1,24 +1,30 @@
 package data.BillManagementdata;
 
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.*;
+import java.util.ArrayList;
 import java.rmi.RemoteException;
 
 import po.*;
 import data.DataFactory.DataFactory;
 import dataService.BillManagementdataService.BillManagementdataService;
 
-public class BillManagementdata extends UnicastRemoteObject implements BillManagementdataService {
+public class BillManagementdataImpl extends UnicastRemoteObject implements BillManagementdataService {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public BillManagementdata() throws RemoteException {
+	public BillManagementdataImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -27,11 +33,10 @@ public class BillManagementdata extends UnicastRemoteObject implements BillManag
 		// TODO Auto-generated method stub
 		try {
 			DataFactory df=new DataFactory();
-			Calendar c=Calendar.getInstance();
-	        int year=c.get(Calendar.YEAR);
-	        int month=c.get(Calendar.MONTH);
-	        int day=c.get(Calendar.DATE);
-	        String date=String.valueOf(year)+"/"+String.valueOf(month)+"/"+String.valueOf(day);
+			
+			SimpleDateFormat fm=new SimpleDateFormat("yyyy-MM-dd");
+			String date=fm.format(new Date());
+			
 	        String name=df.getName();
 	        ArrayList<UserPO> user=new ArrayList<UserPO>();
 	        user.add(df.getUser());
@@ -53,16 +58,35 @@ public class BillManagementdata extends UnicastRemoteObject implements BillManag
 		}
 	}
 
-	public BillManagementPO getBillManagementPO(String date) {
+	public ArrayList<BillManagementPO> getBillManagementPO(String date) {
 		// TODO Auto-generated method stub
+		ArrayList<BillManagementPO> list=new ArrayList<BillManagementPO>();
+		SimpleDateFormat fm=new SimpleDateFormat("yyyy-MM-dd");
+		BillManagementPO temp;
 		try {
-			DataFactory df=new DataFactory();
-			return df.getBM(date);
-		} catch (RemoteException e) {
+			Date comp = fm.parse(date);
+			Date tmpDate;
+			try {
+				ObjectInputStream in=new ObjectInputStream(
+					new FileInputStream("/Server/src/main/java/txt/receipts.tx"));
+				while((temp=(BillManagementPO)in.readObject())!=null){
+					tmpDate=fm.parse(temp.getDate());
+					if(tmpDate.equals(comp)){
+						list.add(temp);
+					}
+				}
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+		}catch (ParseException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
+			e1.printStackTrace();
 		}
+		return list;
 	}
 
 	public void save(BillManagementPO bill){

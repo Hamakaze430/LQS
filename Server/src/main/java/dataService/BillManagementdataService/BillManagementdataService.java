@@ -11,7 +11,7 @@ public interface BillManagementdataService extends Remote{
 
 	public BillManagementPO create();
 	
-	public BillManagementPO getBillManagementPO(String date);
+	public ArrayList<BillManagementPO> getBillManagementPO(String date);
 	
 	public void save(BillManagementPO bm);
 }
