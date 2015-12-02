@@ -14,9 +14,14 @@ import javax.swing.JTextField;
 
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
+import businessLogicService.UserblService.UserblService;
 
 
-
+/**
+ * 装车单
+ * @author TOSHIBA
+ *
+ */
 public class LoadingPanel extends JPanel{
 	/**
 	 * 
@@ -26,11 +31,17 @@ public class LoadingPanel extends JPanel{
 	 * 
 	 */
 	private ReceiptsblService bl;
+	private UserblService user;
 	public LoadingPanel(ReceiptsblService bl){
 		this.bl = bl;
 		init();
 		
 	}
+	public LoadingPanel(UserblService user){
+		this.user = user;
+		init();
+	}
+	
 	private void init() {
 		// TODO Auto-generated method stub
 		

@@ -156,6 +156,7 @@ public class LoginPanel extends JPanel{
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				LoginPanel.this.setVisible(false);	
+				Client.frame.remove(LoginPanel.this);
 				Client.frame.add(new WelcomePanel());
 				Client.frame.repaint();
 			}

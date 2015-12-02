@@ -15,13 +15,11 @@ private static final long serialVersionUID = 1L;
 	
 	private UserblService bl;
 	private showPanel showPanel;
-	private addUserPanel addUserPanel;
+	private UserManagerPanel addUserPanel;
 	
 	public Userui(UserblService bl){
 		this.bl = bl;
 		this.initaddUser();
-		
-
 	}
 
 	private void initaddUser() {

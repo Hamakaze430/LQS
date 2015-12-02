@@ -1,5 +1,6 @@
 package businessLogicService.UserblService;
 
+import vo.Authorities;
 import vo.UserVO;
 
 public interface UserblService {
@@ -14,7 +15,11 @@ public interface UserblService {
 
 	public String getHallName();
 
-	public String getHallName();
+	public boolean hasTheAuthority(Authorities one);
+
+	public String getUserName();
+
+	public int getUserSex();
 	
 	
 	
