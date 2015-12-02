@@ -1,4 +1,4 @@
-package presentation.Userui;
+﻿package presentation.Userui;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -53,16 +53,22 @@ public class AfterLoginPanel extends JPanel {
 		// TODO Auto-generated method stub
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
-		panel.setBounds(0, height*2, 1024, 768-height*2);
+		panel.setBounds(0, 0, 1024, 768);
 		
 		final int PADDING_LEFT = 30;
 		final int PADDIGN_UP = 20;
 		final int PADDING_DOWN = 100;
-		PictureLabel bg = new PictureLabel("src/main/java/image/bgbg.jpg");
-		bg.setBounds(0, 0, panel.getWidth(), panel.getHeight());
+		
+		PictureLabel bg = new PictureLabel("src/main/java/image/FuncBG.png");
+		bg.setBounds(0, 0, 1024, 768);
+		UIManager.put("TabbedPane.contentOpaque", false);
+		//UIManager.put("TabbedPane.tabAreaBackground",new Color(255,255,255));
 		
 		JTabbedPane tab = new JTabbedPane(JTabbedPane.TOP);
-		tab.setBounds(PADDING_LEFT, PADDIGN_UP, width-2*PADDING_LEFT, panel.getHeight()-PADDING_DOWN-PADDIGN_UP);
+		tab.setBounds(PADDING_LEFT, PADDIGN_UP+2*height, width-2*PADDING_LEFT, panel.getHeight()-2*height-PADDING_DOWN-PADDIGN_UP);
+		//tab.setBorder(new MatteBorder(0, 0, 0, 0, Color.WHITE));
+		//tab.setBackground(new Color(255,255,255,0));
+		
 	//	JPanel info = new JPanel();
 		
 		if (user.hasTheAuthority(Authorities.寄件单)) {	
@@ -188,39 +194,51 @@ public class AfterLoginPanel extends JPanel {
 	}
 	private void initUp() {
 		
+		
 		Color color = Color.BLACK;
 		Font font = new Font("幼圆",Font.BOLD,20);
 		
-		JPanel upPanel = new JPanel();
-		upPanel.setBounds(0, 0, 1024, height*2);
-		upPanel.setLayout(null);
+//		JPanel upPanel = new JPanel();
+//		upPanel.setBounds(0, 0, 1024, height*2);
+//		upPanel.setLayout(null);
+//		
 		
-		PictureLabel bg = new PictureLabel("src/main/java/image/titleBg.jpg");
-		bg.setBounds(0, 0, upPanel.getWidth(), upPanel.getHeight());
-		
-		
+		JLabel Titlebg = new JLabel("O一O快递物流系统",JLabel.LEFT);
+		Titlebg.setForeground(Color.BLACK);
+		Titlebg.setFont(new Font("华文行楷",Font.PLAIN,50));
+		Titlebg.setBounds(30, 30, 500, 50);
 		
 		JLabel welcomeSentence = new JLabel("",JLabel.RIGHT);
 		welcomeSentence.setSize(width, height);
-		welcomeSentence.setLocation((upPanel.getWidth()-this.getWidth())/2,0);
+		welcomeSentence.setLocation((1024-this.getWidth())/2,0);
 		welcomeSentence.setForeground(color);
 		welcomeSentence.setFont(font);
-		if (user.getUserSex() == 0) welcomeSentence.setText(user.getUserName()+"先生，你好(￣▽￣)ノ");//具体晚上好
-		else welcomeSentence.setText(user.getUserName()+"女士，你好(￣▽￣)ノ");
+		if (user.getSex() == 0) welcomeSentence.setText(user.getName()+"先生，你好(￣▽￣)ノ");//具体晚上好
+		else welcomeSentence.setText(user.getName()+"女士，你好(￣▽￣)ノ");
 		
 
 		JLabel position = new JLabel("",JLabel.RIGHT);
 		position.setSize(width, height);
-		position.setLocation((upPanel.getWidth()-this.getWidth())/2,welcomeSentence.getHeight());
+		position.setLocation((1024-this.getWidth())/2,welcomeSentence.getHeight());
 		position.setForeground(color);
 		position.setFont(font);
-		position.setText("当前位置："+user.getHallName());
+		position.setText("当前位置："+user.getHall().getName());
+//		
+//		upPanel.add(Titlebg);
+//		upPanel.add(welcomeSentence);
+//		upPanel.add(position);
+//		
+//		
+		this.add(Titlebg);
+		this.add(welcomeSentence);
+		this.add(position);
 		
-		upPanel.add(welcomeSentence);
-		upPanel.add(position);
-		upPanel.add(bg);
-		
-		this.add(upPanel);
+	}
+	public static void setIcon(String file,JButton iconButton){
+		ImageIcon icon = new ImageIcon(file);
+		Image temp = icon.getImage().getScaledInstance(iconButton.getWidth(), iconButton.getHeight(), icon.getImage().SCALE_DEFAULT);
+		icon = new ImageIcon(temp);
+		iconButton.setIcon(icon);
 		
 		
 	}

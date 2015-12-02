@@ -3,6 +3,7 @@ package presentation.LogisticsInfoSearchui;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -10,6 +11,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,6 +26,7 @@ import javax.swing.border.TitledBorder;
 import businessLogic.LogisticsInfoSearchbl.LogisticsInfoSearchbl;
 import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
 import init.Client;
+import presentation.Userui.LoginPanel;
 import presentation.mainui.PictureLabel;
 import presentation.mainui.WelcomePanel;
 import vo.LogisticsVO;
@@ -60,12 +63,43 @@ public class LogisticsPanel extends JPanel {
 	final int PADDING_HORIZATION = 30;
 	
 	private void initReturn() {
-		JButton back = new JButton("返回");
-		back.setBounds(this.getWidth()-2*LEFT_PADDING-BUTTON_WIDTH, 
-				       this.getHeight()-2*TOP_PADDING-BUTTON_HEIGHT, 
-				       BUTTON_WIDTH, BUTTON_HEIGHT);
+		 final JButton back = new JButton();
 		
-		
+		back.setBounds(850,600,110, 110);
+		setIcon("src/main/java/image/Search_back.png", back);
+		back.setBorder(null);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
+		back.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				back.setBounds(840,590,130, 130);
+				setIcon("src/main/java/image/Search_back.png", back);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				back.setBounds(850,600,110, 110);
+				setIcon("src/main/java/image/Search_back.png", back);
+			}
+			
+		});
 		back.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
 				Client.frame.add(new WelcomePanel());
@@ -79,7 +113,7 @@ public class LogisticsPanel extends JPanel {
 	}
 
 	private void initbg() {
-		JLabel bg = new PictureLabel("src/main/java/image/SearchBG.jpg");
+		JLabel bg = new PictureLabel("src/main/java/image/2.jpg");
 		bg.setBounds(0, 0, this.getWidth(), this.getHeight());
 		this.add(bg);
 	}
@@ -87,12 +121,12 @@ public class LogisticsPanel extends JPanel {
 	private void initInput(){
 		JLabel label = new JLabel("请输入您的快递单号（10位数字）: ");
 		label.setForeground(Color.white);
-		label.setFont(new Font("华文彩云",Font.PLAIN,20));
+		label.setFont(new Font("华文彩云",Font.PLAIN,18));
 		orderNumber = new JTextField(8);
 		orderNumber.setOpaque(false);
 		orderNumber.setBorder(new MatteBorder(0, 0, 1, 0, Color.WHITE));
 		orderNumber.setForeground(Color.WHITE);
-		orderNumber.setFont(new Font("Meiryo UI",Font.BOLD,20));
+		orderNumber.setFont(new Font("Meiryo UI",Font.BOLD,18));
 		orderNumber.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -100,8 +134,8 @@ public class LogisticsPanel extends JPanel {
 			}
 			
 		});
-		JButton searchButton = new JButton("回车");
-		searchButton.setFont(new Font("华文彩云",Font.PLAIN,25));
+		JButton searchButton = new JButton("查询");
+		searchButton.setFont(new Font("华文彩云",Font.PLAIN,20));
 		searchButton.setForeground(Color.WHITE);
 		searchButton.setContentAreaFilled(false);
 		searchButton.setOpaque(false);
@@ -131,7 +165,7 @@ public class LogisticsPanel extends JPanel {
 
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				((JButton)e.getSource()).setText("回车");
+				((JButton)e.getSource()).setText("查询");
 				((JButton)e.getSource()).setBorder(null);
 			}
 			
@@ -155,12 +189,12 @@ public class LogisticsPanel extends JPanel {
 		tb.setTitleJustification(TitledBorder.LEFT);
 		text.setBorder(tb);
 		JScrollPane scrollPane = new JScrollPane(text);
-		
+		scrollPane.getViewport().setOpaque(false);
 		idLabel = new JLabel("·订单条形码号:");
 		
 	    display = new JPanel();
-//	    display.setOpaque(true);
-//	    display.setBackground(Color.BLACK);
+	    display.setOpaque(true);
+	    display.setBackground(Color.lightGray);
 	    display.setBounds(2*LEFT_PADDING, 
 	    				  TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION,
 	    				  300,
@@ -201,5 +235,11 @@ public class LogisticsPanel extends JPanel {
 		display.setVisible(true);
 		
 		
+	}
+	private void setIcon(String file,JButton iconButton){
+		ImageIcon icon = new ImageIcon(file);
+		Image temp = icon.getImage().getScaledInstance(iconButton.getWidth(), iconButton.getHeight(), icon.getImage().SCALE_DEFAULT);
+		icon = new ImageIcon(temp);
+		iconButton.setIcon(icon);
 	}
 }
