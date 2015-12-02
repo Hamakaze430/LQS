@@ -1,19 +1,20 @@
 package po;
 
 import java.io.Serializable;
-import po.recepts.*;
+
+import po.receipts.*;
 
 public class ReceiptPO implements Serializable{
 	String name;
 	String creator;
 	String createdate;
-    String receiptstatus;
+    String status;
     
     public ReceiptPO(String n,String c,String cd,String rs){
     	name = n;
     	creator = c;
     	createdate = cd;
-    	receiptstatus = rs;
+    	status = rs;
     }
     
     private Boolean isIncome(){
@@ -42,7 +43,7 @@ public class ReceiptPO implements Serializable{
     	return createdate;
     }
     
-    public String getReceiptStatus(){
-    	return receiptstatus;
+    public String getStatus(){
+    	return status;
     }
 }

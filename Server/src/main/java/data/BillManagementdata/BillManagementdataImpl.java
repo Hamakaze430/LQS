@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -14,20 +15,13 @@ import java.util.ArrayList;
 import java.rmi.RemoteException;
 
 import po.*;
+import data.BankAccountdata.BankAccountdataImpl;
+import data.Commoditydata.CommoditydataImpl;
 import data.DataFactory.DataFactory;
+import data.Userdata.UserdataImpl;
 import dataService.BillManagementdataService.BillManagementdataService;
 
-public class BillManagementdataImpl extends UnicastRemoteObject implements BillManagementdataService {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
-	public BillManagementdataImpl() throws RemoteException {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+public class BillManagementdataImpl implements BillManagementdataService {
 
 	public BillManagementPO create() {	//create a new bill
 		// TODO Auto-generated method stub
@@ -37,20 +31,30 @@ public class BillManagementdataImpl extends UnicastRemoteObject implements BillM
 			SimpleDateFormat fm=new SimpleDateFormat("yyyy-MM-dd");
 			String date=fm.format(new Date());
 			
-	        String name=df.getName();
-	        ArrayList<UserPO> user=new ArrayList<UserPO>();
-	        user.add(df.getUser());
-	        ArrayList<CarPO> car=new ArrayList<CarPO>();
-	        car.add(df.getCar());
-	        ArrayList<DriverPO> driver=new ArrayList<DriverPO>();
-	        driver.add(df.getDriver());
-	        ArrayList<CommodityPO> commo=new ArrayList<CommodityPO>();
-	        commo.add(df.getCommodity());
-	        ArrayList<BankAccountPO> baccount=new ArrayList<BankAccountPO>();
-	        baccount.add(df.getBankAccount());
+			UserdataImpl userdata=(UserdataImpl)df.getUserdataService();
+			ArrayList<UserPO> user=userdata.getAllUsers();
+			
+			CommoditydataImpl commo=(CommoditydataImpl)df.getCommoditydataService();
+			ArrayList<CommodityPO> commodity=commo.getAllCommodity();
+			
+			BankAccountdataImpl badata=(BankAccountdataImpl)df.getBankAccountdataService();
+			ArrayList<BankAccountPO> baccount=badata.getAllAccounts();
+			
+//	        String name=df.getName();
+//	        ArrayList<UserPO> user=new ArrayList<UserPO>();
+//	        user.add(df.getUser());
+//	        ArrayList<CarPO> car=new ArrayList<CarPO>();
+//	        car.add(df.getCar());
+//	        ArrayList<DriverPO> driver=new ArrayList<DriverPO>();
+//	        driver.add(df.getDriver());
+//	        ArrayList<CommodityPO> commo=new ArrayList<CommodityPO>();
+//	        commo.add(df.getCommodity());
+//	        ArrayList<BankAccountPO> baccount=new ArrayList<BankAccountPO>();
+//	        baccount.add(df.getBankAccount());
 	        
-			BillManagementPO bm=new BillManagementPO(date, name, user, car, driver, commo, baccount);
-			return bm;
+//			BillManagementPO bm=new BillManagementPO(date, name, user, car, driver, commo, baccount);
+//			return bm;
+			return null;
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -68,7 +72,7 @@ public class BillManagementdataImpl extends UnicastRemoteObject implements BillM
 			Date tmpDate;
 			try {
 				ObjectInputStream in=new ObjectInputStream(
-					new FileInputStream("/Server/src/main/java/txt/receipts.tx"));
+					new FileInputStream("/Server/src/main/java/txt/receipts.ser"));
 				while((temp=(BillManagementPO)in.readObject())!=null){
 					tmpDate=fm.parse(temp.getDate());
 					if(tmpDate.equals(comp)){
@@ -92,8 +96,22 @@ public class BillManagementdataImpl extends UnicastRemoteObject implements BillM
 	public void save(BillManagementPO bill){
 		try {
 			ObjectOutputStream out=new ObjectOutputStream(
-					new FileOutputStream("/Server/src/main/java/txt/bill.txt"));
+					new FileOutputStream("src/main/java/txt/bill.ser"));
 			out.writeObject(bill);
+			out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*
+		 * saves log in log.txt
+		 * */
+		try {
+			FileWriter fw=new FileWriter("src/main/java/ser/log.txt");
+			SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd hh:mm");
+			String date=df.format(new Date());
+			fw.write("User:"+" created new bill on "+date);
+			fw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

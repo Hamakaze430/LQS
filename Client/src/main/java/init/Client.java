@@ -11,7 +11,6 @@ import presentation.mainui.WelcomePanel;
 public class Client {
 	public static MainFrame frame;
 	public static void main(String[] args){
-<<<<<<< HEAD
 		try {
 			RMIHelper.init();
 			System.out.println("Success");
@@ -30,8 +29,8 @@ public class Client {
 //		frame = new MainFrame();
 //		frame.addWelcomePanel();
 //		frame.setVisible(true);
-=======
-//		try {
+
+		//		try {
 //			RMIHelper.init();
 //			new MainFrame();
 //		} catch (ClientInitException e) {
@@ -48,6 +47,5 @@ public class Client {
 		frame.add(new WelcomePanel());
 		//frame.addWelcomePanel();
 		frame.setVisible(true);
->>>>>>> 6628ac314f99ded4799782b5734186c50147dc20
 	}
 }

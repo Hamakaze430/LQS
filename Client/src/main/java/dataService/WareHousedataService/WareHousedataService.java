@@ -1,5 +1,7 @@
 package dataService.WareHousedataService;
 
-public class WareHousedataService {
+import java.rmi.Remote;
+
+public interface WareHousedataService extends Remote{
 
 }

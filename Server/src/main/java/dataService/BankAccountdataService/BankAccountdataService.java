@@ -1,5 +1,11 @@
 package dataService.BankAccountdataService;
 
-public interface BankAccountdataService {
+import java.util.ArrayList;
 
+import po.BankAccountPO;
+
+public interface BankAccountdataService {
+	
+	public ArrayList<BankAccountPO> getAllAccounts();
+	
 }

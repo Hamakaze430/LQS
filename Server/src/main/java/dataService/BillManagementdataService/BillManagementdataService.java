@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import po.*;
 
 
-public interface BillManagementdataService extends Remote{
+public interface BillManagementdataService {
 
 	public BillManagementPO create();
 	

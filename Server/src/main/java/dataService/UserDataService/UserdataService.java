@@ -1,5 +1,11 @@
-package dataService.UserDataService;
+package dataService.UserdataService;
 
-public class UserdataService {
+import po.*;
 
+public interface UserdataService {
+
+	public UserPO getCurrentUser();
+	
+	public UserPO getUserbyID(String ID);
+	
 }

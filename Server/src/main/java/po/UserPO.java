@@ -1,10 +1,7 @@
 package po;
 
 import java.io.Serializable;
-
-import vo.CenterVO;
-import vo.HallVO;
-
+import po.*;
 
 public class UserPO implements Serializable{
 	public String name;
@@ -13,10 +10,10 @@ public class UserPO implements Serializable{
 	
 	public String position;
 	public String authority;
-	public HallVO hall;
-	public CenterVO center;
+	public HallPO hall;
+	public CenterPO center;
 	
-	public UserPO (String name,String id,String password,String position,String authority,HallVO hall,CenterVO center){
+	public UserPO (String name,String id,String password,String position,String authority,HallPO hall,CenterPO center){
 		this.id=id;
 		this.password=password;
 		this.name=name;

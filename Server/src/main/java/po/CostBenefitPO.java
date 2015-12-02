@@ -1,32 +1,52 @@
 package po;
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
-import Miscellaneous.*;
+
+import data.Receiptsdata.Calculator;
+import data.Receiptsdata.ReceiptsdataImpl;
+import po.receipts.IncomePO;
+import po.receipts.PaymentPO;
 /**
  * Created by admin on 15/10/25.
  */
 public class CostBenefitPO implements Serializable {
-    String date;
-
-    public double getCost(String date){
-        ArrayList<ReceiptPO> receipts=new ArrayList<ReceiptPO>();
-        double cost=0.0;
-        //get total cost by calculating the sum from receipts saved in ArrayList
-        return cost;
+    
+	private ArrayList<PaymentPO> payment;
+	private ArrayList<IncomePO> income;
+	private double totalPayment;
+	private double totalIncome;
+	private double totalProfit;
+	
+	public void setLists(String date){
+		ReceiptsdataImpl rdi;
+		try {
+			rdi = new ReceiptsdataImpl();
+			payment=rdi.getPaymentBeforeDate(date);
+			income=rdi.getIncomeBeforeDate(date);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+    public void setTotal(){
+    	Calculator cal=new Calculator(this.payment, this.income);
+        this.totalPayment=cal.getPayment();
+        this.totalIncome=cal.getIncome();
+        this.totalProfit=cal.getProfit();
     }
 
-    public double getBenefit(String date){
-        ArrayList<ReceiptPO> receipts=new ArrayList<ReceiptPO>();
-        double benefit=0.0;
-        //get total benefit by calculating the sum from receipts saved in ArrayList
-        return benefit;
+    public double getTotalPayment(){
+    	return this.totalPayment;
+    }
+    
+    public double getTotalIncome(){
+    	return this.totalIncome;
     }
 
-    public double getProfit(String date) {
-        double profit;
-        profit=this.getBenefit(date)-this.getCost(date);
-        //get profit by subtracting the calculated cost from the total benefit
-        return profit;
+    public double getProfit() {
+    	return this.totalProfit;
     }
 }

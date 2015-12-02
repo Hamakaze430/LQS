@@ -14,8 +14,8 @@ public class IncomePO extends ReceiptPO {
         this.amount=a;
     }
 
-    public double getAmount(){
-        return Double.parseDouble(amount);
+    public String getAmount(){
+        return amount;
     }
 
 }

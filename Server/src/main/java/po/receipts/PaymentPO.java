@@ -1,4 +1,4 @@
-package po.recepts;
+package po.receipts;
 
 import po.ReceiptPO;
 
