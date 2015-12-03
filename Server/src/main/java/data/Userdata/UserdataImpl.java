@@ -55,4 +55,9 @@ public class UserdataImpl implements UserdataService{
 		return null;
 	}
 
+	public void addUser(UserPO user) {
+		// TODO Auto-generated method stub
+		Object
+	}
+
 }

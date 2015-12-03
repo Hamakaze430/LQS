@@ -8,4 +8,5 @@ public interface UserdataService {
 	
 	public UserPO getUserbyID(String ID);
 	
+	public void addUser(UserPO user);
 }
