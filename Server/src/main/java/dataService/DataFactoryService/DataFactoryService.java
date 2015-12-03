@@ -7,10 +7,12 @@ import dataService.CostBenefitdataService.CostBenefitdataService;
 import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
 import po.*;
 
-public interface DataFactoryService extends Remote {
+public interface DataFactoryService {
 	
-	LogisticsDataService getLogisticsDataService() throws RemoteException;
 	
+<<<<<<< HEAD
 	CostBenefitdataService getCostBenefitdataService() throws RemoteException;
 	
+=======
+>>>>>>> origin/master
 }

@@ -4,12 +4,12 @@ import vo.BankAccountVO;
 
 public interface BankAccountblService {
 	
-	public BankAccountVO findBankAccountInfo(String id);
+public BankAccountVO addBankAccount(String id,String name,double balance);
 	
-	public boolean addBankAccountVO(BankAccountVO bankaccount);
+	public boolean deleteBankAccountVO(int index);
 	
-	public boolean deleteBankAccountVO(BankAccountVO bankaccount);
+	public double getTotalBalance();
 	
-	public boolean updateBankAccountVO(BankAccountVO bankaccount);
+	public boolean save();
 
 }

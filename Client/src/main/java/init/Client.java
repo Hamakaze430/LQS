@@ -4,16 +4,20 @@ import javax.swing.JOptionPane;
 
 import businessLogic.Userbl.Loginbl;
 import businessLogicService.UserblService.LoginblService;
+import dataService.DataFactoryService.DataFactory;
+import dataService.DataFactoryService.DataFactoryService;
 import presentation.Userui.LoginPanel;
 import presentation.mainui.MainFrame;
 import presentation.mainui.WelcomePanel;
 
 public class Client {
 	public static MainFrame frame;
+	public static DataFactoryService dataFactory;
 	public static void main(String[] args){
 		try {
 			RMIHelper.init();
-			System.out.println("Success");
+		//	System.out.println("Success");
+			dataFactory = new DataFactory();
 			frame = new MainFrame();
 			frame.addWelcomePanel();
 			frame.setVisible(true);
@@ -26,6 +30,7 @@ public class Client {
 	                    JOptionPane.ERROR_MESSAGE
 	            );
 		}
+<<<<<<< HEAD
 //		frame = new MainFrame();
 //		frame.addWelcomePanel();
 //		frame.setVisible(true);
@@ -47,5 +52,8 @@ public class Client {
 		frame.add(new WelcomePanel());
 		//frame.addWelcomePanel();
 		frame.setVisible(true);
+=======
+>>>>>>> origin/master
 	}
+
 }

@@ -5,7 +5,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import dataService.DataFactoryService.DataFactoryService;
+import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
 
 
 
@@ -15,7 +15,7 @@ public class RMIHelper {
 
     private static boolean inited = false;
 
-    private static DataFactoryService df;
+    private static LogisticsDataService logisticsData;
 
     public synchronized static void init() throws ClientInitException {
         if (inited) {
@@ -32,14 +32,19 @@ public class RMIHelper {
 
     private static void initObjects() throws MalformedURLException, RemoteException, NotBoundException {
         String urlPrefix = "rmi://" + IP + "/";
-        df = (DataFactoryService) Naming.lookup(urlPrefix + "DataFactory-Server");
+        logisticsData = (LogisticsDataService) Naming.lookup(urlPrefix + "logisticsData-Server");
     }
 
-    public static DataFactoryService getDataFactory() {
-        return df;
-    }
-
-	public static void main(String[] args) {
-		df = RMIHelper.getDataFactory();
-	}
+    public static LogisticsDataService getLogisticsData() {
+      return logisticsData;
+  }
+    
+//    public static DataFactoryService getDataFactory() {
+//        return df;
+//    }
+//
+//	public static void main(String[] args) {
+//		df = RMIHelper.getDataFactory();
+//		//System.out.println("dfsfhsd");
+//	}
 }

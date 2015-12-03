@@ -8,19 +8,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import data.DataFactory.DataFactory;
+import data.LogisticsInfoSearchdata.LogisticsDataServiceSerializableFileImpl;
+import data.LogisticsInfoSearchdata.LogisticsDataServiceTextFileImpl;
 
 public class RMIHelper {
 
     private static Map<String, Class<? extends UnicastRemoteObject>> NAMING_MAP = 
     		new HashMap<>();
     
-    private static final int PORT = 443;
+    private static final int PORT = 1099;
 
     private static boolean inited = false;
 
     static {
-        NAMING_MAP.put("DataFactory-Server", DataFactory.class);
+        NAMING_MAP.put("logisticsData-Server", LogisticsDataServiceTextFileImpl.class);
     }
 
     public synchronized static void init() throws ServerInitException {

@@ -11,6 +11,7 @@ import data.CarAndDriverdata.CarAndDriverdata;
 import data.Commoditydata.CommoditydataImpl;
 import data.CostBenefitdata.CostBenefitdataImpl;
 import data.LogisticsInfoSearchdata.LogisticsDataServiceTextFileImpl;
+<<<<<<< HEAD
 import data.Receiptsdata.ReceiptsdataImpl;
 import data.Salesdata.SalesdataImpl;
 import data.Strategydata.Strategydata;
@@ -22,7 +23,17 @@ import dataService.BillManagementdataService.BillManagementdataService;
 import dataService.CarAndDriverdataService.CarAndDriverdataService;
 import dataService.CommoditydataService.CommoditydataService;
 import dataService.CostBenefitdataService.CostBenefitdataService;
+=======
+import dataService.DataFactoryService.BankAccountPO;
+import dataService.DataFactoryService.BillManagementPO;
+import dataService.DataFactoryService.CarPO;
+import dataService.DataFactoryService.CommodityPO;
+import dataService.DataFactoryService.CostBenefitPO;
+>>>>>>> origin/master
 import dataService.DataFactoryService.DataFactoryService;
+import dataService.DataFactoryService.DriverPO;
+import dataService.DataFactoryService.ReceiptPO;
+import dataService.DataFactoryService.SalesPO;
 import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
 import dataService.ReceiptsdataService.ReceiptsdataService;
 import dataService.SalesdataService.SalesdataService;
@@ -30,6 +41,7 @@ import dataService.StrategydataService.StrategydataService;
 import dataService.UserdataService.UserdataService;
 import dataService.VoucherSearchdataService.VoucherSearchdataService;
 
+<<<<<<< HEAD
 public class DataFactory extends UnicastRemoteObject implements DataFactoryService{
 	
 	public DataFactory() throws RemoteException {
@@ -97,4 +109,10 @@ public class DataFactory extends UnicastRemoteObject implements DataFactoryServi
 		return voucher;
 	} 
 	
+=======
+public class DataFactory implements DataFactoryService{
+
+	
+
+>>>>>>> origin/master
 }
