@@ -3,11 +3,14 @@ package presentation.Userui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -21,6 +24,7 @@ import javax.swing.table.TableCellRenderer;
  */
 import javax.swing.table.TableRowSorter;
 
+import init.Client;
 import presentation.mainui.SimpleButton;
 import vo.HallVO;
 public class ApartmentManagerPanel extends JPanel {
@@ -50,6 +54,7 @@ public class ApartmentManagerPanel extends JPanel {
 		table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.getTableHeader().setBackground(new Color(200, 200, 200));
 		table.setBackground(new Color(255,255,255,100));
+		table.getTableHeader().setReorderingAllowed(false);
 		table.setOpaque(false);
 		table.setRowSorter(new TableRowSorter<DefaultTableModel>(defaultModel));  
 		
@@ -73,9 +78,40 @@ public class ApartmentManagerPanel extends JPanel {
 		buttons.setAlignmentX(RIGHT_ALIGNMENT);
 		buttons.setAlignmentY(CENTER_ALIGNMENT);
 		JButton creat = new SimpleButton("新建");
+		creat.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				new CreatApartmentDialog().setVisible(true);
+			}
+			
+		});
 		JButton change = new SimpleButton("修改");
+		change.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		JButton delete = new SimpleButton("删除");
+		delete.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		JButton close = new SimpleButton("关闭");
+		close.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		buttons.add(creat);
 		buttons.add(change);
 		buttons.add(delete);

@@ -1,4 +1,4 @@
-package presentation.mainui;
+﻿package presentation.mainui;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -25,7 +25,7 @@ public class MainFrame extends JFrame {
 
 		public MainFrame(){
 			
-			Font font = new Font("华文细黑",Font.PLAIN,15);
+			Font font = new Font("宋体",Font.PLAIN,20);
 		    FontUIResource fontRes = new FontUIResource(font);
 		    for(Enumeration keys = UIManager.getDefaults().keys(); keys.hasMoreElements();){
 		        Object key = keys.nextElement();
