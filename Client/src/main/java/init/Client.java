@@ -38,8 +38,8 @@ public class Client {
 //		}
 
 		frame = new MainFrame();
-		//LoginblService bl = new Loginbl();
-		frame.add(new WelcomePanel());
+		UserblService bl = new UserblStub();
+		frame.add(new MainPanel(bl));
 		//frame.addWelcomePanel();
 		frame.setVisible(true);
 

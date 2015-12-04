@@ -8,6 +8,10 @@ import java.util.ArrayList;
 import vo.ReceiptVO;
 
 public class LoadingVO extends ReceiptVO{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public final String date;
 	public final String hallId;
 	public final String id;

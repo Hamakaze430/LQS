@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 
+import businessLogic.Userbl.stub.UserblStub;
 import businessLogicService.UserblService.LoginblService;
 import businessLogicService.UserblService.UserblService;
 import presentation.Approvalui.ApprovalPanel;
@@ -54,6 +55,10 @@ import vo.Authorities;
 import vo.UserBaseVO;
 
 public class MainPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private UserblService user;
 	private final int widthOfUp = 1000;
 	private final int heightOfUp = 50;
@@ -74,20 +79,10 @@ public class MainPanel extends JPanel {
 		panel.setBounds(0, 0, 1024, 768);
 		
 		final int PADDING_LEFT = 50;
-		
-		final int PADDING_DOWN = 100;
-		
+
 		PictureLabel bg = new PictureLabel("src/main/java/image/FuncBG.png");
 		bg.setBounds(0, 0, 1024, 768);
-		
-		
-//		JButton receiveButton = new JButton();
-//		receiveButton.setBounds(55+90*6, 70, 80, 80);
-//		setIcon("src/main/java/image/receive_unselected.png",receiveButton);
-//		receiveButton.setBorder(null);
-//		receiveButton.setFocusPainted(false);
-//		receiveButton.setContentAreaFilled(false);
-		
+
 		final JButton changePassword = new JButton();
 		changePassword.setBounds(790, 100, 80, 50);
 		setIcon("src/main/java/image/changePassword_1.png",changePassword);
@@ -96,10 +91,8 @@ public class MainPanel extends JPanel {
 		changePassword.setContentAreaFilled(false);
 		changePassword.addMouseListener(new MouseListener(){
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
 				Client.frame.setEnabled(false);
 				JFrame cp = new CPFrame();
-				//cp.setAlwaysOnTop(true);
 				cp.setVisible(true);
 			}
 			public void mousePressed(MouseEvent e) {}
@@ -161,6 +154,8 @@ public class MainPanel extends JPanel {
 		cardPanel.setLayout(card);
 		int i = 0;
 		
+		 final JButton[] buttontoshow = new JButton[30];
+		
 		JButton button;
 		JPanel init = new  JPanel();	
 		init.setOpaque(false);
@@ -170,14 +165,16 @@ public class MainPanel extends JPanel {
 			JPanel send = new  SendPanel();			
 			cardPanel.add(send, "1");				
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/send_unselected.png");			
+			InitButton.editButton(button,i,"src/main/java/image/send_unselected.png");		
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
 					setIcon("src/main/java/image/send_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "1");	
-					m = true; 
+					m = true;
+				
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
@@ -200,12 +197,14 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/receive_unselected.png");		
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
 					setIcon("src/main/java/image/receive_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "2");	
 					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
@@ -229,6 +228,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/loading_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -257,6 +257,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/arrival_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -285,6 +286,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/deliver_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -313,6 +315,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/voucher_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -341,6 +344,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/car_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -369,6 +373,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/driver_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -397,6 +402,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/transfer_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -425,6 +431,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/storageIn_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -453,6 +460,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/storageIn_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -481,6 +489,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/check_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -509,6 +518,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/stocking_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -537,6 +547,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/division_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -565,6 +576,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/account_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -593,6 +605,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/approval_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -621,6 +634,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/organization_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -649,6 +663,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/voucherSearch_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -677,6 +692,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/payment_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -705,6 +721,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/cost_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -733,6 +750,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/sales_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -761,6 +779,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/bill_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -789,6 +808,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/salaryStrategy_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -817,6 +837,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/price_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -845,6 +866,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/userManager_unselected.png");		
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -873,6 +895,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/apartmentManager_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -901,6 +924,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/authoritiesSetting_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -929,6 +953,7 @@ public class MainPanel extends JPanel {
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/diary_unselected.png");			
 			buttons.add(button);
+			buttontoshow[i]=button;
 			button.addMouseListener(new MouseListener(){
 				boolean m = false;
 				public void mouseClicked(MouseEvent e) {
@@ -950,7 +975,10 @@ public class MainPanel extends JPanel {
 				}				
 			});
 			i++;
-		}		
+		}	
+		
+	
+		
 		this.add(cardPanel);
 		this.add(buttons);
 		this.add(changePassword);

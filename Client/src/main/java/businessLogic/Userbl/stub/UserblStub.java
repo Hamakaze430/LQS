@@ -31,8 +31,8 @@ public class UserblStub implements UserblService{
 
 	public boolean hasTheAuthority(Authorities one) {
 		// TODO Auto-generated method stub
-	//if (one == Authorities.寄件单) return true;
-		return true;
+	if (one == Authorities.收件单) return true;
+		return false;
 	}
 
 	public String getUserName() {
