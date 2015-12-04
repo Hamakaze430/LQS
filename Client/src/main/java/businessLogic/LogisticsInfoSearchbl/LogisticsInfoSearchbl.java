@@ -2,11 +2,9 @@ package businessLogic.LogisticsInfoSearchbl;
 
 
 import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
+import dataService.DataFactoryService.DataFactory;
 import dataService.DataFactoryService.DataFactoryService;
-<<<<<<< HEAD
-=======
 import init.Client;
->>>>>>> origin/master
 import init.RMIHelper;
 import po.LogisticsPO;
 import vo.LogisticsVO;
@@ -18,7 +16,7 @@ public class LogisticsInfoSearchbl implements LogisticsInfoSearchblService {
 		dataFactory = Client.dataFactory;
 	}
 	public LogisticsVO search(String id) {		
-		LogisticsPO po = dataFactory.getLogisticsDataService().find(id);
+		LogisticsPO po = DataFactory.getLogisticsDataService().find(id);
 		if (po == null) return null;
 		LogisticsVO vo = new LogisticsVO(po.getId(), po.getState());
 		return vo;

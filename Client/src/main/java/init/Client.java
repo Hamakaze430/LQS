@@ -20,40 +20,13 @@ public class Client {
 	public static MainFrame frame;
 	public static DataFactoryService dataFactory;
 	public static void main(String[] args){
-		try {
-			RMIHelper.init();
-		//	System.out.println("Success");
-			dataFactory = new DataFactory();
-			frame = new MainFrame();
-			frame.addWelcomePanel();
-			frame.setVisible(true);
-		} catch (ClientInitException e) {
-			 e.printStackTrace();
-	            JOptionPane.showMessageDialog(
-	                    null,
-	                    "Client boots fail!\nCause: " + e.getMessage(),
-	                    "Fatal Error",
-	                    JOptionPane.ERROR_MESSAGE
-	            );
-		}
-<<<<<<< HEAD
-//		frame = new MainFrame();
-//		//frame.addWelcomePanel();
-////		HallVO hall = new HallVO("南京市鼓楼营业厅","南京市鼓楼区","025000");
-////		UserBaseVO user = new UserBaseVO("张飞",0,hall);
-//		UserblService bl = new UserblStub();
-//		AfterLoginPanel panel = new AfterLoginPanel(bl);
-//		frame.add(panel);
-//		frame.setVisible(true);
-=======
-<<<<<<< HEAD
-//		frame = new MainFrame();
-//		frame.addWelcomePanel();
-//		frame.setVisible(true);
-
-		//		try {
+//		try {
 //			RMIHelper.init();
-//			new MainFrame();
+//		//	System.out.println("Success");
+//			dataFactory = new DataFactory();
+//			frame = new MainFrame();
+//			frame.addWelcomePanel();
+//			frame.setVisible(true);
 //		} catch (ClientInitException e) {
 //			 e.printStackTrace();
 //	            JOptionPane.showMessageDialog(
@@ -63,14 +36,13 @@ public class Client {
 //	                    JOptionPane.ERROR_MESSAGE
 //	            );
 //		}
+
 		frame = new MainFrame();
-		LoginblService bl = new Loginbl();
+		//LoginblService bl = new Loginbl();
 		frame.add(new WelcomePanel());
 		//frame.addWelcomePanel();
 		frame.setVisible(true);
-=======
->>>>>>> origin/master
->>>>>>> 0bcf233363a56ad938ca62c1f61d7325257c7726
+
 	}
 
 }
