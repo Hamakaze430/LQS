@@ -1,6 +1,8 @@
 package dataService.CarAndDriverdataService;
 
-public interface CarAndDriverdataService {
+import java.rmi.Remote;
+
+public interface CarAndDriverdataService extends Remote {
 
     public String get();
 }

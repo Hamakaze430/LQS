@@ -1,62 +1,50 @@
 package businessLogic.BillManagementbl;
 
-import vo.BankAccountVO;
-import vo.CarVO;
-import vo.CommodityVO;
-import vo.UserVO;
-import businessLogicService.BillManagementblService.BillManagementblService;
-
 import java.util.*;
 
+import po.*;
+import businessLogicService.BillManagementblService.BillManagementblService;
+import dataService.BillManagementdataService.BillManagementdataService;
+import dataService.DataFactoryService.DataFactoryService;
+import init.RMIHelper;
+
 public class BillManagement implements BillManagementblService{
-    String message;
 
-    public String create(){
-    	return "create";
-    }
+	private BillManagementdataService bm;
+	private DataFactoryService dataFactory;
+	
+	public BillManagement(){
+		DataFactoryService dataFactory=RMIHelper.getDataFactory();
+		bm=dataFactory.getBillManagementdataService();
+	}
+	
+	public BillManagementPO create() {
+		return bm.create();
+	}
 
-    public String getDate(){
-    	Calendar c=Calendar.getInstance();
-        int year=c.get(Calendar.YEAR);
-        int month=c.get(Calendar.MONTH);
-        int day=c.get(Calendar.DATE);
-        String date=String.valueOf(year)+"/"+String.valueOf(month)+"/"+String.valueOf(day);
-        return date;
-    }
+	public void save(BillManagementPO po) {
+		// TODO Auto-generated method stub
+		bm.save(po);
+	}
 
-    public String getName(){
-    	
-    }
+	public void check() {
+		// TODO Auto-generated method stub
+		
+	}
 
-    public ArrayList<UserVO> getWorkers(){
-    	
-    }
+	public void pass() {
+		// TODO Auto-generated method stub
+		
+	}
 
-    public ArrayList<CarVO> getCars(){
-    	
-    }
+	public void fail() {
+		// TODO Auto-generated method stub
+		
+	}
 
-    public ArrayList<CommodityVO> getStorage(){
-    	
-    }
+	public ArrayList<BillManagementPO> getBillManagementPO(String date) {
+		return bm.getBillManagementPO(date);
+	}
 
-    public ArrayList<BankAccountVO> getAccountInfo(){
-    	
-    }
-
-    public void save(){
-    	
-    }
-
-    public void check(){
-    	
-    }
-
-    public void pass(){
-    	
-    }
-
-    public void fail(){
-    	
-    }
+	
 }

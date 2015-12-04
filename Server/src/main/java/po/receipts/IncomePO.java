@@ -1,4 +1,4 @@
-package po.recepts;
+package po.receipts;
 
 import po.ReceiptPO;
 
@@ -6,7 +6,7 @@ import po.ReceiptPO;
  * Created by admin on 15/11/16.
  */
 public class IncomePO extends ReceiptPO {
-
+	
     String amount;
 
     public IncomePO(String n, String c, String cd, String rs, String a){

@@ -30,7 +30,7 @@ public class MockInfoGetter extends InfoGetter{
     }
 
     public ArrayList<UserPO> getWorkers(){
-        UserPO u=new UserPO("1234", "1234", "36岁", "司机");
+        UserPO u = null;//=new UserPO("1234", "1234", "36岁", "司机");
         ArrayList<UserPO> ul=new ArrayList<UserPO>();
         ul.add(u);
         return ul;

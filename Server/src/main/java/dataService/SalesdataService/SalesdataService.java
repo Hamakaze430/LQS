@@ -4,9 +4,9 @@ import po.*;
 
 public interface SalesdataService {
 
-	public void save();
+	public void save(SalesPO sales);
 	
-	public SalesPO create();
+	public SalesPO getSales(String start, String end);
 	
 	public SalesPO getReport();
 }

@@ -1,5 +1,7 @@
 package dataService.UserdataService;
 
-public class UserdataService {
+import java.rmi.Remote;
+
+public interface UserdataService extends Remote {
 
 }

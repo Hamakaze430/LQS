@@ -3,7 +3,10 @@ package businessLogic.LogisticsInfoSearchbl;
 
 import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
 import dataService.DataFactoryService.DataFactoryService;
+<<<<<<< HEAD
+=======
 import init.Client;
+>>>>>>> origin/master
 import init.RMIHelper;
 import po.LogisticsPO;
 import vo.LogisticsVO;

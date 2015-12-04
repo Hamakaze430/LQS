@@ -1,5 +1,7 @@
 package dataService.VoucherSearchdataService;
 
-public class VoucherSearchdataService {
+import java.rmi.Remote;
+
+public interface VoucherSearchdataService extends Remote {
 
 }

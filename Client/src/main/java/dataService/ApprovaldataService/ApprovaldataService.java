@@ -1,5 +1,7 @@
 package dataService.ApprovaldataService;
 
-public interface ApprovaldataService {
+import java.rmi.Remote;
+
+public interface ApprovaldataService extends Remote{
 
 }

@@ -3,30 +3,43 @@ package po;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import po.receipts.IncomePO;
+import po.receipts.PaymentPO;
+//import data.Receiptsdata.Calculator;
+//import data.Receiptsdata.ReceiptsdataImpl;
+
 /**
  * Created by admin on 15/10/25.
  */
 public class CostBenefitPO implements Serializable {
-    String date;
+	private ArrayList<PaymentPO> payment;
+	private ArrayList<IncomePO> income;
+	private double totalPayment;
+	private double totalIncome;
+	private double totalProfit;
+	
+//	public void setLists(String date){
+//		ReceiptsdataImpl rdi=new ReceiptsdataImpl();
+//		payment=rdi.getPaymentBeforeDate(date);
+//		income=rdi.getIncomeBeforeDate(date);
+//	}
+//	
+//    public void setTotal(){
+//    	Calculator cal=new Calculator(this.payment, this.income);
+//        this.totalPayment=cal.getPayment();
+//        this.totalIncome=cal.getIncome();
+//        this.totalProfit=cal.getProfit();
+//    }
 
-    public double getCost(String date){
-        ArrayList<ReceiptPO> receipts=new ArrayList<ReceiptPO>();
-        double cost=0.0;
-        //get total cost by calculating the sum from receipts saved in ArrayList
-        return cost;
+    public double getTotalPayment(){
+    	return this.totalPayment;
+    }
+    
+    public double getTotalIncome(){
+    	return this.totalIncome;
     }
 
-    public double getBenefit(String date){
-        ArrayList<ReceiptPO> receipts=new ArrayList<ReceiptPO>();
-        double benefit=0.0;
-        //get total benefit by calculating the sum from receipts saved in ArrayList
-        return benefit;
-    }
-
-    public double getProfit(String date) {
-        double profit;
-        profit=this.getBenefit(date)-this.getCost(date);
-        //get profit by subtracting the calculated cost from the total benefit
-        return profit;
+    public double getProfit() {
+    	return this.totalProfit;
     }
 }

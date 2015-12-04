@@ -1,5 +1,7 @@
 package data.Approvaldata;
 
-public class Approvaldata {
+import dataService.ApprovaldataService.ApprovaldataService;
+
+public class Approvaldata implements ApprovaldataService {
 
 }

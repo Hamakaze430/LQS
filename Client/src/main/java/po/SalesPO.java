@@ -2,28 +2,29 @@ package po;
 
 import java.io.Serializable;
 
+import po.receipts.*;
+
+import java.util.ArrayList;
+
 /**
  * Created by admin on 15/10/25.
  */
 public class SalesPO implements Serializable {
-    String startDate;
-    String endDate;
-    Boolean validity;
+    
+	 private ArrayList<IncomePO> income;
+	    private ArrayList<PaymentPO> payment;
+	    
+	    SalesPO(ArrayList<IncomePO> income, ArrayList<PaymentPO> payment){
+	    	this.income=income;
+	    	this.payment=payment;
+	    }
 
-    public SalesPO(String start, String end){
-        startDate=start;
-        endDate=end;
-    }
-
-    public String getStartDate(){
-        return startDate;
-    }
-
-    public String getEndDate(){
-        return endDate;
-    }
-
-    public Boolean check(){
-        return validity;
-    }
+	   public ArrayList<IncomePO> getIncomeList(){
+		   return this.income;
+	   } 
+	   
+	   public ArrayList<PaymentPO> getPaymentList(){
+		   return this.payment;
+	   }
+	
 }

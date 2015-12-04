@@ -1,5 +1,5 @@
 package dataService.VoucherSearchdataService;
 
-public class VoucherSearchdataService {
+public interface VoucherSearchdataService {
 
 }

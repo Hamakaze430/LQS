@@ -1,7 +1,7 @@
 /**
  * 装车单
  */
-package vo.receipt;
+package vo.receipts;
 
 import java.util.ArrayList;
 

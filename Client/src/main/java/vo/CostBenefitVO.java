@@ -1,5 +1,7 @@
 package vo;
 
+import po.CostBenefitPO;
+
 /**
  * Created by admin on 15/10/25.
  */
@@ -8,6 +10,12 @@ public class CostBenefitVO {
 	double cost;
 	double benefit;
 	double profit;
+	
+	public CostBenefitVO(CostBenefitPO po){
+		this.cost=po.getTotalPayment();
+		this.benefit=po.getTotalIncome();
+		this.profit=po.getProfit();
+	}
 	
 	CostBenefitVO(double cost, double benefit, double profit){
 		this.cost=cost;

@@ -1,24 +1,18 @@
 package businessLogicService.BillManagementblService;
 
 import vo.*;
+
 import java.util.*;
 
+import po.BillManagementPO;
+
 public interface BillManagementblService{
-    public String create();
+	
+    public BillManagementPO create();
 
-    public String getDate();
-
-    public String getName();
-
-    public ArrayList<UserVO> getWorkers();
-
-    public ArrayList<CarVO> getCars();
-
-    public ArrayList<CommodityVO> getStorage();
-
-    public ArrayList<BankAccountVO> getAccountInfo();
-
-    public void save();
+    public void save(BillManagementPO po);
+    
+	public ArrayList<BillManagementPO> getBillManagementPO(String date);
 
     public void check();
 

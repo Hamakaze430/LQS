@@ -1,6 +1,8 @@
 package dataService.CommoditydataService;
 
-public interface CommoditydataService {
+import java.rmi.Remote;
+
+public interface CommoditydataService extends Remote{
 
     public String get();
 }

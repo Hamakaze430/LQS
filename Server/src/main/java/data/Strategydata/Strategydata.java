@@ -1,5 +1,7 @@
 package data.Strategydata;
 
-public class Strategydata {
+import dataService.StrategydataService.StrategydataService;
+
+public class Strategydata implements StrategydataService {
 
 }
