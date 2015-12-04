@@ -1,30 +1,36 @@
 package vo;
 
-public class HallVO {
-	public String name;
-	public String location;
-	public String id;
-	public HallVO(String name, String location, String id){
-		this.name = name;
-		this.location = location;
-		this.id = id;
+import java.util.Vector;
+
+public class HallVO extends Vector<String> {
+//	public String name;
+//	public String location;
+//	public String id;
+	public HallVO(String name, String id, String location){
+//		this.name = name;
+//		this.location = location;
+//		this.id = id;
+		this.add(name);
+		this.add(id);
+		this.add(location);
+		
 	}
 	public String getName(){
-		return name;
+		return get(0);
 	}
-	public void setName(String name){
-		this.name=name;
-	}
+//	public void setName(String name){
+//		this.name=name;
+//	}
 	public String getLocation(){
-		return location;
+		return get(2);
 	}
-	public void setLocation(String location){
-		this.location=location;
-	}
+//	public void setLocation(String location){
+//		this.location=location;
+//	}
 	public String getID(){
-		return id;
+		return get(1);
 	}
-	public void setID(String name){
-		this.id=id;
-	}
+//	public void setID(String name){
+//		this.id=id;
+//	}
 }

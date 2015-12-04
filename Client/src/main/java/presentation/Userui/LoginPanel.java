@@ -30,11 +30,19 @@ import javax.swing.border.EmptyBorder;
 
 
 
+
+
+
+
+
+import presentation.mainui.PictureButton;
 import presentation.mainui.PictureLabel;
 import presentation.mainui.WelcomePanel;
 import vo.LoginVO;
 import businessLogic.Userbl.Loginbl;
+import businessLogic.Userbl.stub.UserblStub;
 import businessLogicService.UserblService.LoginblService;
+import businessLogicService.UserblService.UserblService;
 
 public class LoginPanel extends JPanel{
 	private LoginblService bl;
@@ -91,66 +99,49 @@ public class LoginPanel extends JPanel{
 		
 		login = new JButton();
 		login.setBounds(590, 420, 50, 50);
-		setIcon("src/main/java/image/login.png",login);
+		PictureButton.setIcon("src/main/java/image/login.png",login);
 		login.setBorder(null);
 		login.setFocusPainted(false);
 		login.setContentAreaFilled(false);
-		login.addActionListener(new ActionListener(){
-
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				login();
-			}
-			
-		});
 		login.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+				login();
 			}
 
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
 				login.setBounds(585, 417, 60, 60);
-				setIcon("src/main/java/image/login_pressed.png",login);
+				PictureButton.setIcon("src/main/java/image/login_pressed.png",login);
 			}
 
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
 				login.setBounds(585, 415, 60, 60);
-				setIcon("src/main/java/image/login.png",login);
+				PictureButton.setIcon("src/main/java/image/login.png",login);
 			}
 
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 				login.setBounds(585, 415, 60, 60);
-				setIcon("src/main/java/image/login.png",login);
+				PictureButton.setIcon("src/main/java/image/login.png",login);
 			}
 
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 				login.setBounds(590, 420, 50, 50);
-				setIcon("src/main/java/image/login.png",login);
+				PictureButton.setIcon("src/main/java/image/login.png",login);
 			}
 			
 		});
 			
 		exit = new JButton();
 		exit.setBounds(330, 420, 50, 50);
-		setIcon("src/main/java/image/exit.png",exit);
+		PictureButton.setIcon("src/main/java/image/exit.png",exit);	
 		exit.setBorder(null);
 		exit.setFocusPainted(false);
 		exit.setContentAreaFilled(false);
-		exit.addMouseListener(null);
-		exit.addActionListener(new ActionListener(){
-
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				exit();
-			}
-			
-		});
 		exit.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(MouseEvent e) {
@@ -164,25 +155,25 @@ public class LoginPanel extends JPanel{
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
 				exit.setBounds(325, 417, 60, 60);
-				setIcon("src/main/java/image/exit_pressed.png",exit);
+				PictureButton.setIcon("src/main/java/image/exit_pressed.png",exit);
 			}
 
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
 				exit.setBounds(325, 415, 60, 60);
-				setIcon("src/main/java/image/exit.png",exit);
+				PictureButton.setIcon("src/main/java/image/exit.png",exit);
 			}
 
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
 				exit.setBounds(325, 415, 60, 60);
-				setIcon("src/main/java/image/exit.png",exit);
+				PictureButton.setIcon("src/main/java/image/exit.png",exit);
 			}
 
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 				exit.setBounds(330, 420, 50, 50);
-				setIcon("src/main/java/image/exit.png",exit);
+				PictureButton.setIcon("src/main/java/image/exit.png",exit);
 			}
 			
 		});
@@ -198,18 +189,15 @@ public class LoginPanel extends JPanel{
 		
 	}
 
-		
-		
-	protected void exit() {
+	protected boolean login() {
 		// TODO Auto-generated method stub
-		
-	}
 
-	protected void login() {
-		// TODO Auto-generated method stub
-		String userid = id.getText();
-		String word = key.getPassword().toString().trim();
+		LoginPanel.this.setVisible(false);
+		UserblService bl = new UserblStub();
+		Client.frame.add(new MainPanel(bl));
+		Client.frame.repaint();
 		
+		return true;
 		
 	}
 
@@ -217,10 +205,5 @@ public class LoginPanel extends JPanel{
 		g.drawImage(im.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);   
 	}
 	
-	public static void setIcon(String file,JButton iconButton){
-		ImageIcon icon = new ImageIcon(file);
-		Image temp = icon.getImage().getScaledInstance(iconButton.getWidth(), iconButton.getHeight(), icon.getImage().SCALE_DEFAULT);
-		icon = new ImageIcon(temp);
-		iconButton.setIcon(icon);
-	}
+	
 }

@@ -5,8 +5,10 @@ import vo.Authorities;
 import vo.UserVO;
 
 public class Userbl implements UserblService{
-	
 
+	public Userbl(){
+		
+	}
 	public boolean addUser(UserVO user) {
 		// TODO Auto-generated method stub
 		return false;
