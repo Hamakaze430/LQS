@@ -8,5 +8,5 @@ public interface SalesdataService {
 	
 	public SalesPO getSales(String start, String end);
 	
-	public SalesPO getReport();
+	public void getReport(SalesPO sales);
 }

@@ -14,4 +14,6 @@ public interface BillManagementdataService {
 	public ArrayList<BillManagementPO> getBillManagementPO(String date);
 	
 	public void save(BillManagementPO bm);
+	
+	public void getReport(BillManagementPO po);
 }

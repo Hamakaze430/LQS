@@ -7,6 +7,7 @@ import java.rmi.server.UnicastRemoteObject;
 
 import po.receipts.*;
 import data.Receiptsdata.ReceiptsdataImpl;
+import data.ReportGenerator.ReportGenerator;
 import dataService.SalesdataService.SalesdataService;
 
 import java.text.SimpleDateFormat;
@@ -57,9 +58,10 @@ public class SalesdataImpl implements SalesdataService{
 		return sales;
 	}
 
-	public SalesPO getReport() {
+	public void getReport(SalesPO po) {
 		// TODO Auto-generated method stub
-		return null;
+		ReportGenerator gen=new ReportGenerator();
+		gen.createSalesReport(po);
 	}
 
 	

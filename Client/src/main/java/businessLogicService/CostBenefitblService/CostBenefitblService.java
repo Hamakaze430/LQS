@@ -1,17 +1,15 @@
 package businessLogicService.CostBenefitblService;
 
 public interface CostBenefitblService {
+	
+	public void setDate(String date);
 
-    public String getDate(String message);
+    public double showCost();
 
-    public double showCost(String date);
+    public double showBenefit();
 
-    public double showBenefit(String date);
+    public double showProfit();
 
-    public double showProfit(String date);
-
-    public String getReport(String date);
-
-    public String cancelReport();
+    public void getReport();
 
 }

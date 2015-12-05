@@ -57,10 +57,10 @@ public class MockInfoGetter extends InfoGetter{
         return cyl;
     }
 
-    public ArrayList<BankAccountPO> getAccount(){
-        BankAccountPO b=new BankAccountPO("一号账户", "123,0000");
-        ArrayList<BankAccountPO> bl=new ArrayList<BankAccountPO>();
-        bl.add(b);
-        return bl;
-    }
+//    public ArrayList<BankAccountPO> getAccount(){
+//        BankAccountPO b=new BankAccountPO("一号账户", "123,0000");
+//        ArrayList<BankAccountPO> bl=new ArrayList<BankAccountPO>();
+//        bl.add(b);
+//        return bl;
+//    }
 }

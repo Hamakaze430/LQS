@@ -8,4 +8,5 @@ public interface CostBenefitdataService extends Remote{
 	
 	public CostBenefitPO getCostBenefitPO(String date);
 	
+	public void getReport(CostBenefitPO po);	
 }

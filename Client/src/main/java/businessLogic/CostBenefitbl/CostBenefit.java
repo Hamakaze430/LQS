@@ -16,6 +16,7 @@ public class CostBenefit implements CostBenefitblService{
 	
 	private DataFactoryService dataFactory;
 	private CostBenefitdataService cbImpl;
+	private String date;
 	
 	public CostBenefit(){
 		dataFactory = Client.dataFactory;
@@ -43,41 +44,32 @@ public class CostBenefit implements CostBenefitblService{
 //        else
 //            return null;
 //    }
+	
+	public void setDate(String date){
+		this.date=date;
+	}
     
-    public CostBenefitVO getVO(String date){
-    	CostBenefitPO po=dataFactory.getCostBenefitdataService().getCostBenefitPO(date);
+    public CostBenefitVO getVO(){
+    	CostBenefitPO po=cbImpl.getCostBenefitPO(date);
     	CostBenefitVO vo=new CostBenefitVO(po);
     	return vo;
     }
 
-    public double showCost(String date){
-        return this.getVO(date).getCost();
+    public double showCost(){
+        return this.getVO().getCost();
     }
 
-    public double showBenefit(String date){
-        return this.getVO(date).getBenefit();
+    public double showBenefit(){
+        return this.getVO().getBenefit();
     }
 
-    public double showProfit(String date){
-        return this.getVO(date).getProfit();
+    public double showProfit(){
+        return this.getVO().getProfit();
     }
 
-    public String getReport(String date){
-    	/*
-    	 * 怎么导出报表……what报表…………
-    	 * 
-    	 * */
-        return null;
+    
+    public void getReport(){
+    	cbImpl.getReport(cbImpl.getCostBenefitPO(date));
     }
-
-    public String cancelReport(){
-    	
-        return null;
-    }
-
-	public String getDate(String message) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

@@ -18,6 +18,7 @@ import po.*;
 import data.BankAccountdata.BankAccountdataImpl;
 import data.Commoditydata.CommoditydataImpl;
 import data.DataFactory.DataFactory;
+import data.ReportGenerator.ReportGenerator;
 import data.Userdata.UserdataImpl;
 import dataService.BillManagementdataService.BillManagementdataService;
 
@@ -117,4 +118,11 @@ public class BillManagementdataImpl implements BillManagementdataService {
 			e.printStackTrace();
 		}
 	}
+	
+	public void getReport(BillManagementPO po){
+		ReportGenerator gen=new ReportGenerator();
+		gen.createBillReport(po);
+	}
+	
+	
 }

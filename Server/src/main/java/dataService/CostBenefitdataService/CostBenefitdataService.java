@@ -7,4 +7,5 @@ public interface CostBenefitdataService {
 	
 	public CostBenefitPO getCostBenefitPO(String date);
 		
+	public void getReport(CostBenefitPO po);
 }
