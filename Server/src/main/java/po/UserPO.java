@@ -52,6 +52,14 @@ public class UserPO implements Serializable{
 		return name;
 	}
 	
+	public HallPO getHall(){
+		return hall;
+	}
+	
+	public CenterPO getCenter(){
+		return center;
+	}
+	
 	public void setID(String id) {
 		// TODO Auto-generated method stub
 		this.id=id;

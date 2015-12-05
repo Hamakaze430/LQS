@@ -57,7 +57,14 @@ public class UserdataImpl implements UserdataService{
 
 	public void addUser(UserPO user) {
 		// TODO Auto-generated method stub
-		Object
+		try {
+			ObjectOutputStream out=new ObjectOutputStream(
+					new FileOutputStream("src/main/java/ser/user.ser"));
+			out.writeObject(user);
+			out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

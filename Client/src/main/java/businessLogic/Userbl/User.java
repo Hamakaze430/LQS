@@ -1,14 +1,26 @@
 package businessLogic.Userbl;
 
+import po.UserPO;
+import dataService.DataFactoryService.DataFactoryService;
+import dataService.UserdataService.UserdataService;
+import init.Client;
 import businessLogicService.UserblService.UserblService;
 import vo.Authorities;
 import vo.UserVO;
 
-public class Userbl implements UserblService{
+public class User implements UserblService{
 	
-
+	private DataFactoryService dataFactory;
+	private UserdataService userdata;
+	
+	public User(){
+	    	dataFactory=Client.dataFactory;
+			userdata=dataFactory.getUserdataService();
+	}	
+	
 	public boolean addUser(UserVO user) {
-		// TODO Auto-generated method stub
+		UserPO po=new UserPO(user);
+		userdata.add(po);
 		return false;
 	}
 

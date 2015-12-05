@@ -2,10 +2,19 @@ package po;
 
 import java.io.Serializable;
 
+import vo.HallVO;
+
 public class HallPO implements Serializable{
 	public String name;
 	public String location;
 	public String id;
+	
+	public HallPO(HallVO vo){
+		name=vo.getName();
+		location=vo.getLocation();
+		id=vo.getID();
+	}
+	
 	public HallPO(String name, String location, String id){
 		this.name = name;
 		this.location = location;

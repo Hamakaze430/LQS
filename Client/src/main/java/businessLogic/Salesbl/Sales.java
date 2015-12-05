@@ -1,9 +1,11 @@
 package businessLogic.Salesbl;
 
 import java.util.ArrayList;
+
 import po.receipts.*;
 import dataService.DataFactoryService.DataFactoryService;
 import dataService.SalesdataService.SalesdataService;
+import init.Client;
 import init.RMIHelper;
 import businessLogicService.SalesblService.SalesblService;
 import po.*;
@@ -21,7 +23,7 @@ public class Sales implements SalesblService{
     private ArrayList<PaymentPO> payment; 
     
     public Sales(){
-    	dataFactory=RMIHelper.getDataFactory();
+    	dataFactory=Client.dataFactory;
 		sales=dataFactory.getSalesdataService();
     }
     

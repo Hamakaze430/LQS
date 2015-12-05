@@ -39,6 +39,14 @@ public class UserVO {
 		// TODO Auto-generated method stub
 		return authority;
 	}
+	
+	public HallVO getHall(){
+		return hall;
+	}
+	
+	public CenterVO getCenter(){
+		return center;
+	}
 
 	public String getName() {
 		// TODO Auto-generated method stub

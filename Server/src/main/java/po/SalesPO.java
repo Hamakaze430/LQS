@@ -2,6 +2,8 @@ package po;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
+
 import po.receipts.IncomePO;
 import po.receipts.PaymentPO;
 
@@ -26,6 +28,19 @@ public class SalesPO implements Serializable {
 	   return this.payment;
    }
 
+   public ArrayList<ReceiptPO> getAll(){
+	   ArrayList<ReceiptPO> receipt = new ArrayList<ReceiptPO>();
+	   Iterator it=income.iterator();
+	   while(it.hasNext()){
+		   receipt.add((ReceiptPO) it.next());
+	   }
+	   it=payment.iterator();
+	   while(it.hasNext()){
+		   receipt.add((ReceiptPO) it.next());
+	   }
+	   return receipt;
+   }
+   
 //    public String getStartDate(){
 //        return startDate;
 //    }

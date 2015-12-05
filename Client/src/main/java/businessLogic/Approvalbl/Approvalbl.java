@@ -1,7 +1,7 @@
 package businessLogic.Approvalbl;
 
 import businessLogic.Approvalbl.MockTest.MockReceipt;
-import businessLogic.Userbl.Userbl;
+import businessLogic.Userbl.User;
 import businessLogicService.ApprovalblService.ApprovalblService;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
 import po.ReceiptPO;
@@ -9,7 +9,7 @@ import po.ReceiptPO;
 public class Approvalbl implements ApprovalblService {
 	private ReceiptsblService rs;
 	public Approvalbl(){
-		rs = new MockReceipt(new Userbl());
+		rs = new MockReceipt(new User());
 	}
 	public void passReceipt(ReceiptPO po){
 		

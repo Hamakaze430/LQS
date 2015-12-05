@@ -30,7 +30,6 @@ public class Client {
 	                    JOptionPane.ERROR_MESSAGE
 	            );
 		}
-<<<<<<< HEAD
 //		frame = new MainFrame();
 //		frame.addWelcomePanel();
 //		frame.setVisible(true);
@@ -52,8 +51,6 @@ public class Client {
 		frame.add(new WelcomePanel());
 		//frame.addWelcomePanel();
 		frame.setVisible(true);
-=======
->>>>>>> origin/master
 	}
 
 }
