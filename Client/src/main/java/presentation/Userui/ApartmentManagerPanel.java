@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -24,22 +25,22 @@ import javax.swing.table.TableCellRenderer;
  */
 import javax.swing.table.TableRowSorter;
 
+import businessLogic.Userbl.Apartmentbl;
+import businessLogicService.UserblService.ApartmentblService;
 import init.Client;
 import presentation.mainui.SimpleButton;
 import vo.HallVO;
 public class ApartmentManagerPanel extends JPanel {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+	ApartmentblService bl;
+	DefaultTableModel defaultModel;
 	public ApartmentManagerPanel(){
+		bl = new Apartmentbl();
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		this.setBorder(null);
 		this.setOpaque(false);
 		init();
 	}
-
+	
 	private void init() {
 		// TODO Auto-generated method stub
 		Vector<String> name = new Vector<String>();
@@ -47,7 +48,7 @@ public class ApartmentManagerPanel extends JPanel {
 		name.add("部门编号");
 		name.add("部门地点");
 		Vector<HallVO> data = new Vector<HallVO>();		
-		DefaultTableModel defaultModel = new DefaultTableModel(data,name);		
+		defaultModel = new DefaultTableModel(data,name);		
 		JTable table = new JTable(defaultModel){
 			
 			private static final long serialVersionUID = 1L;
@@ -71,10 +72,7 @@ public class ApartmentManagerPanel extends JPanel {
 		scrollPane.setOpaque(false);
 		this.add(scrollPane);
 		
-	
-		defaultModel.addRow(new HallVO("南京市鼓楼营业厅","025000","南京市鼓楼区"));
-		defaultModel.addRow(new HallVO("南京市中转中心","0250","南京市"));
-		defaultModel.addRow(new HallVO("南京市鼓楼营业厅","025000","南京市鼓楼区"));
+		initTable();
 	
 		JPanel buttons = new JPanel();
 		buttons.setBorder(null);
@@ -86,7 +84,7 @@ public class ApartmentManagerPanel extends JPanel {
 		creat.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
-				new CreatApartmentDialog().setVisible(true);
+				new CreatApartmentDialog(bl,defaultModel).setVisible(true);
 			}
 			
 		});
@@ -123,5 +121,12 @@ public class ApartmentManagerPanel extends JPanel {
 		buttons.add(close);
 		this.add(buttons);
 	}
+
+	private void initTable() {
+		// TODO Auto-generated method stub
+		List<HallVO> list = bl.getAll();
+		for (HallVO vo : list) defaultModel.addRow(vo);
+	}
+
 }
 

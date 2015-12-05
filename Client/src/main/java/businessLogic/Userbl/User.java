@@ -49,4 +49,9 @@ public class User implements UserblService{
 		return 0;
 	}
 
+	public String getCompanyName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

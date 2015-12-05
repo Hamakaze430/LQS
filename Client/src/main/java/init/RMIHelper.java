@@ -9,6 +9,7 @@ import dataService.BankAccountdataService.BankAccountdataService;
 import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
 import dataService.StrategydataService.ConstantdataService.ConstantdataService;
 import dataService.StrategydataService.SalarydataService.SalarydataService;
+import dataService.UserdataService.ApartmentDataService;
 
 
 
@@ -25,6 +26,8 @@ public class RMIHelper {
     private static SalarydataService salaryData;
     
     private static ConstantdataService constantData;
+    
+    private static ApartmentDataService apartmentData;
 
     public synchronized static void init() throws ClientInitException {
         if (inited) {
@@ -42,8 +45,14 @@ public class RMIHelper {
     private static void initObjects() throws MalformedURLException, RemoteException, NotBoundException {
         String urlPrefix = "rmi://" + IP + "/";
         logisticsData = (LogisticsDataService) Naming.lookup(urlPrefix + "logisticsData-Server");
+        apartmentData = (ApartmentDataService) Naming.lookup(urlPrefix + "apartmentData-Server");
     }
 
+    
+    public static ApartmentDataService getApartmentData() {
+		return apartmentData;
+	}
+    
     public static LogisticsDataService getLogisticsData() {
       return logisticsData;
   }

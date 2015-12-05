@@ -10,6 +10,7 @@ import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
 import dataService.ReceiptsdataService.ReceiptsdataService;
 import dataService.SalesdataService.SalesdataService;
 import dataService.StrategydataService.StrategydataService;
+import dataService.UserdataService.ApartmentDataService;
 import dataService.UserdataService.UserdataService;
 import dataService.VoucherSearchdataService.VoucherSearchdataService;
 import dataService.WareHousedataService.WareHousedataService;
@@ -17,8 +18,8 @@ import init.RMIHelper;
 
 public class DataFactory implements DataFactoryService {
 	private static LogisticsDataService logisticsData;
-	
-	public static LogisticsDataService getLogisticsDataService() {
+	private static ApartmentDataService apartmentData;
+	public LogisticsDataService getLogisticsDataService() {
 		logisticsData = RMIHelper.getLogisticsData();
 		return logisticsData;
 	}
@@ -58,7 +59,6 @@ public class DataFactory implements DataFactoryService {
 		return null;
 	}
 
-<<<<<<< HEAD
 	public ReceiptsdataService getReceiptsdataService() {
 		// TODO Auto-generated method stub
 		return null;
@@ -89,6 +89,9 @@ public class DataFactory implements DataFactoryService {
 		return null;
 	}
 
-=======
->>>>>>> origin/master
+	public ApartmentDataService getApartmentDataService() {
+		apartmentData = RMIHelper.getApartmentData();
+		return apartmentData;
+	}
+
 }

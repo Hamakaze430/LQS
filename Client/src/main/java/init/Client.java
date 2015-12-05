@@ -3,7 +3,6 @@ package init;
 import javax.swing.JOptionPane;
 
 import businessLogic.Userbl.Loginbl;
-import businessLogic.Userbl.Userbl;
 import businessLogic.Userbl.stub.UserblStub;
 import businessLogicService.UserblService.LoginblService;
 import businessLogicService.UserblService.UserblService;
@@ -20,7 +19,7 @@ public class Client {
 	public static MainFrame frame;
 	public static DataFactoryService dataFactory;
 	public static void main(String[] args){
-<<<<<<< HEAD
+
 		try {
 			RMIHelper.init();
 		//	System.out.println("Success");
@@ -37,39 +36,7 @@ public class Client {
 	                    JOptionPane.ERROR_MESSAGE
 	            );
 		}
-//		frame = new MainFrame();
-//		frame.addWelcomePanel();
-//		frame.setVisible(true);
-
-		//		try {
-=======
-//		try {
->>>>>>> origin/master
-//			RMIHelper.init();
-//		//	System.out.println("Success");
-//			dataFactory = new DataFactory();
-//			frame = new MainFrame();
-//			frame.addWelcomePanel();
-//			frame.setVisible(true);
-//		} catch (ClientInitException e) {
-//			 e.printStackTrace();
-//	            JOptionPane.showMessageDialog(
-//	                    null,
-//	                    "Client boots fail!\nCause: " + e.getMessage(),
-//	                    "Fatal Error",
-//	                    JOptionPane.ERROR_MESSAGE
-//	            );
-//		}
-
-		frame = new MainFrame();
-		UserblService bl = new UserblStub();
-		frame.add(new MainPanel(bl));
-		//frame.addWelcomePanel();
-		frame.setVisible(true);
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/master
+//		
 	}
 
 }
