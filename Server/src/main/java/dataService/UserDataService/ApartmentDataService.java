@@ -11,5 +11,5 @@ public interface ApartmentDataService extends Remote {
 
 	public boolean insert(HallPO po) throws RemoteException;
 	
-	public int getHallNum(String s, Place place) throws RemoteException;
+	//public int getHallNum(String s, Place place) throws RemoteException;
 }
