@@ -8,6 +8,7 @@ import businessLogicService.UserblService.UserblService;
 import vo.Authorities;
 import vo.UserVO;
 
+<<<<<<< HEAD:Client/src/main/java/businessLogic/Userbl/User.java
 public class User implements UserblService{
 	
 	private DataFactoryService dataFactory;
@@ -18,6 +19,13 @@ public class User implements UserblService{
 			userdata=dataFactory.getUserdataService();
 	}	
 	
+=======
+public class Userbl implements UserblService{
+
+	public Userbl(){
+		
+	}
+>>>>>>> origin/master:Client/src/main/java/businessLogic/Userbl/Userbl.java
 	public boolean addUser(UserVO user) {
 		UserPO po=new UserPO(user);
 		userdata.add(po);

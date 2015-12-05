@@ -16,9 +16,9 @@ import dataService.WareHousedataService.WareHousedataService;
 import init.RMIHelper;
 
 public class DataFactory implements DataFactoryService {
-	private LogisticsDataService logisticsData;
+	private static LogisticsDataService logisticsData;
 	
-	public LogisticsDataService getLogisticsDataService() {
+	public static LogisticsDataService getLogisticsDataService() {
 		logisticsData = RMIHelper.getLogisticsData();
 		return logisticsData;
 	}
@@ -58,6 +58,7 @@ public class DataFactory implements DataFactoryService {
 		return null;
 	}
 
+<<<<<<< HEAD
 	public ReceiptsdataService getReceiptsdataService() {
 		// TODO Auto-generated method stub
 		return null;
@@ -88,4 +89,6 @@ public class DataFactory implements DataFactoryService {
 		return null;
 	}
 
+=======
+>>>>>>> origin/master
 }

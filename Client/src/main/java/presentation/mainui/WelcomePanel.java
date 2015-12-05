@@ -36,7 +36,7 @@ public class WelcomePanel extends JPanel {
 	final int PADDING_HORIZATION = 30;
 	
 	private void init() {
-		JLabel bg = new PictureLabel("src/main/java/image/WelcomeBG.jpg");
+		JLabel bg = new PictureLabel("src/main/java/image/WelcomeBG.png");
 		bg.setBounds(0,0,this.getWidth(),this.getHeight());
 		
 		login = new JButton();		
@@ -46,7 +46,7 @@ public class WelcomePanel extends JPanel {
 				BUTTON_WIDTH, 
 				BUTTON_HEIGHT
 		);
-		LoginPanel.setIcon("src/main/java/image/login_exited.png",login);
+		PictureButton.setIcon("src/main/java/image/login_exited.png",login);
 		login.setBorder(null);
 		login.setFocusPainted(false);
 		login.setContentAreaFilled(false);
@@ -59,7 +59,7 @@ public class WelcomePanel extends JPanel {
 				BUTTON_WIDTH, 
 				BUTTON_HEIGHT
 		);
-		LoginPanel.setIcon("src/main/java/image/logistics_exited.png",logistics);
+		PictureButton.setIcon("src/main/java/image/logistics_exited.png",logistics);
 		logistics.setBorder(null);
 		logistics.setFocusPainted(false);
 		logistics.setContentAreaFilled(false);
@@ -92,12 +92,12 @@ public class WelcomePanel extends JPanel {
 
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			LoginPanel.setIcon("src/main/java/image/login_entered.png",login);
+			PictureButton.setIcon("src/main/java/image/login_entered.png",login);
 		}
 
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			LoginPanel.setIcon("src/main/java/image/login_exited.png",login);
+			PictureButton.setIcon("src/main/java/image/login_exited.png",login);
 		}
 
 		
@@ -127,12 +127,12 @@ public class WelcomePanel extends JPanel {
 
 		public void mouseEntered(MouseEvent e) {
 			// TODO Auto-generated method stub
-			LoginPanel.setIcon("src/main/java/image/logistics_entered.png",logistics);
+			PictureButton.setIcon("src/main/java/image/logistics_entered.png",logistics);
 		}
 
 		public void mouseExited(MouseEvent e) {
 			// TODO Auto-generated method stub
-			LoginPanel.setIcon("src/main/java/image/logistics_exited.png",logistics);
+			PictureButton.setIcon("src/main/java/image/logistics_exited.png",logistics);
 		}
 
 		

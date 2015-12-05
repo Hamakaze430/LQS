@@ -16,7 +16,11 @@ import vo.FormType;
 public class Receiptsbl implements ReceiptsblService {
 	private UserblService user;
 	private CarAndDriverblService carAndDriver;
+<<<<<<< HEAD
 	public Receiptsbl(User user){
+=======
+	public Receiptsbl(UserblService user){
+>>>>>>> origin/master
 		carAndDriver = new MockCarAndDriver();
 		this.user = user;
 	}

@@ -1,35 +1,48 @@
 package businessLogic.Userbl.stub;
 
-public interface UserblService _Stud implements UserblService{
-	int userid;
-	String userpassword;
-	String userpersonalinfo;
-	String usercompetence;
-	
-	public UserVO getUserByID(int userid){
-		return new UserVO(userpassword,userpersonalinfo,usercompetence);
-	}
-	
-	public ResultMessage addUser(int userid){
-		if(receiptname == 141250064)
-			return ResultMessage.Exist;
-		else return ResultMessage.NotExist;
-	}
-	
-	public String getUserPassword(int userid){
-		return userpassword;
-	}
-	
-	public String getUserPersonalInfo(int userid){
-		return userpersonalinfo;
-	}
-	
-	public String getUserCompetence(int userid){
-		return usercompetence;
-	}
+import vo.Authorities;
+import vo.UserVO;
+import businessLogicService.UserblService.UserblService;
+
+public class UserblStub implements UserblService{
+	int userid=0;
+	String userpassword="";
+	String userpersonalinfo="";
+	String usercompetence="";
 	
 	public class UserView{
 		
+	}
+
+	public boolean addUser(UserVO user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String getHallId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getHallName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean hasTheAuthority(Authorities one) {
+		// TODO Auto-generated method stub
+	if (one == Authorities.收件单) return true;
+		return false;
+	}
+
+	public String getUserName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getUserSex() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 

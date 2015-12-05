@@ -1,6 +1,10 @@
 package dataService.DataFactoryService;
 
 import java.rmi.Remote;
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 import dataService.ApprovaldataService.ApprovaldataService;
 import dataService.BankAccountdataService.BankAccountdataService;
 import dataService.BillManagementdataService.BillManagementdataService;
@@ -23,6 +27,7 @@ public interface DataFactoryService extends Remote {
 	CarAndDriverdataService getCarAndDriverdataService();
 	CommoditydataService getCommoditydataService();
 	CostBenefitdataService getCostBenefitdataService();
+<<<<<<< HEAD
 	LogisticsDataService getLogisticsDataService();
 	ReceiptsdataService getReceiptsdataService();
 	SalesdataService getSalesdataService();
@@ -33,3 +38,8 @@ public interface DataFactoryService extends Remote {
 	
 }
 
+=======
+
+
+}
+>>>>>>> origin/master
