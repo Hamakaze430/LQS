@@ -20,6 +20,8 @@ public interface UserblService {
 	public String getUserName();
 
 	public int getUserSex();
+
+	public String getCompanyName();
 	
 	
 	

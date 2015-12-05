@@ -28,6 +28,11 @@ import init.Client;
 import presentation.mainui.SimpleButton;
 import vo.HallVO;
 public class ApartmentManagerPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public ApartmentManagerPanel(){
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		this.setBorder(null);

@@ -31,7 +31,7 @@ public class UserblStub implements UserblService{
 
 	public boolean hasTheAuthority(Authorities one) {
 		// TODO Auto-generated method stub
-	if (one == Authorities.收件单) return true;
+	if (one == Authorities.收款单查询||one == Authorities.成本收益) return true;
 		return false;
 	}
 
@@ -43,6 +43,11 @@ public class UserblStub implements UserblService{
 	public int getUserSex() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	public String getCompanyName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

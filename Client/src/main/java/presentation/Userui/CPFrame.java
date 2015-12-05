@@ -3,6 +3,7 @@ package presentation.Userui;
 import init.Client;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,7 +28,7 @@ public class CPFrame extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+	private Font font = new Font("黑体",Font.PLAIN,13); 
 	public CPFrame(){
 		JLabel l = new PictureLabel("src/main/java/image/CPbg.png");
 		l.setBounds(0, 0, 384, 384);
@@ -40,32 +41,34 @@ public class CPFrame extends JFrame{
 		
 		JLabel title = new JLabel(">>>>>修改密码");
 		title.setBounds(8, 5, 180, 30);
+		title.setFont(font);
 		JLabel old = new JLabel("请输入原始密码(6 - 20 位)：");
 		old.setBounds(10, 50, 200, 30);
-		
+		old.setFont(font);
 		JPasswordField oldPassword = new JPasswordField(20);
 		oldPassword.setBounds(10, 90, 200, 30);		
 		oldPassword.setForeground(Color.black);
 		oldPassword.setOpaque(false);
-		
+		oldPassword.setFont(font);
 		
 		JLabel newpassword  = new JLabel("请输入新密码(6 - 20 位)：");
 		newpassword.setBounds(10, 140, 200, 30);
-		
+		newpassword.setFont(font);
 		JPasswordField newPassword = new JPasswordField(20);
 		newPassword.setBounds(10, 180, 200, 30);		
 		newPassword.setForeground(Color.black);
 		newPassword.setOpaque(false);
+		newPassword.setFont(font);
 		
 		
 		JLabel check  = new JLabel("请再次输入新密码(6 - 20 位)：");
 		check.setBounds(10, 230, 220, 30);
-		
+		check.setFont(font);
 		JPasswordField checkPassword = new JPasswordField(20);
 		checkPassword.setBounds(10, 270, 200, 30);		
 		checkPassword.setForeground(Color.black);
 		checkPassword.setOpaque(false);
-		
+		checkPassword.setFont(font);
 		
 		JButton confirm = new JButton();
 		confirm.setBounds(220, 330, 60, 30);
