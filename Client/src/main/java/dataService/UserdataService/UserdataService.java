@@ -2,6 +2,10 @@ package dataService.UserdataService;
 
 import java.rmi.Remote;
 
-public interface UserdataService extends Remote {
+import po.UserPO;
 
+public interface UserdataService extends Remote {
+	
+	public void add(UserPO po);
+	
 }

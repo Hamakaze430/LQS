@@ -7,10 +7,10 @@ import po.ReceiptPO;
  */
 public class IncomePO extends ReceiptPO {
 	
-    String amount;
+    private String amount;
 
     public IncomePO(String n, String c, String cd, String rs, String a){
-        super(n, c, cd, rs);
+        super(n, c, cd, rs, "收款单");
         this.amount=a;
     }
 

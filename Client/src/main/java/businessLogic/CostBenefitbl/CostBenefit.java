@@ -3,6 +3,7 @@ package businessLogic.CostBenefitbl;
 import po.CostBenefitPO;
 import po.receipts.*;
 import vo.CostBenefitVO;
+import init.Client;
 import init.RMIHelper;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class CostBenefit implements CostBenefitblService{
 	private CostBenefitdataService cbImpl;
 	
 	public CostBenefit(){
-		dataFactory = RMIHelper.getDataFactory();
+		dataFactory = Client.dataFactory;
 		cbImpl=dataFactory.getCostBenefitdataService();
 	}
 	

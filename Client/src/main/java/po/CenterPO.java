@@ -1,9 +1,18 @@
 package po;
 
+import vo.CenterVO;
+
 public class CenterPO {
-	public String name;
-	public String location;
-	public String id;
+	private String name;
+	private String location;
+	private String id;
+	
+	public CenterPO(CenterVO vo){
+		name=vo.getName();
+		location=vo.getLocation();
+		id=vo.getID();
+	}
+	
 	public CenterPO(String name, String location, String id){
 		this.name = name;
 		this.location = location;

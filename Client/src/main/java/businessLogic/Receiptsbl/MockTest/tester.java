@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import businessLogic.Receiptsbl.Receiptsbl;
-import businessLogic.Userbl.Userbl;
+import businessLogic.Userbl.User;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
 import vo.FormType;
 
 public class tester {
 		@Test
 		public void test(){
-			Userbl user = new MockUser();
+			User user = new MockUser();
 			ReceiptsblService bl = new Receiptsbl(user);
 			ArrayList<String> list = new ArrayList<String>();
 			list.add("025000001");

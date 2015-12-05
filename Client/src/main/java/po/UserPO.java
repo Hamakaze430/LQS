@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import vo.CenterVO;
 import vo.HallVO;
+import vo.UserVO;
 
 
 public class UserPO implements Serializable{
@@ -13,10 +14,10 @@ public class UserPO implements Serializable{
 	
 	public String position;
 	public String authority;
-	public HallVO hall;
-	public CenterVO center;
+	public HallPO hall;
+	public CenterPO center;
 	
-	public UserPO (String name,String id,String password,String position,String authority,HallVO hall,CenterVO center){
+	public UserPO (String name,String id,String password,String position,String authority,HallPO hall,CenterPO center){
 		this.id=id;
 		this.password=password;
 		this.name=name;
@@ -24,6 +25,15 @@ public class UserPO implements Serializable{
 		this.authority=authority;
 		this.hall = hall;
 		this.center=center;
+	}
+	
+	public UserPO(UserVO vo){
+		id=vo.getID();
+		password=vo.getPassword();
+		name=vo.getName();
+		position=vo.getPosition();
+		hall=new HallPO(vo.getHall());
+		center=new CenterPO(vo.getCenter());
 	}
 
 	public String getID() {
@@ -49,6 +59,14 @@ public class UserPO implements Serializable{
 	public String getName() {
 		// TODO Auto-generated method stub
 		return name;
+	}
+	
+	public HallPO getHell(){
+		return hall;
+	}
+	
+	public CenterPO getCenter(){
+		return center;
 	}
 	
 	public void setID(String id) {

@@ -7,6 +7,12 @@ import dataService.CarAndDriverdataService.CarAndDriverdataService;
 import dataService.CommoditydataService.CommoditydataService;
 import dataService.CostBenefitdataService.CostBenefitdataService;
 import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
+import dataService.ReceiptsdataService.ReceiptsdataService;
+import dataService.SalesdataService.SalesdataService;
+import dataService.StrategydataService.StrategydataService;
+import dataService.UserdataService.UserdataService;
+import dataService.VoucherSearchdataService.VoucherSearchdataService;
+import dataService.WareHousedataService.WareHousedataService;
 import init.RMIHelper;
 
 public class DataFactory implements DataFactoryService {
@@ -52,4 +58,37 @@ public class DataFactory implements DataFactoryService {
 		return null;
 	}
 
+<<<<<<< HEAD
+	public ReceiptsdataService getReceiptsdataService() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public SalesdataService getSalesdataService() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public StrategydataService getStrategydaateService() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public UserdataService getUserdataService() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public VoucherSearchdataService getVoucherSearchdataService() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public WareHousedataService getWareHousedataService() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+=======
+>>>>>>> origin/master
 }

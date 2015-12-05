@@ -5,7 +5,10 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import dataService.BankAccountdataService.BankAccountdataService;
 import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
+import dataService.StrategydataService.ConstantdataService.ConstantdataService;
+import dataService.StrategydataService.SalarydataService.SalarydataService;
 
 
 
@@ -16,6 +19,12 @@ public class RMIHelper {
     private static boolean inited = false;
 
     private static LogisticsDataService logisticsData;
+    
+    private static BankAccountdataService bankaccountData;
+    
+    private static SalarydataService salaryData;
+    
+    private static ConstantdataService constantData;
 
     public synchronized static void init() throws ClientInitException {
         if (inited) {
@@ -38,6 +47,21 @@ public class RMIHelper {
     public static LogisticsDataService getLogisticsData() {
       return logisticsData;
   }
+
+	public static BankAccountdataService getBankAccountdataService() {
+		// TODO Auto-generated method stub
+		return bankaccountData;
+	}
+
+	public static SalarydataService getSalaryDataService() {
+		// TODO Auto-generated method stub
+		return salaryData;
+	}
+
+	public static ConstantdataService getConstantDataService() {
+		// TODO Auto-generated method stub
+		return constantData;
+	}
     
 //    public static DataFactoryService getDataFactory() {
 //        return df;

@@ -1,29 +1,31 @@
 package vo;
 
 public class SalaryVO {
-	private String position;
-	private double salary;
-	
-	
-	public SalaryVO(String position,double salary){
-		this.position=position;
-		this.salary=salary;
+	   private double clerkSalary;
 		
-	}
-	public String getPosition(){
-		return position;
-	}
-	
-	public void setPosition(String position){
-		this.position = position;
-	}
-	public double getsalary(){
-		return salary;
-	}
-	
-	public void setsalary(double salary){
-		this.salary = salary;
-	}
-	
+		private double driverWage;
+		
+		private double postmanWage;
+		
+		
+		
+		public SalaryVO(double clerkSalary,double driverWage,double postmanWage) {
+			
+			this.clerkSalary = clerkSalary;
+			this.driverWage = driverWage;
+			this.postmanWage = postmanWage;	
+		}
+			
+		public double getClerkSalary() {
+			return clerkSalary;
+		}
+
+		public double getDriverWage() {
+			return driverWage;
+		}
+
+		public double getPostmanWage() {
+			return postmanWage;
+		}
 	
 }

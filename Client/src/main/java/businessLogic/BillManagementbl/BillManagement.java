@@ -6,6 +6,7 @@ import po.*;
 import businessLogicService.BillManagementblService.BillManagementblService;
 import dataService.BillManagementdataService.BillManagementdataService;
 import dataService.DataFactoryService.DataFactoryService;
+import init.Client;
 import init.RMIHelper;
 
 public class BillManagement implements BillManagementblService{
@@ -14,7 +15,7 @@ public class BillManagement implements BillManagementblService{
 	private DataFactoryService dataFactory;
 	
 	public BillManagement(){
-		DataFactoryService dataFactory=RMIHelper.getDataFactory();
+		DataFactoryService dataFactory=Client.dataFactory;
 		bm=dataFactory.getBillManagementdataService();
 	}
 	

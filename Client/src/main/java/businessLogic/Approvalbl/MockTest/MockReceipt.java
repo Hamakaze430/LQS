@@ -1,10 +1,10 @@
 package businessLogic.Approvalbl.MockTest;
 
 import businessLogic.Receiptsbl.Receiptsbl;
-import businessLogic.Userbl.Userbl;
+import businessLogic.Userbl.User;
 
 public class MockReceipt extends Receiptsbl {
-	public MockReceipt(Userbl user) {
+	public MockReceipt(User user) {
 		super(user);
 		// TODO Auto-generated constructor stub
 	}

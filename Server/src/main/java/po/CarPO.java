@@ -6,11 +6,13 @@ public class CarPO implements Serializable{
 	String id;
 	String platenumber; 
 	String timeinuse;
+	String location;
 	
-	public CarPO(String i,String pn,String tiu){
+	public CarPO(String i,String pn,String tiu, String location){
 		id = i;
 		platenumber = pn;
 		timeinuse = tiu;
+		this.location=location;
 	}
 	
 	public String getID(){
@@ -23,6 +25,10 @@ public class CarPO implements Serializable{
 	
 	public String getTimeInUse(){
 		return timeinuse;
+	}
+	
+	public String getLocation(){
+		return this.location;
 	}
 
 }
