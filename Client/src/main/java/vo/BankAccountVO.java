@@ -4,38 +4,33 @@ package vo;
  * Created by admin on 15/10/25.
  */
 public class BankAccountVO {
-	private String id;
-	private String name;
-	private double balance;
+
+	double money;
+	String name;
 	
-	public BankAccountVO(String id,String name,double balance){
-		this.id=id;
-		this.name=name;
-		this.balance=balance;
-		
+	public BankAccountVO(String name,double money){
+		this.name = name;
+		this.money = money;
 	}
 	
-	public String getID(){
-		return id;
-	}
-	
-	public void setID(){
-		this.id=id;
+	public double getMoney(){
+		return this.money;
 	}
 	
 	public String getName(){
-		return name;
+		return this.name;
 	}
 	
-	public void setName(){
-		this.name=name;
+	public void addMoney(int num){
+		money += num;
 	}
 	
-	public double getBalance(){
-		return balance;
+	public void minusMoney(int num){
+		money -= num;
 	}
 	
-	public void setBalance(){
-		this.balance=balance;
+	public void changeName(String newName){
+		name = newName;
 	}
 }
+

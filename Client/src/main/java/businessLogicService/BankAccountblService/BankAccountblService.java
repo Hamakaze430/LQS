@@ -1,15 +1,18 @@
 package businessLogicService.BankAccountblService;
 
+import java.util.ArrayList;
+
+import dataService.ResultMessage;
 import vo.BankAccountVO;
 
 public interface BankAccountblService {
 	
-public BankAccountVO addBankAccount(String id,String name,double balance);
+	public void addBankAccount(String name);
 	
-	public boolean deleteBankAccountVO(int index);
+	public ResultMessage removeBankAccount(String name);
 	
-	public double getTotalBalance();
+	public ResultMessage modifyBankAccount(String newName, String name);
 	
-	public boolean save();
-
+	public ArrayList<BankAccountVO> showBankAccount(String subName);
+	
 }
