@@ -145,12 +145,12 @@ public class CreatApartmentDialog extends JDialog {
 	}
 	class IdListener implements ActionListener{	
 		public void actionPerformed(ActionEvent e) {
-			if (type1.isSelected()) {id.setText("000"); return;}
-			Place place = Place.value(placeBox.getSelectedItem().toString());
-			String areaCode = place.getId();
-			if (type2.isSelected()) id.setText(areaCode + (bl.getNum(type2.getText(),place)+1));
-			if (type3.isSelected()) id.setText(areaCode + bl.getNum(type3.getText(),place));
-			return;
+//			if (type1.isSelected()) {id.setText("000"); return;}
+//			Place place = Place.value(placeBox.getSelectedItem().toString());
+//			String areaCode = place.getId();
+//			if (type2.isSelected()) id.setText(areaCode + (bl.getNum(type2.getText(),place)+1));
+//			if (type3.isSelected()) id.setText(areaCode + bl.getNum(type3.getText(),place));
+//			return;
 			
 		}
 	}
