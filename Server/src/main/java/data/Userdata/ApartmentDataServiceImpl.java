@@ -23,14 +23,14 @@ import dataService.UserdataService.ApartmentDataService;
 import po.HallPO;
 import po.LogisticsPO;
 
-public class ApartmentDataServiceSerializableFileImpl extends UnicastRemoteObject implements ApartmentDataService {
+public class ApartmentDataServiceImpl extends UnicastRemoteObject implements ApartmentDataService {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	public ApartmentDataServiceSerializableFileImpl() throws RemoteException {
+	public ApartmentDataServiceImpl() throws RemoteException {
 		super();
 	}
 	

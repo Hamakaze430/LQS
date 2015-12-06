@@ -32,7 +32,7 @@ public class UserblStub implements UserblService{
 	public boolean hasTheAuthority(Authorities one) {
 		// TODO Auto-generated method stub
 	//if (one == Authorities.寄件单) return true;
-		if (one == Authorities.部门管理) return true;
+		if (one == Authorities.权限管理) return true;
 		//if (one == Authorities.收款单查询) return true;
 		return false;
 	}

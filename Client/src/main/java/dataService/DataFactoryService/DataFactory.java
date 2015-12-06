@@ -11,6 +11,7 @@ import dataService.ReceiptsdataService.ReceiptsdataService;
 import dataService.SalesdataService.SalesdataService;
 import dataService.StrategydataService.StrategydataService;
 import dataService.UserdataService.ApartmentDataService;
+import dataService.UserdataService.AuthoritiesSettingDataService;
 import dataService.UserdataService.UserdataService;
 import dataService.VoucherSearchdataService.VoucherSearchdataService;
 import dataService.WareHousedataService.WareHousedataService;
@@ -19,6 +20,7 @@ import init.RMIHelper;
 public class DataFactory implements DataFactoryService {
 	private static LogisticsDataService logisticsData;
 	private static ApartmentDataService apartmentData;
+	private static AuthoritiesSettingDataService authorities;
 	public LogisticsDataService getLogisticsDataService() {
 		logisticsData = RMIHelper.getLogisticsData();
 		return logisticsData;
@@ -92,6 +94,11 @@ public class DataFactory implements DataFactoryService {
 	public ApartmentDataService getApartmentDataService() {
 		apartmentData = RMIHelper.getApartmentData();
 		return apartmentData;
+	}
+
+	public AuthoritiesSettingDataService getAuthoritiesData() {
+		authorities = RMIHelper.getAuthoritiesData();
+		return authorities;
 	}
 
 }

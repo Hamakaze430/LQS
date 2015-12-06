@@ -13,6 +13,7 @@ import dataService.ReceiptsdataService.ReceiptsdataService;
 import dataService.SalesdataService.SalesdataService;
 import dataService.StrategydataService.StrategydataService;
 import dataService.UserdataService.ApartmentDataService;
+import dataService.UserdataService.AuthoritiesSettingDataService;
 import dataService.UserdataService.UserdataService;
 import dataService.VoucherSearchdataService.VoucherSearchdataService;
 import dataService.WareHousedataService.WareHousedataService;
@@ -32,6 +33,6 @@ public interface DataFactoryService extends Remote {
 	VoucherSearchdataService getVoucherSearchdataService();
 	WareHousedataService getWareHousedataService();
 	ApartmentDataService getApartmentDataService();
-	
+	AuthoritiesSettingDataService getAuthoritiesData();
 }
 

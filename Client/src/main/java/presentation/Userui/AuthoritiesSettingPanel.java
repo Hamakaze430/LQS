@@ -5,15 +5,23 @@ import java.awt.CheckboxGroup;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import Miscellaneous.Authorities;
+import Miscellaneous.Identity;
+import businessLogic.Userbl.AuthoritiesSettingbl;
+import businessLogicService.UserblService.AuthoritiesSettingblService;
 /**
  * 权限管理
  * @author TOSHIBA
@@ -25,10 +33,17 @@ public class AuthoritiesSettingPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private String tempText = null;
+	private List<String> tempList = new ArrayList<String>();
+	private JCheckBox[] boxs;
+	private JRadioButton[] buttons;
+	private AuthoritiesSettingblService bl;
+	private ButtonGroup bg;
 	public AuthoritiesSettingPanel(){
 		this.setBorder(null);
 		this.setOpaque(false);
 		this.setLayout(null);
+		bl = new AuthoritiesSettingbl();
 		initASPanel();
 	}
 	private void initASPanel() {
@@ -37,205 +52,112 @@ public class AuthoritiesSettingPanel extends JPanel {
 		l1.setFont(new Font("黑体",Font.PLAIN,18));
 		l1.setBounds(40, 30, 250, 50);
 		
-		ButtonGroup bg = new ButtonGroup();
+		bg = new ButtonGroup();
 		
-		JRadioButton j1 = new JRadioButton("总经理",true);
-		j1.setFont(new Font("黑体",Font.PLAIN,18));
-		j1.setBounds(50, 60, 120, 80);		
-		j1.setBorder(null);
-		j1.setOpaque(false);
-		
-		JRadioButton j2 = new JRadioButton("高级财务人员",false);
-		j2.setFont(new Font("黑体",Font.PLAIN,18));
-		j2.setBounds(250, 60, 200, 80);		
-		j2.setBorder(null);
-		j2.setOpaque(false);
-		
-		JRadioButton j3 = new JRadioButton("低级财务人员",false);
-		j3.setFont(new Font("黑体",Font.PLAIN,18));
-		j3.setBounds(500, 60, 200, 80);		
-		j3.setBorder(null);
-		j3.setOpaque(false);
-		
-		JRadioButton j4 = new JRadioButton("中转中心业务员",false);
-		j4.setFont(new Font("黑体",Font.PLAIN,18));
-		j4.setBounds(50, 100, 200, 80);		
-		j4.setBorder(null);
-		j4.setOpaque(false);
-		
-		JRadioButton j5 = new JRadioButton("中转中心仓库管理员",false);
-		j5.setFont(new Font("黑体",Font.PLAIN,18));
-		j5.setBounds(250, 100, 200, 80);		
-		j5.setBorder(null);
-		j5.setOpaque(false);
-		
-		JRadioButton j6 = new JRadioButton("营业厅业务员",false);
-		j6.setFont(new Font("黑体",Font.PLAIN,18));
-		j6.setBounds(50, 140, 200, 80);		
-		j6.setBorder(null);
-		j6.setOpaque(false);
-		
-		JRadioButton j7 = new JRadioButton("快递员",false);
-		j7.setFont(new Font("黑体",Font.PLAIN,18));
-		j7.setBounds(250, 140, 200, 80);		
-		j7.setBorder(null);
-		j7.setOpaque(false);
-		
+		ActionListener listener = new RadioButtonListener();
+		Identity[] identity = Identity.values();
+		buttons = new JRadioButton[identity.length];
+		for (int i = 0; i < identity.length; i++){
+			buttons[i] = new JRadioButton(identity[i].name(),false);
+			buttons[i].setFont(new Font("黑体",Font.PLAIN,18));
+			buttons[i].setBounds(50+ 200*(i/3), 60+40*(i % 3), 180, 50);
+			buttons[i].setBorder(null);
+			buttons[i].setOpaque(false);
+			buttons[i].setFocusPainted(false);
+			buttons[i].addActionListener(listener);
+			bg.add(buttons[i]);
+			this.add(buttons[i]);
+		}
 		
 		JLabel l2 = new JLabel("· 请选择权限：");
 		l2.setFont(new Font("黑体",Font.PLAIN,18));
 		l2.setBounds(40, 200, 250, 50);
 		
-		int i=0,j=0;
-		JCheckBox c1 = new JCheckBox(Authorities.中转单.toString(),false);
-		CreateCheckBox.initCheckBox(c1, i,j);
-		i++;
-		JCheckBox c2 = new JCheckBox(Authorities.人员机构.toString(),false);
-		CreateCheckBox.initCheckBox(c2, i,j);
-		i++;
-		JCheckBox c3 = new JCheckBox(Authorities.付款单.toString(),false);
-		CreateCheckBox.initCheckBox(c3, i,j);
-		i++;
-		JCheckBox c4 = new JCheckBox(Authorities.价格策略.toString(),false);
-		CreateCheckBox.initCheckBox(c4, i,j);
-		i++;
-		JCheckBox c5 = new JCheckBox(Authorities.入库单.toString(),false);
-		CreateCheckBox.initCheckBox(c5, i,j);
-		i=0;
-		j++;
-		JCheckBox c6 = new JCheckBox(Authorities.出库单.toString(),false);
-		CreateCheckBox.initCheckBox(c6, i,j);
-		i++;
-		JCheckBox c7 = new JCheckBox(Authorities.分区管理.toString(),false);
-		CreateCheckBox.initCheckBox(c7, i,j);
-		i++;
-		JCheckBox c8 = new JCheckBox(Authorities.到达单.toString(),false);
-		CreateCheckBox.initCheckBox(c8, i,j);
-		i++;
-		JCheckBox c9 = new JCheckBox(Authorities.司机信息.toString(),false);
-		CreateCheckBox.initCheckBox(c9, i,j);
-		i++;
-		JCheckBox c10 = new JCheckBox(Authorities.审批单据.toString(),false);
-		CreateCheckBox.initCheckBox(c10, i,j);
-		i=0;
-		j++;
-		JCheckBox c11 = new JCheckBox(Authorities.寄件单.toString(),false);
-		CreateCheckBox.initCheckBox(c11, i,j);
-		i++;
-		JCheckBox c12 = new JCheckBox(Authorities.库存查看.toString(),false);
-		CreateCheckBox.initCheckBox(c12, i,j);
-		i++;
-		JCheckBox c13 = new JCheckBox(Authorities.库存盘点.toString(),false);
-		CreateCheckBox.initCheckBox(c13, i,j);
-		i++;
-		JCheckBox c14 = new JCheckBox(Authorities.成本收益.toString(),false);
-		CreateCheckBox.initCheckBox(c14, i,j);
-		i++;
-		JCheckBox c15 = new JCheckBox(Authorities.收件单.toString(),false);
-		CreateCheckBox.initCheckBox(c15, i,j);
-		i=0;
-		j++;
-		JCheckBox c16 = new JCheckBox(Authorities.收款单.toString(),false);
-		CreateCheckBox.initCheckBox(c16, i,j);
-		i++;
-		JCheckBox c17 = new JCheckBox(Authorities.收款单查询.toString(),false);
-		CreateCheckBox.initCheckBox(c17, i,j);
-		i++;
-		JCheckBox c18 = new JCheckBox(Authorities.期初建账.toString(),false);
-		CreateCheckBox.initCheckBox(c18, i,j);
-		i++;
-		JCheckBox c19 = new JCheckBox(Authorities.权限管理.toString(),false);
-		CreateCheckBox.initCheckBox(c19, i,j);
-		i++;
-		JCheckBox c20 = new JCheckBox(Authorities.派件单.toString(),false);
-		CreateCheckBox.initCheckBox(c20, i,j);
-		i=0;
-		j++;
-		JCheckBox c21 = new JCheckBox(Authorities.用户管理.toString(),false);
-		CreateCheckBox.initCheckBox(c21, i,j);
-		i++;
-		JCheckBox c22 = new JCheckBox(Authorities.系统日志.toString(),false);
-		CreateCheckBox.initCheckBox(c22, i,j);
-		i++;
-		JCheckBox c23 = new JCheckBox(Authorities.经营情况.toString(),false);
-		CreateCheckBox.initCheckBox(c23, i,j);
-		i++;
-		JCheckBox c24 = new JCheckBox(Authorities.薪水策略.toString(),false);
-		CreateCheckBox.initCheckBox(c24, i,j);
-		i++;
-		JCheckBox c25 = new JCheckBox(Authorities.装车单.toString(),false);
-		CreateCheckBox.initCheckBox(c25, i,j);
-		i=0;
-		j++;
-		JCheckBox c26 = new JCheckBox(Authorities.账户管理.toString(),false);
-		CreateCheckBox.initCheckBox(c26, i,j);
-		i++;
-		JCheckBox c27 = new JCheckBox(Authorities.车辆信息.toString(),false);
-		CreateCheckBox.initCheckBox(c27, i,j);
-		i++;
-		JCheckBox c28 = new JCheckBox(Authorities.部门管理.toString(),false);
-		CreateCheckBox.initCheckBox(c28, i,j);
+		ActionListener listener2 = new ChenckBoxListener();
+		Authorities[] authorities = Authorities.values();
+		boxs = new JCheckBox[authorities.length];
+		for (int i = 0; i < Authorities.values().length; i++){
+			boxs[i] = new JCheckBox(authorities[i].toString(),false);
+			CreateCheckBox.initCheckBox(boxs[i], i / 6,i % 6);
+			boxs[i].addActionListener(listener2);
+			this.add(boxs[i]);
+		}
 		
 		JButton b1 = new JButton("确定");
+		b1.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				int n = JOptionPane.showConfirmDialog(null, "确定该设置?", "确认框",JOptionPane.YES_NO_OPTION);
+				if (n == 1) {
+					return;
+				};
+				
+				bl.save(tempText,tempList);
+				bg.clearSelection();
+				tempText = null;
+				tempList.clear();
+				for (int i = 0; i < boxs.length; i++){
+					boxs[i].setSelected(false);
+				}
+				AuthoritiesSettingPanel.this.repaint();
+			}
+			
+		});
 		b1.setBounds(650, 485, 80, 40);
 		b1.setBorder(null);
 		b1.setOpaque(false);
 		JButton b2 = new JButton("取消");
+		b2.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		b2.setBounds(750, 485, 80, 40);
 		b2.setBorder(null);
-		b2.setOpaque(false);
-		
-		bg.add(j1);
-		this.add(j1);
-		bg.add(j2);
-		this.add(j2);
-		bg.add(j3);
-		this.add(j3);
-		bg.add(j4);
-		this.add(j4);
-		bg.add(j5);
-		this.add(j5);
-		bg.add(j6);
-		this.add(j6);
-		bg.add(j7);
-		this.add(j7);
-		
-		this.add(c1);
-		this.add(c2);
-		this.add(c3);
-		this.add(c4);
-		this.add(c5);
-		this.add(c6);
-		this.add(c7);
-		this.add(c8);
-		this.add(c9);
-		this.add(c10);
-		this.add(c11);
-		this.add(c12);
-		this.add(c13);
-		this.add(c14);
-		this.add(c15);
-		this.add(c16);
-		this.add(c17);
-		this.add(c18);
-		this.add(c19);
-		this.add(c20);
-		this.add(c21);
-		this.add(c22);
-		this.add(c23);
-		this.add(c24);
-		this.add(c25);
-		this.add(c26);
-		this.add(c27);
-		this.add(c28);
+		b2.setOpaque(false);		
 		
 		this.add(l1);
 		this.add(l2);
 		
 		this.add(b1);
 		this.add(b2);
-		
-		
-		
+	}
+	
+	class RadioButtonListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			tempText = ((JRadioButton)e.getSource()).getText();
+			tempList = bl.getList(tempText);
+//			System.out.println(tempText);
+//			for (String s : tempList) System.out.println(s);
+			Authorities[] authorities = Authorities.values();
+			for (String s : tempList){
+				for (int i = 0; i < authorities.length; i++ ){
+					if (authorities[i].name().equals(s)){
+						boxs[i].setSelected(true);
+						break;
+					}
+				}
+				
+			}
+			AuthoritiesSettingPanel.this.repaint();
+		}
+	}
+	
+	class ChenckBoxListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			JCheckBox c = (JCheckBox)e.getSource();
+//			System.out.println(c.isSelected());
+//			System.out.println(c.getText());
+			if (c.isSelected()) tempList.add(c.getText());
+			else tempList.remove(c.getText());
+		}
 	}
 }
