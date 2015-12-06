@@ -1,4 +1,4 @@
-package vo;
+package Miscellaneous;
 
 public enum ReceiptState {
 	未审批(0),

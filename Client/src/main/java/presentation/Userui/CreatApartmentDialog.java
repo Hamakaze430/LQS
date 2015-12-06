@@ -12,12 +12,13 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import vo.Place;
+import Miscellaneous.Place;
 import businessLogicService.UserblService.ApartmentblService;
 import init.Client;
 import presentation.mainui.SimpleButton;
@@ -65,7 +66,7 @@ public class CreatApartmentDialog extends JDialog {
 			placeLabel.setBounds(gap_left, gap_up+gap, width_label, height);
 			
 			placeBox = new JComboBox<String>();
-			placeBox.addActionListener(lister);
+		
 			Place[] es = Place.values();
 			for (Place p : es) placeBox.addItem(p.name());
 			placeBox.setBounds(gap_left+width_label, gap_up+gap, 90 , height);
@@ -78,15 +79,15 @@ public class CreatApartmentDialog extends JDialog {
 			type1 = new JRadioButton("公司");
 			type1.setBounds(gap_left+width_label, gap_up+2*gap, 70, height);
 			type1.setFocusPainted(false);
-			type1.addActionListener(lister);
+			
 			type2 = new JRadioButton("中转中心");
 			type2.setBounds(180, gap_up+2*gap, 110, height);
 			type2.setFocusPainted(false);
-			type2.addActionListener(lister);
+			
 			type3 = new JRadioButton("营业厅");
 			type3.setBounds(290, gap_up+2*gap, 100, height);
 			type3.setFocusPainted(false);
-			type3.addActionListener(lister);
+			
 			bg = new ButtonGroup();
 			bg.add(type1); bg.add(type2); bg.add(type3);
 			
@@ -105,11 +106,26 @@ public class CreatApartmentDialog extends JDialog {
 				public void actionPerformed(ActionEvent e) {
 					// TODO Auto-generated method stub
 					String Name = name.getText();
+					if (Name.equals("")) {
+						JOptionPane.showMessageDialog(null, "请输入部门名称！","", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					
+					Place type = Place.value(placeBox.getSelectedItem().toString());
+					if (type1.isSelected()) bl.addNum(type1.getText(),null);
+					else if (type2.isSelected()) bl.addNum(type2.getText(),type);
+					else if (type3.isSelected()) bl.addNum(type3.getText(),type); 
+					else {
+						JOptionPane.showMessageDialog(null, "请选择部门类型！","", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					
 					String Id = id.getText();
 					String Place = placeBox.getSelectedItem()+place.getText();
 					name.setText("");
 					id.setText("");
 					place.setText("");
+					bg.clearSelection();
 					HallVO vo = new HallVO(Name, Id, Place);
 					defaultModel.addRow(vo);
 					bl.insert(vo);
@@ -128,6 +144,11 @@ public class CreatApartmentDialog extends JDialog {
 				
 			});
 			
+			placeBox.addActionListener(lister);
+			type1.addActionListener(lister);
+			type2.addActionListener(lister);
+			type3.addActionListener(lister);
+			
 			this.add(nameLabel);
 			this.add(name);
 			this.add(placeLabel);
@@ -144,14 +165,20 @@ public class CreatApartmentDialog extends JDialog {
 		}
 	}
 	class IdListener implements ActionListener{	
-		public void actionPerformed(ActionEvent e) {
-//			if (type1.isSelected()) {id.setText("000"); return;}
-//			Place place = Place.value(placeBox.getSelectedItem().toString());
-//			String areaCode = place.getId();
-//			if (type2.isSelected()) id.setText(areaCode + (bl.getNum(type2.getText(),place)+1));
-//			if (type3.isSelected()) id.setText(areaCode + bl.getNum(type3.getText(),place));
-//			return;
+		public void actionPerformed(ActionEvent e) {		
+			Place place = Place.value(placeBox.getSelectedItem().toString());
+			String areaCode = place.getId();
+			if (type1.isSelected()) {id.setText(toThreeString(bl.getNum(type1.getText(),place))); return;}
+			if (type2.isSelected()) id.setText(areaCode + (bl.getNum(type2.getText(),place)));
+			if (type3.isSelected()) id.setText(areaCode + toThreeString(bl.getNum(type3.getText(),place)));
+			return;
 			
+		}
+
+		private String toThreeString(int num) {
+			if (num < 10) return "00"+num;
+			if (num < 100) return "0"+num;
+			return num+"";
 		}
 	}
 }

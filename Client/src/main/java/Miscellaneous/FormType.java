@@ -1,4 +1,4 @@
-package vo;
+package Miscellaneous;
 
 public enum FormType {
 	寄件单,

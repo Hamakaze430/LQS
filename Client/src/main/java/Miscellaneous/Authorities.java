@@ -1,4 +1,4 @@
-package vo;
+package Miscellaneous;
 
 public enum Authorities {
 	寄件单,

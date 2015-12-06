@@ -27,4 +27,8 @@ public class HallPO implements Serializable{
 		return id;
 	}
 	
+	public boolean compareTo(HallPO b){
+	    return name.equals(b.getName())|id.equals(b.getID())|location.equals(b.getLocation());		 
+	}
+	
 }

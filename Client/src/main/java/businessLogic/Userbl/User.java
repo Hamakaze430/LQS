@@ -4,8 +4,8 @@ import po.UserPO;
 import dataService.DataFactoryService.DataFactoryService;
 import dataService.UserdataService.UserdataService;
 import init.Client;
+import Miscellaneous.Authorities;
 import businessLogicService.UserblService.UserblService;
-import vo.Authorities;
 import vo.UserVO;
 
 public class User implements UserblService{

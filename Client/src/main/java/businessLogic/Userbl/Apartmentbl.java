@@ -3,7 +3,7 @@ package businessLogic.Userbl;
 import java.util.ArrayList;
 import java.util.List;
 
-import vo.Place;
+import Miscellaneous.Place;
 import businessLogicService.UserblService.ApartmentblService;
 import dataService.DataFactoryService.DataFactoryService;
 import init.Client;
@@ -35,10 +35,26 @@ public class Apartmentbl implements ApartmentblService {
 		
 	}
 
-	public int getNum(String s, Place place) {
+	public int getNum(String text, Place place) {
 //		int num = dataFactory.getApartmentDataService().getHallNum(s,place);
 //		return num;
-		return 0;
+		int num = dataFactory.getApartmentDataService().getNum(text,place);
+		return num;
+	}
+
+	public boolean addNum(String text, Place place) {
+		return dataFactory.getApartmentDataService().addNum(text,place);
+	}
+
+	public boolean delete(HallVO vo) {
+		HallPO po = new HallPO(vo.getName(),vo.getID(),vo.getLocation());
+		return dataFactory.getApartmentDataService().delete(po) ||
+		dataFactory.getApartmentDataService().decNum(vo.getType(),vo.getPlace());	
+	}
+
+	public boolean update(HallVO vo) {
+		HallPO po = new HallPO(vo.getName(),vo.getID(),vo.getLocation());
+		return dataFactory.getApartmentDataService().update(po);
 	}
 
 }

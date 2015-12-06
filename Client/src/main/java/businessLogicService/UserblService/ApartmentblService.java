@@ -2,8 +2,8 @@ package businessLogicService.UserblService;
 
 import java.util.List;
 
+import Miscellaneous.Place;
 import vo.HallVO;
-import vo.Place;
 
 public interface ApartmentblService {
 
@@ -13,5 +13,11 @@ public interface ApartmentblService {
 
 
 	int getNum(String text, Place place);
+
+	boolean addNum(String text, Place place);
+
+	boolean delete(HallVO vo);
+
+	boolean update(HallVO vo);
 
 }

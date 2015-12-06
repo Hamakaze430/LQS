@@ -1,6 +1,6 @@
 package businessLogicService.UserblService;
 
-import vo.Authorities;
+import Miscellaneous.Authorities;
 import vo.UserVO;
 
 public interface UserblService {

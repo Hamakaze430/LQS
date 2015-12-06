@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import Miscellaneous.FormType;
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogic.Userbl.User;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
-import vo.FormType;
 
 public class tester {
 		@Test

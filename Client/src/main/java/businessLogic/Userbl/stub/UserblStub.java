@@ -1,7 +1,7 @@
 package businessLogic.Userbl.stub;
 
-import vo.Authorities;
 import vo.UserVO;
+import Miscellaneous.Authorities;
 import businessLogicService.UserblService.UserblService;
 
 public class UserblStub implements UserblService{

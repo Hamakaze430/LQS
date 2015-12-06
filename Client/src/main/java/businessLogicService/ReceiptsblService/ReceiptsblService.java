@@ -2,8 +2,8 @@ package businessLogicService.ReceiptsblService;
 
 import java.util.ArrayList;
 
+import Miscellaneous.FormType;
 import vo.CarVO;
-import vo.FormType;
 
 public interface ReceiptsblService {
 	public String getLoadingId();

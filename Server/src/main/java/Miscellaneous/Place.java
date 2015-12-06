@@ -1,8 +1,8 @@
-package vo;
+package Miscellaneous;
 
-import java.util.EnumSet;
+import java.io.Serializable;
 
-public enum Place {
+public enum Place implements Serializable {
 	北京市("010"),
 	上海市("021"),
 	广州市("020"),
@@ -15,10 +15,17 @@ public enum Place {
 	public String getId(){
 		return id;
 	}
+	
 	public static Place value(String s) {
 		Place[] es = Place.values();
 		for (Place p : es)
 			if (p.name().equals(s)) return p;
+		return null;
+	}
+	public static Place fromId(String s) {
+		Place[] es = Place.values();
+		for (Place p : es)
+			if (p.id.equals(s)) return p;
 		return null;
 		
 	}

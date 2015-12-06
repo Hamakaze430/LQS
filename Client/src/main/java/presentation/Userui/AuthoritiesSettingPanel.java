@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import vo.Authorities;
+import Miscellaneous.Authorities;
 /**
  * 权限管理
  * @author TOSHIBA

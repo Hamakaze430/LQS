@@ -2,9 +2,9 @@ package businessLogic.LogisticsInfoSearchbl.stub;
 
 import java.util.ArrayList;
 
+import Miscellaneous.LogisticsState;
 import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
 import vo.LogisticsVO;
-import vo.LogisticsState;
 
 public class LogisticsInfoSearchblStub implements LogisticsInfoSearchblService {
 
