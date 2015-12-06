@@ -12,6 +12,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -23,6 +24,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
@@ -78,6 +80,9 @@ public class ApartmentManagerPanel extends JPanel {
 		table.getTableHeader().setReorderingAllowed(false);
 		table.setOpaque(false);
 		table.setRowSorter(new TableRowSorter<DefaultTableModel>(defaultModel));  
+		DefaultTableCellRenderer r = new DefaultTableCellRenderer();  
+	    r.setHorizontalAlignment(JLabel.CENTER); 
+	    table.setDefaultRenderer(Object.class, r);
 		
 //		table.setFillsViewportHeight(true);
 		JScrollPane scrollPane = new JScrollPane();

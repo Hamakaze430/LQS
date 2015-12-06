@@ -39,10 +39,12 @@ public class AuthoritiesSettingPanel extends JPanel {
 	private JRadioButton[] buttons;
 	private AuthoritiesSettingblService bl;
 	private ButtonGroup bg;
-	public AuthoritiesSettingPanel(){
+	private int buttonNum;
+	public AuthoritiesSettingPanel(int buttonNum){
 		this.setBorder(null);
 		this.setOpaque(false);
 		this.setLayout(null);
+		this.buttonNum = buttonNum;
 		bl = new AuthoritiesSettingbl();
 		initASPanel();
 	}
@@ -112,7 +114,8 @@ public class AuthoritiesSettingPanel extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				
+				AuthoritiesSettingPanel.this.setVisible(false);
+				MainPanel.closeButton(buttonNum);
 			}
 			
 		});
@@ -135,6 +138,9 @@ public class AuthoritiesSettingPanel extends JPanel {
 			tempList = bl.getList(tempText);
 //			System.out.println(tempText);
 //			for (String s : tempList) System.out.println(s);
+			for (int i = 0; i < boxs.length; i++){
+				boxs[i].setSelected(false);
+			}
 			Authorities[] authorities = Authorities.values();
 			for (String s : tempList){
 				for (int i = 0; i < authorities.length; i++ ){

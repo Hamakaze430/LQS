@@ -932,7 +932,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.用户管理)) {
-			JPanel userManager = new UserManagerPanel();
+			JPanel userManager = new UserManagerPanel(i);
 			cardPanel.add(userManager, "25");		
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/userManager_unselected.png");		
@@ -995,7 +995,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.权限管理)){
-			JPanel authoritiesSetting = new AuthoritiesSettingPanel();
+			JPanel authoritiesSetting = new AuthoritiesSettingPanel(i);
 			cardPanel.add(authoritiesSetting, "27");	
 			button = new InitButton(i,"src/main/java/image/authoritiesSetting_unselected.png");			
 			buttons.add(button);

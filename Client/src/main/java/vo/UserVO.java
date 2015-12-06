@@ -1,81 +1,49 @@
 package vo;
 
-public class UserVO {
-	public String name;
-	public String id;
-	public String password;
+import java.util.Vector;
+
+public class UserVO extends Vector<String> {
 	
-	public String position;
-	public String authority;
-	public HallVO hall;
-	public CenterVO center;
-	
-	public UserVO (String name,String id,String password,String position,String authority,HallVO hall,CenterVO center){
-		this.id=id;
-		this.password=password;
-		this.name=name;
-		this.position=position;
-		this.authority=authority;
-		this.hall = hall;
-		this.center=center;
+	public UserVO (String id,String password,String authority,String name,String sex,String position,String hall){
+		this.add(id);
+		this.add(password);
+		this.add(authority);
+		this.add(name);
+		this.add(sex);
+		this.add(position);
+		this.add(hall);
 	}
 
 	public String getID() {
 		// TODO Auto-generated method stub
-		return id;
+		return get(0);
 	}
 
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return password;
+		return get(1);
+	}
+	
+	public String getSex(){
+		return get(4);
 	}
 
 	public String getPosition() {
 		// TODO Auto-generated method stub
-		return position;
+		return get(5);
 	}
 
 	public String getAuthority() {
 		// TODO Auto-generated method stub
-		return authority;
+		return get(2);
 	}
 	
-	public HallVO getHall(){
-		return hall;
-	}
-	
-	public CenterVO getCenter(){
-		return center;
+	public String getHall(){
+		return get(6);
 	}
 
 	public String getName() {
 		// TODO Auto-generated method stub
-		return name;
+		return get(3);
 	}
-	public void setID(String id) {
-		// TODO Auto-generated method stub
-		this.id=id;
-	}
-
-	public void setPassword(String password) {
-		// TODO Auto-generated method stub
-		this.password=password;
-	}
-
-	public void setPosition(String position) {
-		// TODO Auto-generated method stub
-		this.position=position;
-	}
-
-	public void steAuthority(String authority) {
-		// TODO Auto-generated method stub
-		this.authority=authority;
-	}
-
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-		this.name=name;
-	}
-
-	
 }
