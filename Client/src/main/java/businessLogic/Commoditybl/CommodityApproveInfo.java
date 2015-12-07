@@ -9,13 +9,13 @@ import dataService.ResultMessage;
 public interface CommodityApproveInfo {
     public ArrayList<StorageInReceiptVO> viewAllStorageInReceiptSubmitted();
 	
-	public ResultMessage approveEnterReceipt(String id);
+	public ResultMessage approveStorageInReceipt(String id);
 	
 	public ArrayList<StorageInReceiptVO> viewAllStorageInReceipt();
 	
 	public ArrayList<StorageOutReceiptVO> viewAllStorageOutReceiptSubmitted();
 	
-	public ResultMessage approveExitReceipt(String id);
+	public ResultMessage approveStorageOutReceipt(String id);
 	
 	public ArrayList<StorageOutReceiptVO> viewAllStorageOutReceipt();
 
