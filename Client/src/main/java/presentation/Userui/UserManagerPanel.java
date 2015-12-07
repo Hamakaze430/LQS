@@ -64,7 +64,7 @@ public class UserManagerPanel extends JPanel {
 		name.add("姓名");
 		name.add("性别");
 		name.add("职位");
-		name.add("工作地点");
+		name.add("工作单位");
 		Vector<UserVO> data = new Vector<UserVO>();		
 		defaultModel = new DefaultTableModel(data,name);		
 		table = new JTable(defaultModel){
@@ -201,7 +201,7 @@ public class UserManagerPanel extends JPanel {
 		// TODO Auto-generated method stub
 		List<UserVO> list = bl.getAll();
 		for (UserVO vo : list) defaultModel.addRow(vo);
-		//defaultModel.addRow(new UserVO("02500000000","123456","快递员","王五","男","快递员","南京市鼓楼营业厅"));
+		defaultModel.addRow(new UserVO("02500000000","123456","快递员","王五","男","快递员","南京市鼓楼营业厅"));
 	}
 	
 	@SuppressWarnings("serial")

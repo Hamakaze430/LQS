@@ -57,4 +57,11 @@ public class Apartmentbl implements ApartmentblService {
 		return dataFactory.getApartmentDataService().update(po);
 	}
 
+	public List<String> getAllName() {
+		List<HallVO> list = getAll();
+		List<String> ans = new ArrayList<String>();
+		for (HallVO vo : list) ans.add(vo.getName());
+		return ans;
+	}
+
 }

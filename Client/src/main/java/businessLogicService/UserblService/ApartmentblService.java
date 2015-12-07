@@ -20,4 +20,6 @@ public interface ApartmentblService {
 
 	boolean update(HallVO vo);
 
+	List<String> getAllName();
+
 }

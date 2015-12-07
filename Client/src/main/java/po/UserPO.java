@@ -61,7 +61,7 @@ public class UserPO implements Serializable{
 		return name;
 	}
 	
-	public HallPO getHell(){
+	public HallPO getHall(){
 		return hall;
 	}
 	
