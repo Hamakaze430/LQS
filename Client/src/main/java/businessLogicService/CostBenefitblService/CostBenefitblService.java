@@ -4,11 +4,11 @@ public interface CostBenefitblService {
 	
 	public void setDate(String date);
 
-    public double showCost();
+    public String showCost();
 
-    public double showBenefit();
+    public String showBenefit();
 
-    public double showProfit();
+    public String showProfit();
 
     public void getReport();
 
