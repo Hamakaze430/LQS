@@ -27,10 +27,10 @@ public class LogisticsDataServiceTextFileImpl extends UnicastRemoteObject implem
 	public LogisticsDataServiceTextFileImpl() throws RemoteException {
 		super();
 	}
-	public static void main(String[] args) throws RemoteException{
-		LogisticsDataServiceTextFileImpl aaa = new LogisticsDataServiceTextFileImpl();
-		LogisticsPO po = aaa.find("1234567890");
-	}
+//	public static void main(String[] args) throws RemoteException{
+//		LogisticsDataServiceTextFileImpl aaa = new LogisticsDataServiceTextFileImpl();
+//		LogisticsPO po = aaa.find("1234567890");
+//	}
 	public LogisticsPO find(String id) throws RemoteException{
 		File file = new File("src/main/java/txt/logistics.txt");
 		try{

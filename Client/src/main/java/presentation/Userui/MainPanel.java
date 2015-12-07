@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 
+import Miscellaneous.Authorities;
 import businessLogic.Userbl.stub.UserblStub;
 import businessLogicService.UserblService.LoginblService;
 import businessLogicService.UserblService.UserblService;
@@ -51,7 +52,6 @@ import presentation.mainui.MainFrame;
 import presentation.mainui.PictureButton;
 import presentation.mainui.PictureLabel;
 import presentation.mainui.WelcomePanel;
-import vo.Authorities;
 import vo.UserBaseVO;
 
 public class MainPanel extends JPanel {
@@ -62,9 +62,11 @@ public class MainPanel extends JPanel {
 	private UserblService user;
 	private final int widthOfUp = 1000;
 	private final int heightOfUp = 50;
-	
+	private static JButton[] buttontoshow = new JButton[30];
+	private static String[] iconAddress = new String[30];
 	private final int width = 64;
 	private final int height = 70;
+	private static int buttonClicked = -1;
 	public MainPanel(UserblService user){
 		this.user = user;
 		this.setSize(1024,768);
@@ -154,7 +156,7 @@ public class MainPanel extends JPanel {
 		cardPanel.setLayout(card);
 		int i = 0;
 		
-		 final JButton[] buttontoshow = new JButton[30];
+		
 		
 		JButton button;
 		JPanel init = new  JPanel();	
@@ -164,27 +166,29 @@ public class MainPanel extends JPanel {
 		if (user.hasTheAuthority(Authorities.寄件单)) {	
 			JPanel send = new  SendPanel();			
 			cardPanel.add(send, "1");				
-			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/send_unselected.png");		
+			button = new InitButton(i,"src/main/java/image/send_unselected.png");		
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/send_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/send_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "1");	
-					m = true;
+					
 				
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if (buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/send_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/send_unselected.png",((JButton)e.getSource()));
 				}				
@@ -194,28 +198,30 @@ public class MainPanel extends JPanel {
 		if (user.hasTheAuthority(Authorities.收件单)) {
 			JPanel receive = new ReceivePanel(user);			
 			cardPanel.add(receive, "2");		
-			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/receive_unselected.png");		
+			button = new InitButton(i,"src/main/java/image/receive_unselected.png");		
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/receive_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+			
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/receive_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "2");	
-					m = true; 
+					
 					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if (buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/receive_unselected.png",((JButton)e.getSource()));	
 					
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/receive_unselected.png",((JButton)e.getSource()));
 				}				
@@ -225,26 +231,28 @@ public class MainPanel extends JPanel {
 		if (user.hasTheAuthority(Authorities.装车单)){
 			JPanel loading = new LoadingPanel(user);			
 			cardPanel.add(loading, "3");			
-			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/loading_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/loading_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/loading_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/loading_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "3");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if (buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/loading_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/loading_unselected.png",((JButton)e.getSource()));
 				}				
@@ -255,25 +263,28 @@ public class MainPanel extends JPanel {
 			JPanel arrival = new ArrivalPanel();
 			cardPanel.add(arrival, "4");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/arrival_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/arrival_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/arrival_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/arrival_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "4");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/arrival_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/arrival_unselected.png",((JButton)e.getSource()));
 				}				
@@ -284,25 +295,28 @@ public class MainPanel extends JPanel {
 			JPanel deliver = new DeliverPanel();
 			cardPanel.add(deliver, "5");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/deliver_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/deliver_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/deliver_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/deliver_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "5");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/deliver_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/deliver_unselected.png",((JButton)e.getSource()));
 				}				
@@ -313,25 +327,28 @@ public class MainPanel extends JPanel {
 			JPanel voucher = new VoucherPanel();
 			cardPanel.add(voucher, "6");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/voucher_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/voucher_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/voucher_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/voucher_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "6");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/voucher_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/voucher_unselected.png",((JButton)e.getSource()));
 				}				
@@ -342,25 +359,28 @@ public class MainPanel extends JPanel {
 			JPanel car = new CarPanel();
 			cardPanel.add(car, "7");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/car_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/car_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/car_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/car_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "7");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/car_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/car_unselected.png",((JButton)e.getSource()));
 				}				
@@ -371,25 +391,28 @@ public class MainPanel extends JPanel {
 			JPanel driver = new DriverPanel();
 			cardPanel.add(driver, "8");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/driver_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/driver_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/driver_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/driver_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "8");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/driver_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/driver_unselected.png",((JButton)e.getSource()));
 				}				
@@ -400,25 +423,28 @@ public class MainPanel extends JPanel {
 			JPanel transfer = new TransferPanel();
 			cardPanel.add(transfer, "9");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/transfer_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/transfer_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/transfer_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/transfer_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "9");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/transfer_unselected.png",((JButton)e.getSource()));					
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/transfer_unselected.png",((JButton)e.getSource()));
 				}				
@@ -429,25 +455,28 @@ public class MainPanel extends JPanel {
 			JPanel storageIn = new StorageInPanel();
 			cardPanel.add(storageIn, "10");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/storageIn_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/storageIn_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/storageIn_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/storageIn_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "10");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/storageIn_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/storageIn_unselected.png",((JButton)e.getSource()));
 				}				
@@ -458,25 +487,28 @@ public class MainPanel extends JPanel {
 			JPanel storageOut = new StorageOutPanel();
 			cardPanel.add(storageOut, "11");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/storageIn_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/storageOut_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/storageOut_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/storageOut_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "11");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/storageOut_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/storageOut_unselected.png",((JButton)e.getSource()));
 				}				
@@ -487,25 +519,28 @@ public class MainPanel extends JPanel {
 			JPanel check = new CheckPanel();
 			cardPanel.add(check, "12");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/check_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/check_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/check_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/check_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "12");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/check_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/check_unselected.png",((JButton)e.getSource()));
 				}				
@@ -516,25 +551,28 @@ public class MainPanel extends JPanel {
 			JPanel stocking =  new StockingPanel();
 			cardPanel.add(stocking, "13");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/stocking_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/stocking_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/stocking_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/stocking_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "13");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/stocking_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/stocking_unselected.png",((JButton)e.getSource()));
 				}				
@@ -545,25 +583,28 @@ public class MainPanel extends JPanel {
 			JPanel division = new DivisionPanel();
 			cardPanel.add(division, "14");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/division_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/division_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/division_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/division_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "14");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/division_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/division_unselected.png",((JButton)e.getSource()));
 				}				
@@ -574,25 +615,28 @@ public class MainPanel extends JPanel {
 			JPanel account = new AccountPanel();
 			cardPanel.add(account, "15");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/account_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/account_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/account_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/account_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "15");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/account_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/account_unselected.png",((JButton)e.getSource()));
 				}				
@@ -603,25 +647,28 @@ public class MainPanel extends JPanel {
 			JPanel approval = new ApprovalPanel();
 			cardPanel.add(approval, "16");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/approval_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/approval_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/approval_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/approval_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "16");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/approval_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/approval_unselected.png",((JButton)e.getSource()));
 				}				
@@ -632,25 +679,28 @@ public class MainPanel extends JPanel {
 			JPanel organization = new OrganizationPanel();
 			cardPanel.add(organization, "17");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/organization_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/organization_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/organization_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/organization_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "17");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/organization_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/organization_unselected.png",((JButton)e.getSource()));
 				}				
@@ -661,25 +711,28 @@ public class MainPanel extends JPanel {
 			JPanel voucherSearch  = new VoucherSearchPanel();
 			cardPanel.add(voucherSearch, "18");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/voucherSearch_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/voucherSearch_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/voucherSearch_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/voucherSearch_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "18");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/voucherSearch_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/voucherSearch_unselected.png",((JButton)e.getSource()));
 				}				
@@ -690,25 +743,28 @@ public class MainPanel extends JPanel {
 			JPanel payment = new PaymentPanel(user);
 			cardPanel.add(payment, "19");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/payment_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/payment_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/payment_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/payment_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "19");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/payment_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/payment_unselected.png",((JButton)e.getSource()));
 				}				
@@ -719,25 +775,28 @@ public class MainPanel extends JPanel {
 			JPanel cost = new CostPanel(user);
 			cardPanel.add(cost, "20");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/cost_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/cost_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/cost_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/cost_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "20");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/cost_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/cost_unselected.png",((JButton)e.getSource()));
 				}				
@@ -748,25 +807,28 @@ public class MainPanel extends JPanel {
 			JPanel sales = new SalesPanel(user);
 			cardPanel.add(sales, "21");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/sales_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/sales_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/sales_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/sales_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "21");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/sales_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/sales_unselected.png",((JButton)e.getSource()));
 				}				
@@ -777,25 +839,28 @@ public class MainPanel extends JPanel {
 			JPanel bill = new BillPanel();
 			cardPanel.add(bill, "22");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/bill_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/bill_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/bill_unselecteds.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/bill_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "22");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/bill_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/bill_unselected.png",((JButton)e.getSource()));
 				}				
@@ -806,25 +871,28 @@ public class MainPanel extends JPanel {
 			JPanel salaryStrategy = new SalaryStrategyPanel();
 			cardPanel.add(salaryStrategy, "23");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/salaryStrategy_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/salaryStrategy_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/salaryStrategy_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/salaryStrategy_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "23");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/salaryStrategy_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/salaryStrategy_unselected.png",((JButton)e.getSource()));
 				}				
@@ -835,25 +903,28 @@ public class MainPanel extends JPanel {
 			JPanel price = new PricePanel();
 			cardPanel.add(price, "24");			
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/price_unselected.png");			
+			button = new InitButton(i,"src/main/java/image/price_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/price_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/price_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "24");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/price_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/price_unselected.png",((JButton)e.getSource()));
 				}				
@@ -861,28 +932,31 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.用户管理)) {
-			JPanel userManager = new UserManagerPanel();
+			JPanel userManager = new UserManagerPanel(i);
 			cardPanel.add(userManager, "25");		
 			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/userManager_unselected.png");		
+			button = new InitButton(i,"src/main/java/image/userManager_unselected.png");		
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/userManager_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/userManager_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "25");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/userManager_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/userManager_unselected.png",((JButton)e.getSource()));
 				}				
@@ -890,28 +964,30 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.部门管理)) {
-			JPanel apartmentManager = new ApartmentManagerPanel();
-			cardPanel.add(apartmentManager, "26");			
-			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/apartmentManager_unselected.png");			
+			JPanel apartmentManager = new ApartmentManagerPanel(i);
+			cardPanel.add(apartmentManager, "26");	
+			button = new InitButton(i,"src/main/java/image/apartmentManager_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/apartmentManager_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/apartmentManager_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "26");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/apartmentManager_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/apartmentManager_unselected.png",((JButton)e.getSource()));
 				}				
@@ -919,28 +995,30 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.权限管理)){
-			JPanel authoritiesSetting = new AuthoritiesSettingPanel();
-			cardPanel.add(authoritiesSetting, "27");			
-			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/authoritiesSetting_unselected.png");			
+			JPanel authoritiesSetting = new AuthoritiesSettingPanel(i);
+			cardPanel.add(authoritiesSetting, "27");	
+			button = new InitButton(i,"src/main/java/image/authoritiesSetting_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/authoritiesSetting_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/authoritiesSetting_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "27");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/authoritiesSetting_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/authoritiesSetting_unselected.png",((JButton)e.getSource()));
 				}				
@@ -949,27 +1027,29 @@ public class MainPanel extends JPanel {
 		}
 		if (user.hasTheAuthority(Authorities.系统日志)){
 			JPanel diary = new DiaryPanel();
-			cardPanel.add(diary, "28");			
-			button = new JButton();
-			InitButton.editButton(button,i,"src/main/java/image/diary_unselected.png");			
+			cardPanel.add(diary, "28");	
+			button = new InitButton(i,"src/main/java/image/diary_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
+			iconAddress[i] = "src/main/java/image/diary_unselected.png";
 			button.addMouseListener(new MouseListener(){
-				boolean m = false;
+				
 				public void mouseClicked(MouseEvent e) {
+					closeButton(buttonClicked);
+					buttonClicked = ((InitButton)e.getSource()).getNum();
 					setIcon("src/main/java/image/diary_selected.png",((JButton)e.getSource()));		
 					card.show(cardPanel, "28");	
-					m = true; 
+					
 				}
 				public void mousePressed(MouseEvent e) {}
 				public void mouseReleased(MouseEvent e) {}
 				public void mouseEntered(MouseEvent e) {	
-					if (m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()-5, ((JButton)e.getSource()).getY()-5, width+10, height+10);
 					setIcon("src/main/java/image/diary_unselected.png",((JButton)e.getSource()));						
 				}
 				public void mouseExited(MouseEvent e) {
-					if(m) return;
+					if(buttonClicked == ((InitButton)e.getSource()).getNum()) return;
 					((JButton)e.getSource()).setBounds(((JButton)e.getSource()).getX()+5, ((JButton)e.getSource()).getY()+5, width, height);
 					setIcon("src/main/java/image/diary_unselected.png",((JButton)e.getSource()));
 				}				
@@ -1019,6 +1099,14 @@ public class MainPanel extends JPanel {
 		Image temp = icon.getImage().getScaledInstance(iconButton.getWidth(), iconButton.getHeight(), icon.getImage().SCALE_DEFAULT);
 		icon = new ImageIcon(temp);
 		iconButton.setIcon(icon);
+	}
+	public static void closeButton(int buttonNum) {
+		if (buttonNum == -1) return;
+		JButton button= buttontoshow[buttonNum];
+		button.setBounds(button.getX()+5, button.getY()+5, button.getWidth()-10, button.getHeight()-10);
+		setIcon(iconAddress[buttonNum],button);	
+		buttonClicked = -1;
+		
 	}
 	
 	

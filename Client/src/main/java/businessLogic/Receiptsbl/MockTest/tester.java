@@ -6,15 +6,15 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import Miscellaneous.FormType;
 import businessLogic.Receiptsbl.Receiptsbl;
-import businessLogic.Userbl.User;
+import businessLogic.Userbl.Userbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
-import vo.FormType;
 
 public class tester {
 		@Test
 		public void test(){
-			User user = new MockUser();
+			Userbl user = new MockUser();
 			ReceiptsblService bl = new Receiptsbl(user);
 			ArrayList<String> list = new ArrayList<String>();
 			list.add("025000001");

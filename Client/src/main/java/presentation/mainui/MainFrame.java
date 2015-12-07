@@ -11,9 +11,9 @@ import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.plaf.FontUIResource;
 
+import Miscellaneous.FormType;
 import presentation.CarAndDriverui.CarAndDriverui;
 import presentation.LogisticsInfoSearchui.LogisticsPanel;
-import vo.FormType;
 import vo.HallVO;
 import vo.UserBaseVO;
 

@@ -1,8 +1,8 @@
 package businessLogic.Receiptsbl.MockTest;
 
-import businessLogic.Userbl.User;
+import businessLogic.Userbl.Userbl;
 
-public class MockUser extends User {
+public class MockUser extends Userbl {
 	public String getHallId(){
 		return "025001";
 	}

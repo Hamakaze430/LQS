@@ -1,6 +1,8 @@
 package businessLogicService.UserblService;
 
-import vo.Authorities;
+import java.util.List;
+
+import Miscellaneous.Authorities;
 import vo.UserVO;
 
 public interface UserblService {
@@ -22,6 +24,12 @@ public interface UserblService {
 	public int getUserSex();
 
 	public String getCompanyName();
+
+	public boolean update(UserVO vo);
+
+	public boolean delete(UserVO vo);
+
+	public List<UserVO> getAll();
 	
 	
 	

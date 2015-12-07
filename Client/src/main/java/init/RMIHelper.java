@@ -9,6 +9,8 @@ import dataService.BankAccountdataService.BankAccountdataService;
 import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
 import dataService.StrategydataService.ConstantdataService.ConstantdataService;
 import dataService.StrategydataService.SalarydataService.SalarydataService;
+import dataService.UserdataService.ApartmentDataService;
+import dataService.UserdataService.AuthoritiesSettingDataService;
 
 
 
@@ -25,6 +27,10 @@ public class RMIHelper {
     private static SalarydataService salaryData;
     
     private static ConstantdataService constantData;
+    
+    private static ApartmentDataService apartmentData;
+    
+	private static AuthoritiesSettingDataService authoritiesData;
 
     public synchronized static void init() throws ClientInitException {
         if (inited) {
@@ -42,8 +48,15 @@ public class RMIHelper {
     private static void initObjects() throws MalformedURLException, RemoteException, NotBoundException {
         String urlPrefix = "rmi://" + IP + "/";
         logisticsData = (LogisticsDataService) Naming.lookup(urlPrefix + "logisticsData-Server");
+        apartmentData = (ApartmentDataService) Naming.lookup(urlPrefix + "apartmentData-Server");
+        authoritiesData = (AuthoritiesSettingDataService) Naming.lookup(urlPrefix + "authoritiesData-Server");
     }
 
+    
+    public static ApartmentDataService getApartmentData() {
+		return apartmentData;
+	}
+    
     public static LogisticsDataService getLogisticsData() {
       return logisticsData;
   }
@@ -61,6 +74,11 @@ public class RMIHelper {
 	public static ConstantdataService getConstantDataService() {
 		// TODO Auto-generated method stub
 		return constantData;
+	}
+
+	public static AuthoritiesSettingDataService getAuthoritiesData() {
+		// TODO Auto-generated method stub
+		return authoritiesData;
 	}
     
 //    public static DataFactoryService getDataFactory() {

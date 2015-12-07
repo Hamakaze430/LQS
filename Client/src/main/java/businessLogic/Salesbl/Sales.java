@@ -37,9 +37,9 @@ public class Sales implements SalesblService{
         return dc.check(this.start, this.end);
     }
 
-	public String getReport() {
+	public void getReport() {
 		// TODO Auto-generated method stub
-		return null;
+		sales.getReport(sales.getSales(this.start, this.end));
 	}
 
 	public SalesVO show() {

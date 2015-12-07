@@ -6,21 +6,19 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import Miscellaneous.FormType;
 import businessLogic.Receiptsbl.MockTest.MockCarAndDriver;
-import businessLogic.Userbl.User;
+import businessLogic.Userbl.Userbl;
 import businessLogicService.CarAndDriverblService.CarAndDriverblService;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
 import businessLogicService.UserblService.UserblService;
-import vo.FormType;
 
 public class Receiptsbl implements ReceiptsblService {
 	private UserblService user;
 	private CarAndDriverblService carAndDriver;
-<<<<<<< HEAD
-	public Receiptsbl(User user){
-=======
+
 	public Receiptsbl(UserblService user){
->>>>>>> origin/master
+
 		carAndDriver = new MockCarAndDriver();
 		this.user = user;
 	}

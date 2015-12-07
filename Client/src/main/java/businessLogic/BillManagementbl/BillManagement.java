@@ -47,5 +47,8 @@ public class BillManagement implements BillManagementblService{
 		return bm.getBillManagementPO(date);
 	}
 
+	public void getReport(BillManagementPO po){
+		bm.getReport(po);
+	}
 	
 }

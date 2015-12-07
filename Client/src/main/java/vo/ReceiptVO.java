@@ -1,6 +1,9 @@
 package vo;
 
 import java.util.Date;
+
+import Miscellaneous.ReceiptState;
+
 import java.io.Serializable;
 
 import po.ReceiptPO;

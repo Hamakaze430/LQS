@@ -4,7 +4,7 @@ import java.awt.Font;
 
 import javax.swing.JCheckBox;
 
-import vo.Authorities;
+import Miscellaneous.Authorities;
 
 public class CreateCheckBox extends JCheckBox{
 

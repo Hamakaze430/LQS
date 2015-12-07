@@ -11,10 +11,10 @@ import java.util.ArrayList;
  */
 public class SalesPO implements Serializable {
     
-	 private ArrayList<IncomePO> income;
+	 	private ArrayList<IncomePO> income;
 	    private ArrayList<PaymentPO> payment;
 	    
-	    SalesPO(ArrayList<IncomePO> income, ArrayList<PaymentPO> payment){
+	    public SalesPO(ArrayList<IncomePO> income, ArrayList<PaymentPO> payment){
 	    	this.income=income;
 	    	this.payment=payment;
 	    }

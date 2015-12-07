@@ -10,4 +10,6 @@ public interface SalesdataService extends Remote {
 
 	public SalesPO getSales(String start, String end);
 	
+	public void getReport(SalesPO sales);
+	
 }

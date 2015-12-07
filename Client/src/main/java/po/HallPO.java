@@ -2,20 +2,15 @@ package po;
 
 import java.io.Serializable;
 
-import vo.HallVO;
-
 public class HallPO implements Serializable{
-	public String name;
-	public String location;
-	public String id;
-	
-	public HallPO(HallVO vo){
-		name=vo.getName();
-		location=vo.getLocation();
-		id=vo.getID();
-	}
-	
-	public HallPO(String name, String location, String id){
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String name;
+	private String location;
+	private String id;
+	public HallPO(String name, String id, String location){
 		this.name = name;
 		this.location = location;
 		this.id = id;
@@ -23,19 +18,13 @@ public class HallPO implements Serializable{
 	public String getName(){
 		return name;
 	}
-	public void setName(String name){
-		this.name=name;
-	}
+	
 	public String getLocation(){
 		return location;
 	}
-	public void setLocation(String location){
-		this.location=location;
-	}
+	
 	public String getID(){
 		return id;
 	}
-	public void setID(String name){
-		this.id=id;
-	}
+	
 }

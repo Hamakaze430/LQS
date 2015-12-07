@@ -2,14 +2,11 @@ package vo;
 
 import java.util.Vector;
 
+import Miscellaneous.Place;
+
 public class HallVO extends Vector<String> {
-//	public String name;
-//	public String location;
-//	public String id;
+
 	public HallVO(String name, String id, String location){
-//		this.name = name;
-//		this.location = location;
-//		this.id = id;
 		this.add(name);
 		this.add(id);
 		this.add(location);
@@ -18,19 +15,25 @@ public class HallVO extends Vector<String> {
 	public String getName(){
 		return get(0);
 	}
-//	public void setName(String name){
-//		this.name=name;
-//	}
+
 	public String getLocation(){
 		return get(2);
 	}
-//	public void setLocation(String location){
-//		this.location=location;
-//	}
+
 	public String getID(){
 		return get(1);
 	}
-//	public void setID(String name){
-//		this.id=id;
-//	}
+
+	public String getType(){
+		int len = getID().length();
+		if (len == 3) return "公司";
+		if (len == 4) return "中转中心";
+		return "营业厅";
+	}
+	
+	public Place getPlace(){
+		String id = getID();
+		if (id.length() != 3) return Place.fromId(id.substring(0,3));
+		return null;
+	}
 }

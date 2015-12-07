@@ -17,7 +17,7 @@ public interface SalesblService {
 	
 	public SalesVO show();
 
-    public String getReport();
+    public void getReport();
     
     public void save(SalesPO sales);
 
