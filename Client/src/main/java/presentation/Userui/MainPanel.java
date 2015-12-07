@@ -4,11 +4,8 @@ import init.Client;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -17,12 +14,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
-import javax.swing.UIManager;
 
 import Miscellaneous.Authorities;
-import businessLogic.Userbl.stub.UserblStub;
-import businessLogicService.UserblService.LoginblService;
 import businessLogicService.UserblService.UserblService;
 import presentation.Approvalui.ApprovalPanel;
 import presentation.BankAccountui.AccountPanel;
@@ -48,11 +41,8 @@ import presentation.WareHouseui.CheckPanel;
 import presentation.WareHouseui.DivisionPanel;
 import presentation.WareHouseui.StockingPanel;
 import presentation.mainui.DiaryPanel;
-import presentation.mainui.MainFrame;
-import presentation.mainui.PictureButton;
 import presentation.mainui.PictureLabel;
 import presentation.mainui.WelcomePanel;
-import vo.UserBaseVO;
 
 public class MainPanel extends JPanel {
 	/**
@@ -94,7 +84,7 @@ public class MainPanel extends JPanel {
 		changePassword.addMouseListener(new MouseListener(){
 			public void mouseClicked(MouseEvent e) {
 				Client.frame.setEnabled(false);
-				JFrame cp = new CPFrame();
+				JFrame cp = new CPFrame(user);
 				cp.setVisible(true);
 			}
 			public void mousePressed(MouseEvent e) {}
@@ -1080,7 +1070,7 @@ public class MainPanel extends JPanel {
 		welcomeSentence.setLocation((1024-this.getWidth())/2,0);
 		welcomeSentence.setForeground(color);
 		welcomeSentence.setFont(font);
-		if (user.getUserSex() == 0) welcomeSentence.setText(user.getUserName()+"先生，你好(￣▽￣)ノ");//具体晚上好
+		if (user.getUserSex().equals("男")) welcomeSentence.setText(user.getUserName()+"先生，你好(￣▽￣)ノ");//具体晚上好
 		else welcomeSentence.setText(user.getUserName()+"女士，你好(￣▽￣)ノ");
 		
 		JLabel position = new JLabel("",JLabel.RIGHT);

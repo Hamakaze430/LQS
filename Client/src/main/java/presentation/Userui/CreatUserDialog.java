@@ -26,13 +26,14 @@ import Miscellaneous.Authorities;
 import Miscellaneous.Identity;
 import Miscellaneous.Job;
 import Miscellaneous.Place;
-import Miscellaneous.UserID;
+import Miscellaneous.IDGenerator;
 import businessLogic.Userbl.Apartmentbl;
 import businessLogicService.UserblService.ApartmentblService;
 import businessLogicService.UserblService.UserblService;
 import init.Client;
 import presentation.mainui.SimpleButton;
 import vo.HallVO;
+import vo.UserVO;
 
 public class CreatUserDialog extends JDialog {
 	JTextField name;
@@ -141,71 +142,62 @@ public class CreatUserDialog extends JDialog {
 						return;
 					}
 					
-					String sex = null;
-					if (male.isSelected()) sex = "男";
-					else if (female.isSelected()) sex = "女";
+					String Sex = null;
+					if (male.isSelected()) Sex = "男";
+					else if (female.isSelected()) Sex = "女";
 					else {
 						JOptionPane.showMessageDialog(null, "请选择用户性别！","", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 					
-					Job jobType;
+					String Job;
 					if (job.getSelectedIndex() == 0){
 						JOptionPane.showMessageDialog(null, "请选择用户职位！","", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 					else {
-						for (Job j : Job.values())
-							if (j.name().equals(job.getSelectedItem().toString())){
-								jobType = j;
-								break;
-							}
+						Job = job.getSelectedItem().toString();
 					}
 					
-					HallVO placeVO;
+					String Place;
 					if (place.getSelectedIndex() == 0){
 						JOptionPane.showMessageDialog(null, "请选择用户的工作单位！","", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 					else {
-						ApartmentblService apartment = new Apartmentbl();
-						for (HallVO p : apartment.getAll())
-							if (p.getName().equals(job.getSelectedItem().toString())){
-								placeVO = p;
-								break;
-							}
+						Place = place.getSelectedItem().toString();
 					}
 					
 					
 					String Id = id.getText();
-					String Password = password.getText();
+					
+					String Password = String.valueOf(password.getPassword());
 					if(Password.equals("")){
 						JOptionPane.showMessageDialog(null, "请输入用户密码！","", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 					
 					
-					Identity identityType;
+					String Identity;
 					if (identity.getSelectedIndex() == 0){
 						JOptionPane.showMessageDialog(null, "请选择用户权限！","", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
 					else {
-						for (Identity i : Identity.values())
-							if (i.name().equals(job.getSelectedItem().toString())){
-								identityType = i;
-								break;
-							}
+						Identity = identity.getSelectedItem().toString();
 					}
 					
-//					String Place = placeBox.getSelectedItem()+place.getText();
-//					name.setText("");
-//					id.setText("");
-//					place.setText("");
-//					bg.clearSelection();
-//					UserVO vo = new HallVO(Name, Id, Place);
-//					defaultModel.addRow(vo);
-//					bl.insert(vo);
+					id.setText("");
+					password.setText("");
+					identity.setSelectedItem(0);
+					name.setText("");
+					bg.clearSelection();
+					job.setSelectedItem(0);
+					place.setSelectedItem(0);
+					
+					UserVO vo = new UserVO(Id,Password,Identity,Name,Sex,Job,Place);
+					defaultModel.addRow(vo);
+					userbl.addUser(vo);
 				}
 				
 			});
@@ -232,7 +224,12 @@ public class CreatUserDialog extends JDialog {
 	}
 	class IdListener implements ActionListener{	
 		public void actionPerformed(ActionEvent e) {		
-			
+			if (place.getSelectedIndex() != 0 && job.getSelectedIndex() != 0){
+				Job jobType = Job.value(job.getSelectedItem().toString());
+				ApartmentblService apartment = new Apartmentbl();
+				String hallID = apartment.getId(place.getSelectedItem().toString());
+				id.setText(IDGenerator.generateID(jobType,hallID));
+			}
 			
 		}
 	}

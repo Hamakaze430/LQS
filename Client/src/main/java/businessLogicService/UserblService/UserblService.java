@@ -21,7 +21,7 @@ public interface UserblService {
 
 	public String getUserName();
 
-	public int getUserSex();
+	public String getUserSex();
 
 	public String getCompanyName();
 
@@ -30,9 +30,12 @@ public interface UserblService {
 	public boolean delete(UserVO vo);
 
 	public List<UserVO> getAll();
-	
-	
-	
-	
 
+	public int getCount(String id);
+	
+	public UserVO findUser(String userID);
+	
+	public String getUserPassword();
+
+	public boolean changePassword(String valueOf);
 }

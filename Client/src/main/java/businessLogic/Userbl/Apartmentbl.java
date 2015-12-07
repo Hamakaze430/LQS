@@ -64,4 +64,14 @@ public class Apartmentbl implements ApartmentblService {
 		return ans;
 	}
 
+	public String getId(String hallName) {
+		HallPO po = dataFactory.getApartmentDataService().find("Name",hallName);
+		return po.getID();
+	}
+	
+	public String getName(String hallId) {
+		HallPO po = dataFactory.getApartmentDataService().find("Id",hallId);
+		return po.getName();
+	}
+
 }

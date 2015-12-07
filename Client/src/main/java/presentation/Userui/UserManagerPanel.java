@@ -71,7 +71,6 @@ public class UserManagerPanel extends JPanel {
 			
 			private static final long serialVersionUID = 1L;
 			public boolean isCellEditable(int row, int column){
-				//if (column == 1) return false;
 				if (row == rowEditable && column == columnEditable) return true;
 				return false;
 			}
@@ -121,6 +120,8 @@ public class UserManagerPanel extends JPanel {
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
+				
 				rowEditable = table.getSelectedRow();
 				columnEditable = table.getSelectedColumn();
 				if (columnEditable == 0) {
@@ -129,13 +130,25 @@ public class UserManagerPanel extends JPanel {
 					columnEditable = -1;
 					return;
 				}
+				
+				if (columnEditable != 1) {
+					JOptionPane.showMessageDialog(null, "对不起，暂时只可更改密码_(:зゝ∠)_敬请期待(*￣︶￣)y ！","", JOptionPane.ERROR_MESSAGE);
+					rowEditable = -1;
+					columnEditable = -1;
+					return;
+				}
+				
+//				if (columnEditable == 1){
+//					
+//				}
 				TableCellEditor cell = table.getCellEditor(rowEditable, columnEditable);
 				temp = (String) table.getValueAt(rowEditable, columnEditable);
-				System.out.println(temp);
+				//System.out.println(temp);
 				cell.addCellEditorListener(new CellEditorListener(){
 
 					public void editingStopped(ChangeEvent e) {
 						// TODO Auto-generated method stub
+						
 						int n = JOptionPane.showConfirmDialog(null, "确定修改该信息?", "确认框",JOptionPane.YES_NO_OPTION);
 						if (n == 1) {
 							table.setValueAt(temp, rowEditable, columnEditable);
@@ -147,7 +160,7 @@ public class UserManagerPanel extends JPanel {
 						UserVO vo = (UserVO)defaultModel.getDataVector().elementAt(index);
 						bl.update(vo);
 						rowEditable = -1;
-						columnEditable = -1;						
+						columnEditable = -1;				
 					}
 
 					public void editingCanceled(ChangeEvent e) {
@@ -201,7 +214,7 @@ public class UserManagerPanel extends JPanel {
 		// TODO Auto-generated method stub
 		List<UserVO> list = bl.getAll();
 		for (UserVO vo : list) defaultModel.addRow(vo);
-		defaultModel.addRow(new UserVO("02500000000","123456","快递员","王五","男","快递员","南京市鼓楼营业厅"));
+		//defaultModel.addRow(new UserVO("02500000000","123456","快递员","王五","男","快递员","南京市鼓楼营业厅"));
 	}
 	
 	@SuppressWarnings("serial")

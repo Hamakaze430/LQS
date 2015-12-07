@@ -22,4 +22,8 @@ public interface ApartmentblService {
 
 	List<String> getAllName();
 
+	String getId(String hallName);
+	
+	String getName(String hallId);
+
 }

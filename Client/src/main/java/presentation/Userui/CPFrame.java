@@ -14,12 +14,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import javax.swing.border.MatteBorder;
 
+import businessLogicService.UserblService.UserblService;
 import presentation.mainui.PictureButton;
 import presentation.mainui.PictureLabel;
 
@@ -29,10 +31,16 @@ public class CPFrame extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	private Font font = new Font("黑体",Font.PLAIN,13); 
-	public CPFrame(){
+	private UserblService userbl;
+	private JPasswordField oldPassword;
+	private JPasswordField newPassword;
+	private JPasswordField checkPassword;
+	
+	public CPFrame(UserblService user){
 		JLabel l = new PictureLabel("src/main/java/image/CPbg.png");
 		l.setBounds(0, 0, 384, 384);
 		this.setSize(384, 384);
+		this.userbl = user;
 		this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		this.setUndecorated(true);
 		this.setLocationRelativeTo(null);
@@ -45,30 +53,30 @@ public class CPFrame extends JFrame{
 		JLabel old = new JLabel("请输入原始密码(6 - 20 位)：");
 		old.setBounds(10, 50, 200, 30);
 		old.setFont(font);
-		JPasswordField oldPassword = new JPasswordField(20);
+		oldPassword = new JPasswordField(20);
 		oldPassword.setBounds(10, 90, 200, 30);		
 		oldPassword.setForeground(Color.black);
 		oldPassword.setOpaque(false);
-		oldPassword.setFont(font);
+		//oldPassword.setFont(font);
 		
 		JLabel newpassword  = new JLabel("请输入新密码(6 - 20 位)：");
 		newpassword.setBounds(10, 140, 200, 30);
 		newpassword.setFont(font);
-		JPasswordField newPassword = new JPasswordField(20);
+		newPassword = new JPasswordField(20);
 		newPassword.setBounds(10, 180, 200, 30);		
 		newPassword.setForeground(Color.black);
 		newPassword.setOpaque(false);
-		newPassword.setFont(font);
+		//newPassword.setFont(font);
 		
 		
 		JLabel check  = new JLabel("请再次输入新密码(6 - 20 位)：");
 		check.setBounds(10, 230, 220, 30);
 		check.setFont(font);
-		JPasswordField checkPassword = new JPasswordField(20);
+		checkPassword = new JPasswordField(20);
 		checkPassword.setBounds(10, 270, 200, 30);		
 		checkPassword.setForeground(Color.black);
 		checkPassword.setOpaque(false);
-		checkPassword.setFont(font);
+		//checkPassword.setFont(font);
 		
 		JButton confirm = new JButton();
 		confirm.setBounds(220, 330, 60, 30);
@@ -80,15 +88,20 @@ public class CPFrame extends JFrame{
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
-				
-				
-				
-				
-				
-				
-				
-				
+				if (!userbl.getUserPassword().equals(String.valueOf(oldPassword.getPassword()))){
+					JOptionPane.showMessageDialog(null, "密码不正确！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				if (!String.valueOf(newPassword.getPassword()).equals(String.valueOf(checkPassword.getPassword()))){
+					JOptionPane.showMessageDialog(null, "新密码不相同！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				userbl.changePassword(String.valueOf(newPassword.getPassword()));
+				JOptionPane.showMessageDialog(null, "密码修改成功！","", JOptionPane.INFORMATION_MESSAGE);
+				oldPassword.setText("");
+				newPassword.setText("");
+				checkPassword.setText("");
+				return;
 			}
 			public void mousePressed(MouseEvent e) {}
 			public void mouseReleased(MouseEvent e) {}

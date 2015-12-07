@@ -22,4 +22,6 @@ public interface ApartmentDataService extends Remote {
 
 	public boolean update(HallPO po);
 
+	public HallPO find(String known, String hall);
+
 }

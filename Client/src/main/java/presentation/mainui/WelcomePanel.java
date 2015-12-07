@@ -1,24 +1,21 @@
 package presentation.mainui;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import businessLogicService.UserblService.LoginblService;
 import init.Client;
 import presentation.LogisticsInfoSearchui.LogisticsPanel;
 import presentation.Userui.LoginPanel;
 
 public class WelcomePanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton logistics;
 	private JButton login;
 	public WelcomePanel(){	
@@ -75,8 +72,7 @@ public class WelcomePanel extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 			// TODO Auto-generated method stub
 			WelcomePanel.this.setVisible(false);
-			LoginblService bl = null;
-			Client.frame.add(new LoginPanel(bl));
+			Client.frame.add(new LoginPanel());
 			Client.frame.repaint();
 		}
 

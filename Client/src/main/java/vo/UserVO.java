@@ -4,16 +4,20 @@ import java.util.Vector;
 
 public class UserVO extends Vector<String> {
 	
-	public UserVO (String id,String password,String authority,String name,String sex,String position,String hall){
+	public UserVO (String id,String password,String authority,String name,String sex,String job,String hall){
 		this.add(id);
 		this.add(password);
 		this.add(authority);
 		this.add(name);
 		this.add(sex);
-		this.add(position);
+		this.add(job);
 		this.add(hall);
 	}
 
+	public void setPassword(String s){
+		this.set(1, s);
+	}
+	
 	public String getID() {
 		// TODO Auto-generated method stub
 		return get(0);
@@ -28,7 +32,7 @@ public class UserVO extends Vector<String> {
 		return get(4);
 	}
 
-	public String getPosition() {
+	public String getJob() {
 		// TODO Auto-generated method stub
 		return get(5);
 	}

@@ -11,42 +11,26 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import presentation.mainui.PictureButton;
 import presentation.mainui.PictureLabel;
 import presentation.mainui.WelcomePanel;
-import vo.LoginVO;
-import businessLogic.Userbl.Loginbl;
-import businessLogic.Userbl.stub.UserblStub;
-import businessLogicService.UserblService.LoginblService;
+import vo.UserVO;
+import businessLogic.Userbl.Userbl;
 import businessLogicService.UserblService.UserblService;
 
 public class LoginPanel extends JPanel{
-	private LoginblService bl;
 	
+	private UserblService bl;
 	private JLabel bg;
 	private JLabel IDbg;
 	private JLabel UserID;
@@ -60,10 +44,10 @@ public class LoginPanel extends JPanel{
 	private JButton exit;
 	private ImageIcon im;
 	
-	public LoginPanel(LoginblService bl){
-		this.bl=bl;
+	public LoginPanel(){
 		this.setSize(1024, 768);
 		this.setLayout(null);
+		bl = new Userbl();
 		im = new ImageIcon("src/main/java/image/background.jpg");
 		initLoginPanel();
 		this.setVisible(true);
@@ -191,9 +175,26 @@ public class LoginPanel extends JPanel{
 
 	protected boolean login() {
 		// TODO Auto-generated method stub
-
+		String Id = id.getText();
+		if (id.equals("")){
+			JOptionPane.showMessageDialog(null, "请输入用户名！","", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		
+		UserVO user = bl.findUser(Id);
+		if (user == null){
+			JOptionPane.showMessageDialog(null, "该用户不存在！","", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		
+		if (! user.getPassword().equals(String.valueOf(key.getPassword()))){
+			System.out.println(user.getPassword());
+			JOptionPane.showMessageDialog(null, "密码错误！","", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+		
 		LoginPanel.this.setVisible(false);
-		UserblService bl = new UserblStub();
+		UserblService bl = new Userbl(Id);
 		Client.frame.add(new MainPanel(bl));
 		Client.frame.repaint();
 		

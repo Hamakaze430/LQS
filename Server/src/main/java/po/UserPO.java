@@ -1,32 +1,28 @@
 package po;
 
 import java.io.Serializable;
-import po.*;
+
 
 public class UserPO implements Serializable{
-	private String name;
+	
 	private String id;
 	private String password;
-	
-	private String position;
 	private String authority;
 	
-	private double salary;	//newly added
+	private String name;
+	private String sex;
+	private String job;
+	private String hallId;
 	
-	private HallPO hall;
-	private CenterPO center;
-	
-	public UserPO (String name,String id,String password,String position,String authority, double salary, HallPO hall,CenterPO center){
-		this.id=id;
-		this.password=password;
-		this.name=name;
-		this.position=position;
-		this.authority=authority;
-		this.salary=salary;
-		this.hall = hall;
-		this.center=center;
+	public UserPO (String id, String password,String authority,String name,String sex, String job, String hallId){
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.sex = sex;
+		this.authority = authority;
+		this.job = job;
+		this.hallId=hallId;
 	}
-
 	public String getID() {
 		// TODO Auto-generated method stub
 		return id;
@@ -37,9 +33,9 @@ public class UserPO implements Serializable{
 		return password;
 	}
 
-	public String getPosition() {
+	public String getHallId() {
 		// TODO Auto-generated method stub
-		return position;
+		return hallId;
 	}
 
 	public String getAuthority() {
@@ -52,38 +48,11 @@ public class UserPO implements Serializable{
 		return name;
 	}
 	
-	public HallPO getHall(){
-		return hall;
+	public String getSex(){
+		return sex;
 	}
 	
-	public CenterPO getCenter(){
-		return center;
+	public String getJob(){
+		return job;
 	}
-	
-	public void setID(String id) {
-		// TODO Auto-generated method stub
-		this.id=id;
-	}
-
-	public void setPassword(String password) {
-		// TODO Auto-generated method stub
-		this.password=password;
-	}
-
-	public void setPosition(String position) {
-		// TODO Auto-generated method stub
-		this.position=position;
-	}
-
-	public void steAuthority(String authority) {
-		// TODO Auto-generated method stub
-		this.authority=authority;
-	}
-
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-		this.name=name;
-	}
-
-	
 }

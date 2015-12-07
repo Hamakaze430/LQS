@@ -21,6 +21,7 @@ public class DataFactory implements DataFactoryService {
 	private static LogisticsDataService logisticsData;
 	private static ApartmentDataService apartmentData;
 	private static AuthoritiesSettingDataService authorities;
+	private static UserdataService userData;
 	public LogisticsDataService getLogisticsDataService() {
 		logisticsData = RMIHelper.getLogisticsData();
 		return logisticsData;
@@ -77,8 +78,8 @@ public class DataFactory implements DataFactoryService {
 	}
 
 	public UserdataService getUserdataService() {
-		// TODO Auto-generated method stub
-		return null;
+		userData = RMIHelper.getUserData();
+		return userData;
 	}
 
 	public VoucherSearchdataService getVoucherSearchdataService() {

@@ -1,6 +1,9 @@
 package businessLogic.Userbl.stub;
 
 import vo.UserVO;
+
+import java.util.List;
+
 import Miscellaneous.Authorities;
 import businessLogicService.UserblService.UserblService;
 
@@ -33,6 +36,7 @@ public class UserblStub implements UserblService{
 		// TODO Auto-generated method stub
 	//if (one == Authorities.寄件单) return true;
 		if (one == Authorities.用户管理) return true;
+		if (one == Authorities.部门管理) return true;
 		//if (one == Authorities.收款单查询) return true;
 		return false;
 	}
@@ -48,6 +52,21 @@ public class UserblStub implements UserblService{
 	}
 
 	public String getCompanyName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean update(UserVO vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean delete(UserVO vo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public List<UserVO> getAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}

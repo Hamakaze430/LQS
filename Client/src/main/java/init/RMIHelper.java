@@ -11,6 +11,7 @@ import dataService.StrategydataService.ConstantdataService.ConstantdataService;
 import dataService.StrategydataService.SalarydataService.SalarydataService;
 import dataService.UserdataService.ApartmentDataService;
 import dataService.UserdataService.AuthoritiesSettingDataService;
+import dataService.UserdataService.UserdataService;
 
 
 
@@ -31,6 +32,8 @@ public class RMIHelper {
     private static ApartmentDataService apartmentData;
     
 	private static AuthoritiesSettingDataService authoritiesData;
+	
+	private static UserdataService userData;
 
     public synchronized static void init() throws ClientInitException {
         if (inited) {
@@ -50,6 +53,8 @@ public class RMIHelper {
         logisticsData = (LogisticsDataService) Naming.lookup(urlPrefix + "logisticsData-Server");
         apartmentData = (ApartmentDataService) Naming.lookup(urlPrefix + "apartmentData-Server");
         authoritiesData = (AuthoritiesSettingDataService) Naming.lookup(urlPrefix + "authoritiesData-Server");
+        userData = (UserdataService) Naming.lookup(urlPrefix + "userData-Server");
+        
     }
 
     
@@ -79,6 +84,11 @@ public class RMIHelper {
 	public static AuthoritiesSettingDataService getAuthoritiesData() {
 		// TODO Auto-generated method stub
 		return authoritiesData;
+	}
+	
+	public static UserdataService getUserData() {
+		// TODO Auto-generated method stub
+		return userData;
 	}
     
 //    public static DataFactoryService getDataFactory() {

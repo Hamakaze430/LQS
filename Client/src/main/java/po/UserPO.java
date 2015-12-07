@@ -8,34 +8,25 @@ import vo.UserVO;
 
 
 public class UserPO implements Serializable{
-	public String name;
-	public String id;
-	public String password;
 	
-	public String position;
-	public String authority;
-	public HallPO hall;
-	public CenterPO center;
+	private String id;
+	private String password;
+	private String authority;
 	
-	public UserPO (String name,String id,String password,String position,String authority,HallPO hall,CenterPO center){
-		this.id=id;
-		this.password=password;
-		this.name=name;
-		this.position=position;
-		this.authority=authority;
-		this.hall = hall;
-		this.center=center;
+	private String name;
+	private String sex;
+	private String job;
+	private String hallId;
+	
+	public UserPO (String id, String password,String authority,String name,String sex, String job, String hallId){
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.sex = sex;
+		this.authority = authority;
+		this.job = job;
+		this.hallId=hallId;
 	}
-	
-	public UserPO(UserVO vo){
-		id=vo.getID();
-		password=vo.getPassword();
-		name=vo.getName();
-		position=vo.getPosition();
-		hall=new HallPO(vo.getHall());
-		center=new CenterPO(vo.getCenter());
-	}
-
 	public String getID() {
 		// TODO Auto-generated method stub
 		return id;
@@ -46,9 +37,9 @@ public class UserPO implements Serializable{
 		return password;
 	}
 
-	public String getPosition() {
+	public String getHallId() {
 		// TODO Auto-generated method stub
-		return position;
+		return hallId;
 	}
 
 	public String getAuthority() {
@@ -61,38 +52,11 @@ public class UserPO implements Serializable{
 		return name;
 	}
 	
-	public HallPO getHall(){
-		return hall;
+	public String getSex(){
+		return sex;
 	}
 	
-	public CenterPO getCenter(){
-		return center;
+	public String getJob(){
+		return job;
 	}
-	
-	public void setID(String id) {
-		// TODO Auto-generated method stub
-		this.id=id;
-	}
-
-	public void setPassword(String password) {
-		// TODO Auto-generated method stub
-		this.password=password;
-	}
-
-	public void setPosition(String position) {
-		// TODO Auto-generated method stub
-		this.position=position;
-	}
-
-	public void steAuthority(String authority) {
-		// TODO Auto-generated method stub
-		this.authority=authority;
-	}
-
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-		this.name=name;
-	}
-
-	
 }

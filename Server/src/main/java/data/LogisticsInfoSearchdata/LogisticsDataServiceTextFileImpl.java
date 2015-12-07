@@ -32,7 +32,7 @@ public class LogisticsDataServiceTextFileImpl extends UnicastRemoteObject implem
 //		LogisticsPO po = aaa.find("1234567890");
 //	}
 	public LogisticsPO find(String id) throws RemoteException{
-		File file = new File("src/main/java/txt/logistics.txt");
+		File file = new File("src/main/java/ser/logistics.txt");
 		try{
 			InputStreamReader read = new InputStreamReader(new FileInputStream(file),"UTF-8");
 			BufferedReader br = new BufferedReader(read);

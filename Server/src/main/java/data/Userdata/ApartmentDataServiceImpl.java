@@ -39,6 +39,26 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 //		a.delete(new HallPO("南京市中转中心","0250","南京市"));
 //	}
 	
+	@Override
+	public HallPO find(String known, String hall) throws RemoteException {
+		List<HallPO>  list = findAll();
+		
+		if (known.equals("Name")){
+			for (HallPO po : list){
+				if (po.getName().equals(hall)) return po;
+			}
+			return null;
+		}
+		if (known.equals("Id")){
+			for (HallPO po : list){
+				if (po.getID().equals(hall)) return po;
+			}
+			return null;
+		}
+		return null;
+	}
+	
+	
 	@SuppressWarnings({ "unchecked", "resource" })
 	@Override
 	public List<HallPO> findAll() throws RemoteException {
@@ -250,4 +270,8 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 		return false;
 		
 	}
+
+	
+
+	
 }

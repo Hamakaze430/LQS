@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 import data.LogisticsInfoSearchdata.LogisticsDataServiceTextFileImpl;
 import data.Userdata.ApartmentDataServiceImpl;
 import data.Userdata.AuthoritiesDataServiceImpl;
+import data.Userdata.UserdataImpl;
 
 public class RMIHelper {
 
@@ -25,6 +26,7 @@ public class RMIHelper {
         NAMING_MAP.put("logisticsData-Server", LogisticsDataServiceTextFileImpl.class);
         NAMING_MAP.put("apartmentData-Server", ApartmentDataServiceImpl.class);
         NAMING_MAP.put("authoritiesData-Server", AuthoritiesDataServiceImpl.class);
+        NAMING_MAP.put("userData-Server", UserdataImpl.class);
     }
 
     public synchronized static void init() throws ServerInitException {
