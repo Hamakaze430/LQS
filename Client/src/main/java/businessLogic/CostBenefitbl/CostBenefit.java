@@ -55,18 +55,17 @@ public class CostBenefit implements CostBenefitblService{
     	return vo;
     }
 
-    public double showCost(){
+    public String showCost(){
         return this.getVO().getCost();
     }
 
-    public double showBenefit(){
+    public String showBenefit(){
         return this.getVO().getBenefit();
     }
 
-    public double showProfit(){
+    public String showProfit(){
         return this.getVO().getProfit();
     }
-
     
     public void getReport(){
     	cbImpl.getReport(cbImpl.getCostBenefitPO(date));

@@ -14,9 +14,9 @@ import po.receipts.PaymentPO;
 public class CostBenefitPO implements Serializable {
 	private ArrayList<PaymentPO> payment;
 	private ArrayList<IncomePO> income;
-	private double totalPayment;
-	private double totalIncome;
-	private double totalProfit;
+	private String totalPayment;
+	private String totalIncome;
+	private String totalProfit;
 	
 //	public void setLists(String date){
 //		ReceiptsdataImpl rdi=new ReceiptsdataImpl();
@@ -31,15 +31,15 @@ public class CostBenefitPO implements Serializable {
 //        this.totalProfit=cal.getProfit();
 //    }
 
-    public double getTotalPayment(){
+    public String getTotalPayment(){
     	return this.totalPayment;
     }
     
-    public double getTotalIncome(){
+    public String getTotalIncome(){
     	return this.totalIncome;
     }
 
-    public double getProfit() {
+    public String getProfit() {
     	return this.totalProfit;
     }
 }

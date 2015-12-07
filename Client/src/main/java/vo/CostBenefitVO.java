@@ -18,9 +18,9 @@ public class CostBenefitVO extends Vector<String>{
 	double profit;
 	
 	public CostBenefitVO(CostBenefitPO po){
-		this.cost=po.getTotalPayment();
-		this.benefit=po.getTotalIncome();
-		this.profit=po.getProfit();
+		this.add(po.getTotalPayment());
+		this.add(po.getTotalIncome());
+		this.add(po.getProfit());
 	}
 	
 	public CostBenefitVO(String cost, String benefit, String profit){

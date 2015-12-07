@@ -1,11 +1,14 @@
 package businessLogic.Userbl.stub;
 
+import java.util.List;
+
+import businessLogicService.UserblService.UserblService;
 import vo.UserVO;
 
 import java.util.List;
 
 import Miscellaneous.Authorities;
-import businessLogicService.UserblService.UserblService;
+
 
 public class UserblStub implements UserblService{
 	int userid=0;
@@ -34,21 +37,18 @@ public class UserblStub implements UserblService{
 
 	public boolean hasTheAuthority(Authorities one) {
 		// TODO Auto-generated method stub
-	//if (one == Authorities.寄件单) return true;
-		if (one == Authorities.用户管理) return true;
-		if (one == Authorities.部门管理) return true;
+		//if (one == Authorities.寄件单) return true;
+//		if (one == Authorities.用户管理) return true;
+//		if (one == Authorities.部门管理) return true;
 		//if (one == Authorities.收款单查询) return true;
+		if (one == Authorities.账户管理||one == Authorities.权限管理) return true;
 		return false;
 	}
+	
 
 	public String getUserName() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	public int getUserSex() {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	public String getCompanyName() {
@@ -69,6 +69,31 @@ public class UserblStub implements UserblService{
 	public List<UserVO> getAll() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public String getUserSex() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getCount(String id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public UserVO findUser(String userID) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getUserPassword() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean changePassword(String valueOf) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 
