@@ -31,7 +31,7 @@ public class UserblStub implements UserblService{
 
 	public boolean hasTheAuthority(Authorities one) {
 		// TODO Auto-generated method stub
-	if (one == Authorities.收款单查询||one == Authorities.成本收益) return true;
+	if (one == Authorities.付款单||one == Authorities.经营情况) return true;
 		return false;
 	}
 

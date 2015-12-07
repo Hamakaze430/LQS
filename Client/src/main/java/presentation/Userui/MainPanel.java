@@ -687,7 +687,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.付款单)) {
-			JPanel payment = new PaymentPanel();
+			JPanel payment = new PaymentPanel(user);
 			cardPanel.add(payment, "19");			
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/payment_unselected.png");			
@@ -745,7 +745,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.经营情况)) {
-			JPanel sales = new SalesPanel();
+			JPanel sales = new SalesPanel(user);
 			cardPanel.add(sales, "21");			
 			button = new JButton();
 			InitButton.editButton(button,i,"src/main/java/image/sales_unselected.png");			
