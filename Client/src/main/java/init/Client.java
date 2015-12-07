@@ -20,32 +20,6 @@ public class Client {
 	public static DataFactoryService dataFactory;
 	public static void main(String[] args){
 
-<<<<<<< HEAD
-//		try {
-//			RMIHelper.init();
-//		//	System.out.println("Success");
-//			dataFactory = new DataFactory();
-//			frame = new MainFrame();
-//			frame.addWelcomePanel();
-//			frame.setVisible(true);
-//		} catch (ClientInitException e) {
-//			 e.printStackTrace();
-//	            JOptionPane.showMessageDialog(
-//	                    null,
-//	                    "Client boots fail!\nCause: " + e.getMessage(),
-//	                    "Fatal Error",
-//	                    JOptionPane.ERROR_MESSAGE
-//	            );
-//		}
-//
-
-
-		frame = new MainFrame();
-		UserblService bl = new UserblStub();
-		frame.add(new MainPanel(bl));
-		//frame.addWelcomePanel();
-		frame.setVisible(true);
-=======
 		try {
 			RMIHelper.init();
 		//	System.out.println("Success");
@@ -62,8 +36,33 @@ public class Client {
 	                    JOptionPane.ERROR_MESSAGE
 	            );
 		}
-//		
->>>>>>> df4d0100a629d8b1d6c89398dcb6363a668b7e5f
+
+
+
+//		frame = new MainFrame();
+//		UserblService bl = new UserblStub();
+//		frame.add(new MainPanel(bl));
+//		//frame.addWelcomePanel();
+//		frame.setVisible(true);
+
+//		try {
+//			RMIHelper.init();
+//		//	System.out.println("Success");
+//			dataFactory = new DataFactory();
+//			frame = new MainFrame();
+//			frame.addWelcomePanel();
+//			frame.setVisible(true);
+//		} catch (ClientInitException e) {
+//			 e.printStackTrace();
+//	            JOptionPane.showMessageDialog(
+//	                    null,
+//	                    "Client boots fail!\nCause: " + e.getMessage(),
+//	                    "Fatal Error",
+//	                    JOptionPane.ERROR_MESSAGE
+//	            );
+//		}
+////		
+
 	}
 
 }

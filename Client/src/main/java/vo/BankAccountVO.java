@@ -1,25 +1,32 @@
 package vo;
 
+import java.util.Vector;
+
 /**
  * Created by admin on 15/10/25.
  */
-public class BankAccountVO {
+public class BankAccountVO extends Vector<String>{
 
 	double money;
 	String name;
-	
-	public BankAccountVO(String name,double money){
-		this.name = name;
-		this.money = money;
+	public BankAccountVO(String account, String name, String cost){
+		this.add(account);
+		this.add(name);
+		this.add(cost);
+		
 	}
-	
-	public double getMoney(){
-		return this.money;
+	public String getAccount(){
+		return get(0);
 	}
-	
+
 	public String getName(){
-		return this.name;
+		return get(1);
 	}
+
+	public String getMonny(){
+		return get(2);
+	}
+	
 	
 	public void addMoney(int num){
 		money += num;
