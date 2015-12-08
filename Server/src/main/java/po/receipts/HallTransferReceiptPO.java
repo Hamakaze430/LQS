@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import po.OrderPO;
 import Miscellaneous.ReceiptState;
 
-public class HallTransferReceiptPO implements Serializable{
+public class HallTransferReceiptPO extends ReceiptPOBase implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String location;
 	private String hallID;

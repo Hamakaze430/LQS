@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import po.ComGoodsPO;
 
-public class StorageInReceiptPO implements Serializable{
+public class StorageInReceiptPO extends ReceiptPOBase implements Serializable{
 private static final long serialVersionUID = 1L;
 	
     String id;

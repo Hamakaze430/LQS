@@ -7,7 +7,7 @@ import Miscellaneous.ExpressType;
 import po.OrderPO;
 
 
-public class TransferReceiptPO implements Serializable{
+public class TransferReceiptPO extends ReceiptPOBase implements Serializable{
 private static final long serialVersionUID = 1L;
 	
 	String id;

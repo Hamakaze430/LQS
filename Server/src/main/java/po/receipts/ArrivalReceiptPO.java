@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import po.OrderPO;
 import Miscellaneous.ReceiptState;
 
-public class ArrivalReceiptPO implements Serializable{
+public class ArrivalReceiptPO extends ReceiptPOBase implements Serializable{
 	private static final long serialVersionUID = -5743990485972024749L;
 
 	private String from;
