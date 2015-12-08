@@ -13,6 +13,10 @@ import po.receipts.PaymentPO;
  */
 public class CostBenefitPO implements Serializable {
     
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<PaymentPO> payment;
 	private ArrayList<IncomePO> income;
 	private double totalPayment;
@@ -21,14 +25,9 @@ public class CostBenefitPO implements Serializable {
 	
 	public void setLists(String date){
 		ReceiptsdataImpl rdi;
-		try {
-			rdi = new ReceiptsdataImpl();
-			payment=rdi.getPaymentBeforeDate(date);
-			income=rdi.getIncomeBeforeDate(date);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		rdi = new ReceiptsdataImpl();
+		payment=rdi.getPaymentBeforeDate(date);
+		income=rdi.getIncomeBeforeDate(date);
 	}
 	
     public void setTotal(){
