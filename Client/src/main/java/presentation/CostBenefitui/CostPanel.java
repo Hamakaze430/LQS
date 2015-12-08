@@ -1,7 +1,11 @@
 package presentation.CostBenefitui;
 
+import init.Client;
+
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -14,9 +18,13 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import presentation.LogisticsInfoSearchui.LogisticsPanel;
+import presentation.mainui.WelcomePanel;
 import vo.CostBenefitVO;
 import vo.HallVO;
 import vo.VoucherSearchVO;
+import businessLogic.CostBenefitbl.CostBenefit;
+import businessLogicService.CostBenefitblService.CostBenefitblService;
 import businessLogicService.UserblService.UserblService;
 /**
  * 成本收益
@@ -30,6 +38,9 @@ public class CostPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private UserblService user;
+	private CostBenefit cb=new CostBenefit();
+	
+	
 	public CostPanel(UserblService user){
 		this.user=user;
 		this.setLayout(null);
@@ -43,7 +54,7 @@ public class CostPanel extends JPanel {
 		Font font = new Font("黑体",Font.PLAIN,18);
 		JLabel title = new JLabel(user.getCompanyName()+"成本收益表",JLabel.CENTER);
 		title.setFont(font);
-		title.setBounds(150, 10, 600, 50);
+		title.setBounds(150, 10, 600, 50); 
 		
 		Vector<String> name = new Vector<String>();
 		name.add("总收入");
@@ -85,6 +96,29 @@ public class CostPanel extends JPanel {
 		JButton b2 = new JButton("返回");
 		b2.setFont(new Font("黑体",Font.PLAIN,15));
 		b2.setBounds(770, 490, 110, 30);
+		
+		
+		/*
+		 *added 
+		 **/
+		b1.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent args0){
+				cb.getReport();
+				/*
+				 * 
+				 * 是不是要下一个界面。。。。这里orz
+				 * */
+			}
+		});
+		
+		b2.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent args0){
+				Client.frame.add(new WelcomePanel());
+				Client.frame.remove(CostPanel.this);
+				Client.frame.repaint();
+			}
+		});
+		
 		this.add(title);
 		this.add(b1);
 		this.add(b2);
