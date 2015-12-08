@@ -2,8 +2,7 @@ package dataService.BankAccountdataService;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-
-import dataService.Common.ResultMessage;
+import Miscellaneous.ResultMessage;
 import po.BankAccountPO;
 
 public interface BankAccountdataService {
