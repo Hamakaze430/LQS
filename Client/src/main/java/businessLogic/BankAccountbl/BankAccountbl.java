@@ -111,7 +111,7 @@ public class BankAccountbl implements BankAccountblService, BankAccountInfo{
 			ArrayList<BankAccountPO>  poList = bankaccountDataService.getAccount();
 			ArrayList<BankAccountVO> voList = new ArrayList<BankAccountVO>();
 			for(int i=0;i<poList.size();i++){
-				voList.add(new BankAccountVO(poList.get(i).getName(),poList.get(i).getMoney()));
+				voList.add(new BankAccountVO(poList.get(i).getName(), poList.get(i).getMoney()));
 			}
 			return voList;
 		} catch (RemoteException e) {

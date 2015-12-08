@@ -50,5 +50,10 @@ public class BillManagement implements BillManagementblService{
 	public void getReport(BillManagementPO po){
 		bm.getReport(po);
 	}
+
+	public void getReport() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

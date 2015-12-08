@@ -101,7 +101,7 @@ public class CostPanel extends JPanel {
 		/*
 		 *added 
 		 **/
-		b1.addActionListener(new ActionListener(){
+		b1.addActionListener(new ActionListener(){ 
 			public void actionPerformed(ActionEvent args0){
 				cb.getReport();
 				/*

@@ -12,9 +12,9 @@ public class BankAccountVO extends Vector<String>{
 	public BankAccountVO(String account, String name, String cost){
 		this.add(account);
 		this.add(name);
-		this.add(cost);
-		
+		this.add(cost);	
 	}
+	
 	public String getAccount(){
 		return get(0);
 	}
