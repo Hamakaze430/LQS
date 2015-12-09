@@ -16,7 +16,7 @@ import data.Userdata.UserdataImpl;
 public class RMIHelper {
 
     private static Map<String, Class<? extends UnicastRemoteObject>> NAMING_MAP = 
-    		new HashMap<>();
+    		new HashMap<String, Class<? extends UnicastRemoteObject>>();
     
     private static final int PORT = 1099;
 

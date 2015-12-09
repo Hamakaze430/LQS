@@ -22,11 +22,11 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static void main(String[] args) throws RemoteException{
-		UserdataImpl  a = new UserdataImpl();
-		UserPO po = a.getUserbyID("admin");
-		if (po == null) System.out.println("null");
-	}
+//	public static void main(String[] args) throws RemoteException{
+//		UserdataImpl  a = new UserdataImpl();
+//		UserPO po = a.getUserbyID("admin");
+//		if (po == null) System.out.println("null");
+//	}
 	@Override
 	public UserPO getUserbyID(String ID)throws RemoteException {
 		// TODO Auto-generated method stub
@@ -55,7 +55,7 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-		return new ArrayList<>();
+		return new ArrayList<UserPO>();
 	}
 	
 	@Override

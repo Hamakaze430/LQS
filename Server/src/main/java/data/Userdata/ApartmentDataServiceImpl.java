@@ -78,7 +78,7 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-		return new ArrayList<>();
+		return new ArrayList<HallPO>();
 	}
 
 	@Override

@@ -239,7 +239,7 @@ public class ConstantFileDAO implements ConstantDAO {
 				temp3+=" ";		
 		}
 		
-		ArrayList<String> cityDistance = new ArrayList<>();
+		ArrayList<String> cityDistance = new ArrayList<String>();
 		
 		for(int i=0;i<constantPO.getCityDistance().size();i++){
 			
