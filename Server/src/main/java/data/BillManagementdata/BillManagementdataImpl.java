@@ -26,41 +26,41 @@ public class BillManagementdataImpl implements BillManagementdataService {
 
 	public BillManagementPO create() {	//create a new bill
 		// TODO Auto-generated method stub
-		try {
-			DataFactory df=new DataFactory();
-			
-			SimpleDateFormat fm=new SimpleDateFormat("yyyy-MM-dd");
-			String date=fm.format(new Date());
-			
-			UserdataImpl userdata=(UserdataImpl)df.getUserdataService();
-			ArrayList<UserPO> user=userdata.getAllUsers();
-			
-			CommoditydataImpl commo=(CommoditydataImpl)df.getCommoditydataService();
-			ArrayList<CommodityPO> commodity=commo.getAllCommodity();
-			
-			BankAccountdataImpl badata=(BankAccountdataImpl)df.getBankAccountdataService();
-			ArrayList<BankAccountPO> baccount=badata.getAllAccounts();
-			
-//	        String name=df.getName();
-//	        ArrayList<UserPO> user=new ArrayList<UserPO>();
-//	        user.add(df.getUser());
-//	        ArrayList<CarPO> car=new ArrayList<CarPO>();
-//	        car.add(df.getCar());
-//	        ArrayList<DriverPO> driver=new ArrayList<DriverPO>();
-//	        driver.add(df.getDriver());
-//	        ArrayList<CommodityPO> commo=new ArrayList<CommodityPO>();
-//	        commo.add(df.getCommodity());
-//	        ArrayList<BankAccountPO> baccount=new ArrayList<BankAccountPO>();
-//	        baccount.add(df.getBankAccount());
-	        
-//			BillManagementPO bm=new BillManagementPO(date, name, user, car, driver, commo, baccount);
-//			return bm;
-			return null;
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
+//		try {
+//			DataFactory df=new DataFactory();
+//			
+//			SimpleDateFormat fm=new SimpleDateFormat("yyyy-MM-dd");
+//			String date=fm.format(new Date());
+//			
+//			UserdataImpl userdata=(UserdataImpl)df.getUserdataService();
+//			ArrayList<UserPO> user=userdata.getAllUsers();
+//			
+//			CommoditydataImpl commo=(CommoditydataImpl)df.getCommoditydataService();
+//			ArrayList<CommodityPO> commodity=commo.getAllCommodity();
+//			
+//			BankAccountdataImpl badata=(BankAccountdataImpl)df.getBankAccountdataService();
+//			ArrayList<BankAccountPO> baccount=badata.getAllAccounts();
+//			
+////	        String name=df.getName();
+////	        ArrayList<UserPO> user=new ArrayList<UserPO>();
+////	        user.add(df.getUser());
+////	        ArrayList<CarPO> car=new ArrayList<CarPO>();
+////	        car.add(df.getCar());
+////	        ArrayList<DriverPO> driver=new ArrayList<DriverPO>();
+////	        driver.add(df.getDriver());
+////	        ArrayList<CommodityPO> commo=new ArrayList<CommodityPO>();
+////	        commo.add(df.getCommodity());
+////	        ArrayList<BankAccountPO> baccount=new ArrayList<BankAccountPO>();
+////	        baccount.add(df.getBankAccount());
+//	        
+////			BillManagementPO bm=new BillManagementPO(date, name, user, car, driver, commo, baccount);
+////			return bm;
+//			return null;
+//		} catch (RemoteException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			return null;
+//		}
 	}
 
 	public ArrayList<BillManagementPO> getBillManagementPO(String date) {

@@ -41,6 +41,7 @@ public class AuthoritiesDataServiceImpl extends UnicastRemoteObject implements A
 //		for(String s : list) System.out.println(s);
 //	}
 
+	@SuppressWarnings({ "unchecked", "resource" })
 	@Override
 	public List<String> getList(String identity) throws RemoteException {
 		List<String> ans = new ArrayList<String>();
