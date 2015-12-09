@@ -14,7 +14,6 @@ import dataService.UserdataService.ApartmentDataService;
 import dataService.UserdataService.AuthoritiesSettingDataService;
 import dataService.UserdataService.UserdataService;
 import dataService.VoucherSearchdataService.VoucherSearchdataService;
-import dataService.WareHousedataService.WareHousedataService;
 import init.RMIHelper;
 
 public class DataFactory implements DataFactoryService {
@@ -87,10 +86,10 @@ public class DataFactory implements DataFactoryService {
 		return null;
 	}
 
-	public WareHousedataService getWareHousedataService() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	public WareHousedataService getWareHousedataService() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	public ApartmentDataService getApartmentDataService() {
 		apartmentData = RMIHelper.getApartmentData();
