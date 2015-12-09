@@ -26,7 +26,7 @@ public interface BillManagementblService{
 	 * @param date，String型
 	 * @return 
 	 * */
-	public ArrayList<BillManagementVO> getBillManagementPO(String date);
+	public ArrayList<BillManagementPO> getBillManagementPO(String date);
 	
 	public void getReport();
 

@@ -12,6 +12,7 @@ public class BankAccountVO extends Vector<String>{
 	private String account;
 	private String name;
 	private double cost;
+	private double money;
 	
 	public BankAccountVO(BankAccountPO po){
 		account=po.getAccount();

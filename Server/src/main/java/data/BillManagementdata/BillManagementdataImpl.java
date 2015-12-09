@@ -25,7 +25,6 @@ import dataService.BillManagementdataService.BillManagementdataService;
 public class BillManagementdataImpl implements BillManagementdataService {
 
 	public BillManagementPO create() {
-		return null;	//create a new bill
 		// TODO Auto-generated method stub
 //		try {
 //			DataFactory df=new DataFactory();
@@ -60,7 +59,7 @@ public class BillManagementdataImpl implements BillManagementdataService {
 //		} catch (RemoteException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
-//			return null;
+			return null;
 //		}
 	}
 
