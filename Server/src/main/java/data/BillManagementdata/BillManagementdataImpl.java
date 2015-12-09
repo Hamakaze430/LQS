@@ -17,14 +17,15 @@ import java.rmi.RemoteException;
 import po.*;
 import data.BankAccountdata.BankAccountdataImpl;
 import data.Commoditydata.CommoditydataImpl;
-import data.DataFactory.DataFactory;
+//import data.DataFactory.DataFactory;
 import data.ReportGenerator.ReportGenerator;
 import data.Userdata.UserdataImpl;
 import dataService.BillManagementdataService.BillManagementdataService;
 
 public class BillManagementdataImpl implements BillManagementdataService {
 
-	public BillManagementPO create() {	//create a new bill
+	public BillManagementPO create() {
+		return null;	//create a new bill
 		// TODO Auto-generated method stub
 //		try {
 //			DataFactory df=new DataFactory();

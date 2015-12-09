@@ -8,11 +8,25 @@ import po.BillManagementPO;
 
 public interface BillManagementblService{
 	
+	/*
+	 * 创建新账
+	 * */
     public BillManagementPO create();
 
+    /*
+	 * 将PO保存至数据层
+	 * 
+	 * @param po，BillManagementPO
+	 * */
     public void save(BillManagementPO po);
     
-	public ArrayList<BillManagementPO> getBillManagementPO(String date);
+    /*
+	 * 查找某一日期之前的账单
+	 * 
+	 * @param date，String型
+	 * @return 
+	 * */
+	public ArrayList<BillManagementVO> getBillManagementPO(String date);
 	
 	public void getReport();
 

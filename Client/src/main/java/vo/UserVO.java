@@ -2,7 +2,29 @@ package vo;
 
 import java.util.Vector;
 
+import po.UserPO;
+
 public class UserVO extends Vector<String> {
+	
+	
+	private String id;
+	private String password;
+	private String authority;
+	
+	private String name;
+	private String sex;
+	private String job;
+	private String hallId;
+	
+	public UserVO(UserPO po){
+		id=po.getID();
+		password=po.getPassword();
+		authority=po.getAuthority();
+		name=po.getName();
+		sex=po.getSex();
+		job=po.getJob();
+		hallId=po.getHallId();
+	}
 	
 	public UserVO (String id,String password,String authority,String name,String sex,String job,String hall){
 		this.add(id);

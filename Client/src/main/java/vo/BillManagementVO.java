@@ -1,8 +1,14 @@
 package vo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-import vo.*;
+import po.BillManagementPO;
+import po.UserPO;
+import po.DriverPO;
+import po.CarPO;
+import po.CommodityPO;
+import po.BankAccountPO;
 
 /**
  * Created by admin on 15/10/25.
@@ -28,6 +34,31 @@ public class BillManagementVO {
         accounts=ba;
     }
 
+    public BillManagementVO(BillManagementPO po){
+    	date=po.getDate();
+    	name=po.getName();
+    	Iterator it=po.getUsers().iterator();
+    	while(it.hasNext()){
+    		users.add(new UserVO((UserPO)it.next()));
+    	}
+    	it=po.getCars().iterator();
+    	while(it.hasNext()){
+    		cars.add(new CarVO((CarPO)it.next()));
+    	}
+    	it=po.getDrivers().iterator();
+    	while(it.hasNext()){
+    		drivers.add(new DriverVO((DriverPO)it.next()));
+    	}
+    	it=po.getCommoditys().iterator();
+    	while(it.hasNext()){
+    		commodities.add(new CommodityVO((CommodityPO)it.next()));
+    	}
+    	it=po.getAccounts().iterator();
+    	while(it.hasNext()){
+    		accounts.add(new BankAccountVO((BankAccountPO)it.next()));
+    	}
+    }
+    
     public String getDate(){
         return date;
     }
