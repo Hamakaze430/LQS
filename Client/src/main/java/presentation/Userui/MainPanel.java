@@ -1,4 +1,4 @@
-﻿package presentation.Userui;
+package presentation.Userui;
 
 import init.Client;
 
@@ -1228,7 +1228,7 @@ public class MainPanel extends JPanel {
 		Color color = Color.BLACK;
 		Font font = new Font("幼圆",Font.BOLD,20);
 		
-		JLabel Titlebg = new JLabel("快递物流系统",JLabel.LEFT);
+		JLabel Titlebg = new JLabel("O——O快递物流系统",JLabel.LEFT);
 		Titlebg.setForeground(Color.BLACK);
 		Titlebg.setFont(new Font("华文行楷",Font.PLAIN,50));
 		Titlebg.setBounds(30, 20, 500, 50);
