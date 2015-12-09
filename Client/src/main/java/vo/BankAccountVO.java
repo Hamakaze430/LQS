@@ -9,7 +9,6 @@ public class BankAccountVO{
 
 	double money;
 	String name;
-<<<<<<< HEAD
 	public BankAccountVO(String account, String name, String cost){
 		this.add(account);
 		this.add(name);
@@ -20,13 +19,11 @@ public class BankAccountVO{
 		return get(0);
 	}
 
-=======
 	public BankAccountVO(String name,double money){
 		this.name=name;
 		this.money=money;
 	}
 	
->>>>>>> origin/master
 	public String getName(){
 		return name;
 	}
