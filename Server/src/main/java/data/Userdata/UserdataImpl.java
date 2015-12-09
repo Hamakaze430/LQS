@@ -37,6 +37,7 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 		return null;
 	}
 	
+	@SuppressWarnings({ "unchecked", "resource" })
 	@Override
 	public ArrayList<UserPO> getAllUsers()throws RemoteException{
 		try {

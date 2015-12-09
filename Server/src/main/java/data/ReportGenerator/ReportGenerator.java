@@ -138,8 +138,8 @@ public class ReportGenerator {
 					
 			for(int i=0;i<users.size();i++){
 				UserPO temp=users.get(i);
-				Label tmpdep=new Label(i+1,0,temp.getName());
-				Label tmppos=new Label(i+1,1,temp.getPosition());
+				Label tmpdep=new Label(i+1,0,temp.getHallId());
+				Label tmppos=new Label(i+1,1,temp.getJob());
 				Label tmpname=new Label(i+1,2,temp.getName());
 				employees.addCell(tmpdep);
 				employees.addCell(tmppos);
