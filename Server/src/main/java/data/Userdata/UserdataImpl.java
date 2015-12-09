@@ -1,6 +1,5 @@
 package data.Userdata;
 
-import po.HallPO;
 import po.UserPO;
 import dataService.UserdataService.UserdataService;
 
@@ -24,9 +23,9 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 	}
 	
 //	public static void main(String[] args) throws RemoteException{
-//		UserdataImpl a = new UserdataImpl();
-//		UserPO admin = new UserPO("admin","admin","管理员","管理员","女","管理员","000");
-//		a.addUser(admin);
+//		UserdataImpl  a = new UserdataImpl();
+//		UserPO po = a.getUserbyID("admin");
+//		if (po == null) System.out.println("null");
 //	}
 	@Override
 	public UserPO getUserbyID(String ID)throws RemoteException {
@@ -38,6 +37,7 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 		return null;
 	}
 	
+	@SuppressWarnings({ "unchecked", "resource" })
 	@Override
 	public ArrayList<UserPO> getAllUsers()throws RemoteException{
 		try {
@@ -56,7 +56,7 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-		return new ArrayList<>();
+		return new ArrayList<UserPO>();
 	}
 	
 	@Override

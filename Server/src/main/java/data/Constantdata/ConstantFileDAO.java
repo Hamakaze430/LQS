@@ -59,8 +59,8 @@ public class ConstantFileDAO implements ConstantDAO {
 			if (!file.exists()) {
 				try {
 					file.createNewFile();
-					ArrayList<String> cityList = new ArrayList<>();
-					ArrayList<String> cityDistance = new ArrayList<>();
+					ArrayList<String> cityList = new ArrayList<String>();
+					ArrayList<String> cityDistance = new ArrayList<String>();
 				   double price = 23;
 				   double vanCost = 2;
 				  double railwayCost = 0.2;
@@ -182,7 +182,7 @@ public class ConstantFileDAO implements ConstantDAO {
 		cityList.add(CityID);
 		constantPO.setCityList(cityList);
 		String last="";
-		ArrayList<String> cityDistanceList = new ArrayList<>();
+		ArrayList<String> cityDistanceList = new ArrayList<String>();
 		for(int i=0;i<num;i++){
 			cityDistanceList.add(constantPO.getCityDistance().get(i)+" 0");
 			last+="0 ";
@@ -239,7 +239,7 @@ public class ConstantFileDAO implements ConstantDAO {
 				temp3+=" ";		
 		}
 		
-		ArrayList<String> cityDistance = new ArrayList<>();
+		ArrayList<String> cityDistance = new ArrayList<String>();
 		
 		for(int i=0;i<constantPO.getCityDistance().size();i++){
 			

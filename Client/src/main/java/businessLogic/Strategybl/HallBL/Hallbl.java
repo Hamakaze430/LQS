@@ -71,7 +71,7 @@ public class Hallbl implements HallblService{
 	
 	
 	public ArrayList<HallVO> convertHallPO (ArrayList<HallPO> polist){
-		ArrayList<HallVO> halls = new ArrayList<>();
+		ArrayList<HallVO> halls = new ArrayList<HallVO>();
 		
 		for(int i=0;i<polist.size();i++){
 			halls.add(new HallVO(polist.get(i).getID(), polist.get(i).getName(), null));

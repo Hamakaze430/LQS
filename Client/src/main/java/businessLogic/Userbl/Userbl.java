@@ -30,6 +30,7 @@ public class Userbl implements UserblService{
     	dataFactory=Client.dataFactory;
 		apartmentbl = new Apartmentbl();
 		this.info = findUser(userID);
+		if (info == null) info = new UserVO("","","","","","","");
 	}
 
 	public UserVO findUser(String userID) {

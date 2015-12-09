@@ -55,8 +55,4 @@ public class UserPO implements Serializable{
 	public String getJob(){
 		return job;
 	}
-	public String getPosition() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
