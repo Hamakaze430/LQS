@@ -8,6 +8,7 @@ import java.rmi.RemoteException;
 import dataService.BankAccountdataService.BankAccountdataService;
 import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
 import dataService.StrategydataService.ConstantdataService.ConstantdataService;
+import dataService.StrategydataService.HalldataService.HalldataService;
 import dataService.StrategydataService.SalarydataService.SalarydataService;
 import dataService.UserdataService.ApartmentDataService;
 import dataService.UserdataService.AuthoritiesSettingDataService;
@@ -89,6 +90,11 @@ public class RMIHelper {
 	public static UserdataService getUserData() {
 		// TODO Auto-generated method stub
 		return userData;
+	}
+
+	public static HalldataService getHallDataService() {
+		// TODO Auto-generated method stub
+		return null;
 	}
     
 //    public static DataFactoryService getDataFactory() {

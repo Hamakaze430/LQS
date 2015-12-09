@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
+import po.HallPO;
 import po.UserPO;
 
 public class IDGenerator {
@@ -52,9 +53,58 @@ public class IDGenerator {
 	}
 	
 
-	public String generateID(Job job, HallVO hall){
+	public String generateID(Job job, HallPO hall){
+		String id="";
+		/*
+		 * based on jobs
+		 * */
+		switch(job){
+		case 总经理:
+			id+="00";
+			break;
+		case 财务人员:
+			id+="00";
+			break;
+		case 营业厅业务员:
+			id+="01";
+			break;
+		case 快递员:
+			id+="00";
+			break;
+		case 中转中心业务员:
+			id+="11";
+			break;
+		case 中转中心仓库管理员:
+			id+="10";
+			break;
+		}
 		
-		return null;
+		/*
+		 * last few numbers
+		 * */
+		try {
+			ObjectInputStream in=new ObjectInputStream(
+					new FileInputStream("src/main/java/ser/user.ser"));
+			UserPO temp;
+			String pre=id;	//current id, the first eight numbers
+			String test="";
+			int count=0;
+			while((temp=(UserPO)in.readObject())!=null){
+				test=temp.getID().substring(0, 8);
+				if(pre.equals(test)){
+					count++;
+				}
+			}
+			count+=Integer.parseInt(test);
+			id+=String.format("%03d", count);
+					
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return id;
 	}
 	
 //	public String createID(UserPO user){

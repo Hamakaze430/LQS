@@ -5,28 +5,35 @@ import java.util.Vector;
 /**
  * Created by admin on 15/10/25.
  */
-public class BankAccountVO extends Vector<String>{
+public class BankAccountVO{
 
 	double money;
 	String name;
+<<<<<<< HEAD
 	public BankAccountVO(String account, String name, String cost){
 		this.add(account);
 		this.add(name);
-		this.add(cost);
-		
+		this.add(cost);	
 	}
+	
 	public String getAccount(){
 		return get(0);
 	}
 
-	public String getName(){
-		return get(1);
-	}
-
-	public String getMonny(){
-		return get(2);
+=======
+	public BankAccountVO(String name,double money){
+		this.name=name;
+		this.money=money;
 	}
 	
+>>>>>>> origin/master
+	public String getName(){
+		return name;
+	}
+	
+	public double getMoney(){	
+		return money;
+	}
 	
 	public void addMoney(int num){
 		money += num;
