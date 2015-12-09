@@ -32,7 +32,7 @@ public class MainFrame extends JFrame {
 			Image image = new ImageIcon("src/main/java/image/icon.png").getImage();//指定图标文件的相对路径
 			this.setIconImage(image);
 			this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-			this.setTitle("〇一〇快递物流系统");
+			this.setTitle("快递物流系统");
 			this.setLocationRelativeTo(null);
 			this.setResizable(false);
 			
