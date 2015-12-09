@@ -2,6 +2,8 @@ package vo;
 
 import java.util.Date;
 
+import po.CarPO;
+
 public class CarVO {
 	
 	private String id; //城市编号（电话号码区号南京025）+营业厅编号（000三位数字）+000三位数字
@@ -12,6 +14,12 @@ public class CarVO {
 		this.id = id;
 		this.license = license;
 		this.time = time;
+	}
+	
+	public CarVO(CarPO po){
+		id=po.getID();
+		license=po.getLicense();
+		time=po.getTime();
 	}
 	
 	public String getId(){

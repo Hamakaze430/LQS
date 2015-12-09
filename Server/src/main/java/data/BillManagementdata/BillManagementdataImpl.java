@@ -17,7 +17,7 @@ import java.rmi.RemoteException;
 import po.*;
 import data.BankAccountdata.BankAccountdataImpl;
 import data.Commoditydata.CommoditydataImpl;
-import data.DataFactory.DataFactory;
+//import data.DataFactory.DataFactory;
 import data.ReportGenerator.ReportGenerator;
 import data.Userdata.UserdataImpl;
 import dataService.BillManagementdataService.BillManagementdataService;
@@ -27,19 +27,19 @@ public class BillManagementdataImpl implements BillManagementdataService {
 	public BillManagementPO create() {	//create a new bill
 		// TODO Auto-generated method stub
 		try {
-			DataFactory df=new DataFactory();
+	//		DataFactory df=new DataFactory();
 			
 			SimpleDateFormat fm=new SimpleDateFormat("yyyy-MM-dd");
 			String date=fm.format(new Date());
 			
-			UserdataImpl userdata=(UserdataImpl)df.getUserdataService();
+			UserdataImpl userdata=new UserdataImpl();
 			ArrayList<UserPO> user=userdata.getAllUsers();
 			
-			CommoditydataImpl commo=(CommoditydataImpl)df.getCommoditydataService();
-			ArrayList<CommodityPO> commodity=commo.getAllCommodity();
+			CommoditydataImpl commo=new CommoditydataImpl();
+			ArrayList<ComInfoPO> commodity=commo.getCommodity();
 			
-			BankAccountdataImpl badata=(BankAccountdataImpl)df.getBankAccountdataService();
-			ArrayList<BankAccountPO> baccount=badata.getAllAccounts();
+			BankAccountdataImpl badata=new BankAccountdataImpl();
+			ArrayList<BankAccountPO> baccount=badata.getAccount();
 			
 //	        String name=df.getName();
 //	        ArrayList<UserPO> user=new ArrayList<UserPO>();

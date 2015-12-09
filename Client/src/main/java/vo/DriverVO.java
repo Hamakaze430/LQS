@@ -2,6 +2,8 @@ package vo;
 
 import java.util.Date;
 
+import po.DriverPO;
+
 public class DriverVO {
 	
 	private String id; //城市编号（电话号码区号南京025）+营业厅编号（000三位数字）+000三位数字
@@ -20,6 +22,16 @@ public class DriverVO {
 		this.mobile = mobile;
 		this.gender = gender;
 		this.time = time;
+	}
+	
+	public DriverVO(DriverPO driverPO){
+		id=driverPO.getId();
+		name=driverPO.getName();
+		birth=driverPO.getBirth();
+		identity=driverPO.getIdentity();
+		mobile=driverPO.getMobile();
+		gender=driverPO.getGender();
+		time=driverPO.getTime();
 	}
 	
 	public String getId(){

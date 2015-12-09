@@ -3,11 +3,11 @@ package po;
 import java.io.Serializable;
 
 public class CommodityPO implements Serializable {
-	String id;
-	String dateofin;
-	String specie;
-	String location;
-	String price;
+	private String id;
+	private String dateofin;
+	private String specie;
+	private String location;
+	private String price;
 
 	public CommodityPO(String i, String doi, String s, String l, String p) {
 		id = i;
