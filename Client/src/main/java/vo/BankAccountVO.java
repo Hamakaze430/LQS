@@ -5,7 +5,7 @@ import java.util.Vector;
 /**
  * Created by admin on 15/10/25.
  */
-public class BankAccountVO{
+public class BankAccountVO extends Vector<String>{
 
 	double money;
 	String name;

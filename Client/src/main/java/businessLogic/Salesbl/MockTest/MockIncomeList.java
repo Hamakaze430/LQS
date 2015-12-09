@@ -1,6 +1,5 @@
 package businessLogic.Salesbl.MockTest;
 
-import businessLogic.Salesbl.IncomeList;
 import po.receipts.IncomePO;
 
 import java.util.ArrayList;

@@ -18,7 +18,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import vo.SalesVO;
-import vo.VoucherSearchVO;
 import businessLogicService.UserblService.UserblService;
 /**
  * 经营情况

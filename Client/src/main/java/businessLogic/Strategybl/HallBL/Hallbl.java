@@ -22,8 +22,6 @@ public class Hallbl implements HallblService{
 	}
 	
 	
-	
-	
 	@Override
 	public ResultMessage addHall(String name, String id, String location) {
 		// TODO Auto-generated method stub

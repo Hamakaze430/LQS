@@ -10,13 +10,13 @@ public class DriverPO implements Serializable{
 	    private static final long serialVersionUID = 1L;
 		String id; //城市编号（电话号码区号南京025）+营业厅编号（000三位数字）+000三位数字
 		String name;//姓名
-		Date birth;  //出生日期
+		String birth;  //出生日期
 		String identity; //身份证号
 		String mobile; //手机
 		String gender; //男/女
-		Date time; //行驶证期限
+		String time; //行驶证期限
 		
-		public DriverPO(String id, String name, Date birth, String identity, String mobile, String gender, Date time){
+		public DriverPO(String id, String name, String birth, String identity, String mobile, String gender, String time){
 			this.id = id;
 			this.name = name;
 			this.birth = birth;
@@ -40,10 +40,10 @@ public class DriverPO implements Serializable{
 			this.name = name;
 		}
 		
-		public Date getBirth(){
+		public String getBirth(){
 			return birth;
 		}
-		public void setBirth(Date birth){
+		public void setBirth(String birth){
 			this.birth = birth;
 		}
 		
@@ -68,10 +68,10 @@ public class DriverPO implements Serializable{
 			this.gender = gender;
 		}
 		
-		public Date getTime(){
+		public String getTime(){
 			return time;
 		}
-		public void setTime(Date time){
+		public void setTime(String time){
 			this.time = time;
 		}
 }

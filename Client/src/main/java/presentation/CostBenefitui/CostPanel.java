@@ -22,7 +22,6 @@ import presentation.LogisticsInfoSearchui.LogisticsPanel;
 import presentation.mainui.WelcomePanel;
 import vo.CostBenefitVO;
 import vo.HallVO;
-import vo.VoucherSearchVO;
 import businessLogic.CostBenefitbl.CostBenefit;
 import businessLogicService.CostBenefitblService.CostBenefitblService;
 import businessLogicService.UserblService.UserblService;

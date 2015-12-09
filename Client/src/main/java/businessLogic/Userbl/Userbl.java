@@ -22,6 +22,9 @@ public class Userbl implements UserblService{
 	private DataFactoryService dataFactory;
 	private ApartmentblService apartmentbl;
 	private UserVO info;
+	public Userbl(){
+		
+	}
 	
 	public Userbl(String userID){
     	dataFactory=Client.dataFactory;
