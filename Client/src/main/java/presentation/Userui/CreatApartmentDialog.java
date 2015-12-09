@@ -19,23 +19,26 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import Miscellaneous.Place;
-import businessLogicService.UserblService.ApartmentblService;
+import businessLogicService.UserblService.ApartmentManagerblService;
 import init.Client;
 import presentation.mainui.SimpleButton;
 import vo.HallVO;
 
+/**
+ * ApartmentManagerPanel的子窗口,新增部门信息窗口
+ */
 public class CreatApartmentDialog extends JDialog {
 	JTextField name;
 	JComboBox<String> placeBox;
 	JTextField place;
 	JTextField id;
-	ApartmentblService bl;
+	ApartmentManagerblService bl;
 	DefaultTableModel defaultModel;
 	ButtonGroup bg;
 	JRadioButton type1;
 	JRadioButton type2;
 	JRadioButton type3;
-	public CreatApartmentDialog(ApartmentblService bl, DefaultTableModel defaultModel){
+	public CreatApartmentDialog(ApartmentManagerblService bl, DefaultTableModel defaultModel){
 		super(Client.frame,"新建部门信息",true);
 		this.bl = bl;
 		this.defaultModel = defaultModel;
@@ -164,6 +167,10 @@ public class CreatApartmentDialog extends JDialog {
 			this.add(cancel);
 		}
 	}
+	
+	/**
+	 * 根据已知生成ID。
+	 */
 	class IdListener implements ActionListener{	
 		public void actionPerformed(ActionEvent e) {		
 			Place place = Place.value(placeBox.getSelectedItem().toString());

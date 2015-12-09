@@ -27,14 +27,20 @@ import Miscellaneous.Identity;
 import Miscellaneous.Job;
 import Miscellaneous.Place;
 import Miscellaneous.IDGenerator;
+import businessLogic.Userbl.ApartmentManagerbl;
 import businessLogic.Userbl.Apartmentbl;
+import businessLogicService.UserblService.ApartmentManagerblService;
 import businessLogicService.UserblService.ApartmentblService;
+import businessLogicService.UserblService.UserManagerblService;
 import businessLogicService.UserblService.UserblService;
 import init.Client;
 import presentation.mainui.SimpleButton;
 import vo.HallVO;
 import vo.UserVO;
-
+/**
+ * UserManagerPanel的子窗口,新增用户信息窗口
+ * 组件位置各种乱_(:зゝ∠)_待改善
+ */
 public class CreatUserDialog extends JDialog {
 	JTextField name;
 	JComboBox<String> place;
@@ -42,16 +48,16 @@ public class CreatUserDialog extends JDialog {
 	JTextField id;
 	JPasswordField password;
 	JComboBox<String> identity;
-	UserblService userbl;
+	UserManagerblService userbl;
 	DefaultTableModel defaultModel;
 	ButtonGroup bg;
 	JRadioButton female;
 	JRadioButton male;
-	public CreatUserDialog(UserblService userbl, DefaultTableModel defaultModel){
+	public CreatUserDialog(UserManagerblService userbl, DefaultTableModel defaultModel){
 		super(Client.frame,"新建部门信息",true);
 		this.userbl = userbl;
 		this.defaultModel = defaultModel;
-		this.setSize(700, 400);
+		this.setSize(800, 400);
 		this.setContentPane(new initPanel());
         this.setLocationRelativeTo(null);
         this.setResizable(false);
@@ -110,7 +116,7 @@ public class CreatUserDialog extends JDialog {
 			place = new JComboBox<String>();
 			place.addItem("-请选择工作单位-");
 //			place.setEditable(true);
-			ApartmentblService apartment = new Apartmentbl();
+			ApartmentManagerblService apartment = new ApartmentManagerbl();
 			List<String> list = apartment.getAllName();
 			for (String s : list) place.addItem(s);
 			place.addActionListener(lister);

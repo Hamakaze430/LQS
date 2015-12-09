@@ -9,7 +9,7 @@ import Miscellaneous.Authorities;
 public class CreateCheckBox extends JCheckBox{
 
 	/**
-	 * 
+	 * 自定义的CheckBox.目前用在AuthoritiesSettingPanel中;
 	 */
 	private static final long serialVersionUID = 1L;
 	public CreateCheckBox(){

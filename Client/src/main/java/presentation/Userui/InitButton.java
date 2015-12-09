@@ -10,7 +10,7 @@ import presentation.mainui.PictureButton;
 public class InitButton extends JButton{
 
 	/**
-	 * 
+	 * 自定义的Button,主要用于MainPanel的功能选择Button
 	 */
 	private static final long serialVersionUID = 1L;
 	private final static int width = 70;

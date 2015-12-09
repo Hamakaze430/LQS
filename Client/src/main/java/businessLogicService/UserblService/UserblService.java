@@ -6,12 +6,6 @@ import Miscellaneous.Authorities;
 import vo.UserVO;
 
 public interface UserblService {
-	/**
-	 * 新建用户
-	 * @param user
-	 * @return
-	 */
-	public boolean addUser(UserVO user);
 
 	public String getHallId();
 
@@ -24,14 +18,6 @@ public interface UserblService {
 	public String getUserSex();
 
 	public String getCompanyName();
-
-	public boolean update(UserVO vo);
-
-	public boolean delete(UserVO vo);
-
-	public List<UserVO> getAll();
-
-	public int getCount(String id);
 	
 	public UserVO findUser(String userID);
 	

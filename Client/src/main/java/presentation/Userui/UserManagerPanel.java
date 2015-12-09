@@ -24,22 +24,23 @@ import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 
-import businessLogic.Userbl.Apartmentbl;
+import businessLogic.Userbl.ApartmentManagerbl;
+import businessLogic.Userbl.UserManagerbl;
 import businessLogic.Userbl.Userbl;
-import businessLogicService.UserblService.ApartmentblService;
+import businessLogicService.UserblService.ApartmentManagerblService;
+import businessLogicService.UserblService.UserManagerblService;
 import businessLogicService.UserblService.UserblService;
 import presentation.mainui.SimpleButton;
 import vo.HallVO;
 import vo.UserVO;
 
 /**
- * 用户管理
- * @author TOSHIBA
- *
+ * 用户管理界面，包括用户信息的增加，删除，修改。
+ * 其中修改待完善
  */
 public class UserManagerPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
-	UserblService bl;
+	UserManagerblService bl;
 	DefaultTableModel defaultModel;
 	JTable table;
 	int rowEditable = -1;
@@ -47,7 +48,7 @@ public class UserManagerPanel extends JPanel {
 	String temp;
 	int buttonNum;
 	public UserManagerPanel(int buttonNum){	
-		bl = new Userbl();
+		bl = new UserManagerbl();
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		this.buttonNum = buttonNum;
 		this.setBorder(null);
