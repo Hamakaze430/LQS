@@ -10,7 +10,7 @@ import javax.swing.WindowConstants;
 import javax.swing.plaf.FontUIResource;
 
 public class MainFrame extends JFrame {
-		/**
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
@@ -19,7 +19,7 @@ public class MainFrame extends JFrame {
 			
 			Font font = new Font("宋体",Font.PLAIN,20);
 		    FontUIResource fontRes = new FontUIResource(font);
-		    for(Enumeration keys = UIManager.getDefaults().keys(); keys.hasMoreElements();){
+		    for(Enumeration<Object> keys = UIManager.getDefaults().keys(); keys.hasMoreElements();){
 		        Object key = keys.nextElement();
 		        Object value = UIManager.get(key);
 		        if(value instanceof FontUIResource)
