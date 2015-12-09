@@ -41,7 +41,7 @@ public class UserblStub implements UserblService{
 //		if (one == Authorities.用户管理) return true;
 //		if (one == Authorities.部门管理) return true;
 		//if (one == Authorities.收款单查询) return true;
-		if (one == Authorities.账户管理||one == Authorities.权限管理) return true;
+		if (one == Authorities.用户管理||one == Authorities.权限管理) return true;
 		return false;
 	}
 	

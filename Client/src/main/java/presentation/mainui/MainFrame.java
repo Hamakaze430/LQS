@@ -1,6 +1,4 @@
 ﻿package presentation.mainui;
-
-import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.util.Enumeration;
@@ -10,12 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.plaf.FontUIResource;
-
-import Miscellaneous.FormType;
-import presentation.CarAndDriverui.CarAndDriverui;
-import presentation.LogisticsInfoSearchui.LogisticsPanel;
-import vo.HallVO;
-import vo.UserBaseVO;
 
 public class MainFrame extends JFrame {
 		/**

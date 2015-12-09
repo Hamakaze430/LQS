@@ -1,6 +1,5 @@
 package data.Userdata;
 
-import po.HallPO;
 import po.UserPO;
 import dataService.UserdataService.UserdataService;
 
@@ -23,11 +22,11 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 		// TODO Auto-generated constructor stub
 	}
 	
-//	public static void main(String[] args) throws RemoteException{
-//		UserdataImpl a = new UserdataImpl();
-//		UserPO admin = new UserPO("admin","admin","管理员","管理员","女","管理员","000");
-//		a.addUser(admin);
-//	}
+	public static void main(String[] args) throws RemoteException{
+		UserdataImpl  a = new UserdataImpl();
+		UserPO po = a.getUserbyID("admin");
+		if (po == null) System.out.println("null");
+	}
 	@Override
 	public UserPO getUserbyID(String ID)throws RemoteException {
 		// TODO Auto-generated method stub
