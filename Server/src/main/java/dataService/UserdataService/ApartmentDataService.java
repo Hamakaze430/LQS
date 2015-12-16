@@ -18,8 +18,6 @@ public interface ApartmentDataService extends Remote {
 	
 	public boolean delete(HallPO po) throws RemoteException;
 	
-	public boolean decNum(String type, Place place) throws RemoteException;
-	
 	public boolean update(HallPO po) throws RemoteException;
 	
 	public HallPO find(String known, String hall) throws RemoteException;

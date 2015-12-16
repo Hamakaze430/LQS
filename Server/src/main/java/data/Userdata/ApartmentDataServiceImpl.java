@@ -39,7 +39,6 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 //		a.delete(new HallPO("南京市中转中心","0250","南京市"));
 //	}
 	
-	@Override
 	public HallPO find(String known, String hall) throws RemoteException {
 		List<HallPO>  list = findAll();
 		
@@ -60,7 +59,6 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 	
 	
 	@SuppressWarnings({ "unchecked", "resource" })
-	@Override
 	public List<HallPO> findAll() throws RemoteException {
 		try {
 			FileInputStream fileIn = new FileInputStream("src/main/java/ser/apartment.ser");
@@ -81,7 +79,6 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 		return new ArrayList<HallPO>();
 	}
 
-	@Override
 	public  boolean insert(HallPO po) throws RemoteException {
 		try {
 			List<HallPO>  list = findAll();
@@ -101,7 +98,6 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 		return false;
 	}
 	
-	@Override
 	public boolean update(HallPO po) throws RemoteException {
 		try {
 			List<HallPO> list = findAll();
@@ -129,7 +125,6 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 		return false;
 	}
 	
-	@Override
 	public boolean delete(HallPO po) throws RemoteException {
 		try {
 			List<HallPO> list = findAll();
@@ -162,7 +157,6 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 		return false;
 	}
 
-	@Override
 	public int getNum(String type, Place place) throws RemoteException {
 		String key;
 		if (type.equals("公司")) key = type;
@@ -190,7 +184,6 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 	}
 
 
-	@Override
 	public boolean addNum(String type, Place place) throws RemoteException {
 		String key;
 		if (type.equals("公司")) key = type;
@@ -228,50 +221,5 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 		}
 		return false;
 	}
-
-
-	@Override
-	public boolean decNum(String type, Place place) throws RemoteException {
-		String key;
-		if (type.equals("公司")) key = type;
-		else key = type + " " + place.name();
-		
-		File file = new File("src/main/java/ser/apartmentNum.txt");
-		try{
-			InputStreamReader read = new InputStreamReader(new FileInputStream(file),"UTF-8");
-			BufferedReader br = new BufferedReader(read);
-			String s = br.readLine();
-			List<String> list = new ArrayList<String>();
-			while (s != null){
-				list.add(s);
-				s = br.readLine();
-			}
-			br.close();
-			for (String str : list){
-				if (str.indexOf(key) != -1){
-					list.remove(str);
-					int num = Integer.valueOf(str.substring(key.length()+1)) - 1;
-					str = key + " " +  num;
-					list.add(str);
-					break;
-				}
-			}
-			OutputStreamWriter output = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
-			for (String str : list){
-				output.write(str + "\r\n");
-			}
-			output.close();
-			return true;
-		}catch (FileNotFoundException e) {
-			   e.printStackTrace();
-		} catch (IOException e) {
-			   e.printStackTrace();
-		}
-		return false;
-		
-	}
-
-	
-
 	
 }

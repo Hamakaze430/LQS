@@ -61,13 +61,7 @@ public class UserManagerbl implements UserManagerblService{
 	}
 
 	public int getCount(String id) {
-		int count = 0;
-		List<UserPO> list = dataFactory.getUserdataService().getAllUsers();
-		for (UserPO po : list){
-			if (!po.getID().equals("admin")){
-				if (po.getID().substring(0, 8).equals(id)) count++;
-			}
-		}
+		int count = dataFactory.getUserdataService().getCount(id);
 		return count;
 	}
 

@@ -20,10 +20,11 @@ public class Client {
 		//	System.out.println("Success");
 			dataFactory = new DataFactory();
 			frame = new MainFrame();
-//			UserblService bl = new Userbl("admin");
-//			MainPanel panel = new MainPanel(bl);
-//			frame.add(panel);
-			frame.addWelcomePanel();
+			UserblService bl = new Userbl("02500001000");
+			//UserblService bl = new Userbl("admin");
+			MainPanel panel = new MainPanel(bl);
+			frame.add(panel);
+		//	frame.addWelcomePanel();
 			frame.setVisible(true);
 		} catch (ClientInitException e) {
 			 e.printStackTrace();

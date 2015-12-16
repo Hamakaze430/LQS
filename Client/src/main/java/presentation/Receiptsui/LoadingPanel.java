@@ -32,11 +32,11 @@ public class LoadingPanel extends JPanel{
 	 */
 	private ReceiptsblService bl;
 	private UserblService user;
-//	public LoadingPanel(ReceiptsblService bl){
-//		this.bl = bl;
-//		init();
-//		
-//	}
+	public LoadingPanel(ReceiptsblService bl){
+		this.bl = bl;
+		init();
+		
+	}
 	public LoadingPanel(UserblService user){
 		
 		this.user = user;
