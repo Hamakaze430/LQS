@@ -19,5 +19,7 @@ public UserPO getCurrentUser();
 	public boolean deleteUser(UserPO po);
 
 	public boolean updateUser(UserPO po);
+
+	public int getCount(String id);
 	
 }

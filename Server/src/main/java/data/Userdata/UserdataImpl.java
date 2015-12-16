@@ -1,13 +1,14 @@
 package data.Userdata;
 
 import po.UserPO;
-import dataService.UserdataService.UserdataService;
 
 import java.io.*;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
+
+import dataService.UserdataService.UserdataService;
 
 public class UserdataImpl extends UnicastRemoteObject implements UserdataService{
 
@@ -22,12 +23,6 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 		// TODO Auto-generated constructor stub
 	}
 	
-//	public static void main(String[] args) throws RemoteException{
-//		UserdataImpl  a = new UserdataImpl();
-//		UserPO po = a.getUserbyID("admin");
-//		if (po == null) System.out.println("null");
-//	}
-	@Override
 	public UserPO getUserbyID(String ID)throws RemoteException {
 		// TODO Auto-generated method stub
 		List<UserPO> list = getAllUsers();
@@ -38,7 +33,6 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 	}
 	
 	@SuppressWarnings({ "unchecked", "resource" })
-	@Override
 	public ArrayList<UserPO> getAllUsers()throws RemoteException{
 		try {
 			FileInputStream fileIn = new FileInputStream("src/main/java/ser/user.ser");
@@ -59,16 +53,15 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 		return new ArrayList<UserPO>();
 	}
 	
-	@Override
 	public UserPO getCurrentUser() throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-	@Override
 	public boolean addUser(UserPO user) throws RemoteException{
 		// TODO Auto-generated method stub
 		try {
+			addCount(user.getID());
 			List<UserPO> list = getAllUsers();
 			//List<UserPO> list = new ArrayList<UserPO>();
 			list.add(user);
@@ -87,7 +80,7 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 		return false;
 	}
 
-	@Override
+
 	public boolean deleteUser(UserPO po) throws RemoteException {
 		try {
 			List<UserPO> list = getAllUsers();
@@ -114,7 +107,6 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 		return false;
 	}
 
-	@Override
 	public boolean updateUser(UserPO po) throws RemoteException {
 		try {
 			List<UserPO> list = getAllUsers();
@@ -139,6 +131,67 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+		return false;
+	}
+
+	public int getCount(String id) throws RemoteException {
+		File file = new File("src/main/java/ser/userIdNum.txt");
+		try{
+			InputStreamReader read = new InputStreamReader(new FileInputStream(file),"UTF-8");
+			BufferedReader br = new BufferedReader(read);
+			String s = br.readLine();
+			while (s != null){
+				if (s.indexOf(id) != -1){
+					int ans = Integer.valueOf(s.substring(id.length()+1));
+					br.close();
+					return ans;
+				}
+				s = br.readLine();
+			}
+			
+			br.close();
+		}catch (FileNotFoundException e) {
+			   e.printStackTrace();
+		} catch (IOException e) {
+			   e.printStackTrace();
+		}
+		return 0;
+	}
+	
+	private boolean addCount(String id) {
+		// TODO Auto-generated method stub
+		id = id.substring(0,8);
+		File file = new File("src/main/java/ser/userIdNum.txt");
+		try{
+			InputStreamReader read = new InputStreamReader(new FileInputStream(file),"UTF-8");
+			BufferedReader br = new BufferedReader(read);
+			String s = br.readLine();
+			List<String> list = new ArrayList<String>();
+			while (s != null){
+				list.add(s);
+				s = br.readLine();
+			}
+			br.close();
+			int num = 1;
+			for (String str : list){
+				if (str.indexOf(id) != -1){
+					list.remove(str);
+					num = Integer.valueOf(str.substring(id.length()+1)) + 1;
+					break;
+				}
+			}
+			String stri = id + " " +  num;
+			list.add(stri);
+			OutputStreamWriter output = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+			for (String str : list){
+				output.write(str + "\r\n");
+			}
+			output.close();
+		}catch (FileNotFoundException e) {
+			   e.printStackTrace();
+		} catch (IOException e) {
+			   e.printStackTrace();
+		}
 		return false;
 	}
 }

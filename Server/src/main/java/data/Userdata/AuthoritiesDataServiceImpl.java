@@ -42,7 +42,6 @@ public class AuthoritiesDataServiceImpl extends UnicastRemoteObject implements A
 //	}
 
 	@SuppressWarnings({ "unchecked", "resource" })
-	@Override
 	public List<String> getList(String identity) throws RemoteException {
 		List<String> ans = new ArrayList<String>();
 		try {
@@ -75,7 +74,6 @@ public class AuthoritiesDataServiceImpl extends UnicastRemoteObject implements A
 	}
 
 	@SuppressWarnings({ "unchecked", "resource" })
-	@Override
 	public boolean save(AuthorityPO po) throws RemoteException {
 		try {
 			FileInputStream fileIn = new FileInputStream("src/main/java/ser/authorities.ser");

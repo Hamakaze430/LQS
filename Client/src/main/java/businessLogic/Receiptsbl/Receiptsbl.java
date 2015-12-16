@@ -18,10 +18,11 @@ public class Receiptsbl implements ReceiptsblService {
 	private CarAndDriverblService carAndDriver;
 
 	public Receiptsbl(UserblService user){
-
-		carAndDriver = new MockCarAndDriver();
 		this.user = user;
+		
 	}
+	
+	
 	
 	public String getName(){
 		return "";

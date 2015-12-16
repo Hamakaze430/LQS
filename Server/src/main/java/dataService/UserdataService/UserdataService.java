@@ -19,4 +19,6 @@ public interface UserdataService extends Remote {
 	public boolean deleteUser(UserPO po) throws RemoteException;
 	
 	public boolean updateUser(UserPO po) throws RemoteException;
+	
+	public int getCount(String id) throws RemoteException;
 }

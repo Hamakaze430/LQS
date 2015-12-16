@@ -14,7 +14,6 @@ public class LogisticsDataServiceSerializableFileImpl extends UnicastRemoteObjec
 		super();
 	}
 
-	@Override
 	public LogisticsPO find(String id) throws RemoteException {
 		try {
 			FileInputStream file = new FileInputStream("src/main/java/ser/logistics.ser");
@@ -28,7 +27,6 @@ public class LogisticsDataServiceSerializableFileImpl extends UnicastRemoteObjec
 		return null;
 	}
 
-	@Override
 	public boolean insert(LogisticsPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return false;
