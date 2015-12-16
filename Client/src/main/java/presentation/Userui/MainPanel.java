@@ -496,7 +496,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.入库单)) {
-			JPanel storageIn = new StorageInPanel();
+			JPanel storageIn = new StorageInPanel(user);
 			cardPanel.add(storageIn, "10");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/storageIn_unselected.png");			
@@ -534,7 +534,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.出库单)) {
-			JPanel storageOut = new StorageOutPanel();
+			JPanel storageOut = new StorageOutPanel(user);
 			cardPanel.add(storageOut, "11");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/storageOut_unselected.png");			
