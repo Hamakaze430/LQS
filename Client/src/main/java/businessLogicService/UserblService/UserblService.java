@@ -38,4 +38,6 @@ public interface UserblService {
 	public String getUserPassword();
 
 	public boolean changePassword(String valueOf);
+
+	public String getCenterName();
 }

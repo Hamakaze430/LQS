@@ -14,7 +14,7 @@ public class Userui extends JPanel{
 private static final long serialVersionUID = 1L;
 	
 	private UserblService bl;
-	private showPanel showPanel;
+	
 	private UserManagerPanel addUserPanel;
 	
 	public Userui(UserblService bl){

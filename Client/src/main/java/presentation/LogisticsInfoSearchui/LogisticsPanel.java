@@ -121,7 +121,7 @@ public class LogisticsPanel extends JPanel {
 	private void initInput(){
 		JLabel label = new JLabel("请输入您的快递单号（10位数字）: ");
 		label.setForeground(Color.white);
-		label.setFont(new Font("华文彩云",Font.PLAIN,18));
+		label.setFont(new Font("黑体",Font.PLAIN,18));
 		orderNumber = new JTextField(8);
 		orderNumber.setOpaque(false);
 		orderNumber.setBorder(new MatteBorder(0, 0, 1, 0, Color.WHITE));
@@ -135,7 +135,7 @@ public class LogisticsPanel extends JPanel {
 			
 		});
 		JButton searchButton = new JButton("查询");
-		searchButton.setFont(new Font("华文彩云",Font.PLAIN,20));
+		searchButton.setFont(new Font("黑体",Font.PLAIN,20));
 		searchButton.setForeground(Color.WHITE);
 		searchButton.setContentAreaFilled(false);
 		searchButton.setOpaque(false);
@@ -173,7 +173,7 @@ public class LogisticsPanel extends JPanel {
 		
 		JPanel inputPanel = new JPanel();
 		inputPanel.setOpaque(false);
-		inputPanel.setBounds(LEFT_PADDING, TOP_PADDING, this.getWidth(), BUTTON_HEIGHT);
+		inputPanel.setBounds(LEFT_PADDING, TOP_PADDING+10, this.getWidth(), BUTTON_HEIGHT);
 		inputPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		inputPanel.add(label);
 		inputPanel.add(orderNumber);
@@ -188,6 +188,7 @@ public class LogisticsPanel extends JPanel {
 		TitledBorder tb = BorderFactory.createTitledBorder("物流信息");
 		tb.setTitleJustification(TitledBorder.LEFT);
 		text.setBorder(tb);
+		text.setOpaque(false);
 		JScrollPane scrollPane = new JScrollPane(text);
 		scrollPane.getViewport().setOpaque(false);
 		idLabel = new JLabel("·订单条形码号:");

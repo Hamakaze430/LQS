@@ -95,6 +95,11 @@ public class UserblStub implements UserblService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public String getCenterName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

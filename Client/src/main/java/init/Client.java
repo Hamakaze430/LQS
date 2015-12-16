@@ -1,8 +1,12 @@
 package init;
 
 import javax.swing.JOptionPane;
+
+import businessLogic.Userbl.Userbl;
+import businessLogicService.UserblService.UserblService;
 import dataService.DataFactoryService.DataFactory;
 import dataService.DataFactoryService.DataFactoryService;
+import presentation.Userui.MainPanel;
 import presentation.mainui.MainFrame;
 
 public class Client {
@@ -15,7 +19,10 @@ public class Client {
 		//	System.out.println("Success");
 			dataFactory = new DataFactory();
 			frame = new MainFrame();
-			frame.addWelcomePanel();
+			UserblService bl = new Userbl("02500111000");
+			MainPanel panel = new MainPanel(bl);
+			frame.add(panel);
+			//frame.addWelcomePanel();
 			frame.setVisible(true);
 		} catch (ClientInitException e) {
 			 e.printStackTrace();

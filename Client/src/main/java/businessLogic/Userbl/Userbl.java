@@ -60,6 +60,7 @@ public class Userbl implements UserblService{
 	public boolean hasTheAuthority(Authorities one) {
 		AuthoritiesSettingblService bl = new AuthoritiesSettingbl();
 		return bl.hasTheAuthority(info.getAuthority(), one);
+		
 	}
 
 	public String getUserName() {
@@ -112,6 +113,11 @@ public class Userbl implements UserblService{
 		// TODO Auto-generated method stub
 		info.setPassword(s);
 		return update(info);
+	}
+
+	public String getCenterName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

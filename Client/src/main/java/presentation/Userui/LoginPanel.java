@@ -30,6 +30,10 @@ import businessLogicService.UserblService.UserblService;
 
 public class LoginPanel extends JPanel{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private UserblService bl;
 	private JLabel bg;
 	private JLabel IDbg;
@@ -76,11 +80,17 @@ public class LoginPanel extends JPanel{
 		Password.setForeground(Color.lightGray);
 		Password.setFont(new Font("华文细黑",Font.PLAIN,18));
 		Password.setBounds(330, 312, 130, 80);
+		
 		key = new JPasswordField(20);
 		key.setBounds(408, 310, 230, 80);
 		key.setBorder(new EmptyBorder(0,0,0,0));
 		key.setOpaque(false);
-		
+		key.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				login();
+			}			
+		});		
 		login = new JButton();
 		login.setBounds(590, 420, 50, 50);
 		PictureButton.setIcon("src/main/java/image/login.png",login);
