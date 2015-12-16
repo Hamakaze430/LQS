@@ -8,11 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Miscellaneous.Authorities;
+import Miscellaneous.Place;
 import businessLogicService.UserblService.ApartmentManagerblService;
 import businessLogicService.UserblService.ApartmentblService;
 import businessLogicService.UserblService.AuthoritiesSettingblService;
 import businessLogicService.UserblService.UserManagerblService;
 import businessLogicService.UserblService.UserblService;
+import vo.HallVO;
 import vo.UserVO;
 /**
  * 登录后用户信息的获取
@@ -22,15 +24,18 @@ public class Userbl implements UserblService{
 	private DataFactoryService dataFactory;
 	private ApartmentblService apartmentbl;
 	private UserVO info;
-	public Userbl(){
-		
-	}
+	private HallVO hall;
 	
 	public Userbl(String userID){
     	dataFactory=Client.dataFactory;
 		apartmentbl = new Apartmentbl();
 		this.info = findUser(userID);
+		this.hall = getHallVO(info.getHall());
 		if (info == null) info = new UserVO("","","","","","","");
+	}
+
+	private HallVO getHallVO(String hall2) {
+		return apartmentbl.getVOByName(info.getHall());
 	}
 
 	public UserVO findUser(String userID) {
@@ -42,12 +47,12 @@ public class Userbl implements UserblService{
 
 	public String getHallId() {
 		// TODO Auto-generated method stub
-		return apartmentbl.getId(info.getHall());
+		return hall.getID();
 	}
 
 	public String getHallName() {
 		// TODO Auto-generated method stub
-		return info.getHall();
+		return hall.getName();
 	}
 	
 	public String getUserPassword() {
@@ -81,9 +86,18 @@ public class Userbl implements UserblService{
 		return bl.update(info);
 	}
 
-	public String getCenterName() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getHallType() {
+		String s = hall.getID();
+		if (s.length() == 4) return "中转中心";
+		else return "营业厅";
+	}
+
+	public String getHallPlace() {
+		String s = hall.getLocation();
+		for (Place p : Place.values()){
+			if (s.substring(0, 3).equals(p.name())) return p.name();
+		}
+		return "";
 	}
 
 }

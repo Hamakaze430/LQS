@@ -5,24 +5,37 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import Miscellaneous.FormType;
 import businessLogic.Receiptsbl.MockTest.MockCarAndDriver;
+import businessLogic.Userbl.Apartmentbl;
 import businessLogic.Userbl.Userbl;
 import businessLogicService.CarAndDriverblService.CarAndDriverblService;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
+import businessLogicService.UserblService.ApartmentblService;
 import businessLogicService.UserblService.UserblService;
+import dataService.DataFactoryService.DataFactory;
+import dataService.DataFactoryService.DataFactoryService;
+import dataService.ReceiptsdataService.ReceiptsdataService;
+import init.Client;
 
 public class Receiptsbl implements ReceiptsblService {
 	private UserblService user;
+	private DataFactoryService dataFactory;
 	private CarAndDriverblService carAndDriver;
+	private ApartmentblService apartment;
 
 	public Receiptsbl(UserblService user){
 		this.user = user;
-		
+		dataFactory = Client.dataFactory;
 	}
 	
-	
+	public List<String> getHallNameListByAddress(String string) {
+		// TODO Auto-generated method stub
+		apartment = new Apartmentbl();
+		return apartment.getHallNameListByAddress(string);
+	}
 	
 	public String getName(){
 		return "";
@@ -40,9 +53,9 @@ public class Receiptsbl implements ReceiptsblService {
 		return 0;
 	}
 
-	public String getLoadingId() {
+	public String getLastId(String foreId) {
 		// TODO Auto-generated method stub
-		return "00001";
+		return dataFactory.getReceiptsdataService().getLastId(foreId);
 	}
 
 	public ArrayList<String> getCarInfo(String hallId) {
@@ -73,6 +86,15 @@ public class Receiptsbl implements ReceiptsblService {
 			return null;	
 		}
 	}
+
+	public String getHallPlace() {
+		return user.getHallPlace();
+	}
+
+	public String getHallName() {
+		return user.getHallName();
+	}
+
 	
 }
 

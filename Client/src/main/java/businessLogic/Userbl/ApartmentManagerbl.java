@@ -34,9 +34,9 @@ public class ApartmentManagerbl implements ApartmentManagerblService {
 	/**
 	 * 增加部门信息
 	 */
-	public boolean insert(HallVO vo) {
+	public boolean insert(HallVO vo, String type) {
 		HallPO po = new HallPO(vo.getName(),vo.getID(),vo.getLocation());
-		return dataFactory.getApartmentDataService().insert(po);
+		return dataFactory.getApartmentDataService().insert(po,type);
 		
 	}
 
@@ -44,20 +44,12 @@ public class ApartmentManagerbl implements ApartmentManagerblService {
 	/**
 	 * 得到对应部门的数量
 	 */
-	public int getNum(String text, Place place) {
+	public int getNum(String text, String place) {
 //		int num = dataFactory.getApartmentDataService().getHallNum(s,place);
 //		return num;
 		int num = dataFactory.getApartmentDataService().getNum(text,place);
 		return num;
 	}
-
-	/**
-	 * 自增对应部门的数量
-	 */
-	public boolean addNum(String text, Place place) {
-		return dataFactory.getApartmentDataService().addNum(text,place);
-	}
-
 	
 	/**
 	 * 删除部门信息

@@ -114,10 +114,10 @@ public class CreatApartmentDialog extends JDialog {
 						return;
 					}
 					
-					Place type = Place.value(placeBox.getSelectedItem().toString());
-					if (type1.isSelected()) bl.addNum(type1.getText(),null);
-					else if (type2.isSelected()) bl.addNum(type2.getText(),type);
-					else if (type3.isSelected()) bl.addNum(type3.getText(),type); 
+					String type;
+					if (type1.isSelected()) type = type1.getText();
+					else if (type2.isSelected()) type = type2.getText();
+					else if (type3.isSelected()) type = type3.getText();
 					else {
 						JOptionPane.showMessageDialog(null, "请选择部门类型！","", JOptionPane.ERROR_MESSAGE);
 						return;
@@ -131,7 +131,7 @@ public class CreatApartmentDialog extends JDialog {
 					bg.clearSelection();
 					HallVO vo = new HallVO(Name, Id, Place);
 					defaultModel.addRow(vo);
-					bl.insert(vo);
+					bl.insert(vo,type);
 				}
 				
 			});
@@ -173,8 +173,11 @@ public class CreatApartmentDialog extends JDialog {
 	 */
 	class IdListener implements ActionListener{	
 		public void actionPerformed(ActionEvent e) {		
-			Place place = Place.value(placeBox.getSelectedItem().toString());
-			String areaCode = place.getId();
+			String place = placeBox.getSelectedItem().toString();
+			String areaCode = null;
+			for (Place p: Place.values()){
+				if (p.name().equals(place)) areaCode = p.getId();
+			}
 			if (type1.isSelected()) {id.setText(toThreeString(bl.getNum(type1.getText(),place))); return;}
 			if (type2.isSelected()) id.setText(areaCode + (bl.getNum(type2.getText(),place)));
 			if (type3.isSelected()) id.setText(areaCode + toThreeString(bl.getNum(type3.getText(),place)));

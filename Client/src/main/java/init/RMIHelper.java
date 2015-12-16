@@ -7,6 +7,7 @@ import java.rmi.RemoteException;
 
 import dataService.BankAccountdataService.BankAccountdataService;
 import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
+import dataService.ReceiptsdataService.ReceiptsdataService;
 import dataService.StrategydataService.ConstantdataService.ConstantdataService;
 import dataService.StrategydataService.HalldataService.HalldataService;
 import dataService.StrategydataService.SalarydataService.SalarydataService;
@@ -35,6 +36,8 @@ public class RMIHelper {
 	private static AuthoritiesSettingDataService authoritiesData;
 	
 	private static UserdataService userData;
+	
+	private static ReceiptsdataService receiptsData;
 
     public synchronized static void init() throws ClientInitException {
         if (inited) {
@@ -55,7 +58,7 @@ public class RMIHelper {
         apartmentData = (ApartmentDataService) Naming.lookup(urlPrefix + "apartmentData-Server");
         authoritiesData = (AuthoritiesSettingDataService) Naming.lookup(urlPrefix + "authoritiesData-Server");
         userData = (UserdataService) Naming.lookup(urlPrefix + "userData-Server");
-        
+    	receiptsData = (ReceiptsdataService) Naming.lookup(urlPrefix + "receiptsData-Server");
     }
 
     
@@ -95,6 +98,11 @@ public class RMIHelper {
 	public static HalldataService getHallDataService() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public static ReceiptsdataService getReceiptsData() {
+		// TODO Auto-generated method stub
+		return receiptsData;
 	}
     
 //    public static DataFactoryService getDataFactory() {

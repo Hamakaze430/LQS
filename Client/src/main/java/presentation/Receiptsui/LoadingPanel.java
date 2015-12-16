@@ -4,10 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -19,6 +22,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
+import Miscellaneous.Place;
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
 import businessLogicService.UserblService.UserblService;
@@ -39,10 +43,14 @@ public class LoadingPanel extends JPanel{
 	 */
 	private ReceiptsblService bl;
 	private UserblService user;
+	
+	JComboBox<String> province;
+	JComboBox<String> place;
+	
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
-	int box_width = 120;
+	int box_width = 200;
 	int box_height = 30;
 	int button_width = 80;
 	int button_height = 30;
@@ -63,7 +71,7 @@ public class LoadingPanel extends JPanel{
 		
 		Font font = new Font("黑体",Font.PLAIN,16);
 		//加判断
-		JLabel title = new JLabel(user.getCenterName()+"装车单",JLabel.CENTER);
+		JLabel title = new JLabel(user.getHallName()+"装车单",JLabel.CENTER);
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 30);
 		
@@ -79,7 +87,7 @@ public class LoadingPanel extends JPanel{
 		date.setText(bl.getCurrentTime());
 		date.setEditable(false);
 		
-		JLabel hallIdLabel = new JLabel("· xxx编号: ");
+		JLabel hallIdLabel = new JLabel("· "+user.getHallType()+"编号: ");
 		hallIdLabel.setFont(font);
 		hallIdLabel.setBounds(padding, padding*3+label_height*2, label_width, label_height);
 		
@@ -103,24 +111,29 @@ public class LoadingPanel extends JPanel{
 		id.setText(
 				hallId.getText()
 				+bl.changeDateFormat(date.getText())
-				+bl.getLoadingId()
 		);
+		id.setText(id.getText()+bl.getLastId(id.getText()));
 		id.setEditable(false);
 		
 		JLabel destination = new JLabel("· 到 达 地：");
 		destination.setFont(font);
 		destination.setBounds(padding,  padding*5+label_height*4, label_width, label_height);
 		
-		JComboBox<String> province = new JComboBox<String>();
-		JComboBox<String> place = new JComboBox<String>();
+		province = new JComboBox<String>();
+		place = new JComboBox<String>();
 		province.setFont(font);
-		province.addItem("请选择省份");
-		province.setSelectedItem("请选择省份");
+		province.addItem(bl.getHallPlace());
+		province.setSelectedIndex(0);
 		province.setBounds(padding+120,padding*5+label_height*4, box_width, box_height);
 		place.setFont(font);
 		place.addItem("请选择地点");
-		place.setSelectedItem("请选择地点");
+		place.setSelectedIndex(0);
+		List<String> list = bl.getHallNameListByAddress(province.getSelectedItem().toString());
+		for (String s : list){
+			if  (!s.equals(bl.getHallName())) place.addItem(s);
+		}
 		place.setBounds(padding+120+box_width+padding, padding*5+box_height*4, box_width, box_height);
+		
 		
 		JLabel carID = new JLabel("· 车辆代号：");
 		carID.setFont(font);
@@ -132,7 +145,7 @@ public class LoadingPanel extends JPanel{
 		car.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		car.setBounds(padding+120, padding*6+label_height*5, label_width, label_height);
 		
-		JLabel spyer = new JLabel("· 监 装 员：");
+		JLabel spyer = new JLabel("· 司    机：");
 		spyer.setFont(font);
 		spyer.setBounds(padding, padding*7+label_height*6, label_width, label_height);
 		
@@ -142,7 +155,7 @@ public class LoadingPanel extends JPanel{
 		spyername.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		spyername.setBounds(padding+120, padding*7+label_height*6, label_width, label_height);
 		
-		JLabel supercargo = new JLabel("· 押 运 员：");
+		JLabel supercargo = new JLabel("· 监 装 员：");
 		supercargo.setFont(font);
 		supercargo.setBounds(padding, padding*8+label_height*7, label_width, label_height);
 		

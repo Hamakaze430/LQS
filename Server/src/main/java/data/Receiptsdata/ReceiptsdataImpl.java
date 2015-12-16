@@ -16,9 +16,24 @@ import po.receipts.IncomePO;
 import po.receipts.PaymentPO;
 import dataService.ReceiptsdataService.ReceiptsdataService;
 
-public class ReceiptsdataImpl implements ReceiptsdataService{
+public class ReceiptsdataImpl extends UnicastRemoteObject implements ReceiptsdataService{
 
-	public ArrayList<ReceiptPO> getReceiptBeforeDate(String date) {
+	public ReceiptsdataImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public String getReceipt(String type) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getLastId(String foreId) throws RemoteException {
+		
+		return "00001";
+	}
+
+	public ArrayList<ReceiptPO> getReceiptBeforeDate(String date) throws RemoteException {
 		ArrayList<ReceiptPO> list=new ArrayList<ReceiptPO>();
 		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
 		ReceiptPO temp;
@@ -47,7 +62,7 @@ public class ReceiptsdataImpl implements ReceiptsdataService{
 		return list;
 	}
 	
-	public ArrayList<PaymentPO> getPaymentBeforeDate(String date){
+	public ArrayList<PaymentPO> getPaymentBeforeDate(String date) throws RemoteException{
 		ArrayList<PaymentPO> list=new ArrayList<PaymentPO>();
 		ArrayList<ReceiptPO> receipts=this.getReceiptBeforeDate(date);
 		for(int i=0;i<receipts.size();i++){
@@ -58,7 +73,7 @@ public class ReceiptsdataImpl implements ReceiptsdataService{
 		return list;
 	}
 	
-	public ArrayList<IncomePO> getIncomeBeforeDate(String date){
+	public ArrayList<IncomePO> getIncomeBeforeDate(String date) throws RemoteException{
 		ArrayList<IncomePO> list=new ArrayList<IncomePO>();
 		ArrayList<ReceiptPO> receipts=this.getReceiptBeforeDate(date);
 		for(int i=0;i<receipts.size();i++){
@@ -74,7 +89,7 @@ public class ReceiptsdataImpl implements ReceiptsdataService{
 		return null;
 	}
 	
-	public ArrayList<ReceiptPO> getforSales(String start, String end){
+	public ArrayList<ReceiptPO> getforSales(String start, String end) throws RemoteException{
 		ArrayList<ReceiptPO> list=new ArrayList<ReceiptPO>();
 		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
 		ReceiptPO temp;
@@ -101,8 +116,6 @@ public class ReceiptsdataImpl implements ReceiptsdataService{
 			e.printStackTrace();
 		}
 		return list;
-	}
-	
-	
+	}	
 
 }

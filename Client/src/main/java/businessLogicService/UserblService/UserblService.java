@@ -25,5 +25,7 @@ public interface UserblService {
 
 	public boolean changePassword(String valueOf);
 
-	public String getCenterName();
+	public String getHallType();
+
+	public String getHallPlace();
 }

@@ -35,9 +35,22 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 	}
 	
 //	public static void main(String[] args) throws RemoteException{
-//		ApartmentDataServiceSerializableFileImpl a = new ApartmentDataServiceSerializableFileImpl();
-//		a.delete(new HallPO("南京市中转中心","0250","南京市"));
+//		ApartmentDataServiceImpl a = new ApartmentDataServiceImpl();
+////		a.insert(new HallPO("南京第二中转中心","0251","南京市栖霞区"),"中转中心");
+//		a.findAll("PlaceName","南京市");
 //	}
+	
+	public List<HallPO> findAll(String known, String hallInfo) throws RemoteException {
+		List<HallPO>  list = findAll();
+		List<HallPO> ans = new ArrayList<HallPO>();
+		if (known.equals("PlaceName")){
+			for (HallPO po : list){
+				if (po.getLocation().contains(hallInfo)) ans.add(po);
+			}
+			return ans;
+		}
+		return ans;
+	}
 	
 	public HallPO find(String known, String hall) throws RemoteException {
 		List<HallPO>  list = findAll();
@@ -79,8 +92,9 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 		return new ArrayList<HallPO>();
 	}
 
-	public  boolean insert(HallPO po) throws RemoteException {
+	public  boolean insert(HallPO po, String type) throws RemoteException {
 		try {
+			addNum(type,po.getLocation().substring(0, 3));
 			List<HallPO>  list = findAll();
 			list.add(po);
             FileOutputStream fileOut = new FileOutputStream("src/main/java/ser/apartment.ser");
@@ -157,10 +171,10 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 		return false;
 	}
 
-	public int getNum(String type, Place place) throws RemoteException {
+	public int getNum(String type, String place) throws RemoteException {
 		String key;
 		if (type.equals("公司")) key = type;
-		else key = type + " " + place.name();
+		else key = type + " " + place;
 		File file = new File("src/main/java/ser/apartmentNum.txt");
 		try{
 			InputStreamReader read = new InputStreamReader(new FileInputStream(file),"UTF-8");
@@ -184,10 +198,10 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 	}
 
 
-	public boolean addNum(String type, Place place) throws RemoteException {
+	private boolean addNum(String type, String place) throws RemoteException {
 		String key;
 		if (type.equals("公司")) key = type;
-		else key = type + " " + place.name();
+		else key = type + " " + place;
 		File file = new File("src/main/java/ser/apartmentNum.txt");
 		try{
 			InputStreamReader read = new InputStreamReader(new FileInputStream(file),"UTF-8");
