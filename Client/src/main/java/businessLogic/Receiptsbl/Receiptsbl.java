@@ -95,6 +95,5 @@ public class Receiptsbl implements ReceiptsblService {
 		return user.getHallName();
 	}
 
-	
 }
 

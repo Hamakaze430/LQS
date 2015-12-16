@@ -70,7 +70,6 @@ public class LoadingPanel extends JPanel{
 		// TODO Auto-generated method stub
 		
 		Font font = new Font("黑体",Font.PLAIN,16);
-		//加判断
 		JLabel title = new JLabel(user.getHallName()+"装车单",JLabel.CENTER);
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 30);

@@ -100,4 +100,11 @@ public class Userbl implements UserblService{
 		return "";
 	}
 
+	public String getCenterName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 }

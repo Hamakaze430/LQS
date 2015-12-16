@@ -12,8 +12,6 @@ import javax.swing.JPanel;
  *
  */
 public class OrganizationPanel extends JPanel {
-<<<<<<< HEAD
-
 	/**
 	 * 
 	 */
@@ -46,7 +44,4 @@ public class OrganizationPanel extends JPanel {
 		this.add(b);
 	}
 
-=======
-	
->>>>>>> 80a8df67e7c806ac0da4fde6635b900cda58c540
 }

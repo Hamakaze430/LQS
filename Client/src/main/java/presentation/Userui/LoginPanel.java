@@ -32,15 +32,13 @@ import businessLogicService.UserblService.UserblService;
 
 public class LoginPanel extends JPanel{
 	
-<<<<<<< HEAD
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private UserblService bl;
-=======
 	private UserManagerblService bl;
->>>>>>> 80a8df67e7c806ac0da4fde6635b900cda58c540
+
 	private JLabel bg;
 	private JLabel IDbg;
 	private JLabel UserID;

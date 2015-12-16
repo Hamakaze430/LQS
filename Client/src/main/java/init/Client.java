@@ -3,6 +3,7 @@ package init;
 import javax.swing.JOptionPane;
 
 import businessLogic.Userbl.Userbl;
+import businessLogic.Userbl.stub.UserblStub;
 import businessLogicService.UserblService.UserblService;
 import dataService.DataFactoryService.DataFactory;
 import dataService.DataFactoryService.DataFactoryService;
@@ -19,11 +20,14 @@ public class Client {
 		//	System.out.println("Success");
 			dataFactory = new DataFactory();
 			frame = new MainFrame();
-			UserblService bl = new Userbl("02500001000");
-			//UserblService bl = new Userbl("admin");
+
+//			UserblService bl = new Userbl("admin");
+			UserblService bl = new Userbl("02500111000");
 			MainPanel panel = new MainPanel(bl);
 			frame.add(panel);
-		//	frame.addWelcomePanel();
+			//frame.addWelcomePanel();
+
+
 			frame.setVisible(true);
 		} catch (ClientInitException e) {
 			 e.printStackTrace();
