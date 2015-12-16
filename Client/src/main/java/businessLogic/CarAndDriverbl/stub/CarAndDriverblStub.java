@@ -11,8 +11,7 @@ public class CarAndDriverblStub implements CarAndDriverblService {
 
 	public CarVO findCarInfo(String id) {
 		if (id.equals("025000010")){
-		 Date time = new Date(20150603);
-		 CarVO car = new CarVO("025000010", "苏A 00000", time);
+		 CarVO car = new CarVO("025000010", "苏A 00000", "2015/06/03");
 		 return car;
 		}
 		return null;
@@ -21,10 +20,8 @@ public class CarAndDriverblStub implements CarAndDriverblService {
 	public DriverVO findDriverInfo(String id) {
 		// TODO Auto-generated method stub
 		if (id.equals("025000010")){
-			 Date birth = new Date(19961110);
-			 Date time = new Date(20161231);
 			 //姓名、出生日期、身份证号、手机 、性别、行驶证期限
-			 DriverVO driver = new DriverVO("025000010", "李晓华", birth, "330382199701014526", "15651726589", "女", time);
+			 DriverVO driver = new DriverVO("025000010", "李晓华", "1996/11/10", "330382199701014526", "15651726589", "女", "2016/12/31");
 			 return driver;
 			}
 		return null;

@@ -28,32 +28,53 @@ public class Commoditybl implements CommodityblService,CommodityInfo, CommodityA
 	String comID;
 	String location;
 	
-	public Commoditybl(StationInfo stationInfo, String userID){
+	public Commoditybl(StationInfo stationInfo, String userID) {
 		this.stationInfo = stationInfo;
 		this.userID = userID;
 		comID = userID.substring(0, userID.length()-2);
-		location = commodityDataService.getLocation(comID);
+		try {
+			location = commodityDataService.getLocation(comID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public ArrayList<StorageInReceiptVO> viewAllStorageInReceiptSubmitted() {
 		// TODO Auto-generated method stub
 		ArrayList<StorageInReceiptVO> volist = new ArrayList<StorageInReceiptVO>();
 		ArrayList<StorageInReceiptPO> polist = null;
-		polist = commodityDataService.getSummitStorageIn();
+		try {
+			polist = commodityDataService.getSummitStorageIn();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for(int i=0;i<polist.size();i++)
 			volist.add(Convert.po_to_vo_storagein(polist.get(i)));
 		return volist;
 	}
 
 	public ResultMessage approveStorageInReceipt(String id) {
-		return commodityDataService.approveStorageInReceipt(id);
+		try {
+			return commodityDataService.approveStorageInReceipt(id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public ArrayList<StorageInReceiptVO> viewAllStorageInReceipt() {
 		// TODO Auto-generated method stub
 		ArrayList<StorageInReceiptVO> volist = new ArrayList<StorageInReceiptVO>();
 		ArrayList<StorageInReceiptPO> polist = null;
-		polist = commodityDataService.getStorageInReceipt();
+		try {
+			polist = commodityDataService.getStorageInReceipt();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for(int i=0;i<polist.size();i++)
 			volist.add(Convert.po_to_vo_storagein(polist.get(i)));
 		return volist;
@@ -63,21 +84,37 @@ public class Commoditybl implements CommodityblService,CommodityInfo, CommodityA
 		// TODO Auto-generated method stub
 		ArrayList<StorageOutReceiptVO> volist = new ArrayList<StorageOutReceiptVO>();
 		ArrayList<StorageOutReceiptPO> polist = null;
-		polist = commodityDataService.getSummitStorageOut();
+		try {
+			polist = commodityDataService.getSummitStorageOut();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for(int i=0;i<polist.size();i++)
 			volist.add(Convert.po_to_vo_storageout(polist.get(i)));
 		return volist;
 	}
 
 	public ResultMessage approveStorageOutReceipt(String id) {
-		return commodityDataService.approveStorageOutReceipt(id);
+		try {
+			return commodityDataService.approveStorageOutReceipt(id);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	public ArrayList<StorageOutReceiptVO> viewAllStorageOutReceipt() {
 		// TODO Auto-generated method stub
 		ArrayList<StorageOutReceiptVO> volist = new ArrayList<StorageOutReceiptVO>();
 		ArrayList<StorageOutReceiptPO> polist = null;
-		polist = commodityDataService.getStorageOutReceipt();
+		try {
+			polist = commodityDataService.getStorageOutReceipt();
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for(int i=0;i<polist.size();i++)
 			volist.add(Convert.po_to_vo_storageout(polist.get(i)));
 		return volist;
@@ -129,7 +166,12 @@ public class Commoditybl implements CommodityblService,CommodityInfo, CommodityA
 			Object[][] data) {
 		// TODO Auto-generated method stub
 		ComZonePO comZonePO = null;
-		comZonePO = commodityDataService.getZone(comID);
+		try {
+			comZonePO = commodityDataService.getZone(comID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		int shelfPerLine = comZonePO.getShelfPerLine();
 		int cellPerShelf = comZonePO.getCellPerShelf();
@@ -177,7 +219,12 @@ public class Commoditybl implements CommodityblService,CommodityInfo, CommodityA
 			goodspo.add(new ComGoodsPO(Convert.vo_to_po_order(goodsvo.get(i).getOrder()),goodsvo.get(i).getType(),goodsvo.get(i).getLine(),goodsvo.get(i).getShelf(),goodsvo.get(i).getCell()));
 			
 		StorageInReceiptPO po = new StorageInReceiptPO(goodspo,vo.getID(),vo.getDate(),vo.getLocation());
-		commodityDataService.addStorageInReceipt(po);
+		try {
+			commodityDataService.addStorageInReceipt(po);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -193,12 +240,23 @@ public class Commoditybl implements CommodityblService,CommodityInfo, CommodityA
 		
 		for(int i=0;i<orderList.size();i++){
 			ComGoodsPO goodpo = null;
-			goodpo = commodityDataService.getGoods(comID, orderList.get(i).getID());
+			try {
+				goodpo = commodityDataService.getGoods(comID, orderList.get(i).getID());
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			ComGoodsVO goodvo = new ComGoodsVO(orderList.get(i),goodpo.getType(),goodpo.getLine(),goodpo.getShelf(),goodpo.getCell());
 			comGoodsList.add(goodvo);
 		}
 		
-		return new StorageOutReceiptVO(comGoodsList,commodityDataService.getNextStorageOutID(comID),location,Calendar.YEAR+"/"+Calendar.MONTH+"/"+Calendar.DATE);
+		try {
+			return new StorageOutReceiptVO(comGoodsList,commodityDataService.getNextStorageOutID(comID),location,Calendar.YEAR+"/"+Calendar.MONTH+"/"+Calendar.DATE);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 
 	}
 
@@ -210,7 +268,12 @@ public class Commoditybl implements CommodityblService,CommodityInfo, CommodityA
 			goodspo.add(new ComGoodsPO(Convert.vo_to_po_order(goodsvo.get(i).getOrder()),goodsvo.get(i).getType(),goodsvo.get(i).getLine(),goodsvo.get(i).getShelf(),goodsvo.get(i).getCell()));
 			
 		StorageOutReceiptPO po = new StorageOutReceiptPO(goodspo,vo.getID(),vo.getDate(),vo.getLocation());
-		commodityDataService.addStorageOutReceipt(po);
+		try {
+			commodityDataService.addStorageOutReceipt(po);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
@@ -218,7 +281,12 @@ public class Commoditybl implements CommodityblService,CommodityInfo, CommodityA
 		// TODO Auto-generated method stub
 		ArrayList<ComGoodsVO> volist = new ArrayList<ComGoodsVO>();
 		ArrayList<ComGoodsPO> polist = null;
-		polist = commodityDataService.getComGoods(comID);
+		try {
+			polist = commodityDataService.getComGoods(comID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		for(int i=0;i<polist.size();i++){
 			ComGoodsVO vo = new ComGoodsVO(Convert.po_to_vo_order(polist.get(i).getOrder()),polist.get(i).getType(),polist.get(i).getLine(),polist.get(i).getShelf(),polist.get(i).getCell());
@@ -238,8 +306,20 @@ public class Commoditybl implements CommodityblService,CommodityInfo, CommodityA
 		for(int i=0;i<20;i++)
 			result[i] = 0;
 		
-		ArrayList<StorageInReceiptPO> storageinlist = commodityDataService.getStorageInReceipt(comID);
-		ArrayList<StorageOutReceiptPO> storageoutlist = commodityDataService.getStorageOutReceipt(comID);
+		ArrayList<StorageInReceiptPO> storageinlist = null;
+		try {
+			storageinlist = commodityDataService.getStorageInReceipt(comID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<StorageOutReceiptPO> storageoutlist = null;
+		try {
+			storageoutlist = commodityDataService.getStorageOutReceipt(comID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		for(int i=0;i<storageinlist.size();i++){
 			StorageInReceiptPO tempo = storageinlist.get(i);
@@ -288,8 +368,19 @@ public class Commoditybl implements CommodityblService,CommodityInfo, CommodityA
 		// TODO Auto-generated method stub
 		 ArrayList<ComGoodsVO> volist = new ArrayList<ComGoodsVO>();
 		   ComZonePO zonepo = null;
-		   zonepo = commodityDataService.getZone(comID);
-		ArrayList<ComGoodsPO> polist = commodityDataService.getComGoods(comID);
+		   try {
+			zonepo = commodityDataService.getZone(comID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<ComGoodsPO> polist = null;
+		try {
+			polist = commodityDataService.getComGoods(comID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		for(int i=0;i<polist.size();i++){
 			ComGoodsPO tempo = polist.get(i);
 			volist.add(new ComGoodsVO(Convert.po_to_vo_order(tempo.getOrder()),tempo.getType(),tempo.getLine(),tempo.getShelf(),tempo.getCell()));
@@ -302,7 +393,12 @@ public class Commoditybl implements CommodityblService,CommodityInfo, CommodityA
 		// TODO Auto-generated method stub
        ResultMessage result = null;
 		
-		result = commodityDataService.modifyZone(comID, space);
+		try {
+			result = commodityDataService.modifyZone(comID, space);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return result;
 	}
@@ -311,7 +407,12 @@ public class Commoditybl implements CommodityblService,CommodityInfo, CommodityA
 		// TODO Auto-generated method stub
 		 ResultMessage result = null;
 			
-			result = commodityDataService.initZone(comID);
+			try {
+				result = commodityDataService.initZone(comID);
+			} catch (RemoteException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 			return result;		
 	}
@@ -319,7 +420,12 @@ public class Commoditybl implements CommodityblService,CommodityInfo, CommodityA
 	public ResultMessage moveGoods(Object[][] data) {
 		// TODO Auto-generated method stub
 		ComZonePO comZonePO = null;
-		comZonePO = commodityDataService.getZone(comID);
+		try {
+			comZonePO = commodityDataService.getZone(comID);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		int shelfPerLine = comZonePO.getShelfPerLine();
 		int cellPerShelf = comZonePO.getCellPerShelf();

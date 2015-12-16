@@ -2,10 +2,6 @@ package po;
 
 import java.io.Serializable;
 
-import vo.CenterVO;
-import vo.HallVO;
-import vo.UserVO;
-
 
 public class UserPO implements Serializable{
 	

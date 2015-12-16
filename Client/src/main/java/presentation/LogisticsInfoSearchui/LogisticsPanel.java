@@ -1,3 +1,6 @@
+/**
+ * 物流查询界面
+ */
 package presentation.LogisticsInfoSearchui;
 
 import java.awt.Color;
@@ -62,6 +65,9 @@ public class LogisticsPanel extends JPanel {
 	final int BUTTOM_PADDING = 100;
 	final int PADDING_HORIZATION = 30;
 	
+	/**
+	 * 含"返回"按钮，返回开始界面
+	 */
 	private void initReturn() {
 		 final JButton back = new JButton();
 		
@@ -112,12 +118,20 @@ public class LogisticsPanel extends JPanel {
 		
 	}
 
+	
+	/**
+	 * 背景图片
+	 */
 	private void initbg() {
 		JLabel bg = new PictureLabel("src/main/java/image/2.jpg");
 		bg.setBounds(0, 0, this.getWidth(), this.getHeight());
 		this.add(bg);
 	}
 
+	
+	/**
+	 * 输入框
+	 */
 	private void initInput(){
 		JLabel label = new JLabel("请输入您的快递单号（10位数字）: ");
 		label.setForeground(Color.white);
@@ -181,6 +195,11 @@ public class LogisticsPanel extends JPanel {
 		
 		this.add(inputPanel);
 	}
+	
+	/**
+	 * 显示框
+	 * 未完善
+	 */
 	private void initDisplay() {
 		
 		
@@ -207,6 +226,10 @@ public class LogisticsPanel extends JPanel {
 	    display.setVisible(false);
 		this.add(display);
 	}	
+	
+	/**
+	 * 物流信息处理，包括报错和逻辑
+	 */
 	private void searchInfo() {
 		// TODO Auto-generated method stub
 		String order = orderNumber.getText();
@@ -237,6 +260,10 @@ public class LogisticsPanel extends JPanel {
 		
 		
 	}
+	
+	/**
+	 * Button设置图片的方法
+	 */
 	private void setIcon(String file,JButton iconButton){
 		ImageIcon icon = new ImageIcon(file);
 		Image temp = icon.getImage().getScaledInstance(iconButton.getWidth(), iconButton.getHeight(), icon.getImage().SCALE_DEFAULT);

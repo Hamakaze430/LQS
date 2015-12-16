@@ -27,7 +27,7 @@ import presentation.mainui.PictureLabel;
 
 public class CPFrame extends JFrame{
 	/**
-	 * 
+	 * MainPanel下修改密码的子窗口
 	 */
 	private static final long serialVersionUID = 1L;
 	private Font font = new Font("黑体",Font.PLAIN,13); 

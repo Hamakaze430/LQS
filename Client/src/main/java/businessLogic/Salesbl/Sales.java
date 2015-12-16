@@ -43,11 +43,13 @@ public class Sales implements SalesblService{
 	}
 
 	public SalesVO show() {
-		SalesVO vo=new SalesVO();
+		SalesVO vo;
 		if(this.checkDate()){
 			SalesPO po=sales.getSales(this.start, this.end);
 			vo=new SalesVO(po);
 		}
+		else
+			return null;
 		return vo;
 	}
 

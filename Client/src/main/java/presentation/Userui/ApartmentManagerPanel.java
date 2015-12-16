@@ -1,5 +1,8 @@
-package presentation.Userui;
+/**
+ * 部门管理界面，包括部门信息的增加，删除，修改。
+ */
 
+package presentation.Userui;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -35,21 +38,22 @@ import javax.swing.table.TableCellRenderer;
  */
 import javax.swing.table.TableRowSorter;
 
-import businessLogic.Userbl.Apartmentbl;
-import businessLogicService.UserblService.ApartmentblService;
+import businessLogic.Userbl.ApartmentManagerbl;
+import businessLogicService.UserblService.ApartmentManagerblService;
 import init.Client;
 import presentation.mainui.SimpleButton;
 import vo.HallVO;
 public class ApartmentManagerPanel extends JPanel {
-	ApartmentblService bl;
+	ApartmentManagerblService bl;
 	DefaultTableModel defaultModel;
 	JTable table;
 	int rowEditable = -1;
 	int columnEditable = -1;
 	String temp;
 	int buttonNum;
+	
 	public ApartmentManagerPanel(int buttonNum){	
-		bl = new Apartmentbl();
+		bl = new ApartmentManagerbl();
 		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		this.buttonNum = buttonNum;
 		this.setBorder(null);
@@ -57,6 +61,10 @@ public class ApartmentManagerPanel extends JPanel {
 		init();
 	}
 	
+	
+	/**
+	 * 界面初始化
+	 */
 	private void init() {
 		// TODO Auto-generated method stub
 		Vector<String> name = new Vector<String>();
@@ -190,6 +198,10 @@ public class ApartmentManagerPanel extends JPanel {
 		this.add(buttons);
 	}
 
+	
+	/**
+	 * 从逻辑层获取部门信息列表
+	 */
 	private void initTable() {
 		// TODO Auto-generated method stub
 		List<HallVO> list = bl.getAll();

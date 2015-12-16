@@ -27,20 +27,21 @@ public class AuthoritiesDataServiceImpl extends UnicastRemoteObject implements A
 		super();
 	}
 	
-	public static void main(String[] args) throws RemoteException{
-		AuthoritiesDataServiceImpl a = new AuthoritiesDataServiceImpl();
-////		Identity[] array = Identity.values();
-////		for (Identity id : array){
-////			a.save(new AuthorityPO(id.name(),new ArrayList<String>()));
-////		}
+//	public static void main(String[] args) throws RemoteException{
+//		AuthoritiesDataServiceImpl a = new AuthoritiesDataServiceImpl();
+//		Identity[] array = Identity.values();
+//		for (Identity id : array){
+//			a.save(new AuthorityPO(id.name(),new ArrayList<String>()));
+//		}
 //		String s = "管理员";
 //		List<String> list = new ArrayList<String>();
 //		list.add("用户管理");
 //		a.save(new AuthorityPO(s,list));
-		List<String> list = a.getList("管理员");	
-		for(String s : list) System.out.println(s);
-	}
+//		List<String> list = a.getList("管理员");	
+//		for(String s : list) System.out.println(s);
+//	}
 
+	@SuppressWarnings({ "unchecked", "resource" })
 	@Override
 	public List<String> getList(String identity) throws RemoteException {
 		List<String> ans = new ArrayList<String>();

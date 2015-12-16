@@ -7,7 +7,9 @@ import businessLogicService.UserblService.AuthoritiesSettingblService;
 import dataService.DataFactoryService.DataFactoryService;
 import init.Client;
 import po.AuthorityPO;
-
+/**
+ * 权限管理的逻辑
+ */
 public class AuthoritiesSettingbl implements AuthoritiesSettingblService {
 	
 	private DataFactoryService dataFactory;

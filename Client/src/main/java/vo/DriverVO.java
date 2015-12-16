@@ -2,17 +2,19 @@ package vo;
 
 import java.util.Date;
 
+import po.DriverPO;
+
 public class DriverVO {
 	
 	private String id; //城市编号（电话号码区号南京025）+营业厅编号（000三位数字）+000三位数字
 	private String name;//姓名
-	private Date birth;  //出生日期
+	private String birth;  //出生日期
 	private String identity; //身份证号
 	private String mobile; //手机
 	private String gender; //男/女
-	private Date time; //行驶证期限
+	private String time; //行驶证期限
 	
-	public DriverVO(String id, String name, Date birth, String identity, String mobile, String gender, Date time){
+	public DriverVO(String id, String name, String birth, String identity, String mobile, String gender, String time){
 		this.id = id;
 		this.name = name;
 		this.birth = birth;
@@ -20,6 +22,16 @@ public class DriverVO {
 		this.mobile = mobile;
 		this.gender = gender;
 		this.time = time;
+	}
+	
+	public DriverVO(DriverPO driverPO){
+		id=driverPO.getId();
+		name=driverPO.getName();
+		birth=driverPO.getBirth();
+		identity=driverPO.getIdentity();
+		mobile=driverPO.getMobile();
+		gender=driverPO.getGender();
+		time=driverPO.getTime();
 	}
 	
 	public String getId(){
@@ -36,10 +48,10 @@ public class DriverVO {
 		this.name = name;
 	}
 	
-	public Date getBirth(){
+	public String getBirth(){
 		return birth;
 	}
-	public void setBirth(Date birth){
+	public void setBirth(String birth){
 		this.birth = birth;
 	}
 	
@@ -64,10 +76,10 @@ public class DriverVO {
 		this.gender = gender;
 	}
 	
-	public Date getTime(){
+	public String getTime(){
 		return time;
 	}
-	public void setTime(Date time){
+	public void setTime(String time){
 		this.time = time;
 	}
 	

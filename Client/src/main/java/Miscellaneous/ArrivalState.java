@@ -1,6 +1,6 @@
 package Miscellaneous;
 
 public enum ArrivalState {
-	YES,NO
+	YES,NO;
 	
 }

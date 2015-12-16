@@ -21,11 +21,13 @@ public class LoadingVO extends ReceiptVO{
 	public final String driver;
 	public final ArrayList<String> order;
 	public final double cost;
+	
 	public LoadingVO(String date, String hallId, 
-					 String id, String destination, 
+					String id, String destination, 
 					 String carId, String supervisor, 
 					 String driver, ArrayList<String> order,
 					 double cost){
+		super("","",date,"");
 		this.date = date;
 		this.hallId = hallId;
 		this.id = id;

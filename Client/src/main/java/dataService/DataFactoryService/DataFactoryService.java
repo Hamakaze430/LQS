@@ -16,7 +16,6 @@ import dataService.UserdataService.ApartmentDataService;
 import dataService.UserdataService.AuthoritiesSettingDataService;
 import dataService.UserdataService.UserdataService;
 import dataService.VoucherSearchdataService.VoucherSearchdataService;
-import dataService.WareHousedataService.WareHousedataService;
 
 public interface DataFactoryService extends Remote {
 	LogisticsDataService getLogisticsDataService();
@@ -31,7 +30,7 @@ public interface DataFactoryService extends Remote {
 	StrategydataService getStrategydaateService();
 	UserdataService getUserdataService();
 	VoucherSearchdataService getVoucherSearchdataService();
-	WareHousedataService getWareHousedataService();
+//	WareHousedataService getWareHousedataService();
 	ApartmentDataService getApartmentDataService();
 	AuthoritiesSettingDataService getAuthoritiesData();
 }

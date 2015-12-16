@@ -22,7 +22,6 @@ import presentation.LogisticsInfoSearchui.LogisticsPanel;
 import presentation.mainui.WelcomePanel;
 import vo.CostBenefitVO;
 import vo.HallVO;
-import vo.VoucherSearchVO;
 import businessLogic.CostBenefitbl.CostBenefit;
 import businessLogicService.CostBenefitblService.CostBenefitblService;
 import businessLogicService.UserblService.UserblService;
@@ -101,7 +100,7 @@ public class CostPanel extends JPanel {
 		/*
 		 *added 
 		 **/
-		b1.addActionListener(new ActionListener(){
+		b1.addActionListener(new ActionListener(){ 
 			public void actionPerformed(ActionEvent args0){
 				cb.getReport();
 				/*

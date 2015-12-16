@@ -25,16 +25,22 @@ import presentation.mainui.PictureButton;
 import presentation.mainui.PictureLabel;
 import presentation.mainui.WelcomePanel;
 import vo.UserVO;
+import businessLogic.Userbl.UserManagerbl;
 import businessLogic.Userbl.Userbl;
+import businessLogicService.UserblService.UserManagerblService;
 import businessLogicService.UserblService.UserblService;
 
 public class LoginPanel extends JPanel{
 	
+<<<<<<< HEAD
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	private UserblService bl;
+=======
+	private UserManagerblService bl;
+>>>>>>> 80a8df67e7c806ac0da4fde6635b900cda58c540
 	private JLabel bg;
 	private JLabel IDbg;
 	private JLabel UserID;
@@ -51,7 +57,7 @@ public class LoginPanel extends JPanel{
 	public LoginPanel(){
 		this.setSize(1024, 768);
 		this.setLayout(null);
-		bl = new Userbl();
+		bl = new UserManagerbl();
 		im = new ImageIcon("src/main/java/image/background.jpg");
 		initLoginPanel();
 		this.setVisible(true);

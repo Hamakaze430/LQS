@@ -44,7 +44,7 @@ public class MockInfoGetter extends InfoGetter{
     }
     
     public ArrayList<DriverPO> getDrivers(){
-        DriverPO d=new DriverPO("001", "苏yy","男", "1985/10/07","1333333333","31345");
+        DriverPO d=new DriverPO("001", "苏yy","男", "1985/10/07","1333333333","31345","");
         ArrayList<DriverPO> dl=new ArrayList<DriverPO>();
         dl.add(d);
         return dl;

@@ -23,8 +23,7 @@ import Miscellaneous.Identity;
 import businessLogic.Userbl.AuthoritiesSettingbl;
 import businessLogicService.UserblService.AuthoritiesSettingblService;
 /**
- * 权限管理
- * @author TOSHIBA
+ * 权限管理界面，设置Identity对应的Authority;
  *
  */
 public class AuthoritiesSettingPanel extends JPanel {
@@ -48,6 +47,10 @@ public class AuthoritiesSettingPanel extends JPanel {
 		bl = new AuthoritiesSettingbl();
 		initASPanel();
 	}
+	
+	/**
+	 * 初始化界面
+	 */
 	private void initASPanel() {
 		// TODO Auto-generated method stub
 		JLabel l1 = new JLabel("· 请选择要设置的职位：");
@@ -130,6 +133,10 @@ public class AuthoritiesSettingPanel extends JPanel {
 		this.add(b2);
 	}
 	
+	
+	/**
+	 * 对Identity的RadioButton增加监听，初始化对应Authority的CheckBox;
+	 */
 	class RadioButtonListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {
@@ -155,6 +162,10 @@ public class AuthoritiesSettingPanel extends JPanel {
 		}
 	}
 	
+	/**
+	 * 
+	 *对Authority的CheckBox增加监听，修改对应的tempList.
+	 */
 	class ChenckBoxListener implements ActionListener{
 
 		public void actionPerformed(ActionEvent e) {

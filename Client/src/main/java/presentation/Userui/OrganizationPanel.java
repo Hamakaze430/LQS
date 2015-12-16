@@ -7,11 +7,12 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 /**
- * 人员机构
- * @author TOSHIBA
+ * 人员机构界面
+ * 待完善
  *
  */
 public class OrganizationPanel extends JPanel {
+<<<<<<< HEAD
 
 	/**
 	 * 
@@ -45,4 +46,7 @@ public class OrganizationPanel extends JPanel {
 		this.add(b);
 	}
 
+=======
+	
+>>>>>>> 80a8df67e7c806ac0da4fde6635b900cda58c540
 }
