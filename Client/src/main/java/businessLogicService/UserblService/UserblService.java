@@ -26,4 +26,5 @@ public interface UserblService {
 	public boolean changePassword(String valueOf);
 
 	public String getCenterName();
+
 }

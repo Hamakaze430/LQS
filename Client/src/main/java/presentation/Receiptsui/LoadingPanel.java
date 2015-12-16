@@ -62,8 +62,7 @@ public class LoadingPanel extends JPanel{
 		// TODO Auto-generated method stub
 		
 		Font font = new Font("黑体",Font.PLAIN,16);
-		//加判断
-		JLabel title = new JLabel(user.getCenterName()+"装车单",JLabel.CENTER);
+		JLabel title = new JLabel(user.getHallName()+"装车单",JLabel.CENTER);
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 30);
 		
@@ -114,8 +113,8 @@ public class LoadingPanel extends JPanel{
 		JComboBox<String> province = new JComboBox<String>();
 		JComboBox<String> place = new JComboBox<String>();
 		province.setFont(font);
-		province.addItem("请选择省份");
-		province.setSelectedItem("请选择省份");
+		province.addItem("请选择城市");
+		province.setSelectedItem("请选择城市");
 		province.setBounds(padding+120,padding*5+label_height*4, box_width, box_height);
 		place.setFont(font);
 		place.addItem("请选择地点");

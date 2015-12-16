@@ -268,7 +268,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.到达单)) {
-			JPanel arrival = new ArrivalPanel();
+			JPanel arrival = new ArrivalPanel(user);
 			cardPanel.add(arrival, "4");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/arrival_unselected.png");			
@@ -458,7 +458,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.中转单)) {
-			JPanel transfer = new TransferPanel();
+			JPanel transfer = new TransferPanel(user);
 			cardPanel.add(transfer, "9");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/transfer_unselected.png");			
