@@ -10,11 +10,9 @@ public interface ApartmentDataService extends Remote {
 
 	public List<HallPO> findAll();
 
-	public boolean insert(HallPO po);
+	public boolean insert(HallPO po, String type);
 
-	public int getNum(String s, Place place);
-
-	public boolean addNum(String text, Place place);
+	public int getNum(String s, String place);
 
 	public boolean delete(HallPO po);
 
@@ -22,6 +20,8 @@ public interface ApartmentDataService extends Remote {
 
 	public boolean update(HallPO po);
 
-	public HallPO find(String known, String hall);
+	public HallPO find(String known, String hallInfo);
+
+	public List<HallPO> findAll(String known, String hallInfo);
 
 }

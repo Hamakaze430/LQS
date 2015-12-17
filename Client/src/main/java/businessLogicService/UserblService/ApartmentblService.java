@@ -1,8 +1,15 @@
 package businessLogicService.UserblService;
 
-public interface ApartmentblService {
+import java.util.List;
 
-	String getId(String hallName);
+import vo.HallVO;
+
+
+public interface ApartmentblService {
 	
 	String getName(String hallId);
+
+	List<String> getHallNameListByAddress(String string);
+
+	HallVO getVOByName(String hallName);
 }

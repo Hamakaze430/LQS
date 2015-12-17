@@ -9,12 +9,10 @@ public interface ApartmentManagerblService {
 
 	List<HallVO> getAll();
 
-	boolean insert(HallVO vo);
+	boolean insert(HallVO vo,String type);
 
 
-	int getNum(String text, Place place);
-
-	boolean addNum(String text, Place place);
+	int getNum(String text, String place);
 
 	boolean delete(HallVO vo);
 

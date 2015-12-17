@@ -1,16 +1,21 @@
 package dataService.ReceiptsdataService;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 import data.Receiptsdata.*;
 import po.ReceiptPO;
 import po.receipts.*;
 
-public interface ReceiptsdataService {
+public interface ReceiptsdataService extends Remote {
+	public String getReceipt(String type) throws RemoteException;
 
-	public ArrayList<ReceiptPO> getReceiptBeforeDate(String date);
+	public String getLastId(String foreId) throws RemoteException;
 	
-	public ArrayList<PaymentPO> getPaymentBeforeDate(String date);
+	public ArrayList<ReceiptPO> getReceiptBeforeDate(String date) throws RemoteException;
 	
-	public ArrayList<IncomePO> getIncomeBeforeDate(String date);
+	public ArrayList<PaymentPO> getPaymentBeforeDate(String date) throws RemoteException;
+	
+	public ArrayList<IncomePO> getIncomeBeforeDate(String date) throws RemoteException;
 }
