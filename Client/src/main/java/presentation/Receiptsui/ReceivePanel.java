@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
+import businessLogic.Receiptsbl.Receiptsbl;
+import businessLogicService.ReceiptsblService.ReceiptsblService;
 import businessLogicService.UserblService.UserblService;
 /**
  * 收件单
@@ -27,8 +29,10 @@ public class ReceivePanel extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private UserblService user;
+	private ReceiptsblService bl;
 	public ReceivePanel(UserblService user){
 		this.user = user;
+		bl = new Receiptsbl(user);
 		this.setLayout(null);
 		this.setOpaque(false);
 		this.setBorder(null);
@@ -65,7 +69,8 @@ public class ReceivePanel extends JPanel{
 		dateLabel.setFont(font);
 		dateLabel.setBounds(50, 260, 300, 50);	
 		
-		JLabel date = new JLabel("2015/12/2"); //改
+		JLabel date = new JLabel(); 
+		date.setText(bl.getCurrentTime());
 		date.setFont(font);
 		date.setBounds(170, 260, 300, 50);
 		

@@ -5,6 +5,7 @@ import java.util.List;
 
 import Miscellaneous.FormType;
 import vo.CarVO;
+import vo.ReceiptVO;
 
 public interface ReceiptsblService {
 	
@@ -15,16 +16,13 @@ public interface ReceiptsblService {
 	public String getFormName(FormType type);
 	public String getCurrentTime();
 	public String changeDateFormat(String date);
-
 	public String getName();
-
 	public String getCreater();
-
 	public List<String> getHallNameListByAddress(String string);
-
 	public String getHallPlace();
-
 	public String getHallName();
+
+	public boolean addReceipt(ReceiptVO vo);
 
 	
 

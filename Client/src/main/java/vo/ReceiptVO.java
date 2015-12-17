@@ -12,14 +12,14 @@ import po.ReceiptPO;
  * Created by admin on 15/10/25.
  */
 public class ReceiptVO implements Serializable{
-    private String type;
     private String date;
     private ReceiptState state;
     
-    private String name;
-    private String creator;
-    private String createdate;
-    private String status;
+    private String type;//单据类型
+    private String name; //单据名
+    private String creator; //建单人
+    private String createdate; //建单时间
+    private String status; //单据是否审批状态
     
     ReceiptVO(ReceiptPO po){
     	name=po.getName();
@@ -28,7 +28,8 @@ public class ReceiptVO implements Serializable{
     	status=po.getStatus();
     }
     
-    protected ReceiptVO(String name, String creator, String date, String status){
+    protected ReceiptVO(String type, String name, String creator, String date, String status){
+    	this.type = type;
     	this.name=name;
     	this.creator=creator;
     	createdate=date;

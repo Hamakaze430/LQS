@@ -6,12 +6,14 @@ import po.receipts.IncomePO;
 import po.receipts.PaymentPO;
 
 public class ReceiptPO implements Serializable{
+	String formType;
 	String name;
 	String creator;
 	String createdate;
     String status;
     
-    public ReceiptPO(String n,String c,String cd,String rs){
+    public ReceiptPO(String type,String n,String c,String cd,String rs){
+    	formType = type;
     	name = n;
     	creator = c;
     	createdate = cd;
@@ -30,6 +32,10 @@ public class ReceiptPO implements Serializable{
     		return true;
     	else
     		return false;
+    }
+    
+    public String getType(){
+    	return formType;
     }
     
     public String getName(){

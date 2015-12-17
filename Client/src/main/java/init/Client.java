@@ -22,7 +22,8 @@ public class Client {
 			frame = new MainFrame();
 
 //			UserblService bl = new Userbl("admin");
-			UserblService bl = new Userbl("02500111000");
+			//UserblService bl = new Userbl("02500111000");
+			UserblService bl = new Userbl("02500000000");
 			MainPanel panel = new MainPanel(bl);
 			frame.add(panel);
 			//frame.addWelcomePanel();

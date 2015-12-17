@@ -19,6 +19,9 @@ import dataService.DataFactoryService.DataFactory;
 import dataService.DataFactoryService.DataFactoryService;
 import dataService.ReceiptsdataService.ReceiptsdataService;
 import init.Client;
+import po.HallPO;
+import po.ReceiptPO;
+import vo.ReceiptVO;
 
 public class Receiptsbl implements ReceiptsblService {
 	private UserblService user;
@@ -93,6 +96,15 @@ public class Receiptsbl implements ReceiptsblService {
 
 	public String getHallName() {
 		return user.getHallName();
+	}
+
+	private ReceiptPO VOtoPO(ReceiptVO vo){
+		if 
+	}
+	
+	public boolean addReceipt(ReceiptVO vo) {
+		ReceiptPO po = VOtoPO(vo);
+		return dataFactory.getReceiptsdataService().insert(po);
 	}
 
 }
