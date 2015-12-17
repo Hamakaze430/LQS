@@ -209,11 +209,13 @@ public class LogisticsPanel extends JPanel {
 		text.setBorder(tb);
 		text.setOpaque(false);
 		JScrollPane scrollPane = new JScrollPane(text);
+		scrollPane.setOpaque(false);
+		scrollPane.setBorder(null);
 		scrollPane.getViewport().setOpaque(false);
 		idLabel = new JLabel("·订单条形码号:");
 		
 	    display = new JPanel();
-	    display.setOpaque(true);
+	    display.setOpaque(false);
 	    display.setBackground(Color.lightGray);
 	    display.setBounds(2*LEFT_PADDING, 
 	    				  TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION,

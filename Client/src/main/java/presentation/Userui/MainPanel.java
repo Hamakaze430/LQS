@@ -154,7 +154,7 @@ public class MainPanel extends JPanel {
 		cardPanel.add(init, "0");
 
 		if (user.hasTheAuthority(Authorities.寄件单)) {	
-			JPanel send = new  SendPanel();			
+			JPanel send = new  SendPanel(user);			
 			cardPanel.add(send, "1");				
 			button = new InitButton(i,"src/main/java/image/send_unselected.png");		
 			buttons.add(button);

@@ -57,7 +57,7 @@ public class ArrivalPanel extends JPanel {
 		bl = new Receiptsbl(user);
 		this.setLayout(null);
 		this.setBorder(null);
-		this.setOpaque(false);
+		this.setOpaque(false);	
 		initAPanel();
 	}
 	private void initAPanel() {
@@ -151,7 +151,6 @@ public class ArrivalPanel extends JPanel {
 		order.setBounds(padding+160, padding*4+label_height*3, label_width, label_height);	
 		order.addActionListener(new ActionListener(){
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				startplace.setVisible(true);
