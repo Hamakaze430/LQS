@@ -57,7 +57,7 @@ public class ArrivalPanel extends JPanel {
 		bl = new Receiptsbl(user);
 		this.setLayout(null);
 		this.setBorder(null);
-		this.setOpaque(false);
+		this.setOpaque(false);	
 		initAPanel();
 	}
 	private void initAPanel() {

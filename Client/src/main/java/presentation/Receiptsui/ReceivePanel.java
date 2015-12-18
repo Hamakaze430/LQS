@@ -28,6 +28,9 @@ public class ReceivePanel extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	int padding =10;
+	int button_width = 80;
+	int button_height = 30;
 	private UserblService user;
 	private ReceiptsblService bl;
 	public ReceivePanel(UserblService user){
@@ -76,33 +79,13 @@ public class ReceivePanel extends JPanel{
 		
 		
 		JButton submit = new JButton("提交");
-		submit.setBounds(750, 480, 80, 40);
-		submit.addMouseListener(new MouseListener(){
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}	
-		});
+		submit.setFont(font);
+		submit.setBounds(720, 510, button_width, button_height);
+		
+		JButton back = new JButton("返回");
+		back.setFont(font);
+		back.setBounds(720+button_width+padding, 510, button_width, button_height);
+		
 		this.add(title);
 		this.add(idLabel);
 		this.add(id);
@@ -111,5 +94,6 @@ public class ReceivePanel extends JPanel{
 		this.add(dateLabel);
 		this.add(date);
 		this.add(submit);
+		this.add(back);
 	}
 }

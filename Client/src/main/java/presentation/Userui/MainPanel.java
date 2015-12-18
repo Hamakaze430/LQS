@@ -306,7 +306,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.派件单)) {
-			JPanel deliver = new DeliverPanel();
+			JPanel deliver = new DeliverPanel(user);
 			cardPanel.add(deliver, "5");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/deliver_unselected.png");			
@@ -344,7 +344,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.收款单)) {
-			JPanel voucher = new VoucherPanel();
+			JPanel voucher = new VoucherPanel(user);
 			cardPanel.add(voucher, "6");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/voucher_unselected.png");			

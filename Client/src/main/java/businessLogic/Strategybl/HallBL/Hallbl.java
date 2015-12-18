@@ -22,7 +22,6 @@ public class Hallbl implements HallblService{
 	}
 	
 	
-	@Override
 	public ResultMessage addHall(String name, String id, String location) {
 		// TODO Auto-generated method stub
 		
@@ -40,7 +39,6 @@ public class Hallbl implements HallblService{
 	
 	
 	
-	@Override
 	public ResultMessage removeHall(String id) {
 		// TODO Auto-generated method stub
 		try {
@@ -54,7 +52,6 @@ public class Hallbl implements HallblService{
 
 	
 	
-	@Override
 	public ArrayList<HallVO> showHall() {
 		// TODO Auto-generated method stub
 		try {

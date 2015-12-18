@@ -100,6 +100,16 @@ public class UserblStub implements UserblService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public String getHallType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getHallPlace() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

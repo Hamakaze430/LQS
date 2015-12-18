@@ -6,6 +6,11 @@ import Miscellaneous.Place;
 
 public class HallVO extends Vector<String> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public HallVO(String name, String id, String location){
 		this.add(name);
 		this.add(id);

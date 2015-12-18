@@ -162,6 +162,9 @@ public class LoadingPanel extends JPanel{
 		car.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		car.setBounds(padding+labelWidth, padding*6+label_height*5, label_width, label_height);
 		
+		WarnLabel carWarn = new WarnLabel("车辆代号不存在"); 
+		carWarn.setBounds(padding+2*labelWidth, padding*6+label_height*5, label_width, label_height);
+		
 		JLabel driver = new JLabel("· 司    机：");
 		driver.setFont(font);
 		driver.setBounds(padding, padding*7+label_height*6, label_width, label_height);
@@ -300,3 +303,19 @@ public class LoadingPanel extends JPanel{
 	
 	}
 }
+
+
+class WarnLabel extends JLabel{
+	public WarnLabel(){
+		this.setForeground(Color.RED);
+		this.setOpaque(false);
+		this.setFont(new Font("宋体",Font.PLAIN,10));
+	}
+	public WarnLabel(String s){
+		super(s);
+		this.setForeground(Color.RED);
+		this.setOpaque(false);
+		this.setFont(new Font("宋体",Font.PLAIN,10));
+	}
+}
+

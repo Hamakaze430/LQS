@@ -17,17 +17,13 @@ public class Client {
 
 		try {
 			RMIHelper.init();
-		//	System.out.println("Success");
 			dataFactory = new DataFactory();
 			frame = new MainFrame();
 
-//			UserblService bl = new Userbl("admin");
-			//UserblService bl = new Userbl("02500111000");
-			UserblService bl = new Userbl("02500000000");
+			UserblService bl = new Userbl("02500001000");
 			MainPanel panel = new MainPanel(bl);
 			frame.add(panel);
 			//frame.addWelcomePanel();
-
 
 			frame.setVisible(true);
 		} catch (ClientInitException e) {
