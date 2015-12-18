@@ -31,12 +31,12 @@ public class SalesPanel extends JPanel{
 	 */
 	private static final long serialVersionUID = 1L;
 	private UserblService user;
-	JComboBox<String> year1 = new JComboBox<String>();
-	JComboBox<String> month1 = new JComboBox<String>();
-	JComboBox<String> day2 = new JComboBox<String>();
-	JComboBox<String> year2 = new JComboBox<String>();
-	JComboBox<String> month2 = new JComboBox<String>();
-	JComboBox<String> day1 = new JComboBox<String>();
+	JComboBox year1 = new JComboBox();
+	JComboBox month1 = new JComboBox();
+	JComboBox day2 = new JComboBox();
+	JComboBox year2 = new JComboBox();
+	JComboBox month2 = new JComboBox();
+	JComboBox day1 = new JComboBox();
 	public SalesPanel(UserblService user){
 		this.user=user;
 		this.setLayout(null);

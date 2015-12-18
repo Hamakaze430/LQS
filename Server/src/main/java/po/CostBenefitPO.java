@@ -25,9 +25,14 @@ public class CostBenefitPO implements Serializable {
 	
 	public void setLists(String date){
 		ReceiptsdataImpl rdi;
-		rdi = new ReceiptsdataImpl();
-		payment=rdi.getPaymentBeforeDate(date);
-		income=rdi.getIncomeBeforeDate(date);
+		try {
+			rdi = new ReceiptsdataImpl();
+			payment=rdi.getPaymentBeforeDate(date);
+			income=rdi.getIncomeBeforeDate(date);
+		} catch (RemoteException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
     public void setTotal(){

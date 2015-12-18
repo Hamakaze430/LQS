@@ -19,22 +19,10 @@ public class Client {
 			RMIHelper.init();
 			dataFactory = new DataFactory();
 			frame = new MainFrame();
-
-<<<<<<< HEAD
-
-			UserblService bl = new Userbl("02500001000");
-			MainPanel panel = new MainPanel(bl);
+			UserblService user = new Userbl("00000001000");
+			MainPanel panel = new MainPanel(user);
 			frame.add(panel);
-			//frame.addWelcomePanel();
-=======
-//			UserblService bl = new Userbl("admin");
-			UserblService bl = new Userbl("02500111000");
-			MainPanel panel = new MainPanel(bl);
-			frame.add(panel);
-			//frame.addWelcomePanel();
-
->>>>>>> 8db21c748a02632efbe5c99cdf9606fa72412271
-
+//			frame.addWelcomePanel();
 			frame.setVisible(true);
 		} catch (ClientInitException e) {
 			 e.printStackTrace();

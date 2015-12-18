@@ -12,4 +12,6 @@ public interface ApartmentblService {
 	List<String> getHallNameListByAddress(String string);
 
 	HallVO getVOByName(String hallName);
+
+	String getId(String string);
 }

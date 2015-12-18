@@ -6,7 +6,10 @@ import vo.CostBenefitVO;
 import init.Client;
 import init.RMIHelper;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import dataService.CostBenefitdataService.CostBenefitdataService;
 import dataService.DataFactoryService.DataFactoryService;
@@ -18,9 +21,13 @@ public class CostBenefit implements CostBenefitblService{
 	private CostBenefitdataService cbImpl;
 	private String date;
 	
+	
 	public CostBenefit(){
 		dataFactory = Client.dataFactory;
 		cbImpl=dataFactory.getCostBenefitdataService();
+		if(cbImpl!= null){
+			System.out.println("succ");
+		}
 	}
 	
 //    String message;
@@ -45,8 +52,12 @@ public class CostBenefit implements CostBenefitblService{
 //            return null;
 //    }
 	
-	public void setDate(String date){
-		this.date=date;
+	public void setDate(){
+		Date d = new Date();
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		date=formatter.format(d);
+		
+		System.out.println("set date succ");
 	}
     
     public CostBenefitVO getVO(){
@@ -67,8 +78,9 @@ public class CostBenefit implements CostBenefitblService{
         return this.getVO().getProfit();
     }
     
-    public void getReport(){
+    public boolean getReport(){
     	cbImpl.getReport(cbImpl.getCostBenefitPO(date));
+    	return false;
     }
 
 }

@@ -5,7 +5,7 @@ public interface CostBenefitblService {
 	/*
 	 * 从View处获得日期，用来创建CostBenefirPO
 	 * */
-	public void setDate(String date);
+	public void setDate();
 
 	
 	/*
@@ -23,6 +23,6 @@ public interface CostBenefitblService {
 	 * */
     public String showProfit();
 
-    public void getReport();
+    public boolean getReport();
 
 }

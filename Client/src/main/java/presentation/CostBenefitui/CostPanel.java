@@ -11,6 +11,7 @@ import java.util.Vector;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -87,7 +88,16 @@ public class CostPanel extends JPanel {
 		scrollPane.setOpaque(false);
 		
 		
-		defaultModel.addRow(new CostBenefitVO("10.00","10.00","10.00"));
+		
+		/*
+		 * set up CostBenefit
+		 * */
+		cb.setDate();
+		CostBenefitVO cbVO=cb.getVO();
+		defaultModel.addRow(cbVO);
+		
+		//defaultModel.addRow(new CostBenefitVO("10.00","10.00","10.00"));
+		
 		
 		JButton b1 = new JButton("导出Excel");
 		b1.setFont(new Font("黑体",Font.PLAIN,15));
@@ -107,6 +117,8 @@ public class CostPanel extends JPanel {
 				 * 
 				 * 是不是要下一个界面。。。。这里orz
 				 * */
+				JOptionPane.showMessageDialog(null, "导出成功^_^","", JOptionPane.INFORMATION_MESSAGE);
+				return;
 			}
 		});
 		

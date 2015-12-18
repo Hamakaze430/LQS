@@ -33,9 +33,9 @@ public class VoucherSearchPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	JComboBox<String> year = new JComboBox<String>();
-	JComboBox<String> month = new JComboBox<String>();
-	JComboBox<String> day = new JComboBox<String>();
+	JComboBox year = new JComboBox();
+	JComboBox month = new JComboBox();
+	JComboBox day = new JComboBox();
 	
 	public VoucherSearchPanel(){
 		this.setLayout(null);

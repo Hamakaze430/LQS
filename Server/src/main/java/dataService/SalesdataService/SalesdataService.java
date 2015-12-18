@@ -1,12 +1,15 @@
 package dataService.SalesdataService;
 
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
 import po.*;
 
-public interface SalesdataService {
+public interface SalesdataService extends Remote{
 
-	public void save(SalesPO sales);
+	public void save(SalesPO sales) throws RemoteException;
 	
-	public SalesPO getSales(String start, String end);
+	public SalesPO getSales(String start, String end) throws RemoteException;
 	
-	public void getReport(SalesPO sales);
+	public void getReport(SalesPO sales) throws RemoteException;
 }

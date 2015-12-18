@@ -15,13 +15,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.io.*;
 
-public class SalesdataImpl implements SalesdataService{
+public class SalesdataImpl extends UnicastRemoteObject implements SalesdataService{
 
-	public void save(SalesPO sales) {
+	public SalesdataImpl() throws RemoteException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public void save(SalesPO sales) throws RemoteException {
 		// TODO Auto-generated method stub
 		try {
 			ObjectOutputStream out=new ObjectOutputStream(
-					new FileOutputStream("/Server/src/main/java/txt/sales.ser"));
+					new FileOutputStream("/Server/src/main/java/ser/sales.ser"));
 			out.writeObject(sales);
 			out.close();
 		} catch (FileNotFoundException e) {
@@ -41,24 +46,31 @@ public class SalesdataImpl implements SalesdataService{
 		}
 	}
 
-	public SalesPO getSales(String start, String end) {
+	public SalesPO getSales(String start, String end) throws RemoteException {
 		// TODO Auto-generated method stub
 		ArrayList<PaymentPO> payment=new ArrayList<PaymentPO>();
 		ArrayList<IncomePO> income=new ArrayList<IncomePO>();
-		ReceiptsdataImpl rdi = new ReceiptsdataImpl();
-		ArrayList<ReceiptPO> receipts=rdi.getforSales(start, end);
-		for(int i=0;i<receipts.size();i++){
-			if(receipts.get(i).getClass().equals(PaymentPO.class)){
-				payment.add((PaymentPO)receipts.get(i));
+		ReceiptsdataImpl rdi;
+		SalesPO sales=new SalesPO();
+		try {
+			rdi = new ReceiptsdataImpl();
+			ArrayList<ReceiptPO> receipts=rdi.getforSales(start, end);
+			for(int i=0;i<receipts.size();i++){
+				if(receipts.get(i).getClass().equals(PaymentPO.class)){
+					payment.add((PaymentPO)receipts.get(i));
+				}
+				else if(receipts.get(i).getClass().equals(IncomePO.class))
+					income.add((IncomePO)receipts.get(i));
 			}
-			else if(receipts.get(i).getClass().equals(IncomePO.class))
-				income.add((IncomePO)receipts.get(i));
+			sales=new SalesPO(income, payment);
+		} catch (RemoteException e) {
+			e.printStackTrace();
 		}
-		SalesPO sales=new SalesPO(income, payment);
+		
 		return sales;
 	}
 
-	public void getReport(SalesPO po) {
+	public void getReport(SalesPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		ReportGenerator gen=new ReportGenerator();
 		gen.createSalesReport(po);

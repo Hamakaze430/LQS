@@ -1,11 +1,12 @@
 package dataService.CostBenefitdataService;
 
 import po.*;
+
 import java.rmi.*;
 
-public interface CostBenefitdataService {
+public interface CostBenefitdataService extends Remote{
 	
-	public CostBenefitPO getCostBenefitPO(String date);
+	public CostBenefitPO getCostBenefitPO(String date) throws RemoteException;
 		
-	public void getReport(CostBenefitPO po);
+	public void getReport(CostBenefitPO po) throws RemoteException;
 }
