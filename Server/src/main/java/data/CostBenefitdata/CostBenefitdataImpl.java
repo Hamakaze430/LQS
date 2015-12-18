@@ -11,6 +11,8 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBenefitdataService{
 
+	private ReceiptsdataImpl rdi=new ReceiptsdataImpl();
+	
 	public CostBenefitdataImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
@@ -26,7 +28,10 @@ public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBene
 	public CostBenefitPO getCostBenefitPO(String date) throws RemoteException {
 		// TODO Auto-generated method stub
 		CostBenefitPO cb=new CostBenefitPO();
-		cb.setLists(date);
+		//cb.setLists(date);
+		cb.payment=rdi.getPaymentBeforeDate(date);
+		cb.income=rdi.getIncomeBeforeDate(date);
+	
 		cb.setTotal();
 		System.out.println("got new cbPO");
 		return cb;

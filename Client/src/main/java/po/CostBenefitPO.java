@@ -12,8 +12,8 @@ import po.receipts.PaymentPO;
  * Created by admin on 15/10/25.
  */
 public class CostBenefitPO implements Serializable {
-	private ArrayList<PaymentPO> payment;
-	private ArrayList<IncomePO> income;
+	public ArrayList<PaymentPO> payment;
+	public ArrayList<IncomePO> income;
 	private String totalPayment;
 	private String totalIncome;
 	private String totalProfit;

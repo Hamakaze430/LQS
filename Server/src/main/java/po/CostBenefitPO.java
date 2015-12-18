@@ -17,8 +17,8 @@ public class CostBenefitPO implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ArrayList<PaymentPO> payment;
-	private ArrayList<IncomePO> income;
+	public ArrayList<PaymentPO> payment;
+	public ArrayList<IncomePO> income;
 	private double totalPayment;
 	private double totalIncome;
 	private double totalProfit;
