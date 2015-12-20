@@ -123,4 +123,5 @@ public class CostPanel extends JPanel {
 		this.add(b2);
 		this.add(scrollPane);
 	}
+	
 }

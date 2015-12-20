@@ -6,6 +6,7 @@ import java.util.List;
 import Miscellaneous.FormType;
 import vo.CarVO;
 import vo.ReceiptVO;
+import vo.UserVO;
 
 public interface ReceiptsblService {
 	
@@ -23,6 +24,14 @@ public interface ReceiptsblService {
 	public String getHallName();
 
 	public boolean addReceipt(ReceiptVO vo);
+
+	public boolean findCarAndDriver(String type, String known);
+
+	public UserVO findUser(String userName);
+
+	public boolean findLogistics(String s);
+
+	public double getLoadingCost();
 
 	
 

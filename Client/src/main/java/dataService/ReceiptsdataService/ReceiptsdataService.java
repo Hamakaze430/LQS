@@ -19,5 +19,9 @@ public interface ReceiptsdataService extends Remote {
 	public ArrayList<PaymentPO> getPaymentBeforeDate(String date);
 	
 	public ArrayList<IncomePO> getIncomeBeforeDate(String date);
+
+	public boolean insert(ReceiptPO po);
+
+	public long addReceiptId();
 	
 }

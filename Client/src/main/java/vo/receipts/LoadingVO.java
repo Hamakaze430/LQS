@@ -4,6 +4,8 @@
 package vo.receipts;
 import java.util.List;
 import Miscellaneous.FormType;
+import po.ReceiptPO;
+import po.receipts.LoadingPO;
 import vo.ReceiptVO;
 
 public class LoadingVO extends ReceiptVO{
@@ -38,4 +40,43 @@ public class LoadingVO extends ReceiptVO{
 		this.order = order;
 		this.cost = cost;		
 	}	
+	
+	public String getDate(){
+		return date;
+	}
+	
+	public String getHallId(){
+		return hallId;
+	}
+	
+	public String getId(){
+		return id;
+	}
+	
+	public String getDestination(){
+		return destination;
+	}
+	
+	public String getCarId(){
+		return carId;
+	}
+	
+	public String getSupervisor(){
+		return supervisor;
+	}
+	
+	public String getDriver(){
+		return driver;
+	}
+	
+	public List<String> getOrder(){
+		return order;
+	}
+	
+	
+	public double getCost(){
+		return cost;
+	}
+	
+	
 }

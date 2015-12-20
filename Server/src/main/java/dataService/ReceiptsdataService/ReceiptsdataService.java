@@ -18,4 +18,8 @@ public interface ReceiptsdataService extends Remote {
 	public ArrayList<PaymentPO> getPaymentBeforeDate(String date) throws RemoteException;
 	
 	public ArrayList<IncomePO> getIncomeBeforeDate(String date) throws RemoteException;
+	
+	public boolean insert(ReceiptPO po) throws RemoteException;
+	
+	public long addReceiptId() throws RemoteException;
 }

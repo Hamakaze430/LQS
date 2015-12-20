@@ -6,6 +6,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import dataService.BankAccountdataService.BankAccountdataService;
+import dataService.CarAndDriverdataService.CarAndDriverdataService;
 import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
 import dataService.ReceiptsdataService.ReceiptsdataService;
 import dataService.StrategydataService.ConstantdataService.ConstantdataService;
@@ -38,6 +39,8 @@ public class RMIHelper {
 	private static UserdataService userData;
 	
 	private static ReceiptsdataService receiptsData;
+	
+	private static CarAndDriverdataService carAndDriver;
 
     public synchronized static void init() throws ClientInitException {
         if (inited) {
@@ -59,6 +62,7 @@ public class RMIHelper {
         authoritiesData = (AuthoritiesSettingDataService) Naming.lookup(urlPrefix + "authoritiesData-Server");
         userData = (UserdataService) Naming.lookup(urlPrefix + "userData-Server");
     	receiptsData = (ReceiptsdataService) Naming.lookup(urlPrefix + "receiptsData-Server");
+    	carAndDriver = (CarAndDriverdataService) Naming.lookup(urlPrefix + "carAndDriverData-Server");
     }
 
     
@@ -103,6 +107,11 @@ public class RMIHelper {
 	public static ReceiptsdataService getReceiptsData() {
 		// TODO Auto-generated method stub
 		return receiptsData;
+	}
+	
+	public static CarAndDriverdataService getCarAndDriverData() {
+		// TODO Auto-generated method stub
+		return carAndDriver;
 	}
     
 //    public static DataFactoryService getDataFactory() {

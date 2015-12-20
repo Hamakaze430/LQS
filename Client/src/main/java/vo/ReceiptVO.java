@@ -55,4 +55,6 @@ public class ReceiptVO implements Serializable{
     public String getType(){
         return type;
     }
+
+	public ReceiptPO toPO(){return null;}
 }

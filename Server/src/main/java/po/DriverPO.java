@@ -3,7 +3,7 @@ package po;
 import java.io.Serializable;
 import java.util.Date;
 
-public class DriverPO implements Serializable{
+public class DriverPO implements CarAndDriverPO, Serializable{
      /**
 	 * 
 	 */

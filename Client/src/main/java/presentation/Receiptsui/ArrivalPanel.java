@@ -63,7 +63,7 @@ public class ArrivalPanel extends JPanel {
 	private void initAPanel() {
 		// TODO Auto-generated method stub
 		Font font = new Font("黑体",Font.PLAIN,16);
-		JLabel title = new JLabel(user.getCenterName()+"到达单",JLabel.CENTER);
+		JLabel title = new JLabel(user.getHallName()+"到达单",JLabel.CENTER);
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 30);
 		

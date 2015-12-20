@@ -19,8 +19,6 @@ public interface UserblService {
 
 	public String getCompanyName();
 	
-	public UserVO findUser(String userID);
-	
 	public String getUserPassword();
 
 	public boolean changePassword(String valueOf);
@@ -28,5 +26,7 @@ public interface UserblService {
 	public String getHallType();
 
 	public String getHallPlace();
+
+	public UserVO findUser(String known, String info);
 
 }

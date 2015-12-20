@@ -2,23 +2,24 @@ package po;
 
 import java.io.Serializable;
 
-import po.receipts.*;
+import po.receipts.IncomePO;
+import po.receipts.PaymentPO;
 
 public class ReceiptPO implements Serializable{
-	
-	private String name;
-	private String creator;
-	private String createdate;
-	private String status;
-	private double amount;
-    private String type;
-	
-    public ReceiptPO(String n,String c,String cd,String rs, String type){
+	String formType;
+	String name;
+	String creator;
+	String createdate;
+    String status;
+    long receiptId;
+    
+    public ReceiptPO(String type,String n,String c,String cd,String rs,long receiptId){
+    	formType = type;
     	name = n;
     	creator = c;
     	createdate = cd;
     	status = rs;
-    	this.type=type;
+    	this.receiptId = receiptId;
     }
     
     private Boolean isIncome(){
@@ -33,6 +34,10 @@ public class ReceiptPO implements Serializable{
     		return true;
     	else
     		return false;
+    }
+    
+    public String getType(){
+    	return formType;
     }
     
     public String getName(){
@@ -50,12 +55,4 @@ public class ReceiptPO implements Serializable{
     public String getStatus(){
     	return status;
     }
-
-	public double getAmount() {
-		return amount;
-	}
-	
-	public String getType(){
-		return type;
-	}
 }

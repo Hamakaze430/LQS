@@ -6,8 +6,10 @@ import java.io.Serializable;
  * Created by admin on 15/10/25.
  */
 public class ApprovalPO implements Serializable {
+	public String hashId;
 	public String name;
 	public String creater;
+	
 	
 	public ApprovalPO(String name,String creater){
 		this.name=name;

@@ -26,12 +26,16 @@ import javax.swing.border.MatteBorder;
 
 import Miscellaneous.Place;
 import Miscellaneous.ReceiptState;
+import businessLogic.CarAndDriverbl.CarAndDriverbl;
 import businessLogic.Receiptsbl.Receiptsbl;
+import businessLogicService.CarAndDriverblService.CarAndDriverblService;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
 import businessLogicService.UserblService.UserblService;
 import presentation.Userui.ApartmentManagerPanel;
 import presentation.Userui.MainPanel;
+import vo.LogisticsVO;
 import vo.ReceiptVO;
+import vo.UserVO;
 import vo.receipts.LoadingVO;
 
 
@@ -211,7 +215,9 @@ public class LoadingPanel extends JPanel{
 		cost.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		cost.setBounds(padding+labelWidth, padding*10+label_height*12, label_width, label_height);
 		cost.setOpaque(false);
-		
+		cost_double = bl.getLoadingCost();
+		cost.setText(String.format("%.2f", cost_double));
+		cost.setEditable(false);
 		
 		JButton submit = new JButton("提交");
 		submit.setFont(font);
@@ -265,6 +271,61 @@ public class LoadingPanel extends JPanel{
 		
 		public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+			if (place.getSelectedIndex() == 0){
+				JOptionPane.showMessageDialog(null, "请选择到达地！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			if (car.getText().equals("")){
+				JOptionPane.showMessageDialog(null, "请输入车辆代号！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			String CarId = car.getText();
+			
+			try{
+				long id = Long.parseLong(CarId);
+			}catch(NumberFormatException e1){
+				//输入编号不是数字
+				JOptionPane.showMessageDialog(null, "请输入正确的车辆代号！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			//不存在
+			if(! bl.findCarAndDriver("car",CarId)){
+				//System.out.println("找不到");
+				JOptionPane.showMessageDialog(null, "不存在对应的车辆！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			String Driver = drivername.getText();
+			if(! bl.findCarAndDriver("driver",Driver)){
+				//System.out.println("找不到");
+				JOptionPane.showMessageDialog(null, "不存在对应的司机！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			String Supervisor = spyname.getText();
+			UserVO sup = bl.findUser(Supervisor);
+			if(sup == null ){
+				//System.out.println("找不到");
+				JOptionPane.showMessageDialog(null, "不存在对应的员工！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			else if (!sup.getHall().equals(user.getHallName())){
+				JOptionPane.showMessageDialog(null, "该员工不属于单位！","注意", JOptionPane.WARNING_MESSAGE);
+				return;
+			}
+			
+			String str = orders.getText();
+		 	List<String> Order = new ArrayList<String>();
+		 	String[] split = str.split("\n");
+		 	for (String s : split) {
+		 		if(! bl.findLogistics(s)){
+					//System.out.println("找不到");
+					JOptionPane.showMessageDialog(null, "不存在快递单号为"+s+"的货物！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+		 		Order.add(s);
+		 	}
+			
 			int n = JOptionPane.showConfirmDialog(null, "确定提交?", "确认框",JOptionPane.YES_NO_OPTION);
 			if (n == 1) {
 				return;
@@ -275,13 +336,6 @@ public class LoadingPanel extends JPanel{
 			String HallId = hallId.getText();
 			String Id = id.getText();
 			String Destination = place.getSelectedItem().toString();
-			String CarId = car.getText();
-			String Supervisor = spyname.getText();
-		 	String Driver = drivername.getText();
-		 	String str = orders.getText();
-		 	List<String> Order = new ArrayList<String>();
-		 	String[] split = str.split("\n");
-		 	for (String s : split) Order.add(s);
 		 	double Cost = cost_double;
 		 	ReceiptVO vo = new LoadingVO(Name,Creator,ReceiptState.未审批.name(),
 		 			Date, HallId, Id, Destination, CarId, Supervisor, Driver, Order, Cost);

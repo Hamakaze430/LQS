@@ -23,15 +23,6 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 		// TODO Auto-generated constructor stub
 	}
 	
-	public UserPO getUserbyID(String ID)throws RemoteException {
-		// TODO Auto-generated method stub
-		List<UserPO> list = getAllUsers();
-		for (UserPO po : list){
-			if (po.getID().equals(ID)) return po;
-		}
-		return null;
-	}
-	
 	@SuppressWarnings({ "unchecked", "resource" })
 	public ArrayList<UserPO> getAllUsers()throws RemoteException{
 		try {
@@ -193,5 +184,22 @@ public class UserdataImpl extends UnicastRemoteObject implements UserdataService
 			   e.printStackTrace();
 		}
 		return false;
+	}
+
+	public UserPO find(String known, String info) throws RemoteException {
+		List<UserPO> list = getAllUsers();
+		if (known.equals("id")){
+			for (UserPO po : list){
+				if (po.getID().equals(info)) return po;
+			}
+			return null;
+		}
+		if (known.equals("name")){
+			for (UserPO po : list){
+				if (po.getName().equals(info)) return po;
+			}
+			return null;
+		}
+		return null;
 	}
 }

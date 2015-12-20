@@ -3,6 +3,7 @@ package presentation.CarAndDriverui;
 import java.awt.Color;
 import java.awt.Font;
 import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -16,6 +17,9 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import businessLogic.CarAndDriverbl.CarAndDriverbl;
+import businessLogicService.CarAndDriverblService.CarAndDriverblService;
+import businessLogicService.UserblService.UserblService;
 import vo.CarVO;
 import vo.CheckVO;
 import vo.DriverVO;
@@ -27,6 +31,10 @@ public class DriverPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private CarAndDriverblService bl;
+	private DefaultTableModel defaultModel;
+	private UserblService user;
+	private int buttonNum;
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
@@ -34,10 +42,13 @@ public class DriverPanel extends JPanel {
 	int box_height = 30;
 	int button_width = 80;
 	int button_height = 30;
-	public DriverPanel(){
+	public DriverPanel(UserblService user, int buttonNum){
 		this.setLayout(null);
 		this.setBorder(null);
 		this.setOpaque(false);
+		this.user = user;
+		this.buttonNum = buttonNum;
+		bl = new CarAndDriverbl();
 		init();
 	}
 	
@@ -75,8 +86,9 @@ public class DriverPanel extends JPanel {
 		scrollPane.setBorder(null);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
-			
-		defaultModel.addRow(new DriverVO("025000001","张三","男","2015.10.30","320582201510301111","18260065397","一年"));
+		
+		initTable();	
+		//defaultModel.addRow(new DriverVO("025000001","张三","男","2015.10.30","320582201510301111","18260065397","一年"));
 		
 		
 		JButton add = new JButton("新建");
@@ -87,6 +99,7 @@ public class DriverPanel extends JPanel {
 		back.setFont(font);
 		back.setBounds(800, padding*2+490, button_width, button_height);
 		
+		
 		this.add(scrollPane);
 		this.add(add);
 		this.add(back);
@@ -95,6 +108,12 @@ public class DriverPanel extends JPanel {
 	public void setValue(DriverVO info) {
 		// TODO Auto-generated method stub
 		
+	}
+	private void initTable() {
+		// TODO Auto-generated method stub
+		List<DriverVO> list = bl.findAllDriverInfo(user.getHallId());
+		if (list == null) return;
+		for (DriverVO vo : list) defaultModel.addRow(vo);
 	}
 
 }

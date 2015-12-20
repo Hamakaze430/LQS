@@ -2,6 +2,7 @@ package init;
 
 import javax.swing.JOptionPane;
 
+import businessLogic.CarAndDriverbl.CarAndDriverbl;
 import businessLogic.Userbl.Userbl;
 import businessLogic.Userbl.stub.UserblStub;
 import businessLogicService.UserblService.UserblService;
@@ -9,6 +10,7 @@ import dataService.DataFactoryService.DataFactory;
 import dataService.DataFactoryService.DataFactoryService;
 import presentation.Userui.MainPanel;
 import presentation.mainui.MainFrame;
+import vo.CarVO;
 
 public class Client {
 	public static MainFrame frame;
@@ -24,7 +26,9 @@ public class Client {
 			MainPanel panel = new MainPanel(bl);
 			frame.add(panel);
 			//frame.addWelcomePanel();
-
+			CarAndDriverbl car = new CarAndDriverbl();
+			CarVO vo = new CarVO("025000001","苏A 00000","一年");
+			car.addCarInfo(vo);
 			frame.setVisible(true);
 		} catch (ClientInitException e) {
 			 e.printStackTrace();

@@ -1,16 +1,25 @@
 package data.Receiptsdata;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import po.HallPO;
 import po.ReceiptPO;
 import po.receipts.IncomePO;
 import po.receipts.PaymentPO;
@@ -116,6 +125,64 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	public boolean insert(ReceiptPO po) throws RemoteException {
+		try {
+			List<ReceiptPO>  list = findAll();
+			list.add(po);
+            FileOutputStream fileOut = new FileOutputStream("src/main/java/ser/receipts.ser");
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(list);
+			objectOut.close();
+            return true;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return false;
+	}
+
+	private List<ReceiptPO> findAll() {
+		try {
+			FileInputStream fileIn = new FileInputStream("src/main/java/ser/receipts.ser");
+			BufferedInputStream buffered = new BufferedInputStream(fileIn);	
+	        ObjectInputStream objectIn = new ObjectInputStream(buffered);  	   
+	        List<ReceiptPO> list = (List<ReceiptPO>) objectIn.readObject();
+	        return list;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (IOException e){
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return new ArrayList<ReceiptPO>();
+	}
+
+	public long addReceiptId() throws RemoteException {
+		File file = new File("src/main/java/ser/receiptId.txt");
+		try{
+			InputStreamReader read = new InputStreamReader(new FileInputStream(file),"UTF-8");
+			BufferedReader br = new BufferedReader(read);
+			String s = br.readLine();
+			long id = Long.valueOf(s);
+			OutputStreamWriter output = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+			output.write(String.valueOf(id+1) + "\r\n");
+			output.close();
+			return id;
+		}catch (FileNotFoundException e) {
+			   e.printStackTrace();
+		} catch (IOException e) {
+			   e.printStackTrace();
+		}
+		return -1;
 	}	
 
 }

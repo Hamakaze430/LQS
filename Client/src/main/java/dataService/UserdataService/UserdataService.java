@@ -10,8 +10,6 @@ public interface UserdataService extends Remote {
 	
 public UserPO getCurrentUser();
 	
-	public UserPO getUserbyID(String ID);
-	
 	public boolean addUser (UserPO user);
 
 	public List<UserPO> getAllUsers();
@@ -21,5 +19,7 @@ public UserPO getCurrentUser();
 	public boolean updateUser(UserPO po);
 
 	public int getCount(String id);
+
+	public UserPO find(String known, String info);
 	
 }

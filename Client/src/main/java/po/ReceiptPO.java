@@ -11,13 +11,15 @@ public class ReceiptPO implements Serializable{
 	String creator;
 	String createdate;
     String status;
+    long receiptId;
     
-    public ReceiptPO(String type,String n,String c,String cd,String rs){
+    public ReceiptPO(String type,String n,String c,String cd,String rs,long receiptId){
     	formType = type;
     	name = n;
     	creator = c;
     	createdate = cd;
     	status = rs;
+    	this.receiptId = receiptId;
     }
     
     private Boolean isIncome(){
