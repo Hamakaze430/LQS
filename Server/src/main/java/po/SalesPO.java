@@ -15,6 +15,10 @@ public class SalesPO implements Serializable {
     private ArrayList<IncomePO> income;
     private ArrayList<PaymentPO> payment;
     
+    public SalesPO(){
+    	
+    }
+    
     public SalesPO(ArrayList<IncomePO> income, ArrayList<PaymentPO> payment){
     	this.income=income;
     	this.payment=payment;
@@ -40,13 +44,5 @@ public class SalesPO implements Serializable {
 	   }
 	   return receipt;
    }
-   
-//    public String getStartDate(){
-//        return startDate;
-//    }
-//
-//    public String getEndDate(){
-//        return endDate;
-//    }
 
 }

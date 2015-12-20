@@ -14,7 +14,7 @@ import vo.SalesVO;
 public class Sales implements SalesblService{
 	
 	private DataFactoryService dataFactory;
-	private SalesdataService sales;
+	private SalesdataService salesDataImpl;
 //    private String message;
 //    private Boolean state;
     private String start;
@@ -24,7 +24,7 @@ public class Sales implements SalesblService{
     
     public Sales(){
     	dataFactory=Client.dataFactory;
-		sales=dataFactory.getSalesdataService();
+    	salesDataImpl=dataFactory.getSalesdataService();
     }
     
     public void setDate(String start, String end){
@@ -37,15 +37,15 @@ public class Sales implements SalesblService{
         return dc.check(this.start, this.end);
     }
 
-	public void getReport() {
+	public boolean getReport() {
 		// TODO Auto-generated method stub
-		sales.getReport(sales.getSales(this.start, this.end));
+		return salesDataImpl.getReport(salesDataImpl.getSales(this.start, this.end));
 	}
 
 	public SalesVO show() {
 		SalesVO vo;
 		if(this.checkDate()){
-			SalesPO po=sales.getSales(this.start, this.end);
+			SalesPO po=salesDataImpl.getSales(this.start, this.end);
 			vo=new SalesVO(po);
 		}
 		else
@@ -64,6 +64,6 @@ public class Sales implements SalesblService{
 	}
 
 	public void save(SalesPO po) {
-		sales.save(po);
+		salesDataImpl.save(po);
 	}
 }

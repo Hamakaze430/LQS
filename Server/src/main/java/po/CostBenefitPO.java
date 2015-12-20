@@ -1,51 +1,66 @@
 package po;
 
 import java.io.Serializable;
-import java.rmi.RemoteException;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-import data.Receiptsdata.Calculator;
-import data.Receiptsdata.ReceiptsdataImpl;
 import po.receipts.IncomePO;
 import po.receipts.PaymentPO;
+//import data.Receiptsdata.Calculator;
+//import data.Receiptsdata.ReceiptsdataImpl;
+
 /**
  * Created by admin on 15/10/25.
  */
 public class CostBenefitPO implements Serializable {
-    
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private ArrayList<PaymentPO> payment;
 	private ArrayList<IncomePO> income;
-	private double totalPayment;
-	private double totalIncome;
-	private double totalProfit;
+	private String totalPayment;
+	private String totalIncome;
+	private String totalProfit;
 	
-	public void setLists(String date){
-		ReceiptsdataImpl rdi;
-		rdi = new ReceiptsdataImpl();
-		payment=rdi.getPaymentBeforeDate(date);
-		income=rdi.getIncomeBeforeDate(date);
+	public void setLists(ArrayList<PaymentPO> pay, ArrayList<IncomePO> in){
+		payment=pay;
+		income=in;
 	}
 	
-    public void setTotal(){
-    	Calculator cal=new Calculator(this.payment, this.income);
-        this.totalPayment=cal.getPayment();
-        this.totalIncome=cal.getIncome();
-        this.totalProfit=cal.getProfit();
-    }
+	public ArrayList<PaymentPO> getPaymentList(){
+		return payment;
+	}
+	
+	public ArrayList<IncomePO> getIncomeList(){
+		return income;
+	}
+	
+	public void setTotalPayment(double p){
+		BigDecimal bd = new BigDecimal(String.valueOf(p));   
+		bd = bd.setScale(2,BigDecimal.ROUND_HALF_UP);  
+		totalPayment=String.valueOf(bd);
+	}
+	
+	public void setTotalIncome(double i){
+		BigDecimal bd = new BigDecimal(String.valueOf(i));   
+		bd = bd.setScale(2,BigDecimal.ROUND_HALF_UP);  
+		
+		totalIncome=String.valueOf(bd);
+	}
+	
+	public void setTotalProfit(double pr){
+		BigDecimal bd = new BigDecimal(String.valueOf(pr));   
+		bd = bd.setScale(2,BigDecimal.ROUND_HALF_UP);  
+		totalProfit=String.valueOf(bd);
+	}
 
-    public double getTotalPayment(){
+    public String getTotalPayment(){
     	return this.totalPayment;
     }
     
-    public double getTotalIncome(){
+    public String getTotalIncome(){
     	return this.totalIncome;
     }
 
-    public double getProfit() {
+    public String getProfit() {
     	return this.totalProfit;
     }
 }

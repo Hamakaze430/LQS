@@ -43,11 +43,11 @@ import vo.UserVO;
  */
 public class CreatUserDialog extends JDialog {
 	JTextField name;
-	JComboBox<String> place;
-	JComboBox<String> job;
+	JComboBox place;
+	JComboBox job;
 	JTextField id;
 	JPasswordField password;
-	JComboBox<String> identity;
+	JComboBox identity;
 	UserManagerblService userbl;
 	DefaultTableModel defaultModel;
 	ButtonGroup bg;
@@ -77,7 +77,7 @@ public class CreatUserDialog extends JDialog {
 			password = new JPasswordField("",15);
 			
 			JLabel identityLabel = new JLabel("用户权限: ");
-			identity = new JComboBox<String>();
+			identity = new JComboBox();
 			identity.addItem("-请设置用户权限-");
 			identity.setSelectedIndex(0);
 			for (Identity a : Identity.values()){
@@ -105,7 +105,7 @@ public class CreatUserDialog extends JDialog {
 			bg.add(female);
 			bg.add(male);
 			JLabel jobLabel = new JLabel("职位: ");
-			job = new JComboBox<String>();
+			job = new JComboBox();
 			job.addItem("-请选择职位-");
 			for(Job j : Job.values()){
 				job.addItem(j.name());
@@ -113,7 +113,7 @@ public class CreatUserDialog extends JDialog {
 			job.addActionListener(lister);
 			
 			JLabel placeLabel = new JLabel("工作单位: ");
-			place = new JComboBox<String>();
+			place = new JComboBox();
 			place.addItem("-请选择工作单位-");
 //			place.setEditable(true);
 			ApartmentManagerblService apartment = new ApartmentManagerbl();

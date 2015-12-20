@@ -29,7 +29,7 @@ import vo.HallVO;
  */
 public class CreatApartmentDialog extends JDialog {
 	JTextField name;
-	JComboBox<String> placeBox;
+	JComboBox placeBox;
 	JTextField place;
 	JTextField id;
 	ApartmentManagerblService bl;
@@ -68,7 +68,7 @@ public class CreatApartmentDialog extends JDialog {
 			JLabel placeLabel = new JLabel("部门位置: ");
 			placeLabel.setBounds(gap_left, gap_up+gap, width_label, height);
 			
-			placeBox = new JComboBox<String>();
+			placeBox = new JComboBox();
 		
 			Place[] es = Place.values();
 			for (Place p : es) placeBox.addItem(p.name());

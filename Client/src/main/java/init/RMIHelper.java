@@ -7,8 +7,10 @@ import java.rmi.RemoteException;
 
 import dataService.BankAccountdataService.BankAccountdataService;
 import dataService.CarAndDriverdataService.CarAndDriverdataService;
+import dataService.CostBenefitdataService.CostBenefitdataService;
 import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
 import dataService.ReceiptsdataService.ReceiptsdataService;
+import dataService.SalesdataService.SalesdataService;
 import dataService.StrategydataService.ConstantdataService.ConstantdataService;
 import dataService.StrategydataService.HalldataService.HalldataService;
 import dataService.StrategydataService.SalarydataService.SalarydataService;
@@ -40,7 +42,11 @@ public class RMIHelper {
 	
 	private static ReceiptsdataService receiptsData;
 	
-	private static CarAndDriverdataService carAndDriver;
+	private static CarAndDriverdataService carAndDriverData;
+	
+	private static CostBenefitdataService costBenefitData;
+	
+	private static SalesdataService salesData;
 
     public synchronized static void init() throws ClientInitException {
         if (inited) {
@@ -62,7 +68,10 @@ public class RMIHelper {
         authoritiesData = (AuthoritiesSettingDataService) Naming.lookup(urlPrefix + "authoritiesData-Server");
         userData = (UserdataService) Naming.lookup(urlPrefix + "userData-Server");
     	receiptsData = (ReceiptsdataService) Naming.lookup(urlPrefix + "receiptsData-Server");
-    	carAndDriver = (CarAndDriverdataService) Naming.lookup(urlPrefix + "carAndDriverData-Server");
+    	carAndDriverData = (CarAndDriverdataService) Naming.lookup(urlPrefix + "carAndDriverData-Server");
+    	salesData = (SalesdataService) Naming.lookup(urlPrefix + "salesData-Server");
+    	costBenefitData = (CostBenefitdataService) Naming.lookup(urlPrefix + "costBenefitData-Server");
+
     }
 
     
@@ -111,7 +120,15 @@ public class RMIHelper {
 	
 	public static CarAndDriverdataService getCarAndDriverData() {
 		// TODO Auto-generated method stub
-		return carAndDriver;
+		return carAndDriverData;
+	}
+
+	public static CostBenefitdataService getCostBenefitData(){
+		return costBenefitData;
+	}
+	
+	public static SalesdataService getSalesData(){
+		return salesData;
 	}
     
 //    public static DataFactoryService getDataFactory() {

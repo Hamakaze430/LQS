@@ -15,5 +15,5 @@ public interface BillManagementdataService {
 	
 	public void save(BillManagementPO bm);
 	
-	public void getReport(BillManagementPO po);
+	public boolean getReport(BillManagementPO po);
 }

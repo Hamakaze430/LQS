@@ -28,7 +28,7 @@ public interface BillManagementblService{
 	 * */
 	public ArrayList<BillManagementPO> getBillManagementPO(String date);
 	
-	public void getReport();
+	public boolean getReport(BillManagementPO po);
 
     public void check();
 

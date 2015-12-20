@@ -1,6 +1,7 @@
 package vo;
 
 import java.util.Date;
+import java.util.Vector;
 
 import Miscellaneous.ReceiptState;
 
@@ -21,7 +22,13 @@ public class ReceiptVO implements Serializable{
     private String createdate; //建单时间
     private String status; //单据是否审批状态
     
+    
     ReceiptVO(ReceiptPO po){
+//    	this.add(po.getName());
+//    	this.add(po.getCreator());
+//    	this.add(po.getCreateDate());
+//    	this.add(po.getStatus());
+//    	this.add(po.getType());
     	name=po.getName();
     	creator=po.getCreator();
     	date=po.getCreateDate();

@@ -10,12 +10,13 @@ public class PaymentPO extends ReceiptPO {
     String amount;
 
     public PaymentPO(String n, String c, String cd, String rs, String a){
-        super(n, c, cd, rs);
+        super(n, c, cd, rs, "付款单");
         this.amount=a;
     }
 
-    public String getAmount(){
-        return amount;
+    public double getAmount(){
+        return Double.parseDouble(amount);
     }
 
 }
+

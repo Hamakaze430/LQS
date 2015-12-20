@@ -51,7 +51,7 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 			Date comp=df.parse(date);
 			try {
 				ObjectInputStream in=new ObjectInputStream(
-						new FileInputStream("src/main/java/txt/receipts.tx"));
+						new FileInputStream("src/main/java/ser/receipts.ser"));
 				while((temp=(ReceiptPO)in.readObject())!=null){
 					tmpDate=df.parse(temp.getCreateDate());
 					if(tmpDate.before(comp)||tmpDate.equals(comp)){

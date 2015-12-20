@@ -9,15 +9,24 @@ public class PaymentVO extends ReceiptVO implements Serializable{
 	
 	private String amount;
 	
-	public PaymentVO(String name, String creator, String date, String status, String amount) {
-		super(name, creator, date, status);
+	PaymentVO(String name, String creator, String date, String status, String amount) {
+		super(name, creator, date, status, "入款单");
 		this.amount=amount;
 	}
 	
-	public PaymentVO(PaymentPO po){
-		super(po.getName(), po.getCreator(), po.getCreateDate(), po.getStatus());
-		amount=po.getAmount();
+	public PaymentVO(PaymentPO paymentPO){
+		super(paymentPO.getName(), paymentPO.getCreator(), paymentPO.getCreateDate(), 
+				paymentPO.getStatus(), "入款单");
+		amount=String.valueOf(paymentPO.getAmount());
+//		this.add(String.valueOf(paymentPO.getAmount()));
 	}
 
-
+	public String getType(){
+		return "入款单";
+	}
+	
+	public String getAmount(){
+		return amount;
+	}
+	
 }

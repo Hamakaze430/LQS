@@ -21,14 +21,10 @@ public class Client {
 			RMIHelper.init();
 			dataFactory = new DataFactory();
 			frame = new MainFrame();
-
 			UserblService bl = new Userbl("02500001000");
 			MainPanel panel = new MainPanel(bl);
 			frame.add(panel);
 			//frame.addWelcomePanel();
-			CarAndDriverbl car = new CarAndDriverbl();
-			CarVO vo = new CarVO("025000001","苏A 00000","一年");
-			car.addCarInfo(vo);
 			frame.setVisible(true);
 		} catch (ClientInitException e) {
 			 e.printStackTrace();
