@@ -33,8 +33,8 @@ public class RMIHelper {
         NAMING_MAP.put("userData-Server", UserdataImpl.class);
         NAMING_MAP.put("receiptsData-Server", ReceiptsdataImpl.class);
         NAMING_MAP.put("carAndDriverData-Server", CarAndDriverDataServiceImpl.class);
-        NAMING_MAP.put("costBenefitData-Server", CostBenefitdataImpl.class);
-        NAMING_MAP.put("salesData-Server", SalesdataImpl.class);
+  //      NAMING_MAP.put("costBenefitData-Server", CostBenefitdataImpl.class);
+  //      NAMING_MAP.put("salesData-Server", SalesdataImpl.class);
     }
 
     public synchronized static void init() throws ServerInitException {

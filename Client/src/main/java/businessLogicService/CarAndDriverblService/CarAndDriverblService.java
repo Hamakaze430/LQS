@@ -74,5 +74,7 @@ public interface CarAndDriverblService {
 
 	public List<DriverVO> findAllDriverInfo(String hallId);
 	
+	public boolean find(String type, String known);
+	
 	
 }

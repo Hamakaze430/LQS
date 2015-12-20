@@ -66,10 +66,6 @@ public class Receiptsbl implements ReceiptsblService {
 		// TODO Auto-generated method stub
 		return dataFactory.getReceiptsdataService().getLastId(foreId);
 	}
-
-	public ArrayList<String> getCarInfo(String hallId) {
-		return carAndDriver.findAllCarInfo(hallId);
-	}
 	
 	public String getHallId() {
 		return user.getHallId();
@@ -146,6 +142,7 @@ public class Receiptsbl implements ReceiptsblService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 }
 

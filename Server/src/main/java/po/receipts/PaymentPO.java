@@ -10,7 +10,7 @@ public class PaymentPO extends ReceiptPO {
     String amount;
 
     public PaymentPO(String n, String c, String cd, String rs, String a){
-        super(n, c, cd, rs, "付款单");
+        super("付款单",n, c, cd, rs);
         this.amount=a;
     }
 

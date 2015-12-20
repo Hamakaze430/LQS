@@ -11,8 +11,6 @@ import vo.UserVO;
 public interface ReceiptsblService {
 	
 	public String getLastId(String foreID);
-
-	public ArrayList<String> getCarInfo(String hallId);
 	public String getHallId();
 	public String getFormName(FormType type);
 	public String getCurrentTime();
