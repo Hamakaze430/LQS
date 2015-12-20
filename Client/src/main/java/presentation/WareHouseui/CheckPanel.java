@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Calendar;
 import java.util.Vector;
 
@@ -18,6 +20,7 @@ import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import presentation.mainui.PictureButton;
 import vo.CheckVO;
 import vo.VoucherSearchVO;
 /**
@@ -37,7 +40,7 @@ public class CheckPanel extends JPanel {
 	JComboBox<String> year1 = new JComboBox<String>();
 	JComboBox<String> month1 = new JComboBox<String>();
 	JComboBox<String> day1 = new JComboBox<String>();
-	
+	JButton back;
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
@@ -231,9 +234,43 @@ public class CheckPanel extends JPanel {
 		priceSum.setFont(font);
 		priceSum.setBounds(padding+120, padding*3+box_height*2+280+label_height*4+20, label_width, label_height);
 		
-		JButton back = new JButton("返回");
+		back = new JButton();
 		back.setFont(font);
-		back.setBounds(800, 500, button_width, button_height);
+		back.setBorder(null);
+		back.setOpaque(false);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
+		back.setBounds(820, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+		back.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+			}
+			
+		});
+		
 		
 		this.add(l1);
 		this.add(l2);

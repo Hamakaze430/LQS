@@ -10,7 +10,7 @@ public class Approvalbl implements ApprovalblService {
 	private ReceiptsblService rs;
 	
 	public Approvalbl(){
-		rs = new MockReceipt(new Userbl());
+		//rs = new MockReceipt(new Userbl());
 	}
 	public void passReceipt(ReceiptPO po){
 		

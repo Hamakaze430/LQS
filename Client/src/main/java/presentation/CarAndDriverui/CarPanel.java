@@ -2,6 +2,8 @@ package presentation.CarAndDriverui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Date;
 import java.util.Vector;
 
@@ -16,6 +18,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import presentation.mainui.PictureButton;
 import vo.CarVO;
 import vo.CheckVO;
 import vo.HallVO;
@@ -26,6 +29,9 @@ public class CarPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	JButton add;
+	JButton delete;
+	JButton back;
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
@@ -73,18 +79,116 @@ public class CarPanel extends JPanel {
 			
 		defaultModel.addRow(new CarVO("025001001","苏A 00000","一年"));
 		
-		
-		JButton add = new JButton("新建");
-		add.setFont(font);
-		add.setBounds(800-button_width-padding, padding*2+490, button_width, button_height);
-		
-		JButton back = new JButton("返回");
-		back.setFont(font);
-		back.setBounds(800, padding*2+490, button_width, button_height);
+		add = new JButton();
+		add.setBorder(null);
+		add.setOpaque(false);
+		add.setFocusPainted(false);
+		add.setContentAreaFilled(false);
+		add.setBounds(660, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/addButton_unclicked.png",add);
+		add.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/addButton_clicked.png",add);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/addButton_unclicked.png",add);
+			}
+			
+		});
+		delete = new JButton();
+		delete.setBorder(null);
+		delete.setOpaque(false);
+		delete.setFocusPainted(false);
+		delete.setContentAreaFilled(false);
+		delete.setBounds(740, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/deleteButton_unclicked.png",delete);
+		delete.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/deleteButton_clicked.png",delete);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/deleteButton_unclicked.png",delete);
+			}
+			
+		});
+		back = new JButton();
+		back.setBorder(null);
+		back.setOpaque(false);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
+		back.setBounds(820, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+		back.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+			}
+			
+		});
 		
 		this.add(scrollPane);
 		this.add(add);
 		this.add(back);
+		this.add(delete);
 	}
 
 	public void setValue(CarVO info) {

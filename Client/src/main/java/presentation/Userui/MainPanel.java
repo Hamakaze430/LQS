@@ -958,7 +958,7 @@ public class MainPanel extends JPanel {
 			button = new InitButton(i,"src/main/java/image/bill_unselected.png");			
 			buttons.add(button);
 			buttontoshow[i]=button;
-			iconAddress[i] = "src/main/java/image/bill_unselecteds.png";
+			iconAddress[i] = "src/main/java/image/bill_unselected.png";
 			button.addMouseListener(new MouseListener(){
 				
 				public void mouseClicked(MouseEvent e) {

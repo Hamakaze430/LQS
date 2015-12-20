@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,6 +24,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
+import presentation.mainui.PictureButton;
 import Miscellaneous.Place;
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
@@ -46,7 +49,8 @@ public class LoadingPanel extends JPanel{
 	
 	JComboBox<String> province;
 	JComboBox<String> place;
-	
+	JButton back;
+	JButton submit;
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
@@ -192,14 +196,80 @@ public class LoadingPanel extends JPanel{
 		cost.setOpaque(false);
 		
 		
-		JButton submit = new JButton("提交");
+		submit = new JButton();
 		submit.setFont(font);
-		submit.setBounds(680, 500, button_width, button_height);
-		submit.addActionListener(new SubmitAction());
+		submit.setBorder(null);
+		submit.setOpaque(false);
+		submit.setFocusPainted(false);
+		submit.setContentAreaFilled(false);
+		submit.setBounds(740, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
+		submit.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/submitButton_clicked.png",submit);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
+			}
+			
+		});
 		
-		JButton back = new JButton("返回");
+		
+		back = new JButton();
 		back.setFont(font);
-		back.setBounds(680+padding+button_width, 500, button_width, button_height);
+		back.setBorder(null);
+		back.setOpaque(false);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
+		back.setBounds(820, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+		back.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+			}
+			
+		});
 		
 		this.add(title);
 		this.add(dateLabel);

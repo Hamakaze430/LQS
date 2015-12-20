@@ -1,11 +1,15 @@
 package presentation.WareHouseui;
 
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import presentation.mainui.PictureButton;
 
 /**
  * 分区管理
@@ -18,7 +22,8 @@ public class DivisionPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	JButton save;
+	JButton back;
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
@@ -63,13 +68,80 @@ public class DivisionPanel extends JPanel {
 		situation.setFont(font);
 		situation.setBounds(padding, padding*4+label_height*3, label_width*4, label_height*5);
 		
-		JButton confirm = new JButton("确定");
-		confirm.setFont(font);
-		confirm.setBounds(680, 500, button_width, button_height);
+		save = new JButton();
+		save.setFont(font);
+		save.setBorder(null);
+		save.setOpaque(false);
+		save.setFocusPainted(false);
+		save.setContentAreaFilled(false);
+		save.setBounds(740, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/saveButton_unclicked.png",save);
+		save.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/saveButton_clicked.png",save);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/saveButton_unclicked.png",save);
+			}
+			
+		});
 		
-		JButton back = new JButton("返回");
+		
+		back = new JButton();
 		back.setFont(font);
-		back.setBounds(680+padding+button_width, 500, button_width, button_height);
+		back.setBorder(null);
+		back.setOpaque(false);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
+		back.setBounds(820, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+		back.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+			}
+			
+		});
 		
 		this.add(l1);
 		this.add(l2);
@@ -77,7 +149,7 @@ public class DivisionPanel extends JPanel {
 		this.add(area);
 		this.add(present);
 		this.add(situation);
-		this.add(confirm);
+		this.add(save);
 		this.add(back);
 	}
 

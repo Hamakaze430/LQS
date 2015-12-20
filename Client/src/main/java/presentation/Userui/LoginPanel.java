@@ -96,7 +96,7 @@ public class LoginPanel extends JPanel{
 			}			
 		});		
 		login = new JButton();
-		login.setBounds(590, 420, 50, 50);
+		login.setBounds(590, 420, 60, 60);
 		PictureButton.setIcon("src/main/java/image/login.png",login);
 		login.setBorder(null);
 		login.setFocusPainted(false);
@@ -135,7 +135,7 @@ public class LoginPanel extends JPanel{
 		});
 			
 		exit = new JButton();
-		exit.setBounds(330, 420, 50, 50);
+		exit.setBounds(330, 420, 60, 60);
 		PictureButton.setIcon("src/main/java/image/exit.png",exit);	
 		exit.setBorder(null);
 		exit.setFocusPainted(false);
