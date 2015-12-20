@@ -25,9 +25,9 @@ public class CostBenefit implements CostBenefitblService{
 	public CostBenefit(){
 		dataFactory = Client.dataFactory;
 		cbImpl=dataFactory.getCostBenefitdataService();
-		if(cbImpl!= null){
-			System.out.println("succ");
-		}
+//		if(cbImpl!= null){
+//			System.out.println("succ");
+//		}
 	}
 	
 //    String message;
@@ -57,7 +57,7 @@ public class CostBenefit implements CostBenefitblService{
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		date=formatter.format(d);
 		
-		System.out.println("set date succ");
+		//System.out.println("set date succ");
 	}
     
     public CostBenefitVO getVO(){
@@ -79,8 +79,8 @@ public class CostBenefit implements CostBenefitblService{
     }
     
     public boolean getReport(){
-    	cbImpl.getReport(cbImpl.getCostBenefitPO(date));
-    	return false;
+    	return cbImpl.getReport(cbImpl.getCostBenefitPO(date));
+    	//return false;
     }
 
 }

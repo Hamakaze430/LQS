@@ -1,6 +1,9 @@
 package data.CostBenefitdata;
 
 import po.*;
+import po.receipts.IncomePO;
+import po.receipts.PaymentPO;
+import data.Receiptsdata.Calculator;
 import data.Receiptsdata.ReceiptsdataImpl;
 import data.ReportGenerator.ReportGenerator;
 import dataService.CostBenefitdataService.CostBenefitdataService;
@@ -16,7 +19,10 @@ public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBene
 	public CostBenefitdataImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
-		System.out.println("Created new CBDataImpl");
+
+		/*
+		 * generate mock receipts
+		 * */
 		Test test=new Test();
 		test.saveMockReceipts();
 	}
@@ -29,18 +35,23 @@ public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBene
 		// TODO Auto-generated method stub
 		CostBenefitPO cb=new CostBenefitPO();
 		//cb.setLists(date);
-		cb.payment=rdi.getPaymentBeforeDate(date);
-		cb.income=rdi.getIncomeBeforeDate(date);
+		ArrayList<PaymentPO> temp_pay=rdi.getPaymentBeforeDate(date);
+		ArrayList<IncomePO> temp_in=rdi.getIncomeBeforeDate(date);
+		cb.setLists(temp_pay, temp_in);
+		
+		Calculator cal=new Calculator(cb.getPaymentList(), cb.getIncomeList());
+		cb.setTotalIncome(cal.getIncome());
+		cb.setTotalPayment(cal.getPayment());
+		cb.setTotalProfit(cal.getProfit());
 	
-		cb.setTotal();
-		System.out.println("got new cbPO");
+		//System.out.println("got new cbPO");
 		return cb;
 	}
 
-	public void getReport(CostBenefitPO po) throws RemoteException {
+	public boolean getReport(CostBenefitPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		ReportGenerator gen = new ReportGenerator();
-		gen.createCostBenefitReport(po);
+		return gen.createCostBenefitReport(po);
 	}
 
 }

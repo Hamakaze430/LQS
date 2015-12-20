@@ -44,13 +44,5 @@ public class SalesPO implements Serializable {
 	   }
 	   return receipt;
    }
-   
-//    public String getStartDate(){
-//        return startDate;
-//    }
-//
-//    public String getEndDate(){
-//        return endDate;
-//    }
 
 }

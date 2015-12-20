@@ -26,7 +26,7 @@ import jxl.write.WriteException;
 
 public class ReportGenerator {
 
-	public void createSalesReport(SalesPO sales){
+	public boolean createSalesReport(SalesPO sales){
 		
 		ArrayList<IncomePO> income=sales.getIncomeList();
 		ArrayList<PaymentPO> payment=sales.getPaymentList();
@@ -58,17 +58,25 @@ public class ReportGenerator {
 			}
 			workBook.write();
 			workBook.close();
+			
+			return true;
 		} catch (WriteException e) {
-			e.printStackTrace();
+			return false;
+			//e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
+			return false;
+			//e.printStackTrace();
 		}
 	}
 	
-	public void createCostBenefitReport(CostBenefitPO cb){
+	public boolean createCostBenefitReport(CostBenefitPO cb){
 		try {
+			
 			WritableWorkbook workBook=Workbook.createWorkbook(
 					new File("src/ser/costbenefit.xls"));
+			
+			System.out.println("in creating report");
+
 			WritableSheet sheet=workBook.createSheet("First sheet", 0);
 			Label name=new Label(0,0,"项目");
 			sheet.addCell(name);
@@ -90,15 +98,19 @@ public class ReportGenerator {
 			
 			workBook.write();
 			workBook.close();
-			
+				
+			System.out.println("report generated");
+			return true;
 		} catch (WriteException e){
-			e.printStackTrace();
+			return false;
+			//e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
+			return false;
+			//e.printStackTrace();
 		}
 	}
 	
-	public void createBillReport(BillManagementPO bm){
+	public boolean createBillReport(BillManagementPO bm){
 		
 		ArrayList<UserPO> users=bm.getUsers();
 	    ArrayList<CarPO> carlist=bm.getCars();
@@ -165,12 +177,15 @@ public class ReportGenerator {
 				/*
 				 * PO和界面图不一样orz
 				 * */
+				
 			}
-			
+			return true;
 		} catch(WriteException e){
-			e.printStackTrace();
+			return false;
+			//e.printStackTrace();
 		} catch (IOException e) {
-			e.printStackTrace();
+			return false;
+			//e.printStackTrace();
 		}
 	}
 	

@@ -23,7 +23,7 @@ public interface SalesblService {
 	/*
 	 * 从Data生成报表
 	 * */
-    public void getReport();
+    public boolean getReport();
     
     /*
 	 * 将PO序列化并存入数据层

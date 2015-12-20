@@ -1,6 +1,7 @@
 package vo;
 
 import java.util.Date;
+import java.util.Vector;
 
 import Miscellaneous.ReceiptState;
 
@@ -11,7 +12,7 @@ import po.ReceiptPO;
 /**
  * Created by admin on 15/10/25.
  */
-public class ReceiptVO implements Serializable{
+public class ReceiptVO /*extends Vector<String>*/ implements Serializable{
     private String type;
     private String date;
     private ReceiptState state;
@@ -21,14 +22,26 @@ public class ReceiptVO implements Serializable{
     private String createdate;
     private String status;
     
+    
     ReceiptVO(ReceiptPO po){
+//    	this.add(po.getName());
+//    	this.add(po.getCreator());
+//    	this.add(po.getCreateDate());
+//    	this.add(po.getStatus());
+//    	this.add(po.getType());
     	name=po.getName();
     	creator=po.getCreator();
     	date=po.getCreateDate();
     	status=po.getStatus();
     }
     
-    protected ReceiptVO(String name, String creator, String date, String status){
+    protected ReceiptVO(String name, String creator, String date, 
+    		String status, String type){
+//    	this.add(name);
+//    	this.add(creator);
+//    	this.add(date);
+//    	this.add(status);
+//    	this.add(type);
     	this.name=name;
     	this.creator=creator;
     	createdate=date;

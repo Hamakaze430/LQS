@@ -70,10 +70,10 @@ public class SalesdataImpl extends UnicastRemoteObject implements SalesdataServi
 		return sales;
 	}
 
-	public void getReport(SalesPO po) throws RemoteException {
+	public boolean getReport(SalesPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		ReportGenerator gen=new ReportGenerator();
-		gen.createSalesReport(po);
+		return gen.createSalesReport(po);
 	}
 
 	

@@ -119,9 +119,9 @@ public class BillManagementdataImpl implements BillManagementdataService {
 		}
 	}
 	
-	public void getReport(BillManagementPO po){
+	public boolean getReport(BillManagementPO po){
 		ReportGenerator gen=new ReportGenerator();
-		gen.createBillReport(po);
+		return gen.createBillReport(po);
 	}
 	
 	

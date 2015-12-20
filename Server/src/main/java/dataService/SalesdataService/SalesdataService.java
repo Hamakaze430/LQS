@@ -11,5 +11,5 @@ public interface SalesdataService extends Remote{
 	
 	public SalesPO getSales(String start, String end) throws RemoteException;
 	
-	public void getReport(SalesPO sales) throws RemoteException;
+	public boolean getReport(SalesPO sales) throws RemoteException;
 }

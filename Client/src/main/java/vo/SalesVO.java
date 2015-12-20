@@ -19,17 +19,21 @@ public class SalesVO extends Vector<String>{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private ArrayList<IncomeVO> income;
-	 private ArrayList<PaymentVO> payment;
+	private ArrayList<IncomeVO> income=new ArrayList<IncomeVO>();
+	private ArrayList<PaymentVO> payment=new ArrayList<PaymentVO>();
 	    
 	 public SalesVO(SalesPO po){
 		ArrayList<IncomePO> income=po.getIncomeList(); 
 		ArrayList<PaymentPO> payment=po.getPaymentList();
+
 		for(int i=0;i<income.size();i++){
-			this.income.add(new IncomeVO(income.get(i)));
+			IncomeVO tempvo=new IncomeVO(income.get(i));
+			this.income.add(tempvo);
+			//System.out.println(this.income.get(i).getDate());
 		}
 		for(int i=0;i<payment.size();i++){
 			this.payment.add(new PaymentVO(payment.get(i)));
+			//System.out.println(this.payment.get(i).getDate());
 		}
 	 }
 

@@ -57,8 +57,8 @@ public class CostPanel extends JPanel {
 		title.setBounds(150, 10, 600, 50); 
 		
 		Vector<String> name = new Vector<String>();
-		name.add("总收入");
 		name.add("总支出");
+		name.add("总收入");
 		name.add("总利润");
 		
 		
@@ -112,13 +112,10 @@ public class CostPanel extends JPanel {
 		 **/
 		b1.addActionListener(new ActionListener(){ 
 			public void actionPerformed(ActionEvent args0){
-				cb.getReport();
-				/*
-				 * 
-				 * 是不是要下一个界面。。。。这里orz
-				 * */
-				JOptionPane.showMessageDialog(null, "导出成功^_^","", JOptionPane.INFORMATION_MESSAGE);
-				return;
+				if(cb.getReport())
+					JOptionPane.showMessageDialog(null, "导出成功^_^","", JOptionPane.INFORMATION_MESSAGE);
+				else
+					JOptionPane.showMessageDialog(null, "导出failed","", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		
