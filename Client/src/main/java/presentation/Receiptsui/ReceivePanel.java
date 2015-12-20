@@ -15,12 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
-<<<<<<< HEAD
 import presentation.mainui.PictureButton;
-=======
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
->>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 import businessLogicService.UserblService.UserblService;
 /**
  * 收件单

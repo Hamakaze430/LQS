@@ -19,13 +19,10 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-<<<<<<< HEAD
 import presentation.mainui.PictureButton;
-=======
 import businessLogic.CarAndDriverbl.CarAndDriverbl;
 import businessLogicService.CarAndDriverblService.CarAndDriverblService;
 import businessLogicService.UserblService.UserblService;
->>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 import vo.CarVO;
 import vo.CheckVO;
 import vo.DriverVO;
@@ -37,16 +34,13 @@ public class DriverPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-<<<<<<< HEAD
 	JButton add;
 	JButton delete;
 	JButton back;
-=======
 	private CarAndDriverblService bl;
 	private DefaultTableModel defaultModel;
 	private UserblService user;
 	private int buttonNum;
->>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;

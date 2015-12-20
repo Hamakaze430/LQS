@@ -64,17 +64,14 @@ public class LoadingPanel extends JPanel{
 	JTextField id;
 	JComboBox<String> province;
 	JComboBox<String> place;
-<<<<<<< HEAD
 	JButton back;
 	JButton submit;
-=======
 	JTextField car;
 	JTextField drivername;
 	JTextField spyname;
 	JTextArea orders;
 	JTextField cost;
 	double cost_double;
->>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
@@ -267,7 +264,6 @@ public class LoadingPanel extends JPanel{
 		
 		back = new JButton();
 		back.setFont(font);
-<<<<<<< HEAD
 		back.setBorder(null);
 		back.setOpaque(false);
 		back.setFocusPainted(false);
@@ -299,15 +295,16 @@ public class LoadingPanel extends JPanel{
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
-=======
-		back.setBounds(680+padding+button_width, 500, button_width, button_height);
+				back.setBounds(680+padding+button_width, 500, button_width, button_height);
+			}
+		});
+		
 		back.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				LoadingPanel.this.setVisible(false);
 				MainPanel.closeButton(buttonNum);
->>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 			}
 			
 		});
@@ -433,19 +430,20 @@ public class LoadingPanel extends JPanel{
 	
 	}
 }
+	class WarnLabel extends JLabel{
+		public WarnLabel(){
+			this.setForeground(Color.RED);
+			this.setOpaque(false);
+			this.setFont(new Font("宋体",Font.PLAIN,10));
+		}
+		public WarnLabel(String s){
+			super(s);
+			this.setForeground(Color.RED);
+			this.setOpaque(false);
+			this.setFont(new Font("宋体",Font.PLAIN,10));
+		}
+	}
 
 
-class WarnLabel extends JLabel{
-	public WarnLabel(){
-		this.setForeground(Color.RED);
-		this.setOpaque(false);
-		this.setFont(new Font("宋体",Font.PLAIN,10));
-	}
-	public WarnLabel(String s){
-		super(s);
-		this.setForeground(Color.RED);
-		this.setOpaque(false);
-		this.setFont(new Font("宋体",Font.PLAIN,10));
-	}
-}
+	
 

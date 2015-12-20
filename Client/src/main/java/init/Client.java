@@ -25,17 +25,10 @@ public class Client {
 //			CarAndDriverbl car = new CarAndDriverbl();
 //			car.addDriverInfo(vo);
 			frame = new MainFrame();
-<<<<<<< HEAD
-
-			UserblService bl = new Userbl("admin");
-			MainPanel panel = new MainPanel(bl);
-			frame.add(panel);
-=======
 			UserblService bl = new Userbl("02500001000");
 			MainPanel panel = new MainPanel(bl);
 			frame.add(panel);
 			
->>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 			//frame.addWelcomePanel();
 			frame.setVisible(true);
 		} catch (ClientInitException e) {
