@@ -212,6 +212,7 @@ public class LogisticsPanel extends JPanel {
 		scrollPane.setOpaque(false);
 		scrollPane.setBorder(null);
 		scrollPane.getViewport().setOpaque(false);
+		scrollPane.setBorder(null);
 		idLabel = new JLabel("·订单条形码号:");
 		
 	    display = new JPanel();

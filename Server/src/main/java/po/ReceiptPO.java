@@ -2,22 +2,23 @@ package po;
 
 import java.io.Serializable;
 
-import po.receipts.*;
+import po.receipts.IncomePO;
+import po.receipts.PaymentPO;
 
 public class ReceiptPO implements Serializable{
 	
 	private String name;
 	private String creator;
 	private String createdate;
-	private String status;
 	private double amount;
     private String type;
-	
-    public ReceiptPO(String n,String c,String cd,String rs, String type){
+    private long receiptId;
+    
+    public ReceiptPO(String type,String n,String c,String cd,long receiptId){
     	name = n;
     	creator = c;
     	createdate = cd;
-    	status = rs;
+    	this.receiptId = receiptId;
     	this.type=type;
     }
     
@@ -35,6 +36,10 @@ public class ReceiptPO implements Serializable{
     		return false;
     }
     
+    public String getType(){
+    	return type;
+    }
+    
     public String getName(){
     	return name;
     }
@@ -46,16 +51,11 @@ public class ReceiptPO implements Serializable{
     public String getCreateDate(){
     	return createdate;
     }
-    
-    public String getStatus(){
-    	return status;
-    }
 
 	public double getAmount() {
 		return amount;
 	}
-	
-	public String getType(){
-		return type;
+	public long getReceiptId(){
+		return receiptId;
 	}
 }

@@ -22,6 +22,11 @@ public class DataFactory implements DataFactoryService {
 	private static AuthoritiesSettingDataService authorities;
 	private static UserdataService userData;
 	private static ReceiptsdataService receiptsData;
+	private static CarAndDriverdataService carAndDriver;
+
+	private static CostBenefitdataService costBenefitData;
+	private static SalesdataService salesData;
+	
 	public LogisticsDataService getLogisticsDataService() {
 		logisticsData = RMIHelper.getLogisticsData();
 		return logisticsData;
@@ -49,7 +54,8 @@ public class DataFactory implements DataFactoryService {
 
 	public CarAndDriverdataService getCarAndDriverdataService() {
 		// TODO Auto-generated method stub
-		return null;
+		carAndDriver = RMIHelper.getCarAndDriverData();
+		return carAndDriver;
 	}
 
 	public CommoditydataService getCommoditydataService() {
@@ -59,7 +65,8 @@ public class DataFactory implements DataFactoryService {
 
 	public CostBenefitdataService getCostBenefitdataService() {
 		//return RMIHelper.getCostBenefitdata;
-		return null;
+		costBenefitData = RMIHelper.getCostBenefitData();
+		return costBenefitData;
 	}
 
 	public ReceiptsdataService getReceiptsdataService() {
@@ -70,7 +77,8 @@ public class DataFactory implements DataFactoryService {
 
 	public SalesdataService getSalesdataService() {
 		// TODO Auto-generated method stub
-		return null;
+		salesData = RMIHelper.getSalesData();
+		return salesData;
 	}
 
 	public StrategydataService getStrategydaateService() {

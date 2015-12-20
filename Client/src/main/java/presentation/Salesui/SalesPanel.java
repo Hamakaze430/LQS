@@ -1,17 +1,25 @@
 package presentation.Salesui;
 
+import init.Client;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+<<<<<<< HEAD
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+=======
+import java.util.ArrayList;
+>>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -20,8 +28,19 @@ import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+<<<<<<< HEAD
 import presentation.mainui.PictureButton;
+=======
+import presentation.CostBenefitui.CostPanel;
+import presentation.mainui.WelcomePanel;
+import vo.ReceiptVO;
+>>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 import vo.SalesVO;
+import vo.receipts.IncomeVO;
+import vo.receipts.PassIncomeVO;
+import vo.receipts.PassPaymentVO;
+import vo.receipts.PaymentVO;
+import businessLogic.Salesbl.Sales;
 import businessLogicService.UserblService.UserblService;
 /**
  * 经营情况
@@ -38,12 +57,16 @@ public class SalesPanel extends JPanel{
 	JButton importButton;
 	JButton confirm;
 	private UserblService user;
-	JComboBox<String> year1 = new JComboBox<String>();
-	JComboBox<String> month1 = new JComboBox<String>();
-	JComboBox<String> day2 = new JComboBox<String>();
-	JComboBox<String> year2 = new JComboBox<String>();
-	JComboBox<String> month2 = new JComboBox<String>();
-	JComboBox<String> day1 = new JComboBox<String>();
+	private Sales sales=new Sales();
+	private String startDate;
+	private String endDate;
+	
+	JComboBox year1 = new JComboBox();
+	JComboBox month1 = new JComboBox();
+	JComboBox day2 = new JComboBox();
+	JComboBox year2 = new JComboBox();
+	JComboBox month2 = new JComboBox();
+	JComboBox day1 = new JComboBox();
 	public SalesPanel(UserblService user){
 		this.user=user;
 		this.setLayout(null);
@@ -207,8 +230,10 @@ public class SalesPanel extends JPanel{
 		name.add("建单人");
 		name.add("金额");
 		
-		Vector<SalesVO> data = new Vector<SalesVO>();		
-		DefaultTableModel defaultModel = new DefaultTableModel(data,name);
+		Vector<SalesVO> data = new Vector<SalesVO>();
+
+		//newly added "final" below....orz
+		final DefaultTableModel defaultModel = new DefaultTableModel(data,name);
 		JTable table = new JTable(defaultModel){		
 			private static final long serialVersionUID = 1L;
 			public boolean isCellEditable(int row, int column){
@@ -233,7 +258,7 @@ public class SalesPanel extends JPanel{
 		scrollPane.setOpaque(false);
 		
 		
-		defaultModel.addRow(new SalesVO("收款单","2015/10/30","张三","10.00"));
+		//defaultModel.addRow(new SalesVO("收款单","2015/10/30","张三","10.00"));
 		
 		importButton = new JButton();
 		importButton.setFont(font);
@@ -323,7 +348,66 @@ public class SalesPanel extends JPanel{
 		this.add(scrollPane);
 		this.add(importButton);
 		this.add(back);
+		
+		
+		/*
+		 * adding logic....
+		 * */
+		confirm.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent args0){
+//				int y1=year1.getSelectedIndex();
+//				int m1=month1.getSelectedIndex();
+//				int d1=day1.getSelectedIndex();
+//				int y2=year2.getSelectedIndex();
+//				int m2=month2.getSelectedIndex();
+//				int d2=day2.getSelectedIndex();
+//				startDate=year1.getSelectedItem()+"-"
+//						+month1.getSelectedItem()+"-"
+//						+day1.getSelectedItem();
+//				endDate=year2.getSelectedItem()+"-"
+//						+month2.getSelectedItem()+"-"
+//						+day2.getSelectedItem();
+				
+				startDate="2014-10-01";
+				
+				endDate=("2015-12-31");
+				
+				sales.setDate(startDate, endDate);
+				SalesVO vo=sales.show();
+				ArrayList<IncomeVO> incomeList=vo.getIncomeList();
+				Iterator<IncomeVO> iit=incomeList.iterator();
+				while(iit.hasNext()){
+					PassIncomeVO piv=new PassIncomeVO(iit.next());
+					defaultModel.addRow(piv);
+				}
+				ArrayList<PaymentVO> paymentList=vo.getPaymentList();
+				Iterator<PaymentVO> pit=paymentList.iterator();
+				while(pit.hasNext()){
+					PassPaymentVO ppv=new PassPaymentVO(pit.next());
+					defaultModel.addRow(ppv);
+				}
+				//defaultModel.addRow(vo);
+			}
+		});
+		
+		b.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent args0){
+				if(sales.getReport())
+					JOptionPane.showMessageDialog(null, "导出成功^_^","", JOptionPane.INFORMATION_MESSAGE);
+				else
+					JOptionPane.showMessageDialog(null, "导出failed","", JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		
+		back.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent args0){
+				Client.frame.add(new WelcomePanel());
+				Client.frame.remove(SalesPanel.this);
+				Client.frame.repaint();
+			}
+		});
 	}
+
 	
 	public boolean isLeapYear(int year){
 		if(year%400==0||(year%4==0&&year%100!=0)) return true;

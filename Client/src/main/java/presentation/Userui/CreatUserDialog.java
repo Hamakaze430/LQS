@@ -53,11 +53,11 @@ public class CreatUserDialog extends JDialog {
 	 */
 	private static final long serialVersionUID = 1L;
 	JTextField name;
-	JComboBox<String> place;
-	JComboBox<String> job;
+	JComboBox place;
+	JComboBox job;
 	JTextField id;
 	JPasswordField password;
-	JComboBox<String> identity;
+	JComboBox identity;
 	UserManagerblService userbl;
 	DefaultTableModel defaultModel;
 	ButtonGroup bg;
@@ -127,11 +127,15 @@ public class CreatUserDialog extends JDialog {
 			password.setOpaque(false);
 			
 			JLabel identityLabel = new JLabel("用户权限: ");
+<<<<<<< HEAD
 			identityLabel.setFont(font);
 			identityLabel.setBounds(padding*3+100+text_width*2, padding*2, label_width, label_height);
 			identity = new JComboBox<String>();
 			identity.setFont(font);
 			identity.setBounds(padding*3+120+60+text_width*2, padding*2, 180, text_height);
+=======
+			identity = new JComboBox();
+>>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 			identity.addItem("-请设置用户权限-");
 			identity.setSelectedIndex(0);
 			for (Identity a : Identity.values()){
@@ -179,12 +183,17 @@ public class CreatUserDialog extends JDialog {
 			bg = new ButtonGroup();
 			bg.add(female);
 			bg.add(male);
+<<<<<<< HEAD
 			JLabel jobLabel = new JLabel("职 位: ");
 			jobLabel.setFont(font);
 			jobLabel.setBounds(padding, padding*3+label_height, label_width, label_height);
 			job = new JComboBox<String>();
 			job.setFont(font);
 			job.setBounds(padding+60, padding*3+label_height, text_width, text_height);
+=======
+			JLabel jobLabel = new JLabel("职位: ");
+			job = new JComboBox();
+>>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 			job.addItem("-请选择职位-");
 			for(Job j : Job.values()){
 				job.addItem(j.name());
@@ -192,9 +201,13 @@ public class CreatUserDialog extends JDialog {
 			job.addActionListener(lister);
 			
 			JLabel placeLabel = new JLabel("工作单位: ");
+<<<<<<< HEAD
 			placeLabel.setFont(font);
 			placeLabel.setBounds(padding*2+60+text_width, padding*3+label_height, label_width, label_height);
 			place = new JComboBox<String>();
+=======
+			place = new JComboBox();
+>>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 			place.addItem("-请选择工作单位-");
 			place.setFont(font);
 			place.setBounds(padding*3+60*2+text_width, padding*3+label_height, text_width+30, text_height);

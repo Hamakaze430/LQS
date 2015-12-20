@@ -231,7 +231,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.装车单)){
-			JPanel loading = new LoadingPanel(user);			
+			JPanel loading = new LoadingPanel(user,i);			
 			cardPanel.add(loading, "3");			
 			button = new InitButton(i,"src/main/java/image/loading_unselected.png");			
 			buttons.add(button);
@@ -382,7 +382,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.车辆信息)) {
-			JPanel car = new CarPanel();
+			JPanel car = new CarPanel(user,i);
 			cardPanel.add(car, "7");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/car_unselected.png");			
@@ -420,7 +420,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.司机信息)) {
-			JPanel driver = new DriverPanel();
+			JPanel driver = new DriverPanel(user,i);
 			cardPanel.add(driver, "8");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/driver_unselected.png");			

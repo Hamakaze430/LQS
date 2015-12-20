@@ -40,7 +40,12 @@ private DataFactoryService dataFactory;
 		return new HallVO(po.getName(),po.getID(),po.getLocation());
 	}
 	public String getId(String string) {
+<<<<<<< HEAD
 		// TODO Auto-generated method stub
 		return null;
+=======
+		HallPO po = dataFactory.getApartmentDataService().find("Name",string);
+		return po.getID();
+>>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 	}
 }

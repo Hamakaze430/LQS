@@ -73,7 +73,7 @@ public class BillManagementdataImpl implements BillManagementdataService {
 			Date tmpDate;
 			try {
 				ObjectInputStream in=new ObjectInputStream(
-					new FileInputStream("/Server/src/main/java/txt/receipts.ser"));
+					new FileInputStream("/Server/src/main/java/ser/receipts.ser"));
 				while((temp=(BillManagementPO)in.readObject())!=null){
 					tmpDate=fm.parse(temp.getDate());
 					if(tmpDate.equals(comp)){
@@ -97,7 +97,7 @@ public class BillManagementdataImpl implements BillManagementdataService {
 	public void save(BillManagementPO bill){
 		try {
 			ObjectOutputStream out=new ObjectOutputStream(
-					new FileOutputStream("src/main/java/txt/bill.ser"));
+					new FileOutputStream("src/main/java/ser/bill.ser"));
 			out.writeObject(bill);
 			out.close();
 		} catch (IOException e) {
@@ -119,9 +119,9 @@ public class BillManagementdataImpl implements BillManagementdataService {
 		}
 	}
 	
-	public void getReport(BillManagementPO po){
+	public boolean getReport(BillManagementPO po){
 		ReportGenerator gen=new ReportGenerator();
-		gen.createBillReport(po);
+		return gen.createBillReport(po);
 	}
 	
 	

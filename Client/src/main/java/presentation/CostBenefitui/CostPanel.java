@@ -13,6 +13,7 @@ import java.util.Vector;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -60,8 +61,8 @@ public class CostPanel extends JPanel {
 		title.setBounds(150, 10, 600, 50); 
 		
 		Vector<String> name = new Vector<String>();
-		name.add("总收入");
 		name.add("总支出");
+		name.add("总收入");
 		name.add("总利润");
 		
 		
@@ -91,7 +92,16 @@ public class CostPanel extends JPanel {
 		scrollPane.setOpaque(false);
 		
 		
-		defaultModel.addRow(new CostBenefitVO("10.00","10.00","10.00"));
+		
+		/*
+		 * set up CostBenefit
+		 * */
+		cb.setDate();
+		CostBenefitVO cbVO=cb.getVO();
+		defaultModel.addRow(cbVO);
+		
+		//defaultModel.addRow(new CostBenefitVO("10.00","10.00","10.00"));
+		
 		
 		importButton = new JButton();
 		importButton.setFont(font);
@@ -174,11 +184,10 @@ public class CostPanel extends JPanel {
 		 **/
 		importButton.addActionListener(new ActionListener(){ 
 			public void actionPerformed(ActionEvent args0){
-				cb.getReport();
-				/*
-				 * 
-				 * 是不是要下一个界面。。。。这里orz
-				 * */
+				if(cb.getReport())
+					JOptionPane.showMessageDialog(null, "导出成功^_^","", JOptionPane.INFORMATION_MESSAGE);
+				else
+					JOptionPane.showMessageDialog(null, "导出failed","", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		
@@ -195,4 +204,5 @@ public class CostPanel extends JPanel {
 		this.add(back);
 		this.add(scrollPane);
 	}
+	
 }

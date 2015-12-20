@@ -6,16 +6,20 @@ import po.receipts.IncomePO;
 import po.receipts.PaymentPO;
 
 public class ReceiptPO implements Serializable{
-	String name;
-	String creator;
-	String createdate;
-    String status;
+	
+	private String name;
+	private String creator;
+	private String createdate;
+	private double amount;
+    private String type;
+    private long receiptId;
     
-    public ReceiptPO(String n,String c,String cd,String rs){
+    public ReceiptPO(String type,String n,String c,String cd,long receiptId){
     	name = n;
     	creator = c;
     	createdate = cd;
-    	status = rs;
+    	this.receiptId = receiptId;
+    	this.type=type;
     }
     
     private Boolean isIncome(){
@@ -32,6 +36,10 @@ public class ReceiptPO implements Serializable{
     		return false;
     }
     
+    public String getType(){
+    	return type;
+    }
+    
     public String getName(){
     	return name;
     }
@@ -43,8 +51,11 @@ public class ReceiptPO implements Serializable{
     public String getCreateDate(){
     	return createdate;
     }
-    
-    public String getStatus(){
-    	return status;
-    }
+
+	public double getAmount() {
+		return amount;
+	}
+	public long getReceiptId(){
+		return receiptId;
+	}
 }

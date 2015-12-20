@@ -149,7 +149,7 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 //			}
 			int index = -1;
 			for (int i = 0; i < list.size(); i++){
-				if (list.get(i).compareTo(po)){
+				if (list.get(i).getID().equals(po.getID())){
 					index = i;
 					break;
 				}

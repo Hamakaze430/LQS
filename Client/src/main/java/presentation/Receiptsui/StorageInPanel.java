@@ -39,7 +39,7 @@ public class StorageInPanel extends JPanel {
 	private void initSIPanel() {
 		// TODO Auto-generated method stub
 		Font font = new Font("黑体",Font.PLAIN,18);
-		JLabel title = new JLabel(user.getCenterName()+"入库单",JLabel.CENTER);
+		JLabel title = new JLabel(user.getHallName()+"入库单",JLabel.CENTER);
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 50);
 		

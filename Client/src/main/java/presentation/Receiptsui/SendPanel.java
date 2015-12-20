@@ -1,5 +1,15 @@
 package presentation.Receiptsui;
 
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -40,11 +50,14 @@ public class SendPanel extends JPanel{
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
-	int box_width = 100;
+
+	int box_width = 120;
 	int box_height = 30;
 	int button_width = 80;
 	int button_height = 30;
+
 	int interval = 120;
+
 	JLabel text1;
 	JLabel text2;
 	JLabel text3;
@@ -180,6 +193,14 @@ public class SendPanel extends JPanel{
 		text2= new JLabel();
 		TitledBorder tb2 = BorderFactory.createTitledBorder("收件人信息");
 		tb2.setTitleJustification(TitledBorder.LEFT);
+		text2.setBounds(padding, padding+400, 800, 400);
+		text2.setBorder(tb2);
+		text2.setOpaque(false);
+		
+		info = new JPanel();
+//		info.setSize(800,1000);
+		//info.setBounds(0, 0, 800, 1000);
+		info.setPreferredSize(new Dimension(800,1000));
 		text2.setBounds(padding, padding*8+label_height*6, 820,  padding*3+label_height*2);
 		text2.setBorder(tb2);
 		text2.setOpaque(false);
@@ -323,7 +344,6 @@ public class SendPanel extends JPanel{
 		info.add(text1);
 		info.add(text2);
 		info.add(text3);
-		
 		info.add(sendernameLabel);
 		info.add(senderaddrLabel);
 		info.add(sendercompLabel);
@@ -459,7 +479,6 @@ public class SendPanel extends JPanel{
 		this.add(scrollPane);
 		this.add(submit);
 		this.add(back);
-		
 		
 	}
 }

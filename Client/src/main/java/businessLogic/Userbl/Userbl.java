@@ -29,7 +29,7 @@ public class Userbl implements UserblService{
 	public Userbl(String userID){
     	dataFactory=Client.dataFactory;
 		apartmentbl = new Apartmentbl();
-		this.info = findUser(userID);
+		this.info = findUser("id",userID);
 		this.hall = getHallVO(info.getHall());
 		if (info == null) info = new UserVO("","","","","","","");
 	}
@@ -38,8 +38,8 @@ public class Userbl implements UserblService{
 		return apartmentbl.getVOByName(info.getHall());
 	}
 
-	public UserVO findUser(String userID) {
-		UserPO po = dataFactory.getUserdataService().getUserbyID(userID);
+	public UserVO findUser(String known, String info) {
+		UserPO po = dataFactory.getUserdataService().find(known,info);
 		if (po == null) return null;
 		String hallName = apartmentbl.getName(po.getHallId());
 		return new UserVO(po.getID(),po.getPassword(),po.getAuthority(),po.getName(),po.getSex(),po.getJob(),hallName);

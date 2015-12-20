@@ -10,8 +10,6 @@ public interface UserdataService extends Remote {
 
 	public UserPO getCurrentUser() throws RemoteException;
 	
-	public UserPO getUserbyID(String ID) throws RemoteException;
-	
 	public boolean addUser (UserPO user) throws RemoteException;
 
 	public List<UserPO> getAllUsers() throws RemoteException;
@@ -21,4 +19,6 @@ public interface UserdataService extends Remote {
 	public boolean updateUser(UserPO po) throws RemoteException;
 	
 	public int getCount(String id) throws RemoteException;
+	
+	public UserPO find(String known, String info) throws RemoteException;
 }

@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -18,7 +19,13 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+<<<<<<< HEAD
 import presentation.mainui.PictureButton;
+=======
+import businessLogic.CarAndDriverbl.CarAndDriverbl;
+import businessLogicService.CarAndDriverblService.CarAndDriverblService;
+import businessLogicService.UserblService.UserblService;
+>>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 import vo.CarVO;
 import vo.CheckVO;
 import vo.DriverVO;
@@ -30,9 +37,16 @@ public class DriverPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+<<<<<<< HEAD
 	JButton add;
 	JButton delete;
 	JButton back;
+=======
+	private CarAndDriverblService bl;
+	private DefaultTableModel defaultModel;
+	private UserblService user;
+	private int buttonNum;
+>>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
@@ -40,10 +54,13 @@ public class DriverPanel extends JPanel {
 	int box_height = 30;
 	int button_width = 80;
 	int button_height = 30;
-	public DriverPanel(){
+	public DriverPanel(UserblService user, int buttonNum){
 		this.setLayout(null);
 		this.setBorder(null);
 		this.setOpaque(false);
+		this.user = user;
+		this.buttonNum = buttonNum;
+		bl = new CarAndDriverbl();
 		init();
 	}
 	
@@ -60,7 +77,7 @@ public class DriverPanel extends JPanel {
 		name.add("行驶证期限");
 		
 		Vector<DriverVO> data = new Vector<DriverVO>();		
-		DefaultTableModel defaultModel = new DefaultTableModel(data,name);
+		defaultModel = new DefaultTableModel(data,name);
 		JTable table = new JTable(defaultModel){		
 			private static final long serialVersionUID = 1L;
 			public boolean isCellEditable(int row, int column){
@@ -81,8 +98,8 @@ public class DriverPanel extends JPanel {
 		scrollPane.setBorder(null);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
-			
-		defaultModel.addRow(new DriverVO("025000001","张三","男","2015.10.30","320582201510301111","18260065397","一年"));
+		
+		initTable();	
 		
 		
 		add = new JButton();
@@ -191,6 +208,7 @@ public class DriverPanel extends JPanel {
 			
 		});
 		
+		
 		this.add(scrollPane);
 		this.add(add);
 		this.add(delete);
@@ -200,6 +218,11 @@ public class DriverPanel extends JPanel {
 	public void setValue(DriverVO info) {
 		// TODO Auto-generated method stub
 		
+	}
+	private void initTable() {
+		// TODO Auto-generated method stub
+		List<DriverVO> list = bl.findAllDriverInfo(user.getHallId());
+		for (DriverVO vo : list) defaultModel.addRow(vo);
 	}
 
 }

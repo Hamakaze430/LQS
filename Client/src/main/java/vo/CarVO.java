@@ -17,8 +17,10 @@ public class CarVO extends Vector<String>{
 		this.add(time);
 	}
 	
-	public CarVO(CarPO next) {
-		// TODO Auto-generated constructor stub
+	public CarVO(CarPO po) {
+		this.add(po.getID());
+		this.add(po.getLicense());
+		this.add(po.getTime());
 	}
 
 	public String getId(){

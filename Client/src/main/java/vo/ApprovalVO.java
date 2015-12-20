@@ -1,27 +1,31 @@
 package vo;
 
+import java.util.Vector;
+
 /**
  * Created by admin on 15/10/25.
  */
-public class ApprovalVO {
-	public String name;
-	public String creater;
+public class ApprovalVO extends Vector<String> {
 	
-	public ApprovalVO(String name,String creater){
-		this.name=name;
-		this.creater=creater;
+	
+	public ApprovalVO(String name,String creater, String status, String hashId){
+		this.add(name);
+		this.add(creater);
+		this.add(status);
+		this.add(hashId);
 	}
 	
 	public String getName(){
-		return name;
-	}
-	public void setName(String name){
-		this.name=name;
+		return get(0);
 	}
 	public String getCreater(){
-		return creater;
+		return get(1);
 	}
-	public void setCreater(String creater){
-		this.creater=creater;
+	public String getStatus(){
+		return get(2);
+	}
+	public String getHashId(){
+		return get(3);
 	}
 }
+

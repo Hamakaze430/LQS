@@ -49,3 +49,4 @@ public class ComInfoPO extends PersistentObj implements Serializable{
 	}
 	
 }
+

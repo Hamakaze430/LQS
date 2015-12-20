@@ -1,19 +1,23 @@
 package po;
 
 import java.io.Serializable;
+
+import po.receipts.*;
+
 import java.util.ArrayList;
 import java.util.Iterator;
-
-import po.receipts.IncomePO;
-import po.receipts.PaymentPO;
 
 /**
  * Created by admin on 15/10/25.
  */
 public class SalesPO implements Serializable {
-
+    
     private ArrayList<IncomePO> income;
     private ArrayList<PaymentPO> payment;
+    
+    public SalesPO(){
+    	
+    }
     
     public SalesPO(ArrayList<IncomePO> income, ArrayList<PaymentPO> payment){
     	this.income=income;
@@ -40,13 +44,4 @@ public class SalesPO implements Serializable {
 	   }
 	   return receipt;
    }
-   
-//    public String getStartDate(){
-//        return startDate;
-//    }
-//
-//    public String getEndDate(){
-//        return endDate;
-//    }
-
 }

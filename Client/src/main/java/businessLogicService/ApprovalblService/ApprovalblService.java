@@ -1,10 +1,10 @@
 package businessLogicService.ApprovalblService;
 
+import po.ApprovalPO;
+
 public interface ApprovalblService {
 
-	public String getName();
-
-	public String getCreater();
+	public boolean insert(ApprovalPO app);
 
 
 }

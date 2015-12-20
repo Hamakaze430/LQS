@@ -47,13 +47,8 @@ public class BillManagement implements BillManagementblService{
 		return bm.getBillManagementPO(date);
 	}
 
-	public void getReport(BillManagementPO po){
-		bm.getReport(po);
+	public boolean getReport(BillManagementPO po){
+		return bm.getReport(po);
 	}
 
-	public void getReport() {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

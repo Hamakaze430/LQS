@@ -8,8 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import data.LogisticsInfoSearchdata.LogisticsDataServiceTextFileImpl;
+import data.CarAndDriverdata.CarAndDriverDataServiceImpl;
+import data.CostBenefitdata.CostBenefitdataImpl;
+import data.LogisticsInfoSearchdata.LogisticsDataServiceImpl;
 import data.Receiptsdata.ReceiptsdataImpl;
+import data.Salesdata.SalesdataImpl;
 import data.Userdata.ApartmentDataServiceImpl;
 import data.Userdata.AuthoritiesDataServiceImpl;
 import data.Userdata.UserdataImpl;
@@ -24,11 +27,14 @@ public class RMIHelper {
     private static boolean inited = false;
 
     static {
-        NAMING_MAP.put("logisticsData-Server", LogisticsDataServiceTextFileImpl.class);
+        NAMING_MAP.put("logisticsData-Server", LogisticsDataServiceImpl.class);
         NAMING_MAP.put("apartmentData-Server", ApartmentDataServiceImpl.class);
         NAMING_MAP.put("authoritiesData-Server", AuthoritiesDataServiceImpl.class);
         NAMING_MAP.put("userData-Server", UserdataImpl.class);
         NAMING_MAP.put("receiptsData-Server", ReceiptsdataImpl.class);
+        NAMING_MAP.put("carAndDriverData-Server", CarAndDriverDataServiceImpl.class);
+  //      NAMING_MAP.put("costBenefitData-Server", CostBenefitdataImpl.class);
+  //      NAMING_MAP.put("salesData-Server", SalesdataImpl.class);
     }
 
     public synchronized static void init() throws ServerInitException {

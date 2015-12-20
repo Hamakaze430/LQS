@@ -25,14 +25,14 @@ public class DriverVO extends Vector<String> {
 		this.add(time);
 	}
 	
-	public DriverVO(DriverPO driverPO){
-		id=driverPO.getId();
-		name=driverPO.getName();
-		birth=driverPO.getBirth();
-		identity=driverPO.getIdentity();
-		mobile=driverPO.getMobile();
-		gender=driverPO.getGender();
-		time=driverPO.getTime();
+	public DriverVO(DriverPO po){
+		this.add(po.getId());
+		this.add(po.getName());
+		this.add(po.getGender());
+		this.add(po.getBirth());
+		this.add(po.getIdentity());
+		this.add(po.getMobile());	
+		this.add(po.getTime());
 	}
 	
 	public String getId(){

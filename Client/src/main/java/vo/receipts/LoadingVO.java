@@ -2,9 +2,10 @@
  * 装车单
  */
 package vo.receipts;
-
-import java.util.ArrayList;
-
+import java.util.List;
+import Miscellaneous.FormType;
+import po.ReceiptPO;
+import po.receipts.LoadingPO;
 import vo.ReceiptVO;
 
 public class LoadingVO extends ReceiptVO{
@@ -19,15 +20,16 @@ public class LoadingVO extends ReceiptVO{
 	public final String carId;
 	public final String supervisor;
 	public final String driver;
-	public final ArrayList<String> order;
+	public final List<String> order;
 	public final double cost;
 	
-	public LoadingVO(String date, String hallId, 
+	public LoadingVO(String name, String creator,
+					String date,String hallId, 
 					String id, String destination, 
 					 String carId, String supervisor, 
-					 String driver, ArrayList<String> order,
+					 String driver, List<String> order,
 					 double cost){
-		super("","",date,"");
+		super(FormType.装车单.name(),name,creator,date);
 		this.date = date;
 		this.hallId = hallId;
 		this.id = id;
@@ -38,4 +40,52 @@ public class LoadingVO extends ReceiptVO{
 		this.order = order;
 		this.cost = cost;		
 	}	
+	
+	public String getDate(){
+		return date;
+	}
+	
+	public String getHallId(){
+		return hallId;
+	}
+	
+	public String getId(){
+		return id;
+	}
+	
+	public String getDestination(){
+		return destination;
+	}
+	
+	public String getCarId(){
+		return carId;
+	}
+	
+	public String getSupervisor(){
+		return supervisor;
+	}
+	
+	public String getDriver(){
+		return driver;
+	}
+	
+	public List<String> getOrder(){
+		return order;
+	}
+	
+	
+	public double getCost(){
+		return cost;
+	}
+	
+	public LoadingPO toPO(long receiptId){
+		return new LoadingPO(
+				receiptId,getName(),getCreator(),
+				getDate(),getHallId(),getId(),
+				getDestination(),getCarId(),getSupervisor(),
+				getDriver(),getOrder(),getCost());
+	}
+	
+	
+	
 }
