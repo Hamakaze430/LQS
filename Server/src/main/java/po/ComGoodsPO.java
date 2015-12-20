@@ -7,7 +7,7 @@ public class ComGoodsPO  implements Serializable{
 private static final long serialVersionUID = 1L;
 	
 	OrderPO order;
-	private String id;
+	String id;
 	String date;
 	int type;
 	int line;
@@ -20,7 +20,7 @@ private static final long serialVersionUID = 1L;
 		this.line = line;
 		this.shelf = shelf;
 		this.cell = cell;
-		this.setId(order.id);
+		this.id = order.id;
 		this.date = "";
 	}
 	
@@ -55,14 +55,6 @@ private static final long serialVersionUID = 1L;
     public void setCell(int cell){
     	this.cell = cell;
     }
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 	
 
 }

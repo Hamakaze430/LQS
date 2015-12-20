@@ -337,8 +337,9 @@ public class LoadingPanel extends JPanel{
 			String Id = id.getText();
 			String Destination = place.getSelectedItem().toString();
 		 	double Cost = cost_double;
-		 	ReceiptVO vo = new LoadingVO(Name,Creator,ReceiptState.未审批.name(),
+		 	ReceiptVO vo = new LoadingVO(Name,Creator,
 		 			Date, HallId, Id, Destination, CarId, Supervisor, Driver, Order, Cost);
+		 	
 		 	bl.addReceipt(vo);
 		 	
 		 	date.setText(bl.getCurrentTime());;

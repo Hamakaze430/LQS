@@ -12,9 +12,10 @@ public class LogisticsPO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String id;//快递单号
+	private String currentState;
 	private List<String> state;
 	
-	public LogisticsPO(String id, List<String> state){
+	public LogisticsPO(String id, String currentState, List<String> state){
 		this.id = id;
 		this.state = state;
 	}
@@ -37,5 +38,10 @@ public class LogisticsPO implements Serializable {
 	
 	public void addState(String state){
 		this.state.add(state);
+	}
+	
+
+	public String getCurrentState(){
+		return currentState;
 	}
 }

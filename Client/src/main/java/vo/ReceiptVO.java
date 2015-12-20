@@ -23,24 +23,22 @@ public class ReceiptVO implements Serializable{
     private String status; //单据是否审批状态
     
     
-    ReceiptVO(ReceiptPO po){
-//    	this.add(po.getName());
-//    	this.add(po.getCreator());
-//    	this.add(po.getCreateDate());
-//    	this.add(po.getStatus());
-//    	this.add(po.getType());
-    	name=po.getName();
-    	creator=po.getCreator();
-    	date=po.getCreateDate();
-    	status=po.getStatus();
-    }
+//    ReceiptVO(ReceiptPO po){
+////    	this.add(po.getName());
+////    	this.add(po.getCreator());
+////    	this.add(po.getCreateDate());
+////    	this.add(po.getStatus());
+////    	this.add(po.getType());
+//    	name=po.getName();
+//    	creator=po.getCreator();
+//    	date=po.getCreateDate();
+//    }
     
-    protected ReceiptVO(String type, String name, String creator, String date, String status){
+    protected ReceiptVO(String type, String name, String creator, String date){
     	this.type = type;
     	this.name=name;
     	this.creator=creator;
     	createdate=date;
-    	this.status=status;
     }
     
     public String getName(){
@@ -63,5 +61,5 @@ public class ReceiptVO implements Serializable{
         return type;
     }
 
-	public ReceiptPO toPO(){return null;}
+	public ReceiptPO toPO(long receiptId){return null;}
 }

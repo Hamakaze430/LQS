@@ -46,7 +46,7 @@ public class StorageOutPanel extends JPanel{
 		int buttonheight = 30;
 		// TODO Auto-generated method stub
 		Font font = new Font("黑体",Font.PLAIN,18);
-		JLabel title = new JLabel(user.getCenterName()+"出库单",JLabel.CENTER);
+		JLabel title = new JLabel(user.getHallName()+"出库单",JLabel.CENTER);
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 50);
 		

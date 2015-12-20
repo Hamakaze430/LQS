@@ -23,5 +23,7 @@ public interface ReceiptsdataService extends Remote {
 	public boolean insert(ReceiptPO po);
 
 	public long addReceiptId();
+
+	public ReceiptPO find(String known, String info);
 	
 }

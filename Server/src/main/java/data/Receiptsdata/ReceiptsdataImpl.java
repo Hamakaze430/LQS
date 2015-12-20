@@ -183,6 +183,20 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 			   e.printStackTrace();
 		}
 		return -1;
+	}
+
+	public ReceiptPO find(String known, String info) throws RemoteException {
+		List<ReceiptPO>  list = findAll();
+		if (known.equals("receiptId")){
+			long id = Long.valueOf(info);
+			for (ReceiptPO po : list){
+				if (po.getReceiptId() == id){
+					return po;
+				}
+			}
+			return null;
+		}
+		return null;
 	}	
 
 }

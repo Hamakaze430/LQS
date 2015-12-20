@@ -6,6 +6,7 @@ import java.util.List;
 import businessLogicService.CarAndDriverblService.CarAndDriverblService;
 import dataService.DataFactoryService.DataFactoryService;
 import init.Client;
+import po.CarAndDriverPO;
 import po.CarPO;
 import po.DriverPO;
 import vo.CarVO;
@@ -30,8 +31,6 @@ public class CarAndDriverbl implements CarAndDriverblService {
 		return dataFactory.getCarAndDriverdataService().insert("driver",po);
 	}
 
-
-	
 	private int getCount(String type, String foreId) {
 		return dataFactory.getCarAndDriverdataService().getCount(type,foreId);
 	}
@@ -47,51 +46,25 @@ public class CarAndDriverbl implements CarAndDriverblService {
 	}
 
 
-	public CarVO findCarInfo(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public DriverVO findDriverInfo(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	public boolean updateCarInfo(CarVO car) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	public boolean updateDriverInfo(DriverVO driver) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	public boolean deleteCarInfo(CarVO car) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
-	public boolean deleteDriverInfo(DriverVO driver) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-
 	public List<CarVO> findAllCarInfo(String hallId) {
-		// TODO Auto-generated method stub
-		return null;
+		List<CarAndDriverPO> list = dataFactory.getCarAndDriverdataService().findAll("car","hallId",hallId);
+		List<CarVO> ans = new ArrayList<CarVO>();
+		for (CarAndDriverPO po : list){
+			CarVO vo = new CarVO((CarPO)po);
+			ans.add(vo);
+		}
+		return ans;
+		
 	}
-
 
 	public List<DriverVO> findAllDriverInfo(String hallId) {
-		// TODO Auto-generated method stub
-		return null;
+		List<CarAndDriverPO> list = dataFactory.getCarAndDriverdataService().findAll("driver","hallId",hallId);
+		List<DriverVO> ans = new ArrayList<DriverVO>();
+		for (CarAndDriverPO po : list){
+			DriverVO vo = new DriverVO((DriverPO)po);
+			ans.add(vo);
+		}
+		return ans;
 	}
 
 }

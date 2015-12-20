@@ -65,7 +65,7 @@ public class DriverPanel extends JPanel {
 		name.add("行驶证期限");
 		
 		Vector<DriverVO> data = new Vector<DriverVO>();		
-		DefaultTableModel defaultModel = new DefaultTableModel(data,name);
+		defaultModel = new DefaultTableModel(data,name);
 		JTable table = new JTable(defaultModel){		
 			private static final long serialVersionUID = 1L;
 			public boolean isCellEditable(int row, int column){
@@ -88,7 +88,6 @@ public class DriverPanel extends JPanel {
 		scrollPane.setOpaque(false);
 		
 		initTable();	
-		//defaultModel.addRow(new DriverVO("025000001","张三","男","2015.10.30","320582201510301111","18260065397","一年"));
 		
 		
 		JButton add = new JButton("新建");
@@ -112,7 +111,6 @@ public class DriverPanel extends JPanel {
 	private void initTable() {
 		// TODO Auto-generated method stub
 		List<DriverVO> list = bl.findAllDriverInfo(user.getHallId());
-		if (list == null) return;
 		for (DriverVO vo : list) defaultModel.addRow(vo);
 	}
 

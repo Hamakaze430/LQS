@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import Miscellaneous.Item;
 
-
-
 public class BalancePO implements Serializable{
 private static final long serialVersionUID = 1L;
 

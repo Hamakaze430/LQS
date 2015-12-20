@@ -105,7 +105,6 @@ public class CarPanel extends JPanel {
 	private void initTable() {
 		// TODO Auto-generated method stub
 		List<CarVO> list = bl.findAllCarInfo(user.getHallId());
-		if (list == null) return;
 		for (CarVO vo : list) defaultModel.addRow(vo);
 	}
 

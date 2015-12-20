@@ -16,13 +16,13 @@ public class LoadingPO extends ReceiptPO {
 	public final List<String> order;
 	public final double cost;
 
-	public LoadingPO(long receiptId, String name, String creator, String status,
+	public LoadingPO(long receiptId, String name, String creator,
 					String date,String hallId, 
 					String id, String destination, 
 					 String carId, String supervisor, 
 					 String driver, List<String> order,
 					 double cost){
-		super(FormType.装车单.name(),name,creator,date,status,receiptId);
+		super(FormType.装车单.name(),name,creator,date,receiptId);
 		this.date = date;
 		this.hallId = hallId;
 		this.id = id;

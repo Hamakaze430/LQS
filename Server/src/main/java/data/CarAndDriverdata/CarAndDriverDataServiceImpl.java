@@ -55,7 +55,7 @@ public class CarAndDriverDataServiceImpl extends UnicastRemoteObject implements 
 	}
 
 	@SuppressWarnings({ "resource", "unchecked" })
-	public List<CarAndDriverPO> findAll(String type) throws RemoteException {
+	private List<CarAndDriverPO> findAll(String type) throws RemoteException {
 		try {
 			FileInputStream fileIn;
 			if (type.equals("car")) fileIn = new FileInputStream("src/main/java/ser/cars.ser");
@@ -131,6 +131,31 @@ public class CarAndDriverDataServiceImpl extends UnicastRemoteObject implements 
 			return false;
 		}
 		return false;
+	}
+
+	public List<CarAndDriverPO> findAll(String type, String know, String info) throws RemoteException {
+		List<CarAndDriverPO>  list = findAll(type);
+		List<CarAndDriverPO> ans = new ArrayList<CarAndDriverPO>();
+		if (type.equals("car")){
+			if (know.equals("hallId")){
+				for (CarAndDriverPO po: list){
+					if (((CarPO) po).getID().substring(0, 6).equals(info)) ans.add(po);
+				}
+				return ans;
+			}
+			return ans;
+		}
+		if (type.equals("driver")){
+			if (know.equals("hallId")){
+				for (CarAndDriverPO po: list){
+					if (((DriverPO) po).getId().substring(0, 6).equals(info)) ans.add(po);
+				}
+				return ans;
+			}
+			return ans;
+		}
+		return ans;
+		
 	}
 
 }

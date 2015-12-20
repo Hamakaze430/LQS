@@ -8,10 +8,13 @@ import java.util.Date;
 import java.util.List;
 
 import Miscellaneous.FormType;
+import Miscellaneous.ReceiptState;
+import businessLogic.Approvalbl.Approvalbl;
 import businessLogic.CarAndDriverbl.CarAndDriverbl;
 import businessLogic.Receiptsbl.MockTest.MockCarAndDriver;
 import businessLogic.Userbl.Apartmentbl;
 import businessLogic.Userbl.Userbl;
+import businessLogicService.ApprovalblService.ApprovalblService;
 import businessLogicService.CarAndDriverblService.CarAndDriverblService;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
 import businessLogicService.UserblService.ApartmentblService;
@@ -20,6 +23,7 @@ import dataService.DataFactoryService.DataFactory;
 import dataService.DataFactoryService.DataFactoryService;
 import dataService.ReceiptsdataService.ReceiptsdataService;
 import init.Client;
+import po.ApprovalPO;
 import po.HallPO;
 import po.ReceiptPO;
 import po.receipts.LoadingPO;
@@ -32,13 +36,14 @@ public class Receiptsbl implements ReceiptsblService {
 	private DataFactoryService dataFactory;
 	private CarAndDriverblService carAndDriver;
 	private ApartmentblService apartment;
-
+	private ApprovalblService approval;
+	
 	public Receiptsbl(UserblService user){
 		this.user = user;
 		carAndDriver = new CarAndDriverbl();
 		apartment = new Apartmentbl();
+		approval = new Approvalbl();
 		dataFactory = Client.dataFactory;
-		
 	}
 	
 	public List<String> getHallNameListByAddress(String string) {
@@ -46,13 +51,6 @@ public class Receiptsbl implements ReceiptsblService {
 		return apartment.getHallNameListByAddress(string);
 	}
 	
-	public String getName(){
-		return "";
-	}
-	
-	public String getCreater(){
-		return "";
-	}
 	
 	public String showVouchers() {
 		return null;
@@ -101,16 +99,12 @@ public class Receiptsbl implements ReceiptsblService {
 	}
 	
 	public boolean addReceipt(ReceiptVO vo) {
-		ReceiptPO po = newPO(vo);
+		ReceiptPO po = vo.toPO(addReceiptId());
 		return dataFactory.getReceiptsdataService().insert(po);
 	}
 	
-	private ReceiptPO newPO(ReceiptVO vo) {
-		if (vo.getType().equals(FormType.装车单.name()))
-			return new LoadingPO(addReceiptId(),vo.getName(),vo.getCreator(),vo.getStatus(),
-					((LoadingVO)vo).getDate(),((LoadingVO)vo).getHallId(),((LoadingVO)vo).getId(),
-					((LoadingVO)vo).getDestination(),((LoadingVO)vo).getCarId(),((LoadingVO)vo).getSupervisor(),
-					((LoadingVO)vo).getDriver(),((LoadingVO)vo).getOrder(),((LoadingVO)vo).getCost());
+	public ReceiptVO getReceiptById(long receiptId) {
+		ReceiptPO po = dataFactory.getReceiptsdataService().find("receiptId",String.valueOf(receiptId));
 		return null;
 	}
 
@@ -119,9 +113,14 @@ public class Receiptsbl implements ReceiptsblService {
 		return dataFactory.getReceiptsdataService().addReceiptId();
 	}
 
-	public boolean submitReceipts(ReceiptVO vo){
-		
-		return false;
+	/**
+	 * 单据审批相关
+	 * @param vo
+	 * @return
+	 */
+	private boolean approvalInsert(ReceiptPO po){
+		ApprovalPO app = new ApprovalPO(po.getName(),po.getCreator(),ReceiptState.未审批,po.getReceiptId());
+		return approval.insert(app);
 	}
 
 	public boolean findCarAndDriver(String type, String known) {
