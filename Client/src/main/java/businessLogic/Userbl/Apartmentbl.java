@@ -39,6 +39,7 @@ private DataFactoryService dataFactory;
 		HallPO po = dataFactory.getApartmentDataService().find("Name",hallName);
 		return new HallVO(po.getName(),po.getID(),po.getLocation());
 	}
+	
 	public String getId(String string) {
 		HallPO po = dataFactory.getApartmentDataService().find("Name",string);
 		return po.getID();

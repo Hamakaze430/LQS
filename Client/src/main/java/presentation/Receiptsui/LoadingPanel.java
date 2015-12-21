@@ -297,6 +297,8 @@ public class LoadingPanel extends JPanel{
 				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
 			}
 		});
+
+
 		back.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
@@ -441,7 +443,4 @@ public class LoadingPanel extends JPanel{
 		}
 	}
 }
-
-
-
-
+	

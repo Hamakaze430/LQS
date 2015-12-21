@@ -210,7 +210,6 @@ public class CarPanel extends JPanel {
 			
 		});
 		initTable();
-		
 		this.add(scrollPane);
 		this.add(add);
 		this.add(back);
