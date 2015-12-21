@@ -3,9 +3,9 @@ package po.receipts;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import Miscellaneous.ExpressType;
 import po.OrderPO;
-
+import po.ReceiptPOBase;
+import businessLogicService.CommodityblService.ExpressType;
 
 public class TransferReceiptPO extends ReceiptPOBase implements Serializable{
 private static final long serialVersionUID = 1L;

@@ -6,11 +6,11 @@ import po.ReceiptPO;
  * Created by admin on 15/11/16.
  */
 public class IncomePO extends ReceiptPO {
-	
-    private String amount;
+
+	private String amount;
 
     public IncomePO(String n, String c, String cd, String rs, String a){
-        super("收款单",n, c, cd, rs,);
+        super(n, c, cd, rs, "收款单");
         this.amount=a;
     }
 

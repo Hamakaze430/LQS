@@ -116,12 +116,15 @@ public class CreatUserDialog extends JDialog {
 			id.setBounds(padding+60, padding*2, text_width, text_height);
 			id.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 			id.setOpaque(false);
+			id.setForeground(Color.LIGHT_GRAY);
+			id.setText("系统生成");
+			id.setEditable(false);
 			
 			JLabel passwordLabel = new JLabel("密 码: ");
 			passwordLabel.setFont(font);
 			passwordLabel.setBounds(padding*2+60+text_width, padding*2, label_width, label_height);
 			password = new JPasswordField("",15);
-			password.setFont(font);
+			//password.setFont(font);
 			password.setBounds(padding*2+60+60+text_width, padding*2, text_width, text_height);
 			password.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 			password.setOpaque(false);
@@ -304,14 +307,14 @@ public class CreatUserDialog extends JDialog {
 					else {
 						Identity = identity.getSelectedItem().toString();
 					}
-					
-					id.setText("");
+					id.setForeground(Color.LIGHT_GRAY);
+					id.setText("系统生成");
 					password.setText("");
-					identity.setSelectedItem(0);
+					identity.setSelectedIndex(0);
 					name.setText("");
 					bg.clearSelection();
-					job.setSelectedItem(0);
-					place.setSelectedItem(0);
+					job.setSelectedIndex(0);
+					place.setSelectedIndex(0);
 					
 					UserVO vo = new UserVO(Id,Password,Identity,Name,Sex,Job,Place);
 					defaultModel.addRow(vo);
@@ -382,6 +385,7 @@ public class CreatUserDialog extends JDialog {
 				Job jobType = Job.value(job.getSelectedItem().toString());
 				ApartmentblService apartment = new Apartmentbl();
 				String hallID = apartment.getId(place.getSelectedItem().toString());
+				id.setForeground(Color.BLACK);
 				id.setText(IDGenerator.generateID(jobType,hallID));
 			}
 			

@@ -2,6 +2,8 @@ package presentation.Receiptsui;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 
@@ -28,6 +30,7 @@ import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 
+import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
@@ -47,6 +50,7 @@ public class SendPanel extends JPanel{
 	JButton back;
 	private ReceiptsblService bl;
 	private UserblService user;
+	private int buttonNum;
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
@@ -62,9 +66,10 @@ public class SendPanel extends JPanel{
 	JLabel text2;
 	JLabel text3;
 	JPanel info;
-	public SendPanel(UserblService user){
+	public SendPanel(UserblService user, int buttonNum){
 		this.user=user;
 		bl = new Receiptsbl(user);
+		this.buttonNum = buttonNum;
 		this.setLayout(null);
 		this.setBorder(null);
 		this.setOpaque(false);
@@ -87,11 +92,11 @@ public class SendPanel extends JPanel{
 		text1.setBorder(tb);
 		text1.setOpaque(false);
 		
-		JLabel sendernameLabel = new JLabel("· 寄件人姓名：");
+		JLabel sendernameLabel = new JLabel("* 寄件人姓名：");
 		sendernameLabel.setFont(font);
 		sendernameLabel.setBounds(padding*2, padding+label_height, label_width, label_height);
 		
-		JLabel senderaddrLabel = new JLabel("· 寄件人住址：");
+		JLabel senderaddrLabel = new JLabel("* 寄件人住址：");
 		senderaddrLabel.setFont(font);
 		senderaddrLabel.setBounds(padding*2, (padding+label_height)*2, label_width, label_height);
 		
@@ -103,7 +108,7 @@ public class SendPanel extends JPanel{
 		sendertelLabel.setFont(font);
 		sendertelLabel.setBounds(padding*2, (padding+label_height)*4, label_width, label_height);
 		
-		JLabel senderphoneLabel = new JLabel("· 寄件人手机：");
+		JLabel senderphoneLabel = new JLabel("* 寄件人手机：");
 		senderphoneLabel.setFont(font);
 		senderphoneLabel.setBounds(padding*2, (padding+label_height)*5, label_width, label_height);
 		
@@ -138,11 +143,11 @@ public class SendPanel extends JPanel{
 		senderphone.setOpaque(false);
 		senderphone.setBounds(padding*2+interval, (padding+label_height)*5, label_width, label_height);
 		
-		JLabel receivernameLabel = new JLabel("· 收件人姓名：");
+		JLabel receivernameLabel = new JLabel("* 收件人姓名：");
 		receivernameLabel.setFont(font);
 		receivernameLabel.setBounds(padding*2+interval*3, padding+label_height, label_width, label_height);
 		
-		JLabel receiveraddrLabel = new JLabel("· 收件人住址：");
+		JLabel receiveraddrLabel = new JLabel("* 收件人住址：");
 		receiveraddrLabel.setFont(font);
 		receiveraddrLabel.setBounds(padding*2+interval*3, (padding+label_height)*2, label_width, label_height);
 		
@@ -154,7 +159,7 @@ public class SendPanel extends JPanel{
 		receivertelLabel.setFont(font);
 		receivertelLabel.setBounds(padding*2+interval*3, (padding+label_height)*4, label_width, label_height);
 		
-		JLabel receiverphoneLabel = new JLabel("· 收件人手机：");
+		JLabel receiverphoneLabel = new JLabel("* 收件人手机：");
 		receiverphoneLabel.setFont(font);
 		receiverphoneLabel.setBounds(padding*2+interval*3, (padding+label_height)*5, label_width, label_height);
 		
@@ -332,9 +337,9 @@ public class SendPanel extends JPanel{
 		order.setFont(font);
 		order.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		order.setOpaque(false);
-		order.setBounds(padding*2+interval,  padding*19+label_height*17, label_width, label_height);
+		order.setBounds(padding*2+interval+15,  padding*19+label_height*17, label_width, label_height);
 		//order.setText(t);
-		order.setEditable(false);
+		//order.setEditable(false);
 		
 		info = new JPanel();
 		info.setPreferredSize(new Dimension(880,text1.getHeight()+text2.getHeight()+text3.getHeight()+padding*5));
@@ -388,7 +393,7 @@ public class SendPanel extends JPanel{
 		info.add(fast);
 		info.add(finan);
 		info.add(cost);
-		info.add(cost);
+		info.add(order);
 		g.add(finan);
 		g.add(fast);
 		g.add(st);
@@ -438,6 +443,8 @@ public class SendPanel extends JPanel{
 			
 		});
 		
+		submit.addActionListener(new SubmitListener());
+		
 		
 		back = new JButton();
 		back.setFont(font);
@@ -451,7 +458,8 @@ public class SendPanel extends JPanel{
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+				SendPanel.this.setVisible(false);
+				MainPanel.closeButton(buttonNum);
 			}
 
 			public void mousePressed(MouseEvent e) {
@@ -479,6 +487,15 @@ public class SendPanel extends JPanel{
 		this.add(scrollPane);
 		this.add(submit);
 		this.add(back);
+		
+	}
+	
+	class SubmitListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
 		
 	}
 }

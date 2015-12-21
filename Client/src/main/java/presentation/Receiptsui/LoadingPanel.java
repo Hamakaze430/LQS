@@ -44,6 +44,7 @@ import vo.receipts.LoadingVO;
 
 /**
  * 装车单
+ * 写完惹【还剩bl.getLoadingCost();
  * @author TOSHIBA
  *
  */
@@ -295,9 +296,10 @@ public class LoadingPanel extends JPanel{
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
-				back.setBounds(680+padding+button_width, 500, button_width, button_height);
 			}
 		});
+		
+		submit.addActionListener(new SubmitAction());
 		
 		back.addActionListener(new ActionListener(){
 
@@ -368,6 +370,10 @@ public class LoadingPanel extends JPanel{
 				return;
 			}
 			String Driver = drivername.getText();
+			if (Driver.equals("")){
+				JOptionPane.showMessageDialog(null, "请输入司机姓名！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			if(! bl.findCarAndDriver("driver",Driver)){
 				//System.out.println("找不到");
 				JOptionPane.showMessageDialog(null, "不存在对应的司机！","", JOptionPane.ERROR_MESSAGE);
@@ -375,6 +381,10 @@ public class LoadingPanel extends JPanel{
 			}
 			
 			String Supervisor = spyname.getText();
+			if (Supervisor.equals("")){
+				JOptionPane.showMessageDialog(null, "请输入监装员姓名！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			UserVO sup = bl.findUser(Supervisor);
 			if(sup == null ){
 				//System.out.println("找不到");
@@ -382,16 +392,28 @@ public class LoadingPanel extends JPanel{
 				return;
 			}
 			else if (!sup.getHall().equals(user.getHallName())){
-				JOptionPane.showMessageDialog(null, "该员工不属于单位！","注意", JOptionPane.WARNING_MESSAGE);
-				return;
+				JOptionPane.showMessageDialog(null, "所填的监装员不属于本单位！","注意", JOptionPane.WARNING_MESSAGE);
+//				return;
 			}
 			
 			String str = orders.getText();
+			if (str.equals("")){
+				JOptionPane.showMessageDialog(null, "请输入相应的快递单号！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 		 	List<String> Order = new ArrayList<String>();
 		 	String[] split = str.split("\n");
 		 	for (String s : split) {
+		 		try{
+					long id = Long.parseLong(s);
+				}catch(NumberFormatException e1){
+					//输入编号不是数字
+					JOptionPane.showMessageDialog(null, "请输入正确的快递单号！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 		 		if(! bl.findLogistics(s)){
 					//System.out.println("找不到");
+		 			
 					JOptionPane.showMessageDialog(null, "不存在快递单号为"+s+"的货物！","", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
@@ -425,11 +447,10 @@ public class LoadingPanel extends JPanel{
 			drivername.setText("");
 			spyname.setText("");
 			orders.setText("");
-			cost.setText("");
 		}
 	
 	}
-}
+	
 	class WarnLabel extends JLabel{
 		public WarnLabel(){
 			this.setForeground(Color.RED);
@@ -444,6 +465,9 @@ public class LoadingPanel extends JPanel{
 		}
 	}
 
+}
+
+	
 
 	
 

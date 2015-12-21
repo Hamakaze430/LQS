@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
+import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
@@ -37,9 +38,11 @@ public class DeliverPanel extends JPanel{
 	int button_height = 30;
 	private ReceiptsblService bl;
 	private UserblService user;
-	public DeliverPanel(UserblService user){
+	private int buttonNum;
+	public DeliverPanel(UserblService user, int buttonNum){
 		this.user = user;
 		bl = new Receiptsbl(user);
+		this.buttonNum = buttonNum;
 		this.setLayout(null);
 		this.setOpaque(false);
 		this.setBorder(null);
@@ -136,7 +139,8 @@ public class DeliverPanel extends JPanel{
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+				DeliverPanel.this.setVisible(false);
+				MainPanel.closeButton(buttonNum);
 			}
 
 			public void mousePressed(MouseEvent e) {
@@ -170,7 +174,7 @@ public class DeliverPanel extends JPanel{
 		this.add(date);
 		this.add(submit);
 		this.add(back);
-		
+	
 	}
 
 }
