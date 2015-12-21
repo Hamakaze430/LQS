@@ -103,8 +103,8 @@ public class CreatUserDialog extends JDialog {
 			panel1.setBorder(tb);
 			panel1.setOpaque(false);
 			panel1.setLayout(null);
-			panel1.setBounds(padding, padding, 800-2*padding, 120);
-			
+			panel1.setBounds(padding, padding*2+160, 800-2*padding, 120);
+			//padding, padding*2+120, 800-2*padding, 160
 			Font font = new Font("黑体",Font.PLAIN,16);
 			ActionListener lister = new IdListener();
 			
@@ -123,8 +123,10 @@ public class CreatUserDialog extends JDialog {
 			JLabel passwordLabel = new JLabel("密 码: ");
 			passwordLabel.setFont(font);
 			passwordLabel.setBounds(padding*2+60+text_width, padding*2, label_width, label_height);
-			password = new JPasswordField("",15);
 			//password.setFont(font);
+
+			password = new JPasswordField("123456",15);
+//			password.setFont(font);
 			password.setBounds(padding*2+60+60+text_width, padding*2, text_width, text_height);
 			password.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 			password.setOpaque(false);
@@ -155,7 +157,7 @@ public class CreatUserDialog extends JDialog {
 			panel2.setBorder(tb);
 			panel2.setOpaque(false);
 			panel2.setLayout(null);
-			panel2.setBounds(padding, padding*2+120, 800-2*padding, 160);
+			panel2.setBounds(padding, padding, 800-2*padding, 160);
 			
 			JLabel nameLabel = new JLabel("姓 名: ");
 			nameLabel.setFont(font);
@@ -307,12 +309,13 @@ public class CreatUserDialog extends JDialog {
 					else {
 						Identity = identity.getSelectedItem().toString();
 					}
+
 					id.setForeground(Color.LIGHT_GRAY);
 					id.setText("系统生成");
-					password.setText("");
+					password.setText("123456");
 					identity.setSelectedIndex(0);
 					name.setText("");
-					bg.clearSelection();
+					male.setSelected(true);
 					job.setSelectedIndex(0);
 					place.setSelectedIndex(0);
 					

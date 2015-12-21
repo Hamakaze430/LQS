@@ -39,7 +39,7 @@ public class CreatApartmentDialog extends JDialog {
 	 */
 	private static final long serialVersionUID = 1L;
 	JTextField name;
-	JComboBox placeBox;
+	JComboBox<String> placeBox;
 	JTextField place;
 	JTextField id;
 	ApartmentManagerblService bl;
@@ -90,7 +90,7 @@ public class CreatApartmentDialog extends JDialog {
 			JLabel placeLabel = new JLabel("部门位置: ");
 			placeLabel.setBounds(gap_left, gap_up+gap, width_label, height);
 			
-			placeBox = new JComboBox();
+			placeBox = new JComboBox<String>();
 		
 			Place[] es = Place.values();
 			for (Place p : es) placeBox.addItem(p.name());

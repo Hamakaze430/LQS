@@ -11,4 +11,5 @@ public interface CarAndDriverdataService extends Remote {
 	public List<CarAndDriverPO> findAll(String type, String know, String info) throws RemoteException;
 	public int getCount(String type, String foreId) throws RemoteException;
 	public boolean find(String type, String known) throws RemoteException;
+	public boolean delete(String type, String id) throws RemoteException;
 }

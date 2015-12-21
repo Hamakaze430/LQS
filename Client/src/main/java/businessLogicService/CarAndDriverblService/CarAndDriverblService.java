@@ -10,7 +10,7 @@ import vo.CarVO;
 import vo.DriverVO;
 
 public interface CarAndDriverblService {
-	public boolean addCarInfo(CarVO car);
+	public boolean addCarInfo(String date,CarVO car);
 
 	public boolean addDriverInfo(DriverVO driver);
 	
@@ -22,6 +22,8 @@ public interface CarAndDriverblService {
 	public List<CarVO> findAllCarInfo(String hallId);
 
 	public List<DriverVO> findAllDriverInfo(String hallId);
+
+	public boolean deleteCarInfo(CarVO vo);
 	
-	
+	public boolean deleteDriverInfo(DriverVO vo);
 }

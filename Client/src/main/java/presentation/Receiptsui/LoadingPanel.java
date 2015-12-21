@@ -307,8 +307,7 @@ public class LoadingPanel extends JPanel{
 				// TODO Auto-generated method stub
 				LoadingPanel.this.setVisible(false);
 				MainPanel.closeButton(buttonNum);
-			}
-			
+			}		
 		});
 		
 		this.add(title);
@@ -468,6 +467,3 @@ public class LoadingPanel extends JPanel{
 }
 
 	
-
-	
-
