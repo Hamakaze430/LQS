@@ -158,4 +158,43 @@ public class CarAndDriverDataServiceImpl extends UnicastRemoteObject implements 
 		
 	}
 
+	public boolean delete(String type, String id) throws RemoteException {
+		try {
+			List<CarAndDriverPO>  list = findAll(type);
+			int index = -1;
+			if (type.equals("car")){
+				for (int i = 0; i < list.size(); i++){
+					if (((CarPO)list.get(i)).getID().equals(id)){
+						index = i;
+						break;
+					}
+				}
+			}
+			else{
+				for (int i = 0; i < list.size(); i++){
+					if (((DriverPO)list.get(i)).getId().equals(id)){
+						index = i;
+						break;
+					}
+				}
+			}
+		//	System.out.println(index);
+			if (index != -1) list.remove(index);
+            FileOutputStream fileOut;
+            if (type.equals("car")) fileOut = new FileOutputStream("src/main/java/ser/cars.ser");
+            else fileOut = new FileOutputStream("src/main/java/ser/drivers.ser");
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(list);
+			objectOut.close();
+            return true;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return false;
+	}
+
 }

@@ -11,6 +11,7 @@ import java.util.Vector;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -19,13 +20,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-<<<<<<< HEAD
+import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
-=======
 import businessLogic.CarAndDriverbl.CarAndDriverbl;
 import businessLogicService.CarAndDriverblService.CarAndDriverblService;
 import businessLogicService.UserblService.UserblService;
->>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 import vo.CarVO;
 import vo.CheckVO;
 import vo.DriverVO;
@@ -37,16 +36,14 @@ public class DriverPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-<<<<<<< HEAD
 	JButton add;
 	JButton delete;
 	JButton back;
-=======
 	private CarAndDriverblService bl;
 	private DefaultTableModel defaultModel;
 	private UserblService user;
 	private int buttonNum;
->>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
+	private JTable table;
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
@@ -78,7 +75,7 @@ public class DriverPanel extends JPanel {
 		
 		Vector<DriverVO> data = new Vector<DriverVO>();		
 		defaultModel = new DefaultTableModel(data,name);
-		JTable table = new JTable(defaultModel){		
+		table = new JTable(defaultModel){		
 			private static final long serialVersionUID = 1L;
 			public boolean isCellEditable(int row, int column){
 				return false;
@@ -113,7 +110,7 @@ public class DriverPanel extends JPanel {
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+				new addDriver(user,bl,defaultModel).setVisible(true);
 			}
 
 			public void mousePressed(MouseEvent e) {
@@ -148,7 +145,18 @@ public class DriverPanel extends JPanel {
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
+				int index = table.convertRowIndexToModel(table.getSelectedRow());
+				if(index == -1){
+					JOptionPane.showMessageDialog(null, "请选中要删除的司机信息！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				int n = JOptionPane.showConfirmDialog(null, "确定删除改信息?", "确认框",JOptionPane.YES_NO_OPTION);
+				//System.out.println(index);
+				if (n == 1) return;
 				
+				DriverVO vo = (DriverVO)defaultModel.getDataVector().elementAt(index);
+				bl.deleteDriverInfo(vo);
+				defaultModel.removeRow(index);
 			}
 
 			public void mousePressed(MouseEvent e) {
@@ -183,7 +191,8 @@ public class DriverPanel extends JPanel {
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+				DriverPanel.this.setVisible(false);
+				MainPanel.closeButton(buttonNum);
 			}
 
 			public void mousePressed(MouseEvent e) {

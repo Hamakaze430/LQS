@@ -12,11 +12,6 @@ import po.ReceiptPO;
 public class Approvalbl implements ApprovalblService {
 	private ReceiptsblService rs;
 	public Approvalbl(){
-<<<<<<< HEAD
-		//rs = new MockReceipt(new Userbl());
-=======
-		
->>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
 	}
 	
 	public void passReceipt(ReceiptPO po){

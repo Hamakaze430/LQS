@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -134,9 +135,10 @@ public class LogisticsPanel extends JPanel {
 	 */
 	private void initInput(){
 		JLabel label = new JLabel("请输入您的快递单号（10位数字）: ");
-		label.setForeground(Color.white);
-		label.setFont(new Font("黑体",Font.PLAIN,18));
+		label.setForeground(Color.WHITE);
+		label.setFont(new Font("微软雅黑",Font.PLAIN,18));
 		orderNumber = new JTextField(8);
+		orderNumber.setCaretColor(Color.WHITE);
 		orderNumber.setOpaque(false);
 		orderNumber.setBorder(new MatteBorder(0, 0, 1, 0, Color.WHITE));
 		orderNumber.setForeground(Color.WHITE);
@@ -149,7 +151,7 @@ public class LogisticsPanel extends JPanel {
 			
 		});
 		JButton searchButton = new JButton("查询");
-		searchButton.setFont(new Font("黑体",Font.PLAIN,20));
+		searchButton.setFont(new Font("微软雅黑",Font.PLAIN,20));
 		searchButton.setForeground(Color.WHITE);
 		searchButton.setContentAreaFilled(false);
 		searchButton.setOpaque(false);
@@ -173,13 +175,13 @@ public class LogisticsPanel extends JPanel {
 
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-				((JButton)e.getSource()).setText("查询");
+				
 				((JButton)e.getSource()).setBorder(new MatteBorder(0, 0, 1, 0, Color.WHITE));
 			}
 
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				((JButton)e.getSource()).setText("查询");
+				
 				((JButton)e.getSource()).setBorder(null);
 			}
 			
@@ -202,32 +204,47 @@ public class LogisticsPanel extends JPanel {
 	 */
 	private void initDisplay() {
 		
-		
+		Font font = new Font("微软雅黑",Font.PLAIN,18);
 		text = new JTextArea();
-		TitledBorder tb = BorderFactory.createTitledBorder("物流信息");
-		tb.setTitleJustification(TitledBorder.LEFT);
-		text.setBorder(tb);
+		text.setFont(font);
 		text.setOpaque(false);
+		//text.setBackground(new Color(255,255,255,60));
+		text.setForeground(Color.black);
+//		text.setEnabled(false);
+		text.setEditable(false);
 		JScrollPane scrollPane = new JScrollPane(text);
 		scrollPane.setOpaque(false);
 		scrollPane.setBorder(null);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setBorder(null);
-		idLabel = new JLabel("·订单条形码号:");
-		
+		idLabel = new JLabel("· 订单条形码号:");
+		idLabel.setFont(font);
+		idLabel.setForeground(Color.BLACK);
 	    display = new JPanel();
 	    display.setOpaque(false);
-	    display.setBackground(Color.lightGray);
+	   // display.setBackground(new Color(255,255,255,0));
 	    display.setBounds(2*LEFT_PADDING, 
 	    				  TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION,
-	    				  300,
+	    				  400,
 	    				  this.getHeight() - (TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION) - BUTTOM_PADDING
 	    );
+	    
+	    JPanel bg = new JPanel();
+	    bg.setBackground(new Color(255,255,255,60));
+	    bg.setBounds(2*LEFT_PADDING, 
+				  TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION,
+				  400,
+				  this.getHeight() - (TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION) - BUTTOM_PADDING
+	    		);
+	    bg.setVisible(true);
+	    this.add(bg);
 	    display.setLayout(new BoxLayout(display,BoxLayout.Y_AXIS));
 	    display.add(idLabel);
 	    display.add(scrollPane);
+//	    display.add(text);
 	    display.setVisible(false);
 		this.add(display);
+		 
 	}	
 	
 	/**
@@ -252,14 +269,19 @@ public class LogisticsPanel extends JPanel {
 			return;
 		}
 		//清空输入
+		display.setVisible(false);
 		orderNumber.setText("");
 		text.setText("");
 		//显示物流信息
-		idLabel.setText("·订单条形码号: " + order);
-		for (String state: logistics.getState()){
-			text.append("  · "+state+"\n");
+		idLabel.setText("· 订单条形码号: " + order);
+		int i = 0;
+		List<String> list = logistics.getState();
+		for (; i <list.size()-1; i++){
+			text.append("  · "+list.get(i)+"\n");
 		}
+		text.append("  · "+list.get(i));
 		display.setVisible(true);
+		this.repaint();
 		
 		
 	}

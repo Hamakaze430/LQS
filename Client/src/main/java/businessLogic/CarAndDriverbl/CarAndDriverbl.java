@@ -19,10 +19,9 @@ public class CarAndDriverbl implements CarAndDriverblService {
 		dataFactory = Client.dataFactory;
 	}
 
-
-	public boolean addCarInfo(CarVO car) {
+	public boolean addCarInfo(String date,CarVO car) {
 		// TODO Auto-generated method stub
-		CarPO po= new CarPO(car.getId(),car.getLicense(),car.getTime());
+		CarPO po= new CarPO(car.getId(),car.getLicense(),date);
 		return dataFactory.getCarAndDriverdataService().insert("car",po);
 	}
 
@@ -65,6 +64,16 @@ public class CarAndDriverbl implements CarAndDriverblService {
 			ans.add(vo);
 		}
 		return ans;
+	}
+
+
+	public boolean deleteCarInfo(CarVO vo) {
+		return dataFactory.getCarAndDriverdataService().delete("car",vo.getId());
+	}
+
+
+	public boolean deleteDriverInfo(DriverVO vo) {
+		return dataFactory.getCarAndDriverdataService().delete("driver",vo.getId());
 	}
 
 }

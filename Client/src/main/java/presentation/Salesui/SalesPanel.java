@@ -6,12 +6,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-<<<<<<< HEAD
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-=======
+
 import java.util.ArrayList;
->>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
+
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Vector;
@@ -28,13 +28,13 @@ import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-<<<<<<< HEAD
+
 import presentation.mainui.PictureButton;
-=======
+
 import presentation.CostBenefitui.CostPanel;
 import presentation.mainui.WelcomePanel;
 import vo.ReceiptVO;
->>>>>>> 53bb2ae242dfc910e1ced7c53f2a8cc23ea37739
+
 import vo.SalesVO;
 import vo.receipts.IncomeVO;
 import vo.receipts.PassIncomeVO;
@@ -390,7 +390,7 @@ public class SalesPanel extends JPanel{
 			}
 		});
 		
-		b.addActionListener(new ActionListener(){
+		confirm.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent args0){
 				if(sales.getReport())
 					JOptionPane.showMessageDialog(null, "导出成功^_^","", JOptionPane.INFORMATION_MESSAGE);
