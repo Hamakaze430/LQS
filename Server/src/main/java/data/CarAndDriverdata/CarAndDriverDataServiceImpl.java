@@ -55,7 +55,7 @@ public class CarAndDriverDataServiceImpl extends UnicastRemoteObject implements 
 	}
 
 	@SuppressWarnings({ "resource", "unchecked" })
-	public List<CarAndDriverPO> findAll(String type) throws RemoteException {
+	private List<CarAndDriverPO> findAll(String type) throws RemoteException {
 		try {
 			FileInputStream fileIn;
 			if (type.equals("car")) fileIn = new FileInputStream("src/main/java/ser/cars.ser");
@@ -130,6 +130,70 @@ public class CarAndDriverDataServiceImpl extends UnicastRemoteObject implements 
 			}
 			return false;
 		}
+		return false;
+	}
+
+	public List<CarAndDriverPO> findAll(String type, String know, String info) throws RemoteException {
+		List<CarAndDriverPO>  list = findAll(type);
+		List<CarAndDriverPO> ans = new ArrayList<CarAndDriverPO>();
+		if (type.equals("car")){
+			if (know.equals("hallId")){
+				for (CarAndDriverPO po: list){
+					if (((CarPO) po).getID().substring(0, 6).equals(info)) ans.add(po);
+				}
+				return ans;
+			}
+			return ans;
+		}
+		if (type.equals("driver")){
+			if (know.equals("hallId")){
+				for (CarAndDriverPO po: list){
+					if (((DriverPO) po).getId().substring(0, 6).equals(info)) ans.add(po);
+				}
+				return ans;
+			}
+			return ans;
+		}
+		return ans;
+		
+	}
+
+	public boolean delete(String type, String id) throws RemoteException {
+		try {
+			List<CarAndDriverPO>  list = findAll(type);
+			int index = -1;
+			if (type.equals("car")){
+				for (int i = 0; i < list.size(); i++){
+					if (((CarPO)list.get(i)).getID().equals(id)){
+						index = i;
+						break;
+					}
+				}
+			}
+			else{
+				for (int i = 0; i < list.size(); i++){
+					if (((DriverPO)list.get(i)).getId().equals(id)){
+						index = i;
+						break;
+					}
+				}
+			}
+		//	System.out.println(index);
+			if (index != -1) list.remove(index);
+            FileOutputStream fileOut;
+            if (type.equals("car")) fileOut = new FileOutputStream("src/main/java/ser/cars.ser");
+            else fileOut = new FileOutputStream("src/main/java/ser/drivers.ser");
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(list);
+			objectOut.close();
+            return true;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		return false;
 	}
 

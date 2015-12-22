@@ -2,6 +2,8 @@ package presentation.Strategyui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -11,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
+
+import presentation.mainui.PictureButton;
 /**
  * 薪水策略
  * @author TOSHIBA
@@ -22,6 +26,8 @@ public class SalaryStrategyPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	JButton back;
+	JButton save;
 	public SalaryStrategyPanel(){
 		this.setLayout(null);
 		this.setBorder(null);
@@ -80,12 +86,81 @@ public class SalaryStrategyPanel extends JPanel {
 		l4.setFont(font);
 		l4.setBounds(10, 160, 200, 30);
 		
-		JButton save = new JButton("保存");
+		save = new JButton();
 		save.setFont(font);
-		save.setBounds(700, 500, 80, 30);
-		JButton back = new JButton("返回");
+		save.setBorder(null);
+		save.setOpaque(false);
+		save.setFocusPainted(false);
+		save.setContentAreaFilled(false);
+		save.setBounds(740, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/saveButton_unclicked.png",save);
+		save.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/saveButton_clicked.png",save);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/saveButton_unclicked.png",save);
+			}
+			
+		});
+		
+		
+		back = new JButton();
 		back.setFont(font);
-		back.setBounds(800, 500, 80, 30);
+		back.setBorder(null);
+		back.setOpaque(false);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
+		back.setBounds(820, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+		back.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+			}
+			
+		});
+		
 		
 		this.add(l1);
 		this.add(c);

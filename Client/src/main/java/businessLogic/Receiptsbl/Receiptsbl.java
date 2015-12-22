@@ -8,11 +8,16 @@ import java.util.Date;
 import java.util.List;
 
 import Miscellaneous.FormType;
+import Miscellaneous.ReceiptState;
+import businessLogic.Approvalbl.Approvalbl;
 import businessLogic.CarAndDriverbl.CarAndDriverbl;
+import businessLogic.LogisticsInfoSearchbl.LogisticsInfoSearchbl;
 import businessLogic.Receiptsbl.MockTest.MockCarAndDriver;
 import businessLogic.Userbl.Apartmentbl;
 import businessLogic.Userbl.Userbl;
+import businessLogicService.ApprovalblService.ApprovalblService;
 import businessLogicService.CarAndDriverblService.CarAndDriverblService;
+import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
 import businessLogicService.UserblService.ApartmentblService;
 import businessLogicService.UserblService.UserblService;
@@ -20,9 +25,11 @@ import dataService.DataFactoryService.DataFactory;
 import dataService.DataFactoryService.DataFactoryService;
 import dataService.ReceiptsdataService.ReceiptsdataService;
 import init.Client;
+import po.ApprovalPO;
 import po.HallPO;
 import po.ReceiptPO;
 import po.receipts.LoadingPO;
+import vo.LogisticsVO;
 import vo.ReceiptVO;
 import vo.UserVO;
 import vo.receipts.LoadingVO;
@@ -32,13 +39,16 @@ public class Receiptsbl implements ReceiptsblService {
 	private DataFactoryService dataFactory;
 	private CarAndDriverblService carAndDriver;
 	private ApartmentblService apartment;
-
+	private ApprovalblService approval;
+	private LogisticsInfoSearchblService logistics;
+	
 	public Receiptsbl(UserblService user){
 		this.user = user;
 		carAndDriver = new CarAndDriverbl();
 		apartment = new Apartmentbl();
+		approval = new Approvalbl();
+		logistics = new LogisticsInfoSearchbl();
 		dataFactory = Client.dataFactory;
-		
 	}
 	
 	public List<String> getHallNameListByAddress(String string) {
@@ -46,13 +56,6 @@ public class Receiptsbl implements ReceiptsblService {
 		return apartment.getHallNameListByAddress(string);
 	}
 	
-	public String getName(){
-		return "";
-	}
-	
-	public String getCreater(){
-		return "";
-	}
 	
 	public String showVouchers() {
 		return null;
@@ -64,7 +67,8 @@ public class Receiptsbl implements ReceiptsblService {
 
 	public String getLastId(String foreId) {
 		// TODO Auto-generated method stub
-		return dataFactory.getReceiptsdataService().getLastId(foreId);
+		long num = dataFactory.getReceiptsdataService().getLastId(foreId);
+		return String.format("%05d", num);
 	}
 	
 	public String getHallId() {
@@ -101,16 +105,14 @@ public class Receiptsbl implements ReceiptsblService {
 	}
 	
 	public boolean addReceipt(ReceiptVO vo) {
-		ReceiptPO po = newPO(vo);
-		return dataFactory.getReceiptsdataService().insert(po);
+		ReceiptPO po = vo.toPO(addReceiptId());
+		dataFactory.getReceiptsdataService().insert(po);
+		approvalInsert(po);
+		return true;
 	}
 	
-	private ReceiptPO newPO(ReceiptVO vo) {
-		if (vo.getType().equals(FormType.装车单.name()))
-			return new LoadingPO(addReceiptId(),vo.getName(),vo.getCreator(),vo.getStatus(),
-					((LoadingVO)vo).getDate(),((LoadingVO)vo).getHallId(),((LoadingVO)vo).getId(),
-					((LoadingVO)vo).getDestination(),((LoadingVO)vo).getCarId(),((LoadingVO)vo).getSupervisor(),
-					((LoadingVO)vo).getDriver(),((LoadingVO)vo).getOrder(),((LoadingVO)vo).getCost());
+	public ReceiptVO getReceiptById(long receiptId) {
+		ReceiptPO po = dataFactory.getReceiptsdataService().find("receiptId",String.valueOf(receiptId));
 		return null;
 	}
 
@@ -119,9 +121,14 @@ public class Receiptsbl implements ReceiptsblService {
 		return dataFactory.getReceiptsdataService().addReceiptId();
 	}
 
-	public boolean submitReceipts(ReceiptVO vo){
-		
-		return false;
+	/**
+	 * 单据审批相关
+	 * @param vo
+	 * @return
+	 */
+	private boolean approvalInsert(ReceiptPO po){
+		ApprovalPO app = new ApprovalPO(po.getName(),po.getCreator(),ReceiptState.未审批,po.getReceiptId());
+		return approval.insert(app);
 	}
 
 	public boolean findCarAndDriver(String type, String known) {
@@ -134,13 +141,14 @@ public class Receiptsbl implements ReceiptsblService {
 	}
 
 	public boolean findLogistics(String s) {
-		// TODO Auto-generated method stub
-		return false;
+		LogisticsVO vo = logistics.search(s);
+		if (vo == null) return false;
+		return true;
 	}
 
 	public double getLoadingCost() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 20;
 	}
 
 

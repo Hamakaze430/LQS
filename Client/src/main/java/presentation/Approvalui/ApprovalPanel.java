@@ -1,7 +1,5 @@
 package presentation.Approvalui;
 
-import java.awt.Checkbox;
-
 import javax.swing.JPanel;
 /**
  * 审批单据

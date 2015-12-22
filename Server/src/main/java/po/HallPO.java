@@ -2,7 +2,7 @@ package po;
 
 import java.io.Serializable;
 
-public class HallPO extends PersistentObj implements Serializable{
+public class HallPO implements Serializable{
 	/**
 	 * 
 	 */
@@ -25,10 +25,6 @@ public class HallPO extends PersistentObj implements Serializable{
 	
 	public String getID(){
 		return id;
-	}
-	
-	public boolean compareTo(HallPO b){
-	    return name.equals(b.getName())|id.equals(b.getID())|location.equals(b.getLocation());		 
 	}
 	
 }

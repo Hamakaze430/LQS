@@ -10,16 +10,14 @@ public class ReceiptPO implements Serializable{
 	private String name;
 	private String creator;
 	private String createdate;
-	private String status;
 	private double amount;
     private String type;
     private long receiptId;
     
-    public ReceiptPO(String type,String n,String c,String cd,String rs,long receiptId){
+    public ReceiptPO(String type,String n,String c,String cd,long receiptId){
     	name = n;
     	creator = c;
     	createdate = cd;
-    	status = rs;
     	this.receiptId = receiptId;
     	this.type=type;
     }
@@ -53,12 +51,11 @@ public class ReceiptPO implements Serializable{
     public String getCreateDate(){
     	return createdate;
     }
-    
-    public String getStatus(){
-    	return status;
-    }
 
 	public double getAmount() {
 		return amount;
+	}
+	public long getReceiptId(){
+		return receiptId;
 	}
 }

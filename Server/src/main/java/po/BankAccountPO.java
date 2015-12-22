@@ -2,16 +2,20 @@ package po;
 
 import java.io.Serializable;
 
-public class BankAccountPO extends PersistentObj  implements Serializable{
+public class BankAccountPO   implements Serializable{
 	private static final long serialVersionUID = 1L;
-	
-	String name;
-	double money;
+	private String account;
+	private String name;
+	private double money;
 	
 	public BankAccountPO(String name,double money){
 		
 		this.name = name;
 		this.money = money;	
+	}
+	
+	public String getAccount(){
+		return account;
 	}
 	
 	public String getName(){

@@ -2,6 +2,8 @@ package presentation.Receiptsui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -10,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
+import presentation.mainui.PictureButton;
 import Miscellaneous.Cities;
 import businessLogicService.UserblService.UserblService;
 /**
@@ -23,6 +26,8 @@ public class StorageInPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	JButton submit;
+	JButton back;
 	private UserblService user;
 	public StorageInPanel(UserblService user){
 		this.user=user;
@@ -34,7 +39,7 @@ public class StorageInPanel extends JPanel {
 	private void initSIPanel() {
 		// TODO Auto-generated method stub
 		Font font = new Font("黑体",Font.PLAIN,18);
-		JLabel title = new JLabel(user.getCenterName()+"入库单",JLabel.CENTER);
+		JLabel title = new JLabel(user.getHallName()+"入库单",JLabel.CENTER);
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 50);
 		
@@ -99,13 +104,81 @@ public class StorageInPanel extends JPanel {
 		c3.setBounds(130, 230, 150, 30);
 		c4.setBounds(130, 270, 150, 30);
 		
-		JButton submit = new JButton("提交");
+		submit = new JButton();
 		submit.setFont(font);
-		submit.setBounds(700, 480, 80, 30);
+		submit.setBorder(null);
+		submit.setOpaque(false);
+		submit.setFocusPainted(false);
+		submit.setContentAreaFilled(false);
+		submit.setBounds(740, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
+		submit.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/submitButton_clicked.png",submit);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
+			}
+			
+		});
 		
-		JButton back = new JButton("返回");
+		
+		back = new JButton();
 		back.setFont(font);
-		back.setBounds(800, 480, 80, 30);
+		back.setBorder(null);
+		back.setOpaque(false);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
+		back.setBounds(820, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+		back.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+			}
+			
+		});
+		
 		
 		this.add(title);
 		this.add(id);

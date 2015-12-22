@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 import po.OrderPO;
+import po.ReceiptPOBase;
 import Miscellaneous.ReceiptState;
 
 public class ArrivalReceiptPO extends ReceiptPOBase implements Serializable{

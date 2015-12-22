@@ -28,5 +28,4 @@ public interface UserblService {
 	public String getHallPlace();
 
 	public UserVO findUser(String known, String info);
-
 }

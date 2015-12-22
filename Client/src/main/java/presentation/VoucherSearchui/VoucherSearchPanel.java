@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Calendar;
 import java.util.Vector;
 
@@ -19,6 +21,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import presentation.mainui.PictureButton;
 import vo.HallVO;
 import vo.VoucherSearchVO;
 /**
@@ -32,10 +35,11 @@ public class VoucherSearchPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	JComboBox year = new JComboBox();
-	JComboBox month = new JComboBox();
-	JComboBox day = new JComboBox();
+	JButton back;
+	JButton confirm;
+	JComboBox<String> year = new JComboBox<String>();
+	JComboBox<String> month = new JComboBox<String>();
+	JComboBox<String> day = new JComboBox<String>();
 	
 	public VoucherSearchPanel(){
 		this.setLayout(null);
@@ -154,12 +158,81 @@ public class VoucherSearchPanel extends JPanel {
 		cost.setFont(font);
 		cost.setBounds(10, 480, 100, 40);
 		
-		JButton confirm = new JButton("确定");
+		confirm = new JButton();
 		confirm.setFont(font);
-		confirm.setBounds(720, 490, 80, 30);
-		JButton back = new JButton("返回");
+		confirm.setBorder(null);
+		confirm.setOpaque(false);
+		confirm.setFocusPainted(false);
+		confirm.setContentAreaFilled(false);
+		confirm.setBounds(740, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/confirmButton_unclicked.png",confirm);
+		confirm.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/confirmButton_clicked.png",confirm);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/confirmButton_unclicked.png",confirm);
+			}
+			
+		});
+		
+		
+		back = new JButton();
 		back.setFont(font);
-		back.setBounds(810, 490, 80, 30);
+		back.setBorder(null);
+		back.setOpaque(false);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
+		back.setBounds(820, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+		back.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+			}
+			
+		});
+		
 		this.add(l1);
 		bg.add(j1);
 		this.add(j1);

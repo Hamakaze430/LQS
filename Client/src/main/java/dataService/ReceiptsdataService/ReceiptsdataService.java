@@ -12,7 +12,7 @@ public interface ReceiptsdataService extends Remote {
 
     public String getReceipt(String type);
 
-	public String getLastId(String foreId);
+	public long getLastId(String foreId);
 
 	public ArrayList<ReceiptPO> getReceiptBeforeDate(String date);
 	
@@ -23,5 +23,7 @@ public interface ReceiptsdataService extends Remote {
 	public boolean insert(ReceiptPO po);
 
 	public long addReceiptId();
+
+	public ReceiptPO find(String known, String info);
 	
 }

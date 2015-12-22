@@ -32,14 +32,46 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 		// TODO Auto-generated constructor stub
 	}
 	
+	
 	public String getReceipt(String type) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public String getLastId(String foreId) throws RemoteException {
-		
-		return "00001";
+	public long getLastId(String foreId) throws RemoteException {
+		File file = new File("src/main/java/ser/receiptsNum.txt");
+		try{
+			InputStreamReader read = new InputStreamReader(new FileInputStream(file),"UTF-8");
+			BufferedReader br = new BufferedReader(read);
+			String s = br.readLine();
+			List<String> list = new ArrayList<String>();
+			while (s != null){
+				list.add(s);
+				s = br.readLine();
+			}
+			br.close();
+			int num = 1;
+			for (String str : list){
+				if (str.indexOf(foreId) != -1){
+					list.remove(str);
+					num = Integer.valueOf(str.substring(foreId.length()+1)) + 1;
+					break;
+				}
+			}
+			String stri = foreId + " " +  num;
+			list.add(stri);
+			OutputStreamWriter output = new OutputStreamWriter(new FileOutputStream(file),"UTF-8");
+			for (String str : list){
+				output.write(str + "\r\n");
+			}
+			output.close();
+			return num-1;
+		}catch (FileNotFoundException e) {
+			   e.printStackTrace();
+		} catch (IOException e) {
+			   e.printStackTrace();
+		}
+		return -1;
 	}
 
 	public ArrayList<ReceiptPO> getReceiptBeforeDate(String date) throws RemoteException {
@@ -150,7 +182,7 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 		try {
 			FileInputStream fileIn = new FileInputStream("src/main/java/ser/receipts.ser");
 			BufferedInputStream buffered = new BufferedInputStream(fileIn);	
-	        ObjectInputStream objectIn = new ObjectInputStream(buffered);  	   
+	        ObjectInputStream objectIn = new ObjectInputStream(buffered);  
 	        List<ReceiptPO> list = (List<ReceiptPO>) objectIn.readObject();
 	        return list;
 		} catch (FileNotFoundException e) {
@@ -183,6 +215,20 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 			   e.printStackTrace();
 		}
 		return -1;
+	}
+
+	public ReceiptPO find(String known, String info) throws RemoteException {
+		List<ReceiptPO>  list = findAll();
+		if (known.equals("receiptId")){
+			long id = Long.valueOf(info);
+			for (ReceiptPO po : list){
+				if (po.getReceiptId() == id){
+					return po;
+				}
+			}
+			return null;
+		}
+		return null;
 	}	
 
 }

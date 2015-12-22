@@ -11,7 +11,7 @@ import po.receipts.*;
 public interface ReceiptsdataService extends Remote {
 	public String getReceipt(String type) throws RemoteException;
 
-	public String getLastId(String foreId) throws RemoteException;
+	public long getLastId(String foreId) throws RemoteException;
 	
 	public ArrayList<ReceiptPO> getReceiptBeforeDate(String date) throws RemoteException;
 	
@@ -22,4 +22,6 @@ public interface ReceiptsdataService extends Remote {
 	public boolean insert(ReceiptPO po) throws RemoteException;
 	
 	public long addReceiptId() throws RemoteException;
+	
+	public ReceiptPO find(String known, String info) throws RemoteException;
 }

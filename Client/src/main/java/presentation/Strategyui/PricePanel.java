@@ -2,6 +2,8 @@ package presentation.Strategyui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -9,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
+
+import presentation.mainui.PictureButton;
 /**
  * 价格策略
  * @author TOSHIBA
@@ -20,6 +24,8 @@ public class PricePanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	JButton back;
+	JButton save;
 	public PricePanel(){
 		this.setLayout(null);
 		this.setBorder(null);
@@ -94,7 +100,7 @@ public class PricePanel extends JPanel {
 		l4.setBounds(10, 160, 800, 30);
 		
 		JTable table = new JTable(5,5);
-		table.setBounds(10, 200, 800, 800);
+		table.setBounds(10, 200, 800, 200);
 		table.setValueAt("北京", 0, 1);
 		table.setValueAt("上海", 0, 2);
 		table.setValueAt("广州", 0, 3);
@@ -107,15 +113,84 @@ public class PricePanel extends JPanel {
 		table.setBackground(new Color(255,255,255,100));
 		table.setOpaque(false);
 		
-		JButton change = new JButton("修改");
-		JButton save = new JButton("保存");
-		JButton back = new JButton("返回");	
-		change.setFont(font);
+		
+		save = new JButton();
 		save.setFont(font);
+		save.setBorder(null);
+		save.setOpaque(false);
+		save.setFocusPainted(false);
+		save.setContentAreaFilled(false);
+		
+		//save.setBounds(820, 450, 70, 30);
+		save.setBounds(740, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/saveButton_unclicked.png",save);
+		save.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/saveButton_clicked.png",save);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/saveButton_unclicked.png",save);
+			}
+			
+		});
+		
+		
+		back = new JButton();
 		back.setFont(font);
-		change.setBounds(600, 480, 80, 30);
-		save.setBounds(700, 480, 80, 30);
-		back.setBounds(800, 480, 80, 30);
+		back.setBorder(null);
+		back.setOpaque(false);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
+		back.setBounds(820, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+		back.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+			}
+			
+		});
+		
 		this.add(l1);
 		this.add(planePrice);
 		this.add(trainPrice);
@@ -133,6 +208,6 @@ public class PricePanel extends JPanel {
 		this.add(table);
 		this.add(back);
 		this.add(save);
-		this.add(change);
+		
 	}
 }

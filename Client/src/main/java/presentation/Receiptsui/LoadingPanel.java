@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,6 +26,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
+import presentation.mainui.PictureButton;
 import Miscellaneous.Place;
 import Miscellaneous.ReceiptState;
 import businessLogic.CarAndDriverbl.CarAndDriverbl;
@@ -41,6 +44,7 @@ import vo.receipts.LoadingVO;
 
 /**
  * 装车单
+ * 写完惹【还剩bl.getLoadingCost();
  * @author TOSHIBA
  *
  */
@@ -59,8 +63,15 @@ public class LoadingPanel extends JPanel{
 	JTextField date;
 	JTextField hallId;
 	JTextField id;
+<<<<<<< HEAD
+	JComboBox province;
+	JComboBox place;
+=======
 	JComboBox<String> province;
 	JComboBox<String> place;
+	JButton back;
+	JButton submit;
+>>>>>>> origin/master
 	JTextField car;
 	JTextField drivername;
 	JTextField spyname;
@@ -140,8 +151,8 @@ public class LoadingPanel extends JPanel{
 		destination.setFont(font);
 		destination.setBounds(padding,  padding*5+label_height*4, label_width, label_height);
 		
-		province = new JComboBox<String>();
-		place = new JComboBox<String>();
+		province = new JComboBox();
+		place = new JComboBox();
 		province.setFont(font);
 		province.addItem(bl.getHallPlace());
 		province.setSelectedIndex(0);
@@ -219,22 +230,89 @@ public class LoadingPanel extends JPanel{
 		cost.setText(String.format("%.2f", cost_double));
 		cost.setEditable(false);
 		
-		JButton submit = new JButton("提交");
+		submit = new JButton();
 		submit.setFont(font);
-		submit.setBounds(680, 500, button_width, button_height);
+		submit.setBorder(null);
+		submit.setOpaque(false);
+		submit.setFocusPainted(false);
+		submit.setContentAreaFilled(false);
+		submit.setBounds(740, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
+		submit.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/submitButton_clicked.png",submit);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
+			}
+			
+		});
+		
+		
+		back = new JButton();
+		back.setFont(font);
+		back.setBorder(null);
+		back.setOpaque(false);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
+		back.setBounds(820, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+		back.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+			}
+		});
+		
 		submit.addActionListener(new SubmitAction());
 		
-		JButton back = new JButton("返回");
-		back.setFont(font);
-		back.setBounds(680+padding+button_width, 500, button_width, button_height);
 		back.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				LoadingPanel.this.setVisible(false);
 				MainPanel.closeButton(buttonNum);
-			}
-			
+			}		
 		});
 		
 		this.add(title);
@@ -296,6 +374,10 @@ public class LoadingPanel extends JPanel{
 				return;
 			}
 			String Driver = drivername.getText();
+			if (Driver.equals("")){
+				JOptionPane.showMessageDialog(null, "请输入司机姓名！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			if(! bl.findCarAndDriver("driver",Driver)){
 				//System.out.println("找不到");
 				JOptionPane.showMessageDialog(null, "不存在对应的司机！","", JOptionPane.ERROR_MESSAGE);
@@ -303,6 +385,10 @@ public class LoadingPanel extends JPanel{
 			}
 			
 			String Supervisor = spyname.getText();
+			if (Supervisor.equals("")){
+				JOptionPane.showMessageDialog(null, "请输入监装员姓名！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			UserVO sup = bl.findUser(Supervisor);
 			if(sup == null ){
 				//System.out.println("找不到");
@@ -310,16 +396,28 @@ public class LoadingPanel extends JPanel{
 				return;
 			}
 			else if (!sup.getHall().equals(user.getHallName())){
-				JOptionPane.showMessageDialog(null, "该员工不属于单位！","注意", JOptionPane.WARNING_MESSAGE);
-				return;
+				JOptionPane.showMessageDialog(null, "所填的监装员不属于本单位！","注意", JOptionPane.WARNING_MESSAGE);
+//				return;
 			}
 			
 			String str = orders.getText();
+			if (str.equals("")){
+				JOptionPane.showMessageDialog(null, "请输入相应的快递单号！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 		 	List<String> Order = new ArrayList<String>();
 		 	String[] split = str.split("\n");
 		 	for (String s : split) {
+		 		try{
+					long id = Long.parseLong(s);
+				}catch(NumberFormatException e1){
+					//输入编号不是数字
+					JOptionPane.showMessageDialog(null, "请输入正确的快递单号！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 		 		if(! bl.findLogistics(s)){
 					//System.out.println("找不到");
+		 			
 					JOptionPane.showMessageDialog(null, "不存在快递单号为"+s+"的货物！","", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
@@ -337,8 +435,9 @@ public class LoadingPanel extends JPanel{
 			String Id = id.getText();
 			String Destination = place.getSelectedItem().toString();
 		 	double Cost = cost_double;
-		 	ReceiptVO vo = new LoadingVO(Name,Creator,ReceiptState.未审批.name(),
+		 	ReceiptVO vo = new LoadingVO(Name,Creator,
 		 			Date, HallId, Id, Destination, CarId, Supervisor, Driver, Order, Cost);
+		 	
 		 	bl.addReceipt(vo);
 		 	
 		 	date.setText(bl.getCurrentTime());;
@@ -352,24 +451,24 @@ public class LoadingPanel extends JPanel{
 			drivername.setText("");
 			spyname.setText("");
 			orders.setText("");
-			cost.setText("");
 		}
 	
 	}
+	
+	class WarnLabel extends JLabel{
+		public WarnLabel(){
+			this.setForeground(Color.RED);
+			this.setOpaque(false);
+			this.setFont(new Font("宋体",Font.PLAIN,10));
+		}
+		public WarnLabel(String s){
+			super(s);
+			this.setForeground(Color.RED);
+			this.setOpaque(false);
+			this.setFont(new Font("宋体",Font.PLAIN,10));
+		}
+	}
+
 }
 
-
-class WarnLabel extends JLabel{
-	public WarnLabel(){
-		this.setForeground(Color.RED);
-		this.setOpaque(false);
-		this.setFont(new Font("宋体",Font.PLAIN,10));
-	}
-	public WarnLabel(String s){
-		super(s);
-		this.setForeground(Color.RED);
-		this.setOpaque(false);
-		this.setFont(new Font("宋体",Font.PLAIN,10));
-	}
-}
-
+	

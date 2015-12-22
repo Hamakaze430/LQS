@@ -18,7 +18,7 @@ public class LogisticsInfoSearchbl implements LogisticsInfoSearchblService {
 	public LogisticsVO search(String id) {		
 		LogisticsPO po = dataFactory.getLogisticsDataService().find(id);
 		if (po == null) return null;
-		LogisticsVO vo = new LogisticsVO(po.getId(), po.getState());
+		LogisticsVO vo = new LogisticsVO(po.getId(), po.getCurrentState(), po.getState());
 		return vo;
 	}
 

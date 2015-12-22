@@ -154,7 +154,7 @@ public class MainPanel extends JPanel {
 		cardPanel.add(init, "0");
 
 		if (user.hasTheAuthority(Authorities.寄件单)) {	
-			JPanel send = new  SendPanel(user);			
+			JPanel send = new  SendPanel(user,i);			
 			cardPanel.add(send, "1");				
 			button = new InitButton(i,"src/main/java/image/send_unselected.png");		
 			buttons.add(button);
@@ -192,7 +192,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}		
 		if (user.hasTheAuthority(Authorities.收件单)) {
-			JPanel receive = new ReceivePanel(user);			
+			JPanel receive = new ReceivePanel(user,i);			
 			cardPanel.add(receive, "2");		
 			button = new InitButton(i,"src/main/java/image/receive_unselected.png");		
 			buttons.add(button);
@@ -306,7 +306,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.派件单)) {
-			JPanel deliver = new DeliverPanel(user);
+			JPanel deliver = new DeliverPanel(user,i);
 			cardPanel.add(deliver, "5");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/deliver_unselected.png");			
@@ -344,7 +344,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.收款单)) {
-			JPanel voucher = new VoucherPanel(user);
+			JPanel voucher = new VoucherPanel(user,i);
 			cardPanel.add(voucher, "6");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/voucher_unselected.png");			

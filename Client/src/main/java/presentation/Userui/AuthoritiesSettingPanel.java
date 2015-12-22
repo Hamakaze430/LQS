@@ -7,6 +7,8 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
+import presentation.mainui.PictureButton;
 import Miscellaneous.Authorities;
 import Miscellaneous.Identity;
 import businessLogic.Userbl.AuthoritiesSettingbl;
@@ -39,6 +42,8 @@ public class AuthoritiesSettingPanel extends JPanel {
 	private AuthoritiesSettingblService bl;
 	private ButtonGroup bg;
 	private int buttonNum;
+	JButton save;
+	JButton back;
 	public AuthoritiesSettingPanel(int buttonNum){
 		this.setBorder(null);
 		this.setOpaque(false);
@@ -53,8 +58,9 @@ public class AuthoritiesSettingPanel extends JPanel {
 	 */
 	private void initASPanel() {
 		// TODO Auto-generated method stub
+		Font font = new Font("黑体",Font.PLAIN,16);
 		JLabel l1 = new JLabel("· 请选择要设置的职位：");
-		l1.setFont(new Font("黑体",Font.PLAIN,18));
+		l1.setFont(font);
 		l1.setBounds(40, 30, 250, 50);
 		
 		bg = new ButtonGroup();
@@ -88,8 +94,43 @@ public class AuthoritiesSettingPanel extends JPanel {
 			this.add(boxs[i]);
 		}
 		
-		JButton b1 = new JButton("确定");
-		b1.addActionListener(new ActionListener(){
+		save = new JButton();
+		save.setFont(font);
+		save.setBorder(null);
+		save.setOpaque(false);
+		save.setFocusPainted(false);
+		save.setContentAreaFilled(false);
+		save.setBounds(740, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/saveButton_unclicked.png",save);
+		save.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/saveButton_clicked.png",save);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/saveButton_unclicked.png",save);
+			}
+			
+		});	
+		save.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -109,11 +150,44 @@ public class AuthoritiesSettingPanel extends JPanel {
 			}
 			
 		});
-		b1.setBounds(650, 485, 80, 40);
-		b1.setBorder(null);
-		b1.setOpaque(false);
-		JButton b2 = new JButton("取消");
-		b2.addActionListener(new ActionListener(){
+		
+		back = new JButton();
+		back.setFont(font);
+		back.setBorder(null);
+		back.setOpaque(false);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
+		back.setBounds(820, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+		back.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+			}
+			
+		});
+		back.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -122,15 +196,13 @@ public class AuthoritiesSettingPanel extends JPanel {
 			}
 			
 		});
-		b2.setBounds(750, 485, 80, 40);
-		b2.setBorder(null);
-		b2.setOpaque(false);		
+				
 		
 		this.add(l1);
 		this.add(l2);
 		
-		this.add(b1);
-		this.add(b2);
+		this.add(back);
+		this.add(save);
 	}
 	
 	

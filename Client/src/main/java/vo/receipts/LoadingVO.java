@@ -23,13 +23,13 @@ public class LoadingVO extends ReceiptVO{
 	public final List<String> order;
 	public final double cost;
 	
-	public LoadingVO(String name, String creator, String status,
+	public LoadingVO(String name, String creator,
 					String date,String hallId, 
 					String id, String destination, 
 					 String carId, String supervisor, 
 					 String driver, List<String> order,
 					 double cost){
-		super(FormType.装车单.name(),name,creator,date,status);
+		super(FormType.装车单.name(),name,creator,date);
 		this.date = date;
 		this.hallId = hallId;
 		this.id = id;
@@ -77,6 +77,15 @@ public class LoadingVO extends ReceiptVO{
 	public double getCost(){
 		return cost;
 	}
+	
+	public LoadingPO toPO(long receiptId){
+		return new LoadingPO(
+				receiptId,getName(),getCreator(),
+				getDate(),getHallId(),getId(),
+				getDestination(),getCarId(),getSupervisor(),
+				getDriver(),getOrder(),getCost());
+	}
+	
 	
 	
 }

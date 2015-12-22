@@ -1,7 +1,5 @@
 package presentation.Receiptsui;
 
-import init.Client;
-
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -9,6 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -23,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import presentation.Receiptsui.LoadingPanel.SubmitAction;
+import presentation.mainui.PictureButton;
 import vo.CheckVO;
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
@@ -38,7 +39,8 @@ public class ArrivalPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	JButton back;
+	JButton submit;
 	private ReceiptsblService bl;
 	private UserblService user;
 	int padding = 10;
@@ -67,7 +69,7 @@ public class ArrivalPanel extends JPanel {
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 30);
 		
-		JLabel idLabel = new JLabel("· 中转中心编号: ");
+		JLabel idLabel = new JLabel("· "+user.getHallType()+"编号: ");
 		idLabel.setFont(font);
 		idLabel.setBounds(padding, padding*2+label_height, label_width, label_height);
 		
@@ -91,7 +93,8 @@ public class ArrivalPanel extends JPanel {
 		date.setText(bl.getCurrentTime());
 		date.setEditable(false);
 		
-		JLabel orderNumber = new JLabel("· 中转单/汽运编号: ");
+		JLabel orderNumber = new JLabel("· 汽运编号: ");
+		if (user.getHallType().equals("中转中心"))  orderNumber.setText("· 中转单编号/汽运编号: ");
 		orderNumber.setFont(font);
 		orderNumber.setBounds(padding, padding*4+label_height*3, label_width, label_height);
 		
@@ -161,13 +164,81 @@ public class ArrivalPanel extends JPanel {
 			
 		});
 			
-		JButton submit = new JButton("提交");
+		submit = new JButton();
 		submit.setFont(font);
-		submit.setBounds(680, 500, button_width, button_height);
+		submit.setBorder(null);
+		submit.setOpaque(false);
+		submit.setFocusPainted(false);
+		submit.setContentAreaFilled(false);
+		submit.setBounds(740, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
+		submit.addMouseListener(new MouseListener(){
 
-		JButton back = new JButton("返回");
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/submitButton_clicked.png",submit);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
+			}
+			
+		});
+		
+		
+		back = new JButton();
 		back.setFont(font);
-		back.setBounds(680+padding+button_width, 500, button_width, button_height);
+		back.setBorder(null);
+		back.setOpaque(false);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
+		back.setBounds(820, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+		back.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+			}
+			
+		});
+		
 		
 		this.add(title);
 		this.add(idLabel);

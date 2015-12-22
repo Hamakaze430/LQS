@@ -3,10 +3,9 @@ package po;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import businessLogicService.CommodityblService.ExpressType;
 import Miscellaneous.ArrivalState;
-import Miscellaneous.ExpressType;
 import Miscellaneous.GoodsState;
-
 
 public class OrderPO implements Serializable{
 	private static final long serialVersionUID = 1L;

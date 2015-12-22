@@ -6,8 +6,11 @@ package presentation.Userui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.List;
 import java.util.Vector;
 
@@ -41,9 +44,14 @@ import javax.swing.table.TableRowSorter;
 import businessLogic.Userbl.ApartmentManagerbl;
 import businessLogicService.UserblService.ApartmentManagerblService;
 import init.Client;
+import presentation.mainui.PictureButton;
 import presentation.mainui.SimpleButton;
 import vo.HallVO;
 public class ApartmentManagerPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ApartmentManagerblService bl;
 	DefaultTableModel defaultModel;
 	JTable table;
@@ -51,10 +59,13 @@ public class ApartmentManagerPanel extends JPanel {
 	int columnEditable = -1;
 	String temp;
 	int buttonNum;
-	
+	JButton add;
+	JButton delete;
+	JButton back;
+	int padding =10;
 	public ApartmentManagerPanel(int buttonNum){	
 		bl = new ApartmentManagerbl();
-		this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+		this.setLayout(null);
 		this.buttonNum = buttonNum;
 		this.setBorder(null);
 		this.setOpaque(false);
@@ -67,6 +78,7 @@ public class ApartmentManagerPanel extends JPanel {
 	 */
 	private void init() {
 		// TODO Auto-generated method stub
+		Font font = new Font("黑体",Font.PLAIN,16);
 		Vector<String> name = new Vector<String>();
 		name.add("部门名称");
 		name.add("部门编号");
@@ -94,6 +106,7 @@ public class ApartmentManagerPanel extends JPanel {
 		
 //		table.setFillsViewportHeight(true);
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(padding, padding, 884, 480);
 		scrollPane.getViewport().add(table);
 		scrollPane.setBorder(null);
 		scrollPane.getViewport().setOpaque(false);
@@ -103,64 +116,86 @@ public class ApartmentManagerPanel extends JPanel {
 		initTable();
 	
 		
-		JPanel buttons = new JPanel();
-		buttons.setBorder(null);
-		buttons.setOpaque(false);
-		buttons.setLayout(new BoxLayout(buttons,BoxLayout.X_AXIS));
-		buttons.setAlignmentX(RIGHT_ALIGNMENT);
-		buttons.setAlignmentY(CENTER_ALIGNMENT);
-		JButton creat = new SimpleButton("新建");
-		creat.addActionListener(new ActionListener(){
+		
+		add = new JButton();
+		add.setBorder(null);
+		add.setOpaque(false);
+		add.setFocusPainted(false);
+		add.setContentAreaFilled(false);
+		add.setBounds(660, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/addButton_unclicked.png",add);
+		add.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/addButton_clicked.png",add);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/addButton_unclicked.png",add);
+			}
+			
+		});
+		
+		add.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 				new CreatApartmentDialog(bl,defaultModel).setVisible(true);
 			}
 			
 		});
-		JButton change = new SimpleButton("修改");
-		change.addActionListener(new ActionListener(){
+		
+		delete = new JButton();
+		delete.setBorder(null);
+		delete.setOpaque(false);
+		delete.setFocusPainted(false);
+		delete.setContentAreaFilled(false);
+		delete.setBounds(740, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/deleteButton_unclicked.png",delete);
+		delete.addMouseListener(new MouseListener(){
 
-			public void actionPerformed(ActionEvent e) {
+			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				rowEditable = table.getSelectedRow();
-				columnEditable = table.getSelectedColumn();
-				if (columnEditable == 1) {
-					JOptionPane.showMessageDialog(null, "部门编号不可修改！","", JOptionPane.ERROR_MESSAGE);
-					rowEditable = -1;
-					columnEditable = -1;
-					return;
-				}
-				TableCellEditor cell = table.getCellEditor(rowEditable, columnEditable);
-				temp = (String) table.getValueAt(rowEditable, columnEditable);
-				System.out.println(temp);
-				cell.addCellEditorListener(new CellEditorListener(){
+				
+			}
 
-					public void editingStopped(ChangeEvent e) {
-						// TODO Auto-generated method stub
-						int n = JOptionPane.showConfirmDialog(null, "确定修改该信息?", "确认框",JOptionPane.YES_NO_OPTION);
-						if (n == 1) {
-							table.setValueAt(temp, rowEditable, columnEditable);
-							rowEditable = -1;
-							columnEditable = -1;
-							return;
-						}
-						int index = table.convertRowIndexToModel(rowEditable);
-						HallVO vo = (HallVO)defaultModel.getDataVector().elementAt(index);
-						bl.update(vo);
-						rowEditable = -1;
-						columnEditable = -1;						
-					}
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
 
-					public void editingCanceled(ChangeEvent e) {
-						// TODO Auto-generated method stub
-						System.out.println("Canceled");
-					}
-					
-				});
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/deleteButton_clicked.png",delete);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/deleteButton_unclicked.png",delete);
 			}
 			
 		});
-		JButton delete = new SimpleButton("删除");
 		delete.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
@@ -181,8 +216,43 @@ public class ApartmentManagerPanel extends JPanel {
 			}
 			
 		});
-		JButton close = new SimpleButton("关闭");
-		close.addActionListener(new ActionListener(){
+		back = new JButton();
+		back.setFont(font);
+		back.setBorder(null);
+		back.setOpaque(false);
+		back.setFocusPainted(false);
+		back.setContentAreaFilled(false);
+		back.setBounds(820, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+		back.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
+			}
+			
+		});
+		back.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -191,11 +261,11 @@ public class ApartmentManagerPanel extends JPanel {
 			}
 			
 		});
-		buttons.add(creat);
-		buttons.add(change);
-		buttons.add(delete);
-		buttons.add(close);
-		this.add(buttons);
+		
+		this.add(add);
+		this.add(delete);
+		this.add(back);
+		
 	}
 
 	
