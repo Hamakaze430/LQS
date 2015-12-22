@@ -107,6 +107,9 @@ public class addCar extends JDialog{
 						return;
 					}
 					
+					int n = JOptionPane.showConfirmDialog(null, "确定保存该车辆信息?", "确认框",JOptionPane.YES_NO_OPTION);
+					if (n == 1) return;
+					
 					CarVO vo = new CarVO(id.getText(),license.getText(),"0天");
 					Date date = new Date();
 					DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");

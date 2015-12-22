@@ -344,7 +344,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.收款单)) {
-			JPanel voucher = new VoucherPanel(user);
+			JPanel voucher = new VoucherPanel(user,i);
 			cardPanel.add(voucher, "6");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/voucher_unselected.png");			
@@ -876,7 +876,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.成本收益)) {
-			JPanel cost = new CostPanel(user);
+			JPanel cost = new CostPanel(user,i);
 			cardPanel.add(cost, "20");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/cost_unselected.png");			

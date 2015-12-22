@@ -38,11 +38,17 @@ public class DeliverPanel extends JPanel{
 	int button_height = 30;
 	private ReceiptsblService bl;
 	private UserblService user;
+<<<<<<< HEAD
 	int buttonNum;
 	public DeliverPanel(UserblService user,int buttonNum){
+=======
+	private int buttonNum;
+	public DeliverPanel(UserblService user, int buttonNum){
+>>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 		this.user = user;
 		this.buttonNum=buttonNum;
 		bl = new Receiptsbl(user);
+		this.buttonNum = buttonNum;
 		this.setLayout(null);
 		this.setOpaque(false);
 		this.setBorder(null);
@@ -126,6 +132,10 @@ public class DeliverPanel extends JPanel{
 		back.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(MouseEvent e) {
+<<<<<<< HEAD
+=======
+				// TODO Auto-generated method stub
+>>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 				DeliverPanel.this.setVisible(false);
 				MainPanel.closeButton(buttonNum);
 			}
@@ -151,7 +161,12 @@ public class DeliverPanel extends JPanel{
 		this.add(dateLabel);
 		this.add(date);
 		this.add(submit);
+<<<<<<< HEAD
 		this.add(back);		
+=======
+		this.add(back);
+	
+>>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 	}
 }
 

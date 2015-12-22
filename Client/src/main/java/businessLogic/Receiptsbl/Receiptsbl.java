@@ -11,11 +11,13 @@ import Miscellaneous.FormType;
 import Miscellaneous.ReceiptState;
 import businessLogic.Approvalbl.Approvalbl;
 import businessLogic.CarAndDriverbl.CarAndDriverbl;
+import businessLogic.LogisticsInfoSearchbl.LogisticsInfoSearchbl;
 import businessLogic.Receiptsbl.MockTest.MockCarAndDriver;
 import businessLogic.Userbl.Apartmentbl;
 import businessLogic.Userbl.Userbl;
 import businessLogicService.ApprovalblService.ApprovalblService;
 import businessLogicService.CarAndDriverblService.CarAndDriverblService;
+import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
 import businessLogicService.UserblService.ApartmentblService;
 import businessLogicService.UserblService.UserblService;
@@ -27,6 +29,7 @@ import po.ApprovalPO;
 import po.HallPO;
 import po.ReceiptPO;
 import po.receipts.LoadingPO;
+import vo.LogisticsVO;
 import vo.ReceiptVO;
 import vo.UserVO;
 import vo.receipts.LoadingVO;
@@ -37,12 +40,14 @@ public class Receiptsbl implements ReceiptsblService {
 	private CarAndDriverblService carAndDriver;
 	private ApartmentblService apartment;
 	private ApprovalblService approval;
+	private LogisticsInfoSearchblService logistics;
 	
 	public Receiptsbl(UserblService user){
 		this.user = user;
 		carAndDriver = new CarAndDriverbl();
 		apartment = new Apartmentbl();
 		approval = new Approvalbl();
+		logistics = new LogisticsInfoSearchbl();
 		dataFactory = Client.dataFactory;
 	}
 	
@@ -62,7 +67,8 @@ public class Receiptsbl implements ReceiptsblService {
 
 	public String getLastId(String foreId) {
 		// TODO Auto-generated method stub
-		return dataFactory.getReceiptsdataService().getLastId(foreId);
+		long num = dataFactory.getReceiptsdataService().getLastId(foreId);
+		return String.format("%05d", num);
 	}
 	
 	public String getHallId() {
@@ -100,7 +106,9 @@ public class Receiptsbl implements ReceiptsblService {
 	
 	public boolean addReceipt(ReceiptVO vo) {
 		ReceiptPO po = vo.toPO(addReceiptId());
-		return dataFactory.getReceiptsdataService().insert(po);
+		dataFactory.getReceiptsdataService().insert(po);
+		approvalInsert(po);
+		return true;
 	}
 	
 	public ReceiptVO getReceiptById(long receiptId) {
@@ -133,13 +141,14 @@ public class Receiptsbl implements ReceiptsblService {
 	}
 
 	public boolean findLogistics(String s) {
-		// TODO Auto-generated method stub
-		return false;
+		LogisticsVO vo = logistics.search(s);
+		if (vo == null) return false;
+		return true;
 	}
 
 	public double getLoadingCost() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 20;
 	}
 
 

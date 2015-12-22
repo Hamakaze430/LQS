@@ -48,7 +48,7 @@ public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBene
 		cb.setTotalPayment(cal.getPayment());
 		cb.setTotalProfit(cal.getProfit());
 	
-		//System.out.println("got new cbPO");
+//		System.out.println("got new cbPO");
 		return cb;
 	}
 

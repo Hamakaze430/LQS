@@ -22,6 +22,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import presentation.LogisticsInfoSearchui.LogisticsPanel;
+import presentation.Receiptsui.ReceivePanel;
+import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
 import presentation.mainui.WelcomePanel;
 import vo.CostBenefitVO;
@@ -44,11 +46,12 @@ public class CostPanel extends JPanel {
 	private CostBenefit cb=new CostBenefit();
 	JButton back;
 	JButton importButton;
-	
-	public CostPanel(UserblService user){
+	int buttonNum;
+	public CostPanel(UserblService user, int buttonNum){
 		this.user=user;
 		this.setLayout(null);
 		this.setBorder(null);
+		this.buttonNum = buttonNum;
 		this.setOpaque(false);
 		initCPanel();	
 	}
@@ -153,7 +156,8 @@ public class CostPanel extends JPanel {
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+				CostPanel.this.setVisible(false);
+				MainPanel.closeButton(buttonNum);
 			}
 
 			public void mousePressed(MouseEvent e) {
@@ -191,13 +195,6 @@ public class CostPanel extends JPanel {
 			}
 		});
 		
-		back.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent args0){
-				Client.frame.add(new WelcomePanel());
-				Client.frame.remove(CostPanel.this);
-				Client.frame.repaint();
-			}
-		});
 		
 		this.add(title);
 		this.add(importButton);

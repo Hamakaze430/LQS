@@ -72,7 +72,7 @@ public class ArrivalPanel extends JPanel {
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 30);
 		
-		JLabel idLabel = new JLabel("· 中转中心编号: ");
+		JLabel idLabel = new JLabel("· "+user.getHallType()+"编号: ");
 		idLabel.setFont(font);
 		idLabel.setBounds(padding, padding*2+label_height, label_width, label_height);
 		
@@ -96,7 +96,8 @@ public class ArrivalPanel extends JPanel {
 		date.setText(bl.getCurrentTime());
 		date.setEditable(false);
 		
-		JLabel orderNumber = new JLabel("· 中转单/汽运编号: ");
+		JLabel orderNumber = new JLabel("· 汽运编号: ");
+		if (user.getHallType().equals("中转中心"))  orderNumber.setText("· 中转单编号/汽运编号: ");
 		orderNumber.setFont(font);
 		orderNumber.setBounds(padding, padding*4+label_height*3, label_width, label_height);
 		

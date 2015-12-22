@@ -44,6 +44,7 @@ import vo.receipts.LoadingVO;
 
 /**
  * 装车单
+ * 写完惹【还剩bl.getLoadingCost();
  * @author TOSHIBA
  *
  */
@@ -62,10 +63,12 @@ public class LoadingPanel extends JPanel{
 	JTextField date;
 	JTextField hallId;
 	JTextField id;
-	JComboBox<String> province;
-	JComboBox<String> place;
+	JComboBox province;
+	JComboBox place;
+
 	JButton back;
 	JButton submit;
+
 	JTextField car;
 	JTextField drivername;
 	JTextField spyname;
@@ -145,8 +148,8 @@ public class LoadingPanel extends JPanel{
 		destination.setFont(font);
 		destination.setBounds(padding,  padding*5+label_height*4, label_width, label_height);
 		
-		province = new JComboBox<String>();
-		place = new JComboBox<String>();
+		province = new JComboBox();
+		place = new JComboBox();
 		province.setFont(font);
 		province.addItem(bl.getHallPlace());
 		province.setSelectedIndex(0);
@@ -297,8 +300,9 @@ public class LoadingPanel extends JPanel{
 				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
 			}
 		});
-
-
+		
+		submit.addActionListener(new SubmitAction());
+		
 		back.addActionListener(new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
@@ -367,6 +371,10 @@ public class LoadingPanel extends JPanel{
 				return;
 			}
 			String Driver = drivername.getText();
+			if (Driver.equals("")){
+				JOptionPane.showMessageDialog(null, "请输入司机姓名！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			if(! bl.findCarAndDriver("driver",Driver)){
 				//System.out.println("找不到");
 				JOptionPane.showMessageDialog(null, "不存在对应的司机！","", JOptionPane.ERROR_MESSAGE);
@@ -374,6 +382,10 @@ public class LoadingPanel extends JPanel{
 			}
 			
 			String Supervisor = spyname.getText();
+			if (Supervisor.equals("")){
+				JOptionPane.showMessageDialog(null, "请输入监装员姓名！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			UserVO sup = bl.findUser(Supervisor);
 			if(sup == null ){
 				//System.out.println("找不到");
@@ -381,16 +393,28 @@ public class LoadingPanel extends JPanel{
 				return;
 			}
 			else if (!sup.getHall().equals(user.getHallName())){
-				JOptionPane.showMessageDialog(null, "该员工不属于单位！","注意", JOptionPane.WARNING_MESSAGE);
-				return;
+				JOptionPane.showMessageDialog(null, "所填的监装员不属于本单位！","注意", JOptionPane.WARNING_MESSAGE);
+//				return;
 			}
 			
 			String str = orders.getText();
+			if (str.equals("")){
+				JOptionPane.showMessageDialog(null, "请输入相应的快递单号！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 		 	List<String> Order = new ArrayList<String>();
 		 	String[] split = str.split("\n");
 		 	for (String s : split) {
+		 		try{
+					long id = Long.parseLong(s);
+				}catch(NumberFormatException e1){
+					//输入编号不是数字
+					JOptionPane.showMessageDialog(null, "请输入正确的快递单号！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 		 		if(! bl.findLogistics(s)){
 					//System.out.println("找不到");
+		 			
 					JOptionPane.showMessageDialog(null, "不存在快递单号为"+s+"的货物！","", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
@@ -424,7 +448,6 @@ public class LoadingPanel extends JPanel{
 			drivername.setText("");
 			spyname.setText("");
 			orders.setText("");
-			cost.setText("");
 		}
 	
 	}
@@ -442,5 +465,7 @@ public class LoadingPanel extends JPanel{
 			this.setFont(new Font("宋体",Font.PLAIN,10));
 		}
 	}
+
 }
+
 	

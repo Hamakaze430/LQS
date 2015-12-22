@@ -18,7 +18,7 @@ public class Calculator {
     public double getPayment(){
         double result=0.0;
         for(int i=0;i<payment.size();i++){
-            result+=payment.get(i).getAmount();
+            result+=Double.parseDouble(payment.get(i).getAmount());
         }
         return result;
     }
@@ -26,7 +26,7 @@ public class Calculator {
     public double getIncome(){
         double result=0.0;
         for(int i=0;i<income.size();i++){
-            result+=income.get(i).getAmount();
+            result+=Double.parseDouble(income.get(i).getAmount());
         }
         return result;
     }

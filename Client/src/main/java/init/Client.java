@@ -21,6 +21,9 @@ public class Client {
 		try {
 			RMIHelper.init();
 			dataFactory = new DataFactory();
+//			CarVO vo = new CarVO("025001000","苏A 12345","一年");
+//			CarAndDriverbl car = new CarAndDriverbl();
+//			car.addCarInfo(vo);
 //			CarVO vo = new CarVO("0250000001","苏A 00000","1年");
 //			DriverVO vo = new DriverVO("025000001","张三","男","2015.10.30","320582201510301111","18260065397","一年");
 //			CarAndDriverbl car = new CarAndDriverbl();
@@ -32,7 +35,11 @@ public class Client {
 			//00000001000高级财务人员
 			//01000010000中转中心仓库
 			frame = new MainFrame();
+<<<<<<< HEAD
 			UserblService bl = new Userbl("01000010000");
+=======
+			UserblService bl = new Userbl("00000000000");
+>>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 			MainPanel panel = new MainPanel(bl);
 			frame.add(panel);
 			

@@ -2,6 +2,8 @@ package presentation.Receiptsui;
 
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 
@@ -49,6 +51,7 @@ public class SendPanel extends JPanel{
 	JButton back;
 	private ReceiptsblService bl;
 	private UserblService user;
+	private int buttonNum;
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
@@ -61,10 +64,15 @@ public class SendPanel extends JPanel{
 	JLabel text2;
 	JLabel text3;
 	JPanel info;
+<<<<<<< HEAD
 	private int buttonNum;
 	public SendPanel(UserblService user,int buttonNum){
+=======
+	public SendPanel(UserblService user, int buttonNum){
+>>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 		this.user=user;
 		bl = new Receiptsbl(user);
+		this.buttonNum = buttonNum;
 		this.setLayout(null);
 		this.setBorder(null);
 		this.setOpaque(false);
@@ -91,6 +99,7 @@ public class SendPanel extends JPanel{
 		JLabel senderphoneLabel = new JLabel("· 寄件人手机：");
 		senderphoneLabel.setFont(font);
 		senderphoneLabel.setBounds(padding, padding*3+label_height, label_width, label_height);	
+
 		
 		JLabel sendercompLabel = new JLabel("· 寄件人单位：");
 		sendercompLabel.setFont(font);
@@ -98,11 +107,12 @@ public class SendPanel extends JPanel{
 		
 		JLabel sendertelLabel = new JLabel("· 寄件人固话：");
 		sendertelLabel.setFont(font);
-		sendertelLabel.setBounds(padding*2+interval+label_width, padding*3+label_height, label_width, label_height);
-				
+	
+		sendertelLabel.setBounds(padding*2+interval+label_width, padding*3+label_height, label_width, label_height);		
 		JLabel senderaddrLabel = new JLabel("· 寄件人住址：");
 		senderaddrLabel.setFont(font);
 		senderaddrLabel.setBounds(padding, padding*4+label_height*2, label_width, label_height);
+
 		
 		JTextField sendername = new JTextField(20);
 		sendername.setFont(font);
@@ -138,6 +148,7 @@ public class SendPanel extends JPanel{
 		receivernameLabel.setFont(font);
 		receivernameLabel.setBounds(padding, padding*2, label_width, label_height);
 		
+
 		JLabel receiverphoneLabel = new JLabel("· 收件人手机：");
 		receiverphoneLabel.setFont(font);
 		receiverphoneLabel.setBounds(padding, padding*3+label_height, label_width, label_height);	
@@ -148,11 +159,13 @@ public class SendPanel extends JPanel{
 		
 		JLabel receivertelLabel = new JLabel("· 收件人固话：");
 		receivertelLabel.setFont(font);
+
 		receivertelLabel.setBounds(padding*2+interval+label_width, padding*3+label_height, label_width, label_height);
 				
 		JLabel receiveraddrLabel = new JLabel("· 收件人住址：");
 		receiveraddrLabel.setFont(font);
 		receiveraddrLabel.setBounds(padding, padding*4+label_height*2, label_width, label_height);
+
 		
 		JTextField receivername = new JTextField(20);
 		receivername.setFont(font);
@@ -300,6 +313,10 @@ public class SendPanel extends JPanel{
 		order.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		order.setOpaque(false);
 		order.setBounds(padding*2+interval+15,  padding*9+label_height*8, label_width, label_height);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 		
 		info = new JPanel();
 		info.setPreferredSize(new Dimension(880,text1.getHeight()+text2.getHeight()+text3.getHeight()+padding*5));
@@ -309,6 +326,7 @@ public class SendPanel extends JPanel{
 		info.add(text1);
 		info.add(text2);
 		info.add(text3);
+		
 		text1.add(sendernameLabel);
 		text1.add(senderaddrLabel);
 		text1.add(sendercompLabel);
@@ -387,7 +405,14 @@ public class SendPanel extends JPanel{
 				PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
 			}			
 		});
+<<<<<<< HEAD
 				
+=======
+		
+		submit.addActionListener(new SubmitListener());
+		
+		
+>>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 		back = new JButton();
 		back.setFont(font);
 		back.setBorder(null);
@@ -419,5 +444,14 @@ public class SendPanel extends JPanel{
 		this.add(scrollPane);
 		this.add(submit);
 		this.add(back);		
+	}
+	
+	class SubmitListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 }

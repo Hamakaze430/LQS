@@ -236,17 +236,30 @@ public class addDriver extends JDialog{
 						JOptionPane.showMessageDialog(null, "请输入正确的出生时间！","", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
+					String Birth = String.format("%04d", year)+String.format("%02d", month)+String.format("%02d", day);
 					
+					
+					try{
+						year = Integer.parseInt(year_limi.getText());
+						month = Integer.parseInt(month_limi.getText());
+						day = Integer.parseInt(day_limi.getText());
+					}catch(NumberFormatException e1){
+						//输入编号不是数字
+						JOptionPane.showMessageDialog(null, "请输入正确的出生时间！","", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					String Limi = String.format("%04d", year)+String.format("%02d", month)+String.format("%02d", day);
+					
+					int n = JOptionPane.showConfirmDialog(null, "确定保存该司机信息?", "确认框",JOptionPane.YES_NO_OPTION);
+					if (n == 1) return;
 					
 					
 					String Name = name.getText();
 					String Sex;
 					if (male.isSelected()) Sex = male.getText();
 					else Sex = female.getText();
-					String Birth = String.format("%04d", year)+String.format("%02d", month)+String.format("%02d", day);
 					String Identity = identity.getText();
 					String Mobile = mobile.getText();
-					String Limi = String.format("%04d", year)+String.format("%02d", month)+String.format("%02d", day);
 					String Id = id.getText();
 					
 					DriverVO vo = new DriverVO(Id,Name,Sex,Birth,Identity,Mobile,Limi);

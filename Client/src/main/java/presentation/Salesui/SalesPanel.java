@@ -27,12 +27,19 @@ import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 import presentation.mainui.PictureButton;
 
 import presentation.CostBenefitui.CostPanel;
 import presentation.mainui.WelcomePanel;
 import vo.ReceiptVO;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 import vo.SalesVO;
 import vo.receipts.IncomeVO;
 import vo.receipts.PassIncomeVO;
@@ -353,25 +360,35 @@ public class SalesPanel extends JPanel{
 		 * */
 		confirm.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent args0){
-//				int y1=year1.getSelectedIndex();
-//				int m1=month1.getSelectedIndex();
-//				int d1=day1.getSelectedIndex();
-//				int y2=year2.getSelectedIndex();
-//				int m2=month2.getSelectedIndex();
-//				int d2=day2.getSelectedIndex();
-//				startDate=year1.getSelectedItem()+"-"
-//						+month1.getSelectedItem()+"-"
-//						+day1.getSelectedItem();
-//				endDate=year2.getSelectedItem()+"-"
-//						+month2.getSelectedItem()+"-"
-//						+day2.getSelectedItem();
-				
-				startDate="2014-10-01";
-				
-				endDate=("2015-12-31");
+				if(year1.getSelectedIndex()!=0&&month1.getSelectedIndex()!=0&&
+						day1.getSelectedIndex()!=0&&year2.getSelectedIndex()!=0
+						&&month2.getSelectedIndex()!=0&&day2.getSelectedIndex()!=0){
+					int y1=year1.getSelectedIndex();
+					int m1=month1.getSelectedIndex();
+					int d1=day1.getSelectedIndex();
+					int y2=year2.getSelectedIndex();
+					int m2=month2.getSelectedIndex();
+					int d2=day2.getSelectedIndex();
+					startDate=year1.getSelectedItem()+"-"
+							+month1.getSelectedItem()+"-"
+							+day1.getSelectedItem();
+					endDate=year2.getSelectedItem()+"-"
+							+month2.getSelectedItem()+"-"
+							+day2.getSelectedItem();
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "请先选择日期>_<","", 
+												JOptionPane.INFORMATION_MESSAGE);
+				}
+//				startDate="2014-10-01";
+//				
+//				endDate=("2015-12-31");
 				
 				sales.setDate(startDate, endDate);
 				SalesVO vo=sales.show();
+//				if(defaultModel.){
+//					
+//				}
 				ArrayList<IncomeVO> incomeList=vo.getIncomeList();
 				Iterator<IncomeVO> iit=incomeList.iterator();
 				while(iit.hasNext()){
@@ -387,6 +404,7 @@ public class SalesPanel extends JPanel{
 				//defaultModel.addRow(vo);
 			}
 		});
+<<<<<<< HEAD
 
 		confirm.addActionListener(new ActionListener(){
 
@@ -399,6 +417,10 @@ public class SalesPanel extends JPanel{
 
 		importButton.addActionListener(new ActionListener(){
 
+=======
+		
+		importButton.addActionListener(new ActionListener(){
+>>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 			public void actionPerformed(ActionEvent args0){
 				if(sales.getReport())
 					JOptionPane.showMessageDialog(null, "导出成功^_^","", JOptionPane.INFORMATION_MESSAGE);

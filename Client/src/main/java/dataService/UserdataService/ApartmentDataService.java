@@ -16,8 +16,6 @@ public interface ApartmentDataService extends Remote {
 
 	public boolean delete(HallPO po);
 
-	public boolean decNum(String type, Place place);
-
 	public boolean update(HallPO po);
 
 	public HallPO find(String known, String hallInfo);
