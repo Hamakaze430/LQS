@@ -23,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
 import presentation.Receiptsui.LoadingPanel.SubmitAction;
+import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
 import vo.CheckVO;
 import businessLogic.Receiptsbl.Receiptsbl;
@@ -54,8 +55,10 @@ public class ArrivalPanel extends JPanel {
 	JTextField startplacename;
 	JLabel state;
 	JScrollPane scrollPane;
-	public ArrivalPanel(UserblService user){
+	int buttonNum;
+	public ArrivalPanel(UserblService user,int buttonNum){
 		this.user=user;
+		this.buttonNum=buttonNum;
 		bl = new Receiptsbl(user);
 		this.setLayout(null);
 		this.setBorder(null);
@@ -211,34 +214,23 @@ public class ArrivalPanel extends JPanel {
 		back.setBounds(820, 510, 70, 30);
 		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
 		back.addMouseListener(new MouseListener(){
-
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				ArrivalPanel.this.setVisible(false);
+				MainPanel.closeButton(buttonNum);
 			}
 
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mousePressed(MouseEvent e) {}
 
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mouseReleased(MouseEvent e) {}
 
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
 			}
 
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
-			}
-			
-		});
-		
+			}			
+		});	
 		
 		this.add(title);
 		this.add(idLabel);
@@ -252,9 +244,6 @@ public class ArrivalPanel extends JPanel {
 		this.add(startplace);
 		this.add(startplacename);
 		this.add(state);
-		this.add(scrollPane);
-		
-	}
-	
-
+		this.add(scrollPane);		
+	}	
 }

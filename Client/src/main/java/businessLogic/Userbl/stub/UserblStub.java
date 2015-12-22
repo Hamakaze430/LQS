@@ -110,6 +110,11 @@ public class UserblStub implements UserblService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public UserVO findUser(String known, String info) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

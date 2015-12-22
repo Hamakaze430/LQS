@@ -268,7 +268,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.到达单)) {
-			JPanel arrival = new ArrivalPanel(user);
+			JPanel arrival = new ArrivalPanel(user,i);
 			cardPanel.add(arrival, "4");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/arrival_unselected.png");			
@@ -724,7 +724,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}		
 		if (user.hasTheAuthority(Authorities.审批单据)) {
-			JPanel approval = new ApprovalPanel();
+			JPanel approval = new ApprovalPanel(i);
 			cardPanel.add(approval, "16");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/approval_unselected.png");			
@@ -762,7 +762,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.人员机构)) {
-			JPanel organization = new OrganizationPanel();
+			JPanel organization = new OrganizationPanel(i);
 			cardPanel.add(organization, "17");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/organization_unselected.png");			
@@ -876,7 +876,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.成本收益)) {
-			JPanel cost = new CostPanel(user);
+			JPanel cost = new CostPanel(user,i);
 			cardPanel.add(cost, "20");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/cost_unselected.png");			

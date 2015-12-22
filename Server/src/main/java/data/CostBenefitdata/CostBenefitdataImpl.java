@@ -14,6 +14,10 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBenefitdataService{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ReceiptsdataImpl rdi=new ReceiptsdataImpl();
 	
 	public CostBenefitdataImpl() throws RemoteException {
@@ -44,7 +48,7 @@ public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBene
 		cb.setTotalPayment(cal.getPayment());
 		cb.setTotalProfit(cal.getProfit());
 	
-		//System.out.println("got new cbPO");
+//		System.out.println("got new cbPO");
 		return cb;
 	}
 
