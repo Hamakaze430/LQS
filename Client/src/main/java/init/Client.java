@@ -32,7 +32,7 @@ public class Client {
 			//02500001000 营业厅业务员
 			//02500000000快递员
 			frame = new MainFrame();
-			UserblService bl = new Userbl("02500101000");
+			UserblService bl = new Userbl("00000000000");
 			MainPanel panel = new MainPanel(bl);
 			frame.add(panel);
 			

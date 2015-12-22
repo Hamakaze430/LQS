@@ -27,20 +27,12 @@ import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-<<<<<<< HEAD
 
 import presentation.mainui.PictureButton;
 
 import presentation.CostBenefitui.CostPanel;
 import presentation.mainui.WelcomePanel;
 import vo.ReceiptVO;
-
-=======
-import presentation.mainui.PictureButton;
-import presentation.CostBenefitui.CostPanel;
-import presentation.mainui.WelcomePanel;
-import vo.ReceiptVO;
->>>>>>> 8e2de68437739ed8cd8283aa5673b8aab303a2c9
 import vo.SalesVO;
 import vo.receipts.IncomeVO;
 import vo.receipts.PassIncomeVO;
@@ -396,11 +388,7 @@ public class SalesPanel extends JPanel{
 			}
 		});
 		
-<<<<<<< HEAD
-		confirm.addActionListener(new ActionListener(){
-=======
 		importButton.addActionListener(new ActionListener(){
->>>>>>> 8e2de68437739ed8cd8283aa5673b8aab303a2c9
 			public void actionPerformed(ActionEvent args0){
 				if(sales.getReport())
 					JOptionPane.showMessageDialog(null, "导出成功^_^","", JOptionPane.INFORMATION_MESSAGE);
