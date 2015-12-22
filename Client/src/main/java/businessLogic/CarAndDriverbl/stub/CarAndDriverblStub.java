@@ -2,6 +2,7 @@ package businessLogic.CarAndDriverbl.stub;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import businessLogicService.CarAndDriverblService.CarAndDriverblService;
 import vo.CarVO;
@@ -57,7 +58,27 @@ public class CarAndDriverblStub implements CarAndDriverblService {
 		return true;
 	}
 
-	public ArrayList<String> findAllCarInfo(String hallId) {
+	public List<CarVO> findAllCarInfo(String hallId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean addCarInfo(String date, CarVO car) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String getLastId(String type, String foreId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean find(String type, String known) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public List<DriverVO> findAllDriverInfo(String hallId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

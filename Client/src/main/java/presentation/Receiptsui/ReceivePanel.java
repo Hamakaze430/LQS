@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
+import presentation.Userui.ApartmentManagerPanel;
+import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
@@ -32,12 +34,17 @@ public class ReceivePanel extends JPanel{
 	JButton back;
 	JButton submit;
 	int padding =10;
-	int button_width = 80;
+	int interval = 120;
+	int label_width = 200;
+	int label_height = 30;;
+	int button_width = 70;
 	int button_height = 30;
 	private UserblService user;
 	private ReceiptsblService bl;
-	public ReceivePanel(UserblService user){
+	int buttonNum;
+	public ReceivePanel(UserblService user,int buttonNum){
 		this.user = user;
+		this.buttonNum = buttonNum;
 		bl = new Receiptsbl(user);
 		this.setLayout(null);
 		this.setOpaque(false);
@@ -46,40 +53,39 @@ public class ReceivePanel extends JPanel{
 	}
 
 	private void init() {
-		Font font = new Font("黑体",Font.PLAIN,18);
+		Font font = new Font("黑体",Font.PLAIN,16);
 		JLabel title = new JLabel(user.getHallName()+"收件单",JLabel.CENTER);
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 50);
 		
 		JLabel idLabel = new JLabel("· 收件编号: ");
 		idLabel.setFont(font);
-		idLabel.setBounds(50, 60, 300, 50);		
+		idLabel.setBounds(padding, padding*2+50, label_width, label_height);		
 		
 		JTextField id = new JTextField(20);
-		id.setFont(new Font("黑体",Font.PLAIN,15));
+		id.setFont(font);
 		id.setOpaque(false);
 		id.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
-		id.setBounds(170, 65, 200, 40);
+		id.setBounds(padding+interval, padding*2+50, label_width, label_height);
 		
 		JLabel nameLabel = new JLabel("· 收件人姓名: ");
 		nameLabel.setFont(font);
-		nameLabel.setBounds(50, 160, 300, 50);	
+		nameLabel.setBounds(padding,padding*3+50+label_height, label_width, label_height);	
 		
 		JTextField name = new JTextField(20);
-		name.setFont(new Font("黑体",Font.PLAIN,15));
+		name.setFont(font);
 		name.setOpaque(false);
 		name.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
-		name.setBounds(180, 165, 190, 40);
+		name.setBounds(padding+interval,padding*3+50+label_height, label_width, label_height);
 		
 		JLabel dateLabel = new JLabel("· 收件日期: ");
 		dateLabel.setFont(font);
-		dateLabel.setBounds(50, 260, 300, 50);	
+		dateLabel.setBounds(padding,padding*4+50+label_height*2, label_width, label_height);	
 		
 		JLabel date = new JLabel(); 
 		date.setText(bl.getCurrentTime());
 		date.setFont(font);
-		date.setBounds(170, 260, 300, 50);
-		
+		date.setBounds(padding+interval,padding*4+50+label_height*2, label_width, label_height);		
 		
 		submit = new JButton();
 		submit.setFont(font);
@@ -87,7 +93,7 @@ public class ReceivePanel extends JPanel{
 		submit.setOpaque(false);
 		submit.setFocusPainted(false);
 		submit.setContentAreaFilled(false);
-		submit.setBounds(740, 510, 70, 30);
+		submit.setBounds(740, 510, button_width, button_height);
 		PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
 		submit.addMouseListener(new MouseListener(){
 
@@ -96,28 +102,18 @@ public class ReceivePanel extends JPanel{
 				
 			}
 
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mousePressed(MouseEvent e) {}
 
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mouseReleased(MouseEvent e) {}
 
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/submitButton_clicked.png",submit);
 			}
 
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
-			}
-			
-		});
-		
+			}			
+		});		
 		
 		back = new JButton();
 		back.setFont(font);
@@ -125,35 +121,25 @@ public class ReceivePanel extends JPanel{
 		back.setOpaque(false);
 		back.setFocusPainted(false);
 		back.setContentAreaFilled(false);
-		back.setBounds(820, 510, 70, 30);
+		back.setBounds(820, 510, button_width, button_height);
 		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
 		back.addMouseListener(new MouseListener(){
-
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				ReceivePanel.this.setVisible(false);
+				MainPanel.closeButton(buttonNum);
 			}
 
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mousePressed(MouseEvent e) {}
 
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mouseReleased(MouseEvent e) {}
 
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
 			}
 
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
-			}
-			
+			}		
 		});
 		
 		this.add(title);

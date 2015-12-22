@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -28,6 +29,7 @@ import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
 
+import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
@@ -50,42 +52,37 @@ public class SendPanel extends JPanel{
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
-
 	int box_width = 120;
 	int box_height = 30;
 	int button_width = 80;
 	int button_height = 30;
-
 	int interval = 120;
-
 	JLabel text1;
 	JLabel text2;
 	JLabel text3;
 	JPanel info;
-	public SendPanel(UserblService user){
+	private int buttonNum;
+	public SendPanel(UserblService user,int buttonNum){
 		this.user=user;
 		bl = new Receiptsbl(user);
 		this.setLayout(null);
 		this.setBorder(null);
 		this.setOpaque(false);
-		
-		init();
-		
+		this.buttonNum=buttonNum;
+		init();	
 	}
-
 	private void init() {
 		// TODO Auto-generated method stub
 		Font font = new Font("黑体",Font.PLAIN,16);
 		JLabel title = new JLabel(user.getHallName()+"寄件单",JLabel.CENTER);
 		title.setFont(font);
-		title.setBounds(150, 10, 600, 30);
-		
+		title.setBounds(150, 10, 600, 30);	
 		text1 = new JLabel();
 		TitledBorder tb = BorderFactory.createTitledBorder("寄件人信息");
 		tb.setTitleJustification(TitledBorder.LEFT);
 		text1.setBounds(padding, padding, 820, padding*6+label_height*3);
 		text1.setBorder(tb);
-		text1.setOpaque(false);
+		text1.setOpaque(false);	
 		
 		JLabel sendernameLabel = new JLabel("· 寄件人姓名：");
 		sendernameLabel.setFont(font);
@@ -135,8 +132,7 @@ public class SendPanel extends JPanel{
 		senderaddr.setFont(font);
 		senderaddr.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		senderaddr.setOpaque(false);
-		senderaddr.setBounds(padding+interval, padding*4+label_height*2, label_width*3, label_height);
-		
+		senderaddr.setBounds(padding+interval, padding*4+label_height*2, label_width*3, label_height);	
 		
 		JLabel receivernameLabel = new JLabel("· 收件人姓名：");
 		receivernameLabel.setFont(font);
@@ -304,8 +300,6 @@ public class SendPanel extends JPanel{
 		order.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		order.setOpaque(false);
 		order.setBounds(padding*2+interval+15,  padding*9+label_height*8, label_width, label_height);
-		//order.setText(t);
-		//order.setEditable(false);
 		
 		info = new JPanel();
 		info.setPreferredSize(new Dimension(880,text1.getHeight()+text2.getHeight()+text3.getHeight()+padding*5));
@@ -335,8 +329,7 @@ public class SendPanel extends JPanel{
 		text2.add(receiveraddr);
 		text2.add(receivercomp);
 		text2.add(receivertel);
-		text2.add(receiverphone);
-		
+		text2.add(receiverphone);		
 
 		text3.add(initNumberLabel);
 		text3.add(trueweightLabel);
@@ -377,35 +370,24 @@ public class SendPanel extends JPanel{
 		submit.setBounds(740, 510, 70, 30);
 		PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
 		submit.addMouseListener(new MouseListener(){
-
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
 				
 			}
 
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mousePressed(MouseEvent e) {}
 
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mouseReleased(MouseEvent e) {}
 
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/submitButton_clicked.png",submit);
 			}
 
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
-			}
-			
+			}			
 		});
-		
-		
+				
 		back = new JButton();
 		back.setFont(font);
 		back.setBorder(null);
@@ -415,37 +397,27 @@ public class SendPanel extends JPanel{
 		back.setBounds(820, 510, 70, 30);
 		PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
 		back.addMouseListener(new MouseListener(){
-
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+				SendPanel.this.setVisible(false);
+				MainPanel.closeButton(buttonNum);
 			}
 
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mousePressed(MouseEvent e) {}
 
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mouseReleased(MouseEvent e) {}
 
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
 			}
 
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
-			}
-			
+			}		
 		});
 		this.add(title);
 		this.add(scrollPane);
 		this.add(submit);
-		this.add(back);
-		
+		this.add(back);		
 	}
 }

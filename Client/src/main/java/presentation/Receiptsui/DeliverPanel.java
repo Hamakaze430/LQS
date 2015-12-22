@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
+import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
@@ -37,14 +38,17 @@ public class DeliverPanel extends JPanel{
 	int button_height = 30;
 	private ReceiptsblService bl;
 	private UserblService user;
-	public DeliverPanel(UserblService user){
+	int buttonNum;
+	public DeliverPanel(UserblService user,int buttonNum){
 		this.user = user;
+		this.buttonNum=buttonNum;
 		bl = new Receiptsbl(user);
 		this.setLayout(null);
 		this.setOpaque(false);
 		this.setBorder(null);
 		init();
 	}
+	
 	private void init() {
 		// TODO Auto-generated method stub
 		Font font = new Font("黑体",Font.PLAIN,16);
@@ -71,8 +75,7 @@ public class DeliverPanel extends JPanel{
 		id.setFont(font);
 		id.setOpaque(false);
 		id.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
-		id.setBounds(padding+interval,padding*2+label_height+50, label_width,label_height);
-		
+		id.setBounds(padding+interval,padding*2+label_height+50, label_width,label_height);		
 		
 		JLabel nameLabel = new JLabel("· 派 送 员: ");
 		nameLabel.setFont(font);
@@ -83,8 +86,6 @@ public class DeliverPanel extends JPanel{
 		name.setOpaque(false);
 		name.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		name.setBounds(padding+interval,padding*3+label_height*2+50, label_width,label_height);
-		
-		
 		
 		submit = new JButton();
 		submit.setFont(font);
@@ -101,28 +102,18 @@ public class DeliverPanel extends JPanel{
 				
 			}
 
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mousePressed(MouseEvent e) {}
 
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mouseReleased(MouseEvent e) {}
 
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/submitButton_clicked.png",submit);
 			}
 
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
-			}
-			
-		});
-		
+			}			
+		});		
 		
 		back = new JButton();
 		back.setFont(font);
@@ -135,30 +126,21 @@ public class DeliverPanel extends JPanel{
 		back.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+				DeliverPanel.this.setVisible(false);
+				MainPanel.closeButton(buttonNum);
 			}
 
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mousePressed(MouseEvent e) {}
 
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
+			public void mouseReleased(MouseEvent e) {}
 
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/backButton_clicked.png",back);
 			}
 
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
 				PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
-			}
-			
+			}			
 		});
 		
 		this.add(title);
@@ -169,10 +151,8 @@ public class DeliverPanel extends JPanel{
 		this.add(dateLabel);
 		this.add(date);
 		this.add(submit);
-		this.add(back);
-		
+		this.add(back);		
 	}
-
 }
 
 

@@ -8,23 +8,27 @@ import java.util.Vector;
 public class ApprovalVO extends Vector<String> {
 	
 	
-	public ApprovalVO(String name,String creater, String status, String hashId){
-		this.add(name);
-		this.add(creater);
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public ApprovalVO(String type,String number, String apartment, String status){
+		this.add(type);
+		this.add(number);
+		this.add(apartment);
 		this.add(status);
-		this.add(hashId);
 	}
 	
-	public String getName(){
+	public String getType(){
 		return get(0);
 	}
-	public String getCreater(){
+	public String getNumber(){
 		return get(1);
 	}
-	public String getStatus(){
+	public String getApartment(){
 		return get(2);
 	}
-	public String getHashId(){
+	public String getStatus(){
 		return get(3);
 	}
 }

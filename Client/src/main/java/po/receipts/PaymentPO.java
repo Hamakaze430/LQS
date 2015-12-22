@@ -7,7 +7,11 @@ import po.ReceiptPO;
  */
 public class PaymentPO extends ReceiptPO {
 
-    String amount;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	String amount;
 
     public PaymentPO(String n, String c, String cd, String rs, String a){
         super(n, c, cd, rs, "付款单");

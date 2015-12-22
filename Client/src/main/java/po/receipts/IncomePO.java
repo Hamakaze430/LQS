@@ -7,6 +7,10 @@ import po.ReceiptPO;
  */
 public class IncomePO extends ReceiptPO {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String amount;
 
     public IncomePO(String n, String c, String cd, String rs, String a){
@@ -17,5 +21,10 @@ public class IncomePO extends ReceiptPO {
     public double getAmount(){
         return Double.parseDouble(amount);
     }
+
+	public String getStatus() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

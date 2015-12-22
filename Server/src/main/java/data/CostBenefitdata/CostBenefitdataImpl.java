@@ -14,6 +14,10 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBenefitdataService{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ReceiptsdataImpl rdi=new ReceiptsdataImpl();
 	
 	public CostBenefitdataImpl() throws RemoteException {
@@ -23,8 +27,8 @@ public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBene
 		/*
 		 * generate mock receipts
 		 * */
-		Test test=new Test();
-		test.saveMockReceipts();
+//		Test test=new Test();
+//		test.saveMockReceipts();
 	}
 
 	/**
