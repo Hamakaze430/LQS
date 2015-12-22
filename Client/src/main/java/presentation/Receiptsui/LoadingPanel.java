@@ -63,18 +63,12 @@ public class LoadingPanel extends JPanel{
 	JTextField date;
 	JTextField hallId;
 	JTextField id;
-<<<<<<< HEAD
 	JComboBox province;
 	JComboBox place;
-=======
-	JComboBox<String> province;
-	JComboBox<String> place;
+
 	JButton back;
 	JButton submit;
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
+
 	JTextField car;
 	JTextField drivername;
 	JTextField spyname;

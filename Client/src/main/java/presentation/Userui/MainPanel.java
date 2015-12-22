@@ -876,7 +876,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.成本收益)) {
-			JPanel cost = new CostPanel(user);
+			JPanel cost = new CostPanel(user,i);
 			cardPanel.add(cost, "20");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/cost_unselected.png");			

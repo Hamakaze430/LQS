@@ -23,8 +23,8 @@ public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBene
 		/*
 		 * generate mock receipts
 		 * */
-//		Test test=new Test();
-//		test.saveMockReceipts();
+		Test test=new Test();
+		test.saveMockReceipts();
 	}
 
 	/**
@@ -44,7 +44,7 @@ public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBene
 		cb.setTotalPayment(cal.getPayment());
 		cb.setTotalProfit(cal.getProfit());
 	
-		//System.out.println("got new cbPO");
+//		System.out.println("got new cbPO");
 		return cb;
 	}
 

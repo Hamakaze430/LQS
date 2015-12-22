@@ -41,7 +41,7 @@ public class SalaryStrategyPanel extends JPanel {
 		l1.setFont(font);
 		l1.setBounds(10, 15, 200, 30);
 		
-		JComboBox<String> c = new JComboBox<String>();
+		JComboBox c = new JComboBox();
 		c.addItem("请选择职位");
 		c.addItem("高级财务人员");
 		c.addItem("低级财务人员");

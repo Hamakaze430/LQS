@@ -69,7 +69,7 @@ public class RMIHelper {
         userData = (UserdataService) Naming.lookup(urlPrefix + "userData-Server");
     	receiptsData = (ReceiptsdataService) Naming.lookup(urlPrefix + "receiptsData-Server");
     	carAndDriverData = (CarAndDriverdataService) Naming.lookup(urlPrefix + "carAndDriverData-Server");
-//    	salesData = (SalesdataService) Naming.lookup(urlPrefix + "salesData-Server");
+    	salesData = (SalesdataService) Naming.lookup(urlPrefix + "salesData-Server");
     	costBenefitData = (CostBenefitdataService) Naming.lookup(urlPrefix + "costBenefitData-Server");
 
     }

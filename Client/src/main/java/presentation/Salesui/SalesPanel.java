@@ -353,25 +353,35 @@ public class SalesPanel extends JPanel{
 		 * */
 		confirm.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent args0){
-//				int y1=year1.getSelectedIndex();
-//				int m1=month1.getSelectedIndex();
-//				int d1=day1.getSelectedIndex();
-//				int y2=year2.getSelectedIndex();
-//				int m2=month2.getSelectedIndex();
-//				int d2=day2.getSelectedIndex();
-//				startDate=year1.getSelectedItem()+"-"
-//						+month1.getSelectedItem()+"-"
-//						+day1.getSelectedItem();
-//				endDate=year2.getSelectedItem()+"-"
-//						+month2.getSelectedItem()+"-"
-//						+day2.getSelectedItem();
-				
-				startDate="2014-10-01";
-				
-				endDate=("2015-12-31");
+				if(year1.getSelectedIndex()!=0&&month1.getSelectedIndex()!=0&&
+						day1.getSelectedIndex()!=0&&year2.getSelectedIndex()!=0
+						&&month2.getSelectedIndex()!=0&&day2.getSelectedIndex()!=0){
+					int y1=year1.getSelectedIndex();
+					int m1=month1.getSelectedIndex();
+					int d1=day1.getSelectedIndex();
+					int y2=year2.getSelectedIndex();
+					int m2=month2.getSelectedIndex();
+					int d2=day2.getSelectedIndex();
+					startDate=year1.getSelectedItem()+"-"
+							+month1.getSelectedItem()+"-"
+							+day1.getSelectedItem();
+					endDate=year2.getSelectedItem()+"-"
+							+month2.getSelectedItem()+"-"
+							+day2.getSelectedItem();
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "请先选择日期>_<","", 
+												JOptionPane.INFORMATION_MESSAGE);
+				}
+//				startDate="2014-10-01";
+//				
+//				endDate=("2015-12-31");
 				
 				sales.setDate(startDate, endDate);
 				SalesVO vo=sales.show();
+//				if(defaultModel.){
+//					
+//				}
 				ArrayList<IncomeVO> incomeList=vo.getIncomeList();
 				Iterator<IncomeVO> iit=incomeList.iterator();
 				while(iit.hasNext()){

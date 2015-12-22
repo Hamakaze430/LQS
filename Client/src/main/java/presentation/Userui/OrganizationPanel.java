@@ -34,7 +34,7 @@ public class OrganizationPanel extends JPanel {
 		l.setBounds(10, 10, 200, 40);
 		l.setFont(font);
 		
-		JComboBox<String> c = new JComboBox<String>();
+		JComboBox c = new JComboBox();
 		c.setFont(font);
 		c.setBounds(160, 10, 190, 35);
 		c.addItem("请选择要管理的部门");

@@ -138,7 +138,7 @@ public class TransferPanel extends JPanel {
 		destination.setFont(font);
 		destination.setBounds(padding,  padding*7+label_height*6, label_width, label_height);
 		
-		JComboBox<String> city = new JComboBox<String>();
+		JComboBox city = new JComboBox();
 		city.setFont(font);
 		city.addItem("请选择城市");
 		city.setSelectedItem("请选择城市");
