@@ -71,6 +71,9 @@ public class LoadingPanel extends JPanel{
 	JComboBox<String> place;
 	JButton back;
 	JButton submit;
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
 >>>>>>> origin/master
 	JTextField car;
 	JTextField drivername;
