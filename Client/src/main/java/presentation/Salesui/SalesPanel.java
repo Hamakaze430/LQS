@@ -27,19 +27,11 @@ import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 import presentation.mainui.PictureButton;
 
 import presentation.CostBenefitui.CostPanel;
 import presentation.mainui.WelcomePanel;
 import vo.ReceiptVO;
-<<<<<<< HEAD
-
-=======
->>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 import vo.SalesVO;
 import vo.receipts.IncomeVO;
 import vo.receipts.PassIncomeVO;
@@ -404,7 +396,6 @@ public class SalesPanel extends JPanel{
 				//defaultModel.addRow(vo);
 			}
 		});
-<<<<<<< HEAD
 
 		confirm.addActionListener(new ActionListener(){
 
@@ -416,11 +407,6 @@ public class SalesPanel extends JPanel{
 		});
 
 		importButton.addActionListener(new ActionListener(){
-
-=======
-		
-		importButton.addActionListener(new ActionListener(){
->>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 			public void actionPerformed(ActionEvent args0){
 				if(sales.getReport())
 					JOptionPane.showMessageDialog(null, "导出成功^_^","", JOptionPane.INFORMATION_MESSAGE);
@@ -429,13 +415,6 @@ public class SalesPanel extends JPanel{
 			}
 		});
 		
-		back.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent args0){
-				Client.frame.add(new WelcomePanel());
-				Client.frame.remove(SalesPanel.this);
-				Client.frame.repaint();
-			}
-		});
 	}
 
 	

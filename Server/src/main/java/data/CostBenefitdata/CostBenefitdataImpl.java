@@ -27,8 +27,8 @@ public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBene
 		/*
 		 * generate mock receipts
 		 * */
-//		Test test=new Test();
-//		test.saveMockReceipts();
+		Test test=new Test();
+		test.saveMockReceipts();
 	}
 
 	/**

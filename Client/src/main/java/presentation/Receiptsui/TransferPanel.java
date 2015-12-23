@@ -2,6 +2,9 @@ package presentation.Receiptsui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -36,6 +39,8 @@ public class TransferPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	JButton back;
 	JButton submit;
+	JTextField container;
+	JTextField spyername;
 	private ReceiptsblService bl;
 	private UserblService user;
 	int padding = 10;
@@ -57,7 +62,7 @@ public class TransferPanel extends JPanel {
 	private void initTPanel() {
 		// TODO Auto-generated method stub
 		Font font = new Font("黑体",Font.PLAIN,16);
-		JLabel title = new JLabel(user.getHallName()+"装车单",JLabel.CENTER);
+		JLabel title = new JLabel(user.getHallName()+"中转单",JLabel.CENTER);
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 30);
 		
@@ -148,21 +153,63 @@ public class TransferPanel extends JPanel {
 		containerLabel.setFont(font);
 		containerLabel.setBounds(padding,  padding*8+label_height*7, label_width, label_height);
 		
-		JTextField container = new JTextField(10);
+		container = new JTextField(10);
 		container.setFont(font);
 		container.setOpaque(false);
 		container.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		container.setBounds(padding+120, padding*8+label_height*7, label_width, label_height);
+		container.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		JLabel spyer = new JLabel("· 监 装 员：");
 		spyer.setFont(font);
 		spyer.setBounds(padding, padding*9+label_height*8, label_width, label_height);
 		
-		JTextField spyername = new JTextField(10);
+		spyername = new JTextField(10);
 		spyername.setFont(font);
 		spyername.setOpaque(false);
 		spyername.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		spyername.setBounds(padding+120, padding*9+label_height*8, label_width, label_height);
+		spyername.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		JLabel order = new JLabel("· 托运单号：");
 		order.setFont(font);
@@ -187,9 +234,11 @@ public class TransferPanel extends JPanel {
 		
 		JTextArea cost = new JTextArea();
 		cost.setFont(font);
-		cost.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
+		cost.setBorder(null);
 		cost.setBounds(padding+120, padding*11+label_height*13, label_width, label_height);
 		cost.setOpaque(false);
+		cost.setEditable(false);
+//		cost.setText(t);
 		
 		submit = new JButton();
 		submit.setFont(font);

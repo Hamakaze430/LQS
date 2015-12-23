@@ -1,42 +1,43 @@
-package presentation.Userui;
+package presentation.BankAccountui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import init.Client;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
-import javax.swing.table.DefaultTableModel;
 
-import presentation.Userui.CreatApartmentDialog.initPanel;
+import presentation.Userui.changeOrgnization;
 import presentation.mainui.PictureButton;
 import presentation.mainui.PictureLabel;
-import businessLogicService.UserblService.ApartmentManagerblService;
 
-public class changeOrgnization extends JDialog {
+
+public class addAccount extends JDialog {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public changeOrgnization(){
-		super(Client.frame,"修改人员结构",true);
+	public addAccount(){
+		super(Client.frame,"新建银行账户",true);
 //		this.bl = bl;
 //		this.defaultModel = defaultModel;
-		this.setSize(500, 250);
+		this.setSize(500, 220);
 		this.setContentPane(new initPanel());
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 	}
-
 	class initPanel extends JPanel{
 
 		/**
@@ -44,33 +45,54 @@ public class changeOrgnization extends JDialog {
 		 */
 		private static final long serialVersionUID = 1L;
 		int padding = 10;
-		int interval = 200;
+		int interval = 150;
 		int label_width = 200;
 		int label_height = 30;
 		int button_width = 70;
 		int button_height = 30;
+		JTextField number;
 		JTextField name;
-		JTextField notice;
+		JTextField account;
 		JButton save;
 		JButton back;
 		initPanel(){
 			this.setLayout(null);
 			PictureLabel userbg = new PictureLabel("src/main/java/image/userBG.jpg");
-			userbg.setBounds(0, 0, 500, 250);
+			userbg.setBounds(0, 0, 500, 220);
 			Font font = new Font("黑体",Font.PLAIN,16);
 			
-			JLabel noticeLabel = new JLabel("您当前管理的部门为：");
-			noticeLabel.setFont(font);
-			noticeLabel.setBounds(padding, padding, label_width, label_height);
+			JLabel numberLabel = new JLabel("请输入银行账号：");
+			numberLabel.setFont(font);
+			numberLabel.setBounds(padding, padding, label_width, label_height);
 			
-			notice = new JTextField(20);
-			notice.setFont(font);
-			notice.setOpaque(false);
-			notice.setBorder(null);
-			notice.setEditable(false);
-			notice.setBounds(padding+interval, padding, label_width, label_height);
+			number = new JTextField(20);
+			number.setFont(font);
+			number.setOpaque(false);
+			number.setBorder(new MatteBorder(0,0,1,0,Color.black));
+			number.setBounds(padding+interval, padding, label_width, label_height);
+			number.addKeyListener(new KeyListener(){
+
+				public void keyTyped(KeyEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				public void keyPressed(KeyEvent e) {
+					// TODO Auto-generated method stub
+					if(e.getKeyCode()==KeyEvent.VK_ENTER){
+						e.consume();
+						 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+					}
+				}
+
+				public void keyReleased(KeyEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+			});
 			
-			JLabel nameLabel = new JLabel("请输入要修改的人员姓名：");
+			JLabel nameLabel = new JLabel("请输入账号名称：");
 			nameLabel.setFont(font);
 			nameLabel.setBounds(padding, padding*2+label_height, label_width, label_height);
 			
@@ -79,24 +101,36 @@ public class changeOrgnization extends JDialog {
 			name.setOpaque(false);
 			name.setBorder(new MatteBorder(0,0,1,0,Color.black));
 			name.setBounds(padding+interval, padding*2+label_height, label_width, label_height);
+			name.addKeyListener(new KeyListener(){
+
+				public void keyTyped(KeyEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				public void keyPressed(KeyEvent e) {
+					// TODO Auto-generated method stub
+					if(e.getKeyCode()==KeyEvent.VK_ENTER){
+						e.consume();
+						 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+					}
+				}
+
+				public void keyReleased(KeyEvent e) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+			});
+			JLabel accountLabel = new JLabel("请输入账号金额：");
+			accountLabel.setFont(font);
+			accountLabel.setBounds(padding, padding*3+label_height*2, label_width, label_height);
 			
-			JLabel preLabel = new JLabel("当前所在部门：");
-			preLabel.setFont(font);
-			preLabel.setBounds(padding, padding*3+label_height*2, label_width, label_height);
-			
-			JLabel pre = new JLabel();
-			pre.setFont(font);
-			pre.setBounds(padding+interval, padding*3+label_height*2, label_width, label_height);
-			
-			JLabel nowLabel = new JLabel("请选择要转到的部门：");
-			nowLabel.setFont(font);
-			nowLabel.setBounds(padding, padding*4+label_height*3, label_width, label_height);
-			
-			JComboBox<String> now = new JComboBox<String>();
-			now.setFont(font);
-			now.setBounds(padding+interval,padding*4+label_height*3,label_width,label_height);
-			now.addItem("请选择部门");
-			now.setSelectedItem("请选择部门");
+			account = new JTextField(20);
+			account.setFont(font);
+			account.setOpaque(false);
+			account.setBorder(new MatteBorder(0,0,1,0,Color.black));
+			account.setBounds(padding+interval, padding*3+label_height*2, label_width, label_height);
 			
 			save = new JButton();
 			save.setFont(font);
@@ -104,7 +138,7 @@ public class changeOrgnization extends JDialog {
 			save.setOpaque(false);
 			save.setFocusPainted(false);
 			save.setContentAreaFilled(false);
-			save.setBounds(320, 180, button_width,button_height);
+			save.setBounds(320, 140, button_width,button_height);
 			PictureButton.setIcon("src/main/java/image/saveButton_unclicked.png",save);
 			save.addMouseListener(new MouseListener(){
 
@@ -140,13 +174,13 @@ public class changeOrgnization extends JDialog {
 			back.setOpaque(false);
 			back.setFocusPainted(false);
 			back.setContentAreaFilled(false);
-			back.setBounds(400, 180, button_width,button_height);
+			back.setBounds(400, 140, button_width,button_height);
 			PictureButton.setIcon("src/main/java/image/backButton_unclicked.png",back);
 			back.addMouseListener(new MouseListener(){
 
 				public void mouseClicked(MouseEvent e) {
 					// TODO Auto-generated method stub
-					changeOrgnization.this.dispose();
+					addAccount.this.dispose();
 				}
 
 				public void mousePressed(MouseEvent e) {
@@ -171,17 +205,14 @@ public class changeOrgnization extends JDialog {
 				
 			});
 			
-			this.add(nameLabel);
-			this.add(now);
+			this.add(accountLabel);
+			this.add(numberLabel);
+			this.add(nameLabel);		
+			this.add(number);
 			this.add(name);
-			this.add(nowLabel);
-			this.add(pre);
-			this.add(preLabel);
-			this.add(name);
+			this.add(account);
 			this.add(save);
 			this.add(back);
-			this.add(noticeLabel);
-			this.add(notice);
 			this.add(userbg);
 		}
 	}

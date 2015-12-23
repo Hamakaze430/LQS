@@ -13,11 +13,11 @@ public class ReceiptPO implements Serializable{
     private String type;
     private long receiptId;
     
-    public ReceiptPO(String type,String n,String c,String cd,String string){
+    public ReceiptPO(String type,String n,String c,String cd,long receiptId){
     	name = n;
     	creator = c;
     	createdate = cd;
-    	this.receiptId = string;
+    	this.receiptId = receiptId;
     	this.type=type;
     }
     

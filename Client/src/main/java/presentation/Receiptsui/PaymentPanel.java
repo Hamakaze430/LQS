@@ -2,6 +2,9 @@ package presentation.Receiptsui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -32,6 +35,10 @@ public class PaymentPanel extends JPanel {
 	JButton submit;
 	JButton back;
 	private UserblService user;
+	JTextField cost;
+	JTextField name;
+	JTextField payaccount;
+	JTextArea psarea;
 	public PaymentPanel(UserblService user){
 		this.user=user;
 		this.setLayout(null);
@@ -74,12 +81,32 @@ public class PaymentPanel extends JPanel {
 		date.setFont(font);
 		date.setBounds(200, 60, 300, 50);
 		
-		JTextField cost = new JTextField();
+		cost = new JTextField();
 		cost.setFont(font);
 		cost.setBounds(200, 100, 160, 40);
 		cost.setBorder(new MatteBorder(0,0,1,0,Color.black));
 		cost.setOpaque(false);
-		
+		cost.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		ButtonGroup bg = new ButtonGroup();
 		
 		JRadioButton j1 = new JRadioButton("租金",true);
@@ -106,19 +133,61 @@ public class PaymentPanel extends JPanel {
 		j4.setBorder(null);
 		j4.setOpaque(false);
 		
-		JTextField name = new JTextField();
+		name = new JTextField();
 		name.setFont(font);
 		name.setBounds(200, 180, 160, 40);
 		name.setBorder(new MatteBorder(0,0,1,0,Color.black));
 		name.setOpaque(false);
+		name.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
-		JTextField payaccount = new JTextField();
+		payaccount= new JTextField();
 		payaccount.setFont(font);
 		payaccount.setBounds(200, 220, 160, 40);
 		payaccount.setBorder(new MatteBorder(0,0,1,0,Color.black));
 		payaccount.setOpaque(false);
+		payaccount.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
-		JTextArea psarea = new JTextArea();
+		psarea = new JTextArea();
 		psarea.setFont(font);
 		psarea.setBounds(200, 270, 400, 150);
 		psarea.setLineWrap(true);
@@ -204,7 +273,7 @@ public class PaymentPanel extends JPanel {
 		this.add(date);
 		this.add(dateLabel);
 		this.add(costLabel);
-		this.add(cost);
+		
 		this.add(list);
 		bg.add(j1);
 		this.add(j1);
@@ -215,10 +284,11 @@ public class PaymentPanel extends JPanel {
 		bg.add(j4);
 		this.add(j4);
 		this.add(payer);
-		this.add(name);
 		this.add(account);
-		this.add(payaccount);
 		this.add(ps);
+		this.add(cost);
+		this.add(name);
+		this.add(payaccount);		
 		this.add(psarea);
 		this.add(submit);
 		this.add(back);

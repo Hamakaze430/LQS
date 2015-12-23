@@ -41,6 +41,7 @@ public class ArrivalPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	JButton back;
+	JTextField order;
 	JButton submit;
 	private ReceiptsblService bl;
 	private UserblService user;
@@ -97,7 +98,6 @@ public class ArrivalPanel extends JPanel {
 		date.setEditable(false);
 		
 		JLabel orderNumber = new JLabel("· 汽运编号: ");
-		if (user.getHallType().equals("中转中心"))  orderNumber.setText("· 中转单编号/汽运编号: ");
 		orderNumber.setFont(font);
 		orderNumber.setBounds(padding, padding*4+label_height*3, label_width, label_height);
 		
@@ -150,7 +150,7 @@ public class ArrivalPanel extends JPanel {
 		defaultModel.addRow(new CheckVO("入库单","0250001001","10.00","航空区A排A架A位"));
 		scrollPane.setVisible(false);
 		
-		JTextField order = new JTextField(7);
+		order = new JTextField(7);
 		order.setFont(font);
 		order.setOpaque(false);
 		order.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
@@ -167,6 +167,11 @@ public class ArrivalPanel extends JPanel {
 			
 		});
 			
+		if (user.getHallType().equals("中转中心"))  {
+			orderNumber.setText("· 中转单编号/汽运编号: ");
+			order.setBounds(padding+200, padding*4+label_height*3, label_width, label_height);	
+		}
+		
 		submit = new JButton();
 		submit.setFont(font);
 		submit.setBorder(null);

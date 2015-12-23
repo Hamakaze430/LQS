@@ -2,6 +2,9 @@ package presentation.Receiptsui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -30,6 +33,8 @@ public class DeliverPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	JButton submit;
 	JButton back;
+	JTextField name ;
+	JTextField id;
 	int padding =10;
 	int interval =150;
 	int label_width = 200;
@@ -38,13 +43,8 @@ public class DeliverPanel extends JPanel{
 	int button_height = 30;
 	private ReceiptsblService bl;
 	private UserblService user;
-<<<<<<< HEAD
 	int buttonNum;
-	public DeliverPanel(UserblService user,int buttonNum){
-=======
-	private int buttonNum;
 	public DeliverPanel(UserblService user, int buttonNum){
->>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 		this.user = user;
 		this.buttonNum=buttonNum;
 		bl = new Receiptsbl(user);
@@ -77,17 +77,37 @@ public class DeliverPanel extends JPanel{
 		idLabel.setFont(font);
 		idLabel.setBounds(padding, padding*2+label_height+50, label_width,label_height);	
 		
-		JTextField id = new JTextField(20);
+		id = new JTextField(20);
 		id.setFont(font);
 		id.setOpaque(false);
 		id.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		id.setBounds(padding+interval,padding*2+label_height+50, label_width,label_height);		
-		
+		id.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		JLabel nameLabel = new JLabel("· 派 送 员: ");
 		nameLabel.setFont(font);
 		nameLabel.setBounds(padding, padding*3+label_height*2+50, label_width,label_height);	
 		
-		JTextField name = new JTextField(20);
+		name = new JTextField(20);
 		name.setFont(font);
 		name.setOpaque(false);
 		name.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
@@ -132,10 +152,6 @@ public class DeliverPanel extends JPanel{
 		back.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(MouseEvent e) {
-<<<<<<< HEAD
-=======
-				// TODO Auto-generated method stub
->>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 				DeliverPanel.this.setVisible(false);
 				MainPanel.closeButton(buttonNum);
 			}
@@ -161,12 +177,8 @@ public class DeliverPanel extends JPanel{
 		this.add(dateLabel);
 		this.add(date);
 		this.add(submit);
-<<<<<<< HEAD
 		this.add(back);		
-=======
-		this.add(back);
 	
->>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 	}
 }
 

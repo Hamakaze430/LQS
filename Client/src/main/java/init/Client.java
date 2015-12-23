@@ -34,12 +34,10 @@ public class Client {
 			//00000001001低级财务人员
 			//00000001000高级财务人员
 			//01000010000中转中心仓库
+			//02500011000中转中心业务员
+			
 			frame = new MainFrame();
-<<<<<<< HEAD
-			UserblService bl = new Userbl("01000010000");
-=======
 			UserblService bl = new Userbl("00000000000");
->>>>>>> 6ffb88fc514f4c42c263398ee465b506d6f70f9f
 			MainPanel panel = new MainPanel(bl);
 			frame.add(panel);
 			

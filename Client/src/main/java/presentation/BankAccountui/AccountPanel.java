@@ -91,7 +91,7 @@ public class AccountPanel extends JPanel {
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+				new addAccount().setVisible(true);;
 			}
 
 			public void mousePressed(MouseEvent e) {
