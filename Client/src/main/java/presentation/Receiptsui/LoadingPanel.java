@@ -68,10 +68,8 @@ public class LoadingPanel extends JPanel{
 	JTextField id;
 	JComboBox province;
 	JComboBox place;
-
 	JButton back;
 	JButton submit;
-
 	JTextField car;
 	JTextField drivername;
 	JTextField spyname;

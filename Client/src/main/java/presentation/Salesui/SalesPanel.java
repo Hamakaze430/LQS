@@ -372,15 +372,18 @@ public class SalesPanel extends JPanel{
 					JOptionPane.showMessageDialog(null, "请先选择日期>_<","", 
 												JOptionPane.INFORMATION_MESSAGE);
 				}
+				
 //				startDate="2014-10-01";
 //				
 //				endDate=("2015-12-31");
 				
 				sales.setDate(startDate, endDate);
 				SalesVO vo=sales.show();
-//				if(defaultModel.){
-//					
-//				}
+				
+				while(defaultModel.getRowCount()!=0){
+					defaultModel.removeRow(0);
+				}
+				//System.out.println(defaultModel.getRowCount());
 				ArrayList<IncomeVO> incomeList=vo.getIncomeList();
 				Iterator<IncomeVO> iit=incomeList.iterator();
 				while(iit.hasNext()){
@@ -415,6 +418,10 @@ public class SalesPanel extends JPanel{
 			}
 		});
 		
+<<<<<<< HEAD
+=======
+		
+>>>>>>> cbe00da9c0dffa9b67dd64d9a93858b9dea56d6d
 	}
 
 	

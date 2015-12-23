@@ -21,6 +21,10 @@ import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.border.MatteBorder;
 
+<<<<<<< HEAD
+=======
+import presentation.Userui.ApartmentManagerPanel;
+>>>>>>> cbe00da9c0dffa9b67dd64d9a93858b9dea56d6d
 import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
 import vo.ReceiptVO;
@@ -54,7 +58,11 @@ public class ReceivePanel extends JPanel{
 	int button_height = 30;
 	private UserblService user;
 	private ReceiptsblService bl;
+<<<<<<< HEAD
 	int buttonNum;
+=======
+	private int buttonNum;
+>>>>>>> cbe00da9c0dffa9b67dd64d9a93858b9dea56d6d
 	public ReceivePanel(UserblService user,int buttonNum){
 		this.user = user;
 		this.buttonNum = buttonNum;
@@ -107,6 +115,10 @@ public class ReceivePanel extends JPanel{
 		nameLabel.setFont(font);
 		nameLabel.setBounds(padding,padding*3+50+label_height, label_width, label_height);	
 		
+<<<<<<< HEAD
+=======
+
+>>>>>>> cbe00da9c0dffa9b67dd64d9a93858b9dea56d6d
 		name = new JTextField(20);
 		name.setFont(new Font("黑体",Font.PLAIN,15));
 		name.setOpaque(false);
@@ -170,6 +182,10 @@ public class ReceivePanel extends JPanel{
 				PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
 			}			
 		});		
+<<<<<<< HEAD
+=======
+
+>>>>>>> cbe00da9c0dffa9b67dd64d9a93858b9dea56d6d
 		
 		submit.addActionListener(new SubmitListener());
 		

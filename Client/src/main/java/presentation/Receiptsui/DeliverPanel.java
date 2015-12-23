@@ -44,7 +44,11 @@ public class DeliverPanel extends JPanel{
 	private ReceiptsblService bl;
 	private UserblService user;
 	int buttonNum;
+<<<<<<< HEAD
 	public DeliverPanel(UserblService user, int buttonNum){
+=======
+	public DeliverPanel(UserblService user,int buttonNum){
+>>>>>>> cbe00da9c0dffa9b67dd64d9a93858b9dea56d6d
 		this.user = user;
 		this.buttonNum=buttonNum;
 		bl = new Receiptsbl(user);
@@ -177,8 +181,12 @@ public class DeliverPanel extends JPanel{
 		this.add(dateLabel);
 		this.add(date);
 		this.add(submit);
+<<<<<<< HEAD
 		this.add(back);		
 	
+=======
+		this.add(back);	
+>>>>>>> cbe00da9c0dffa9b67dd64d9a93858b9dea56d6d
 	}
 }
 

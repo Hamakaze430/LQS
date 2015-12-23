@@ -75,6 +75,7 @@ public class SendPanel extends JPanel{
 	JLabel text2;
 	JLabel text3;
 	JPanel info;
+<<<<<<< HEAD
 	JTextField sendername;
 	JTextField sendercomp;
 	JTextField sendertel;
@@ -82,6 +83,8 @@ public class SendPanel extends JPanel{
 	JTextField initNumber;
 	JTextField trueweight;
 	JTextField volume;
+=======
+>>>>>>> cbe00da9c0dffa9b67dd64d9a93858b9dea56d6d
 	public SendPanel(UserblService user, int buttonNum){
 		this.user=user;
 		bl = new Receiptsbl(user);
@@ -705,6 +708,10 @@ public class SendPanel extends JPanel{
 				PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
 			}			
 		});
+<<<<<<< HEAD
+=======
+		
+>>>>>>> cbe00da9c0dffa9b67dd64d9a93858b9dea56d6d
 		submit.addActionListener(new SubmitListener());
 		
 		back = new JButton();
