@@ -13,6 +13,7 @@ import data.CostBenefitdata.CostBenefitdataImpl;
 import data.LogisticsInfoSearchdata.LogisticsDataServiceImpl;
 import data.Receiptsdata.ReceiptsdataImpl;
 import data.Salesdata.SalesdataImpl;
+import data.Strategydata.SalarydataServiceImpl;
 import data.Userdata.ApartmentDataServiceImpl;
 import data.Userdata.AuthoritiesDataServiceImpl;
 import data.Userdata.UserdataImpl;
@@ -35,6 +36,7 @@ public class RMIHelper {
         NAMING_MAP.put("carAndDriverData-Server", CarAndDriverDataServiceImpl.class);
         NAMING_MAP.put("costBenefitData-Server", CostBenefitdataImpl.class);
         NAMING_MAP.put("salesData-Server", SalesdataImpl.class);
+        NAMING_MAP.put("salaryData-Server", SalarydataServiceImpl.class);
     }
 
     public synchronized static void init() throws ServerInitException {
