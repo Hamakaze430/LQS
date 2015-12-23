@@ -22,5 +22,6 @@ public interface ReceiptsblService {
 	public boolean findCarAndDriver(String type, String known);
 	public UserVO findUser(String userName);
 	public boolean findLogistics(String s);
-	public double getLoadingCost();	
+	public double getLoadingCost();
+	public boolean findAccount(String s);	
 }

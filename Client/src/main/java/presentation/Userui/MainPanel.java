@@ -838,7 +838,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.付款单)) {
-			JPanel payment = new PaymentPanel(user);
+			JPanel payment = new PaymentPanel(user,i);
 			cardPanel.add(payment, "19");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/payment_unselected.png");			

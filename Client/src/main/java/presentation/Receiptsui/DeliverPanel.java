@@ -7,12 +7,16 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
+import Miscellaneous.Job;
 import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
+import vo.UserVO;
+import vo.receipts.DeliverVO;
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
 import businessLogicService.UserblService.UserblService;
@@ -30,6 +34,8 @@ public class DeliverPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	JButton submit;
 	JButton back;
+	JTextField date,id,name;
+	JLabel title;
 	int padding =10;
 	int interval =150;
 	int label_width = 200;
@@ -53,7 +59,7 @@ public class DeliverPanel extends JPanel{
 	private void init() {
 		// TODO Auto-generated method stub
 		Font font = new Font("黑体",Font.PLAIN,16);
-		JLabel title = new JLabel(user.getHallName()+"派件单",JLabel.CENTER);
+		title = new JLabel(user.getHallName()+"派件单",JLabel.CENTER);
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 50);
 		
@@ -61,7 +67,7 @@ public class DeliverPanel extends JPanel{
 		dateLabel.setFont(font);
 		dateLabel.setBounds(padding,padding+50,label_width,label_height);		
 		
-		JTextField date = new JTextField(20);
+		date = new JTextField(20);
 		date.setFont(font);
 		date.setOpaque(false);
 		date.setBorder(null);
@@ -72,7 +78,7 @@ public class DeliverPanel extends JPanel{
 		idLabel.setFont(font);
 		idLabel.setBounds(padding, padding*2+label_height+50, label_width,label_height);	
 		
-		JTextField id = new JTextField(20);
+		id = new JTextField(20);
 		id.setFont(font);
 		id.setOpaque(false);
 		id.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
@@ -82,7 +88,7 @@ public class DeliverPanel extends JPanel{
 		nameLabel.setFont(font);
 		nameLabel.setBounds(padding, padding*3+label_height*2+50, label_width,label_height);	
 		
-		JTextField name = new JTextField(20);
+		name = new JTextField(20);
 		name.setFont(font);
 		name.setOpaque(false);
 		name.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
@@ -100,7 +106,42 @@ public class DeliverPanel extends JPanel{
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
+				String deliverer = name.getText();
+				if (deliverer.equals("")){
+					JOptionPane.showMessageDialog(null, "请输入派送员姓名！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				UserVO deli = bl.findUser(deliverer);
+				if (!deli.getHall().equals(user.getHallName())|! deli.getJob().equals(Job.快递员.name())){
+					JOptionPane.showMessageDialog(null, "本营业厅不存在对应的快递员！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				String s = id.getText();
+				try{
+					long id = Long.parseLong(s);
+				}catch(NumberFormatException e1){
+					//输入编号不是数字
+					JOptionPane.showMessageDialog(null, "请输入正确的快递单号！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+		 		if(! bl.findLogistics(s)){
+					//System.out.println("找不到");
+		 			
+					JOptionPane.showMessageDialog(null, "不存在快递单号为"+s+"的货物！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+		 		
+		 		int n = JOptionPane.showConfirmDialog(null, "确定提交?", "确认框",JOptionPane.YES_NO_OPTION);
+				if (n == 1) {
+					return;
+				}
 				
+		 		DeliverVO vo = new DeliverVO(title.getText(), user.getUserName(), date.getText(), name.getText(), id.getText());
+		 		bl.addReceipt(vo);
+		 		
+		 		date.setText(bl.getCurrentTime());
+		 		name.setText("");
+		 		id.setText("");
 			}
 
 			public void mousePressed(MouseEvent e) {}

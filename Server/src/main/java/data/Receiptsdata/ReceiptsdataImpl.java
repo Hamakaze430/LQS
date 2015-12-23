@@ -178,6 +178,7 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 		return false;
 	}
 
+	@SuppressWarnings({ "unchecked", "resource" })
 	private List<ReceiptPO> findAll() {
 		try {
 			FileInputStream fileIn = new FileInputStream("src/main/java/ser/receipts.ser");

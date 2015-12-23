@@ -13,7 +13,7 @@ public class IncomeVO extends ReceiptVO{
 	private String amount;
 	private List<String> orders;
 
-	IncomeVO(String name, String creator, String date, String amount, String deliverer, List<String> orders) {
+	public IncomeVO(String name, String creator, String date, String amount, String deliverer, List<String> orders) {
 		super( "收款单", name, creator, date);
 		//this.amount=amount;
 		this.amount=amount;

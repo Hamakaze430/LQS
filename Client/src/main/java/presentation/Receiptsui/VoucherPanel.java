@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -18,11 +20,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import Miscellaneous.Job;
 import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
 import vo.UserVO;
+import vo.receipts.IncomeVO;
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
 import businessLogicService.UserblService.UserblService;
@@ -41,6 +46,8 @@ public class VoucherPanel extends JPanel{
 	JButton submit;
 	JButton back;
 	double money_double = -1;
+	JLabel  title;
+	JTextField date;
 	JTextField money;
 	JTextField name;
 	JTextArea orders;
@@ -65,7 +72,7 @@ public class VoucherPanel extends JPanel{
 	private void init() {
 		// TODO Auto-generated method stub
 		Font font = new Font("黑体",Font.PLAIN,16);
-		JLabel title = new JLabel(user.getHallName()+"收款单",JLabel.CENTER);
+		title = new JLabel(user.getHallName()+"收款单",JLabel.CENTER);
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 50);
 		
@@ -73,7 +80,7 @@ public class VoucherPanel extends JPanel{
 		dateLabel.setFont(font);
 		dateLabel.setBounds(padding,padding+50,label_width,label_height);		
 		
-		JTextField date = new JTextField(20);
+		date = new JTextField(20);
 		date.setFont(font);
 		date.setOpaque(false);
 		date.setBorder(null);
@@ -90,6 +97,31 @@ public class VoucherPanel extends JPanel{
 		money.setOpaque(false);
 		money.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		money.setBounds(padding+interval,padding*2+label_height+50, label_width,label_height);
+		money.addFocusListener(new FocusListener(){
+
+			public void focusGained(FocusEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void focusLost(FocusEvent e) {
+				// TODO Auto-generated method stub
+				if (money.getText().equals("")) {money_double = -1; return;}
+				money_double = Double.parseDouble(money.getText());
+				money.setText(String.format("%.2f", money_double));
+			}
+			
+		});
+		money.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (money.getText().equals("")) {money_double = -1; return;}
+				money_double = Double.parseDouble(money.getText());
+				money.setText(String.format("%.2f", money_double));
+			}
+			
+		});
 		
 		JLabel nameLabel = new JLabel("· 收 款 员: ");
 		nameLabel.setFont(font);
@@ -213,18 +245,17 @@ public class VoucherPanel extends JPanel{
 
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			String Money = money.getText();
-			if (Money.equals("")){
+			
+			if (money.getText().equals("")){
 				JOptionPane.showMessageDialog(null, "请输入收款金额！","", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			
-			String Name = name.getText();
-			if (Name.equals("")){
+			if (name.getText().equals("")){
 				JOptionPane.showMessageDialog(null, "请输入收款员姓名！","", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-			UserVO vo = bl.findUser(Name);
+			UserVO vo = bl.findUser(name.getText());
 			if(vo == null ){
 				//System.out.println("找不到");
 				JOptionPane.showMessageDialog(null, "不存在对应的快递员！","", JOptionPane.ERROR_MESSAGE);
@@ -240,7 +271,7 @@ public class VoucherPanel extends JPanel{
 				JOptionPane.showMessageDialog(null, "请输入相应的快递单号！","", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
-		 	List<String> Order = new ArrayList<String>();
+		 	List<String> Orders = new ArrayList<String>();
 		 	String[] split = str.split("\n");
 		 	for (String s : split) {
 		 		try{
@@ -256,8 +287,27 @@ public class VoucherPanel extends JPanel{
 					JOptionPane.showMessageDialog(null, "不存在快递单号为"+s+"的货物！","", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-		 		Order.add(s);
+		 		Orders.add(s);
 		 	}
+		 	
+		 	int n = JOptionPane.showConfirmDialog(null, "确定提交?", "确认框",JOptionPane.YES_NO_OPTION);
+			if (n == 1) {
+				return;
+			}
+		 	/* IncomeVO(String name, 
+		 	 * String creator, 
+		 	 * String date, 
+		 	 * String amount, String deliverer, List<String> orders) {
+		 	 */
+		 	IncomeVO incomeVO = new IncomeVO(title.getText(),user.getUserName(),date.getText(),
+		 					money.getText(),name.getText(),Orders);
+		 	bl.addReceipt(incomeVO);
+		 	
+		 	date.setText(bl.getCurrentTime());
+		 	money.setText("");
+		 	money_double = -1;
+		 	name.setText("");
+		 	orders.setText("");
 		}
 		
 	}

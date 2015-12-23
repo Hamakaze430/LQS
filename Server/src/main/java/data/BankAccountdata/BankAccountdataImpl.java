@@ -22,25 +22,21 @@ public class BankAccountdataImpl extends UnicastRemoteObject implements BankAcco
 	}
 
 
-	@Override
 	public void income(String name, int num) throws RemoteException {
 		// TODO Auto-generated method stub
 		bankaccountDAO.income(name, num);
 	}
 
-	@Override
 	public void expend(String name, int num) throws RemoteException {
 		// TODO Auto-generated method stub
 		bankaccountDAO.expend(name, num);
 	}
 
-	@Override
 	public ResultMessage modifyName(String newName, String name) throws RemoteException {
 		// TODO Auto-generated method stub
 		return bankaccountDAO.modify(newName, name);
 	}
 
-	@Override
 	public void addAccount(String name) throws RemoteException {
 		// TODO Auto-generated method stub
 		
@@ -48,27 +44,23 @@ public class BankAccountdataImpl extends UnicastRemoteObject implements BankAcco
 		
 	}
 
-	@Override
 	public ResultMessage removeAccount(String name) throws RemoteException {
 		// TODO Auto-generated method stub		
 		return bankaccountDAO.remove(name);
 	}
 
-	@Override
 	public ArrayList<BankAccountPO> getAccount() throws RemoteException {
 		// TODO Auto-generated method stub
 		return bankaccountDAO.showAll();
 	}
 
 
-	@Override
 	public void flush() throws RemoteException {
 		// TODO Auto-generated method stub
 		bankaccountDAO.flush();
 	}
 
 
-	@Override
 	public ResultMessage insert(BankAccountPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		return bankaccountDAO.insert(po);

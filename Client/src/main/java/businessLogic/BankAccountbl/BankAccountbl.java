@@ -120,5 +120,10 @@ public class BankAccountbl implements BankAccountblService, BankAccountInfo{
 		
 		return null;
 	}
+
+	public BankAccountVO find(String accountId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

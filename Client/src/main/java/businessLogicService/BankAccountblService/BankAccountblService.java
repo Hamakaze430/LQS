@@ -14,5 +14,7 @@ public interface BankAccountblService {
 	public ResultMessage modifyBankAccount(String newName, String name);
 	
 	public ArrayList<BankAccountVO> showBankAccount(String subName);
+
+	public BankAccountVO find(String accountId);
 	
 }

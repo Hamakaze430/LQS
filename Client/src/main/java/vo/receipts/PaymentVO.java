@@ -13,7 +13,7 @@ public class PaymentVO extends ReceiptVO implements Serializable{
     String amount;
     String memo;
 	
-	PaymentVO(String name, String creator, String date, 
+	public PaymentVO(String name, String creator, String date, 
 			String account, String amount, String item, String memo) {
 		super( "付款单", name, creator, date);
 		//this.amount=amount;

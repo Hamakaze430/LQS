@@ -10,12 +10,14 @@ import java.util.List;
 import Miscellaneous.FormType;
 import Miscellaneous.ReceiptState;
 import businessLogic.Approvalbl.Approvalbl;
+import businessLogic.BankAccountbl.BankAccountbl;
 import businessLogic.CarAndDriverbl.CarAndDriverbl;
 import businessLogic.LogisticsInfoSearchbl.LogisticsInfoSearchbl;
 import businessLogic.Receiptsbl.MockTest.MockCarAndDriver;
 import businessLogic.Userbl.Apartmentbl;
 import businessLogic.Userbl.Userbl;
 import businessLogicService.ApprovalblService.ApprovalblService;
+import businessLogicService.BankAccountblService.BankAccountblService;
 import businessLogicService.CarAndDriverblService.CarAndDriverblService;
 import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
@@ -29,6 +31,7 @@ import po.ApprovalPO;
 import po.HallPO;
 import po.ReceiptPO;
 import po.receipts.LoadingPO;
+import vo.BankAccountVO;
 import vo.LogisticsVO;
 import vo.ReceiptVO;
 import vo.UserVO;
@@ -41,6 +44,7 @@ public class Receiptsbl implements ReceiptsblService {
 	private ApartmentblService apartment;
 	private ApprovalblService approval;
 	private LogisticsInfoSearchblService logistics;
+	private BankAccountblService account;
 	
 	public Receiptsbl(UserblService user){
 		this.user = user;
@@ -49,6 +53,7 @@ public class Receiptsbl implements ReceiptsblService {
 		approval = new Approvalbl();
 		logistics = new LogisticsInfoSearchbl();
 		dataFactory = Client.dataFactory;
+		account = new BankAccountbl();
 	}
 	
 	public List<String> getHallNameListByAddress(String string) {
@@ -127,8 +132,9 @@ public class Receiptsbl implements ReceiptsblService {
 	 * @return
 	 */
 	private boolean approvalInsert(ReceiptPO po){
-		ApprovalPO app = new ApprovalPO(po.getName(),po.getCreator(),ReceiptState.未审批,po.getReceiptId());
-		return approval.insert(app);
+		return false;
+//		ApprovalPO app = new ApprovalPO(po.getName(),po.getCreator(),ReceiptState.未审批,po.getReceiptId());
+//		return approval.insert(app);
 	}
 
 	public boolean findCarAndDriver(String type, String known) {
@@ -149,6 +155,12 @@ public class Receiptsbl implements ReceiptsblService {
 	public double getLoadingCost() {
 		// TODO Auto-generated method stub
 		return 20;
+	}
+
+	public boolean findAccount(String s) {
+		BankAccountVO vo = account.find(s);
+		if (vo == null) return false;
+		return true;
 	}
 
 
