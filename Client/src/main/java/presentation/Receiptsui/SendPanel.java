@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -16,6 +18,7 @@ import javax.swing.JTextArea;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -49,9 +52,17 @@ public class SendPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	JButton submit;
 	JButton back;
+	JTextField order;
+	JTextField receiveraddr;
+	JTextField receiverphone;
+	JTextField receivername;
+	JTextField senderaddr;
+	JTextField receivercomp;
+	JTextField receivertel;
+	JTextField senderphone;
+	JTextField goodstype;
 	private ReceiptsblService bl;
 	private UserblService user;
-	private int buttonNum;
 	int padding = 10;
 	int label_width = 200;
 	int label_height = 30;
@@ -64,6 +75,13 @@ public class SendPanel extends JPanel{
 	JLabel text2;
 	JLabel text3;
 	JPanel info;
+	JTextField sendername;
+	JTextField sendercomp;
+	JTextField sendertel;
+	private int buttonNum;
+	JTextField initNumber;
+	JTextField trueweight;
+	JTextField volume;
 	public SendPanel(UserblService user, int buttonNum){
 		this.user=user;
 		bl = new Receiptsbl(user);
@@ -109,35 +127,138 @@ public class SendPanel extends JPanel{
 		senderaddrLabel.setBounds(padding, padding*4+label_height*2, label_width, label_height);
 
 		
-		JTextField sendername = new JTextField(20);
+		sendername = new JTextField(20);
 		sendername.setFont(font);
 		sendername.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		sendername.setOpaque(false);
 		sendername.setBounds(padding+interval, padding*2, label_width, label_height);
-		
-		JTextField senderphone = new JTextField(20);
+		sendername.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		senderphone = new JTextField(20);
 		senderphone.setFont(font);
 		senderphone.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		senderphone.setOpaque(false);
 		senderphone.setBounds(padding+interval,  padding*3+label_height, label_width, label_height);
-		
-		JTextField sendercomp = new JTextField(20);
+		senderphone.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		sendercomp = new JTextField(20);
 		sendercomp.setFont(font);
 		sendercomp.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		sendercomp.setOpaque(false);
 		sendercomp.setBounds(padding*2+interval*2+label_width, padding*2, label_width, label_height);
+		sendercomp.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
-		JTextField sendertel = new JTextField(20);
+		sendertel = new JTextField(20);
 		sendertel.setFont(font);
 		sendertel.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		sendertel.setOpaque(false);
 		sendertel.setBounds(padding*2+interval*2+label_width, padding*3+label_height, label_width, label_height);
+		sendertel.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
 			
-		JTextField senderaddr = new JTextField(20);
+		});
+		
+		senderaddr = new JTextField(20);
 		senderaddr.setFont(font);
 		senderaddr.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		senderaddr.setOpaque(false);
 		senderaddr.setBounds(padding+interval, padding*4+label_height*2, label_width*3, label_height);	
+		senderaddr.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		JLabel receivernameLabel = new JLabel("· 收件人姓名：");
 		receivernameLabel.setFont(font);
@@ -154,7 +275,6 @@ public class SendPanel extends JPanel{
 		
 		JLabel receivertelLabel = new JLabel("· 收件人固话：");
 		receivertelLabel.setFont(font);
-
 		receivertelLabel.setBounds(padding*2+interval+label_width, padding*3+label_height, label_width, label_height);
 				
 		JLabel receiveraddrLabel = new JLabel("· 收件人住址：");
@@ -162,36 +282,141 @@ public class SendPanel extends JPanel{
 		receiveraddrLabel.setBounds(padding, padding*4+label_height*2, label_width, label_height);
 
 		
-		JTextField receivername = new JTextField(20);
+		receivername = new JTextField(20);
 		receivername.setFont(font);
 		receivername.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		receivername.setOpaque(false);
 		receivername.setBounds(padding+interval, padding*2, label_width, label_height);
+		receivername.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
-		JTextField receiverphone = new JTextField(20);
+		receiverphone = new JTextField(20);
 		receiverphone.setFont(font);
 		receiverphone.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		receiverphone.setOpaque(false);
 		receiverphone.setBounds(padding+interval,  padding*3+label_height, label_width, label_height);
+		receiverphone.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
-		JTextField receivercomp = new JTextField(20);
+		receivercomp = new JTextField(20);
 		receivercomp.setFont(font);
 		receivercomp.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		receivercomp.setOpaque(false);
 		receivercomp.setBounds(padding*2+interval*2+label_width, padding*2, label_width, label_height);
+		receivercomp.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
-		JTextField receivertel = new JTextField(20);
+		receivertel = new JTextField(20);
 		receivertel.setFont(font);
 		receivertel.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		receivertel.setOpaque(false);
 		receivertel.setBounds(padding*2+interval*2+label_width, padding*3+label_height, label_width, label_height);
+		receivertel.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
 			
-		JTextField receiveraddr = new JTextField(20);
+		});
+		
+		receiveraddr = new JTextField(20);
 		receiveraddr.setFont(font);
 		receiveraddr.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		receiveraddr.setOpaque(false);
 		receiveraddr.setBounds(padding+interval, padding*4+label_height*2, label_width*3, label_height);
+		receiveraddr.addKeyListener(new KeyListener(){
 
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 		text2= new JLabel();
 		TitledBorder tb2 = BorderFactory.createTitledBorder("收件人信息");
 		tb2.setTitleJustification(TitledBorder.LEFT);
@@ -245,29 +470,113 @@ public class SendPanel extends JPanel{
 		orderLabel.setFont(font);
 		orderLabel.setBounds(padding, padding*9+label_height*8, label_width, label_height);
 		
-		JTextField initNumber = new JTextField(20);
+		initNumber = new JTextField(20);
 		initNumber.setFont(font);
 		initNumber.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		initNumber.setOpaque(false);
 		initNumber.setBounds(padding*2+interval, padding*2, label_width, label_height);
+		initNumber.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
-		JTextField trueweight = new JTextField(20);
+		trueweight = new JTextField(20);
 		trueweight.setFont(font);
 		trueweight.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		trueweight.setOpaque(false);
 		trueweight.setBounds(padding*2+interval, padding*3+label_height*1, label_width, label_height);
+		trueweight.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
-		JTextField volume = new JTextField(20);
+		volume = new JTextField(20);
 		volume.setFont(font);
 		volume.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		volume.setOpaque(false);
 		volume.setBounds(padding*2+interval,  padding*4+label_height*2, label_width, label_height);
+		volume.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
-		JTextField goodstype = new JTextField(20);
+		goodstype = new JTextField(20);
 		goodstype.setFont(font);
 		goodstype.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		goodstype.setOpaque(false);
 		goodstype.setBounds(padding*2+interval, padding*5+label_height*3, label_width, label_height);
+		goodstype.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		ButtonGroup g = new ButtonGroup();
 		
@@ -303,7 +612,7 @@ public class SendPanel extends JPanel{
 		//allcost.setText(t);
 		allcost.setEditable(false);
 		
-		JTextField order = new JTextField(20);
+		order = new JTextField(20);
 		order.setFont(font);
 		order.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		order.setOpaque(false);

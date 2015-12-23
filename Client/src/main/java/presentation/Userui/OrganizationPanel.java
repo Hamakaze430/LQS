@@ -15,7 +15,7 @@ import javax.swing.border.MatteBorder;
 import presentation.mainui.PictureButton;
 /**
  * 人员机构界面
- * 待完善
+ * 
  *
  */
 public class OrganizationPanel extends JPanel {
@@ -216,7 +216,8 @@ public class OrganizationPanel extends JPanel {
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+				OrganizationPanel.this.setVisible(false);
+				MainPanel.closeButton(buttonNum);
 			}
 
 			public void mousePressed(MouseEvent e) {

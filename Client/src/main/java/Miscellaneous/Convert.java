@@ -241,14 +241,15 @@ public static OrderVO po_to_vo_order(OrderPO po){
 	
 	public static PaymentPO vo_to_po_Payment(PaymentVO vo){
 		
-		return new PaymentPO(vo.getCreator(), vo.getDate(),vo.getName(),vo.getStatus(), null);
-		
+//		return new PaymentPO(vo.getCreator(), vo.getDate(),vo.getName(),vo.getStatus(), null);
+		return null;
 	}
 	
 	
 	public static PaymentVO po_to_vo_Payment(PaymentPO po){
 		
-		return new PaymentVO(po.getAmount(), null, null, null, null);
+//		return new PaymentVO(po.getAmount(), null, null, null, null);
+		return null;
 		
 	}
 	

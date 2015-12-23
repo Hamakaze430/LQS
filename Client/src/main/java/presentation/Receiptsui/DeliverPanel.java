@@ -2,6 +2,9 @@ package presentation.Receiptsui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -34,8 +37,10 @@ public class DeliverPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	JButton submit;
 	JButton back;
-	JTextField date,id,name;
+	JTextField date;
 	JLabel title;
+	JTextField name ;
+	JTextField id;
 	int padding =10;
 	int interval =150;
 	int label_width = 200;
@@ -45,7 +50,7 @@ public class DeliverPanel extends JPanel{
 	private ReceiptsblService bl;
 	private UserblService user;
 	int buttonNum;
-	public DeliverPanel(UserblService user,int buttonNum){
+	public DeliverPanel(UserblService user, int buttonNum){
 		this.user = user;
 		this.buttonNum=buttonNum;
 		bl = new Receiptsbl(user);
@@ -83,7 +88,27 @@ public class DeliverPanel extends JPanel{
 		id.setOpaque(false);
 		id.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		id.setBounds(padding+interval,padding*2+label_height+50, label_width,label_height);		
-		
+		id.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		JLabel nameLabel = new JLabel("· 派 送 员: ");
 		nameLabel.setFont(font);
 		nameLabel.setBounds(padding, padding*3+label_height*2+50, label_width,label_height);	
@@ -193,7 +218,7 @@ public class DeliverPanel extends JPanel{
 		this.add(dateLabel);
 		this.add(date);
 		this.add(submit);
-		this.add(back);	
+		this.add(back);		
 	}
 }
 

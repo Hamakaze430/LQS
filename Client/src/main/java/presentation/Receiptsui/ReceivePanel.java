@@ -3,9 +3,12 @@ package presentation.Receiptsui;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.KeyboardFocusManager;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -45,7 +48,7 @@ public class ReceivePanel extends JPanel{
 	JTextField name;
 	JLabel date;
 	int padding =10;
-	int interval = 120;
+	int interval = 140;
 	int label_width = 200;
 	int label_height = 30;;
 	int button_width = 70;
@@ -79,17 +82,58 @@ public class ReceivePanel extends JPanel{
 		id.setOpaque(false);
 		id.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		id.setBounds(padding+interval, padding*2+50, label_width, label_height);
+		id.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		JLabel nameLabel = new JLabel("· 收件人姓名: ");
 		nameLabel.setFont(font);
 		nameLabel.setBounds(padding,padding*3+50+label_height, label_width, label_height);	
 		
-
 		name = new JTextField(20);
 		name.setFont(new Font("黑体",Font.PLAIN,15));
 		name.setOpaque(false);
 		name.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		name.setBounds(padding+interval,padding*3+50+label_height, label_width, label_height);
+		name.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		JLabel dateLabel = new JLabel("· 收件日期: ");
 		dateLabel.setFont(font);
@@ -127,7 +171,6 @@ public class ReceivePanel extends JPanel{
 				PictureButton.setIcon("src/main/java/image/submitButton_unclicked.png",submit);
 			}			
 		});		
-
 		
 		submit.addActionListener(new SubmitListener());
 		

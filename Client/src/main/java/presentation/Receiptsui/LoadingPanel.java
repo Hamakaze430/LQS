@@ -2,10 +2,13 @@ package presentation.Receiptsui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.text.DateFormat;
@@ -113,7 +116,27 @@ public class LoadingPanel extends JPanel{
 		date.setBounds(padding+labelWidth, padding*2+label_height, label_width, label_height);
 		date.setText(bl.getCurrentTime());
 		date.setEditable(false);
-		
+		date.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		JLabel hallIdLabel = new JLabel("· "+user.getHallType()+"编号: ");
 		hallIdLabel.setFont(font);
 		hallIdLabel.setBounds(padding, padding*3+label_height*2, label_width, label_height);
@@ -125,6 +148,27 @@ public class LoadingPanel extends JPanel{
 		hallId.setBounds(padding+labelWidth, padding*3+label_height*2, label_width, label_height);
 		hallId.setText(bl.getHallId());
 		hallId.setEditable(false);
+		hallId.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		JLabel idLabel = new JLabel("· 汽运编号: ");
 		idLabel.setFont(font);
@@ -141,6 +185,27 @@ public class LoadingPanel extends JPanel{
 		);
 		id.setText(id.getText()+bl.getLastId(id.getText()));
 		id.setEditable(false);
+		id.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		JLabel destination = new JLabel("· 到 达 地：");
 		destination.setFont(font);
@@ -171,6 +236,27 @@ public class LoadingPanel extends JPanel{
 		car.setOpaque(false);
 		car.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		car.setBounds(padding+labelWidth, padding*6+label_height*5, label_width, label_height);
+		car.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		WarnLabel carWarn = new WarnLabel("车辆代号不存在"); 
 		carWarn.setBounds(padding+2*labelWidth, padding*6+label_height*5, label_width, label_height);
@@ -184,6 +270,27 @@ public class LoadingPanel extends JPanel{
 		drivername.setOpaque(false);
 		drivername.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		drivername.setBounds(padding+labelWidth, padding*7+label_height*6, label_width, label_height);
+		drivername.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		JLabel spy = new JLabel("· 监 装 员：");
 		spy.setFont(font);
@@ -194,6 +301,27 @@ public class LoadingPanel extends JPanel{
 		spyname.setOpaque(false);
 		spyname.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		spyname.setBounds(padding+labelWidth, padding*8+label_height*7, label_width, label_height);
+		spyname.addKeyListener(new KeyListener(){
+
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+				if(e.getKeyCode()==KeyEvent.VK_ENTER){
+					e.consume();
+					 KeyboardFocusManager.getCurrentKeyboardFocusManager().focusNextComponent();
+				}
+			}
+
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 		
 		JLabel order = new JLabel("· 订单条形码号：");
 		order.setFont(font);
@@ -218,7 +346,7 @@ public class LoadingPanel extends JPanel{
 		
 		cost = new JTextField();
 		cost.setFont(font);
-		cost.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
+		cost.setBorder(null);
 		cost.setBounds(padding+labelWidth, padding*10+label_height*12, label_width, label_height);
 		cost.setOpaque(false);
 		cost_double = bl.getLoadingCost();

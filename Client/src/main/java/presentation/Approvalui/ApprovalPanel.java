@@ -12,12 +12,14 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 
 import presentation.Userui.ApartmentManagerPanel;
@@ -55,12 +57,14 @@ public class ApprovalPanel extends JPanel {
 		// TODO Auto-generated method stub
 		Font font = new Font("黑体",Font.PLAIN,16);
 		Vector<String> name = new Vector<String>();
-		//name.add("全选");
+		name.add("全选");
 		name.add("单据类型");
 		name.add("单据编号");
 		name.add("提交部门");
 		name.add("单据状态");
 		Vector<ApprovalVO> data = new Vector<ApprovalVO>();		
+		
+//		Object[] a = {}
 		defaultModel = new DefaultTableModel(data,name);	
 		
 		table = new JTable(defaultModel){		
@@ -78,6 +82,7 @@ public class ApprovalPanel extends JPanel {
 		table.getTableHeader().setReorderingAllowed(false);
 		table.setOpaque(false);
 		table.setRowSorter(new TableRowSorter<DefaultTableModel>(defaultModel));  
+		setUpSelectedColumn(table, table.getColumnModel().getColumn(0));
 		DefaultTableCellRenderer r = new DefaultTableCellRenderer();  
 	    r.setHorizontalAlignment(JLabel.CENTER); 
 	    table.setDefaultRenderer(Object.class, r);
@@ -168,4 +173,17 @@ public class ApprovalPanel extends JPanel {
 		this.add(back);
 		this.add(pass);
 	}
+	
+	public void setUpSelectedColumn(JTable table, TableColumn selectedColumn) {
+        // Set up the editor for the sport cells.
+        JCheckBox box = new JCheckBox();
+        selectedColumn.setCellEditor(new DefaultCellEditor(box));
+        DefaultTableCellRenderer renderer =  new DefaultTableCellRenderer(){
+        	public void setValue(Object value){
+        		
+        	}
+        };
+//        renderer.setHorizontalAlignment(JLabel.CENTER); 
+//        passwordColumn.setCellRenderer(renderer);
+    }
 }

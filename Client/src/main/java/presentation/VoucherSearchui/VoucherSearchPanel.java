@@ -158,42 +158,42 @@ public class VoucherSearchPanel extends JPanel {
 		cost.setFont(font);
 		cost.setBounds(10, 480, 100, 40);
 		
-		confirm = new JButton();
-		confirm.setFont(font);
-		confirm.setBorder(null);
-		confirm.setOpaque(false);
-		confirm.setFocusPainted(false);
-		confirm.setContentAreaFilled(false);
-		confirm.setBounds(740, 510, 70, 30);
-		PictureButton.setIcon("src/main/java/image/confirmButton_unclicked.png",confirm);
-		confirm.addMouseListener(new MouseListener(){
-
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				PictureButton.setIcon("src/main/java/image/confirmButton_clicked.png",confirm);
-			}
-
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				PictureButton.setIcon("src/main/java/image/confirmButton_unclicked.png",confirm);
-			}
-			
-		});
+//		confirm = new JButton();
+//		confirm.setFont(font);
+//		confirm.setBorder(null);
+//		confirm.setOpaque(false);
+//		confirm.setFocusPainted(false);
+//		confirm.setContentAreaFilled(false);
+//		confirm.setBounds(740, 510, 70, 30);
+//		PictureButton.setIcon("src/main/java/image/confirmButton_unclicked.png",confirm);
+//		confirm.addMouseListener(new MouseListener(){
+//
+//			public void mouseClicked(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//
+//			public void mousePressed(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//
+//			public void mouseReleased(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//
+//			public void mouseEntered(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//				PictureButton.setIcon("src/main/java/image/confirmButton_clicked.png",confirm);
+//			}
+//
+//			public void mouseExited(MouseEvent e) {
+//				// TODO Auto-generated method stub
+//				PictureButton.setIcon("src/main/java/image/confirmButton_unclicked.png",confirm);
+//			}
+//			
+//		});
 		
 		
 		back = new JButton();
@@ -239,7 +239,7 @@ public class VoucherSearchPanel extends JPanel {
 		bg.add(j2);
 		this.add(j2);
 		this.add(cost);
-		this.add(confirm);
+//		this.add(confirm);
 		this.add(back);
 		this.add(l2);
 		this.add(year);
