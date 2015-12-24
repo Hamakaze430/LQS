@@ -55,4 +55,8 @@ public class ReceiptPO implements Serializable{
 	public long getReceiptId(){
 		return receiptId;
 	}
+	
+	public String getAmount(){
+		return null;
+	}
 }

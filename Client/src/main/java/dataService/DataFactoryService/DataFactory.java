@@ -23,6 +23,7 @@ public class DataFactory implements DataFactoryService {
 	private static UserdataService userData;
 	private static ReceiptsdataService receiptsData;
 	private static CarAndDriverdataService carAndDriver;
+	private static ApprovaldataService approvalData;
 
 	private static CostBenefitdataService costBenefitData;
 	private static SalesdataService salesData;
@@ -38,8 +39,8 @@ public class DataFactory implements DataFactoryService {
 	}
 
 	public ApprovaldataService getApprovaldataService() {
-		// TODO Auto-generated method stub
-		return null;
+		approvalData = RMIHelper.getApprovalData();
+		return approvalData;
 	}
 
 	public BankAccountdataService getBankAccountdataService() {

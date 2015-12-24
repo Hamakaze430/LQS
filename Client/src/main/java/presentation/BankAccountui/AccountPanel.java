@@ -72,7 +72,6 @@ public class AccountPanel extends JPanel {
 		scrollPane.setOpaque(false);
 		
 		
-		defaultModel.addRow(new BankAccountVO("12345678","鼓楼快递公司账户1","10000"));
 		newaccount = new JButton();		
 		delete = new JButton();
 		back = new JButton();

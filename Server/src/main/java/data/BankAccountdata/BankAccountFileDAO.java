@@ -16,19 +16,15 @@ public class BankAccountFileDAO extends CommonData<BankAccountPO> implements Ban
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public void add(BankAccountPO po) {
 		// TODO Auto-generated method stub
 		insert(po);
 	}
 
-	@Override
 	public ResultMessage remove(String name) {
 		// TODO Auto-generated method stub
 		return delete(name);
 	}
-
-	@Override
 	public ResultMessage modify(String newname, String name) {
 		// TODO Auto-generated method stub
 		BankAccountPO po = this.find(name);
@@ -42,7 +38,6 @@ public class BankAccountFileDAO extends CommonData<BankAccountPO> implements Ban
 		return result;
 	}
 
-	@Override
 	public void income(String name, int num) {
 		// TODO Auto-generated method stub
 		BankAccountPO po = find(name);
@@ -50,7 +45,6 @@ public class BankAccountFileDAO extends CommonData<BankAccountPO> implements Ban
 		update(name,po);
 	}
 
-	@Override
 	public void expend(String name, int num) {
 		// TODO Auto-generated method stub
 		BankAccountPO po = find(name);

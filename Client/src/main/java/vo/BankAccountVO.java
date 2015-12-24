@@ -27,9 +27,14 @@ public class BankAccountVO extends Vector<String>{
 	}
 	
 	public String getAccount(){
-		return get(0);
+		return account;
 	}
 
+	public BankAccountVO(String account, String name,double money){
+		this.account = account;
+		this.name=name;
+		this.money=money;
+	}
 	public BankAccountVO(String name,double money){
 		this.name=name;
 		this.money=money;

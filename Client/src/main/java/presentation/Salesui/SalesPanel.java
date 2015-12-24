@@ -83,17 +83,14 @@ public class SalesPanel extends JPanel{
 		end.setFont(font);
 		end.setBounds(30, 60, 200, 40);
 		
-		day1.addItem("请选择日期");
-		for(int i = 1;i<=28;i++){
-			day1.addItem(i+"");
-		}		
+		day1.addItem("请选择日期");	
 		day1.setSelectedItem("请选择日期");
 		day1.setBounds(465, 28, 120, 24);
 		day1.setFont(font);
 		
 		year1.addItem("请选择年份");
 		Calendar c = Calendar.getInstance();
-		for(int i = 1960;i<=c.get(Calendar.YEAR);i++){
+		for(int i = 2000;i<=c.get(Calendar.YEAR);i++){
 			year1.addItem(i+"");
 		}
 		year1.setSelectedItem("请选择年份");
@@ -110,6 +107,13 @@ public class SalesPanel extends JPanel{
 		month1.setFont(font);
 		month1.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
+				
+				day1.removeAllItems();
+				day1.addItem("请选择日期");
+				if (month1.getSelectedIndex() == 0) return;
+				for(int i = 1;i<=28;i++){
+					day1.addItem(i+"");
+				}
 				if (month1.getSelectedItem().equals("1")||month1.getSelectedItem().equals("3")||
 						month1.getSelectedItem().equals("5")||month1.getSelectedItem().equals("7")
 								||month1.getSelectedItem().equals("8")||month1.getSelectedItem().equals("10")
@@ -130,17 +134,14 @@ public class SalesPanel extends JPanel{
 			}	
 		});
 	
-		day2.addItem("请选择日期");
-		for(int i = 1;i<=28;i++){
-			day2.addItem(i+"");
-		}		
+		day2.addItem("请选择日期");		
 		day2.setSelectedItem("请选择日期");
 		day2.setBounds(465, 68, 120, 24);
 		day2.setFont(font);
 		
 		year2.addItem("请选择年份");
 		
-		for(int i = 1960;i<=c.get(Calendar.YEAR);i++){
+		for(int i = 2000;i<=c.get(Calendar.YEAR);i++){
 			year2.addItem(i+"");
 		}
 		year2.setSelectedItem("请选择年份");
@@ -157,6 +158,12 @@ public class SalesPanel extends JPanel{
 		month2.setFont(font);
 		month2.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
+				day2.removeAllItems();
+				day2.addItem("请选择日期");
+				if (month2.getSelectedIndex() == 0) return;
+				for(int i = 1;i<=28;i++){
+					day2.addItem(i+"");
+				}
 				if (month2.getSelectedItem().equals("1")||month2.getSelectedItem().equals("3")||
 						month2.getSelectedItem().equals("5")||month2.getSelectedItem().equals("7")
 								||month2.getSelectedItem().equals("8")||month2.getSelectedItem().equals("10")
@@ -352,37 +359,40 @@ public class SalesPanel extends JPanel{
 		 * */
 		confirm.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent args0){
-				if(year1.getSelectedIndex()!=0&&month1.getSelectedIndex()!=0&&
-						day1.getSelectedIndex()!=0&&year2.getSelectedIndex()!=0
-						&&month2.getSelectedIndex()!=0&&day2.getSelectedIndex()!=0){
-					int y1=year1.getSelectedIndex();
-					int m1=month1.getSelectedIndex();
-					int d1=day1.getSelectedIndex();
-					int y2=year2.getSelectedIndex();
-					int m2=month2.getSelectedIndex();
-					int d2=day2.getSelectedIndex();
-					startDate=year1.getSelectedItem()+"-"
-							+month1.getSelectedItem()+"-"
-							+day1.getSelectedItem();
-					endDate=year2.getSelectedItem()+"-"
-							+month2.getSelectedItem()+"-"
-							+day2.getSelectedItem();
-				}
-				else{
-					JOptionPane.showMessageDialog(null, "请先选择日期>_<","", 
-												JOptionPane.INFORMATION_MESSAGE);
-				}
+//				if(year1.getSelectedIndex()!=0&&month1.getSelectedIndex()!=0&&
+//						day1.getSelectedIndex()!=0&&year2.getSelectedIndex()!=0
+//						&&month2.getSelectedIndex()!=0&&day2.getSelectedIndex()!=0){
+//					int y1=year1.getSelectedIndex();
+//					int m1=month1.getSelectedIndex();
+//					int d1=day1.getSelectedIndex();
+//					int y2=year2.getSelectedIndex();
+//					int m2=month2.getSelectedIndex();
+//					int d2=day2.getSelectedIndex();
+//					startDate=year1.getSelectedItem()+"-"
+//							+month1.getSelectedItem()+"-"
+//							+day1.getSelectedItem();
+//					endDate=year2.getSelectedItem()+"-"
+//							+month2.getSelectedItem()+"-"
+//							+day2.getSelectedItem();
+//				}
+//				else{
+//					JOptionPane.showMessageDialog(null, "请先选择日期>_<","", 
+//												JOptionPane.INFORMATION_MESSAGE);
+//					return;
+//				}
 				
-//				startDate="2014-10-01";
-//				
-//				endDate=("2015-12-31");
+				startDate="2014-10-01";
+				
+				endDate=("2015-12-31");
 				
 				sales.setDate(startDate, endDate);
 				SalesVO vo=sales.show();
 				
-				while(defaultModel.getRowCount()!=0){
-					defaultModel.removeRow(0);
-				}
+				defaultModel.setRowCount(0);
+				
+//				while(defaultModel.getRowCount()!=0){
+//					defaultModel.removeRow(0);
+//				}
 				//System.out.println(defaultModel.getRowCount());
 				ArrayList<IncomeVO> incomeList=vo.getIncomeList();
 				Iterator<IncomeVO> iit=incomeList.iterator();

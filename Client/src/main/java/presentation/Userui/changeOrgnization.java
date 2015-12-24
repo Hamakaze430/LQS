@@ -92,7 +92,7 @@ public class changeOrgnization extends JDialog {
 			nowLabel.setFont(font);
 			nowLabel.setBounds(padding, padding*4+label_height*3, label_width, label_height);
 			
-			JComboBox<String> now = new JComboBox<String>();
+			JComboBox now = new JComboBox();
 			now.setFont(font);
 			now.setBounds(padding+interval,padding*4+label_height*3,label_width,label_height);
 			now.addItem("请选择部门");

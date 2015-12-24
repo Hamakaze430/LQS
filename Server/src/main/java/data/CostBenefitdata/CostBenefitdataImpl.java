@@ -30,6 +30,16 @@ public class CostBenefitdataImpl extends UnicastRemoteObject implements CostBene
 //		Test test=new Test();
 //		test.saveMockReceipts();
 	}
+	
+//	public static void main(String[] args ) throws RemoteException{
+//		CostBenefitdataImpl a = new CostBenefitdataImpl();
+//		CostBenefitPO po = new CostBenefitPO();
+//		po.setTotalIncome(1456.56);
+//		po.setTotalPayment(2564.65);
+//		po.setTotalProfit(1456456.546);
+//		
+//		System.out.println(a.getReport(po));
+//	}
 
 	/**
 	 * 

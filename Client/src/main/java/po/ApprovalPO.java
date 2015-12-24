@@ -10,22 +10,22 @@ import Miscellaneous.ReceiptState;
 public class ApprovalPO implements Serializable {
 	public long hashId;
 	public String name;
-	public String creater;
+	public String date;
 	public ReceiptState status;
 	
 	
-	public ApprovalPO(String name,String creater, ReceiptState status, long hashId){
+	public ApprovalPO(String name,String date, ReceiptState status, long hashId){
 		this.name=name;
 		this.status = status;
-		this.creater=creater;
+		this.date=date;
 		this.hashId = hashId;
 	}
 	
 	public String getName(){
 		return name;
 	}
-	public String getCreater(){
-		return creater;
+	public String getDate(){
+		return date;
 	}
 	public ReceiptState getStatus(){
 		return status;

@@ -80,29 +80,21 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 	}
 
 	public ArrayList<ReceiptPO> getReceiptBeforeDate(String date) throws RemoteException {
+		List<ReceiptPO> all = findAll();
 		ArrayList<ReceiptPO> list=new ArrayList<ReceiptPO>();
 		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
-		ReceiptPO temp;
+		Date comp;
 		Date tmpDate;
-		try {
-			Date comp=df.parse(date);
-			try {
-				ObjectInputStream in=new ObjectInputStream(
-						new FileInputStream("src/main/java/ser/receipts.ser"));
-				while((temp=(ReceiptPO)in.readObject())!=null){
-					tmpDate=df.parse(temp.getCreateDate());
-					if(tmpDate.before(comp)||tmpDate.equals(comp)){
-						list.add(temp);
+		try{
+			comp = df.parse(date);
+			for (ReceiptPO temp : all){
+				tmpDate=df.parse(temp.getCreateDate());
+				if(tmpDate.before(comp)||tmpDate.equals(comp)){
+							list.add(temp);
 					}
-				}
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			}
+			}	
 		} catch (ParseException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -118,7 +110,7 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 		}
 		return list;
 	}
-	
+
 	public ArrayList<IncomePO> getIncomeBeforeDate(String date) throws RemoteException{
 		ArrayList<IncomePO> list=new ArrayList<IncomePO>();
 		ArrayList<ReceiptPO> receipts=this.getReceiptBeforeDate(date);
@@ -136,32 +128,31 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 	}
 	
 	public ArrayList<ReceiptPO> getforSales(String start, String end) throws RemoteException{
+		List<ReceiptPO> all = findAll();
 		ArrayList<ReceiptPO> list=new ArrayList<ReceiptPO>();
 		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
-		ReceiptPO temp;
-		try {
-			Date d1=df.parse(start);
-			Date d2=df.parse(end);
-			ObjectInputStream in=new ObjectInputStream(
-					new FileInputStream("src/main/java/ser/receipts.ser"));
-			while((temp=(ReceiptPO)in.readObject())!=null){
-				Date tmpDate=df.parse(temp.getCreateDate());
-				if(tmpDate.after(d1)&&tmpDate.before(d2)){
-					list.add(temp);
+		ReceiptPO temp;			
+		try{
+			Date Start = df.parse(start);
+			Date End = df.parse(end);
+			for(ReceiptPO po : all){
+
+				if ((po.getType().equals(FormType.收款单.name()))||(po.getType().equals(FormType.付款单.name()))){
+
+					Date a = df.parse(po.getCreateDate());
+					if (a.after(Start)&&a.before(End)){
+						list.add(po);
+					}
 				}
 			}
+				
 		} catch (ParseException e) {
-			e.printStackTrace();
-		} catch (FileNotFoundException e){
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
+		
+		
 	}
 
 	public boolean insert(ReceiptPO po) throws RemoteException {

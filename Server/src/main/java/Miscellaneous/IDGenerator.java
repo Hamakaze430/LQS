@@ -4,13 +4,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 
-import businessLogic.Userbl.UserManagerbl;
-import businessLogic.Userbl.Userbl;
-import businessLogicService.UserblService.UserManagerblService;
-import businessLogicService.UserblService.UserblService;
 import po.HallPO;
 import po.UserPO;
-import vo.HallVO;
 
 public class IDGenerator {
 	/*
@@ -63,9 +58,6 @@ public class IDGenerator {
 		 * */
 		UserManagerblService bl = new UserManagerbl();
 		id+=String.format("%03d", bl.getCount(id));
-					
-		
-		
 		return id;
 	}	
 }

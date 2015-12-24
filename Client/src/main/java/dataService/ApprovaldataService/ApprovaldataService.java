@@ -1,7 +1,16 @@
 package dataService.ApprovaldataService;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
+import java.util.List;
+
+import po.ApprovalPO;
 
 public interface ApprovaldataService extends Remote{
+
+	boolean insert(ApprovalPO po);
+	public List<ApprovalPO> findAll();
+	public boolean delete(List<ApprovalPO> poList);
+	public boolean delete(ApprovalPO po);
 
 }
