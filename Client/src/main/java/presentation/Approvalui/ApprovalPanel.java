@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -15,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
@@ -58,6 +60,7 @@ public class ApprovalPanel extends JPanel {
 	int columnEditable = -1;
 	int padding =10;
 	private ApprovalblService bl;
+	private List<ApprovalVO>  list;
 	public ApprovalPanel (int buttonNum){
 		bl = new Approvalbl();
 		this.buttonNum=buttonNum;
@@ -115,9 +118,6 @@ public class ApprovalPanel extends JPanel {
 	    table.getColumnModel().getColumn(0).setWidth(10);
 	    
 	    initTable();
-	    dm.addRow(new Object[]{false, "fsd","gre","gsvd","fesgh"});
-	    
-	    System.out.println();
 	    
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(padding, padding, 884, 480);
@@ -138,7 +138,35 @@ public class ApprovalPanel extends JPanel {
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
+				List<Integer> indexs = new ArrayList<Integer>();
+				for (int i =0; i < dm.getRowCount(); i++){
+					if (table.getValueAt(i, 0).equals(true)) {
+						int temp = table.convertRowIndexToModel(i);
+						indexs.add(temp);
+					}
+				}
 				
+				int index = table.convertRowIndexToModel(table.getSelectedRow());
+				if(index == -1&&indexs.size()==0){
+					JOptionPane.showMessageDialog(null, "请选中某一单据！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				
+				int n = JOptionPane.showConfirmDialog(null, "确定通过?", "确认框",JOptionPane.YES_NO_OPTION);
+				//System.out.println(index);
+				if (n == 1) return;
+				if (indexs.size() == 0){
+					ApprovalVO vo= list.get(index);
+					bl.getPassed(vo);
+				}
+				else{
+					for (int temp:indexs){
+						ApprovalVO vo= list.get(temp);
+						bl.getPassed(vo);
+					}
+				}
+				initTable();
+				JOptionPane.showMessageDialog(null, "通过^_^","", JOptionPane.CLOSED_OPTION);
 			}
 
 			public void mousePressed(MouseEvent e) {
@@ -208,11 +236,11 @@ public class ApprovalPanel extends JPanel {
 	
 	private void initTable() {
 		// TODO Auto-generated method stub
-		List<ApprovalVO> list = bl.findAll();
+		list = bl.findAll();
 		dm.setRowCount(0);
 		if (list == null) return;
 		for (ApprovalVO vo : list) {
-			dm.addRow(new Object[]{false, vo.getName(), vo.getDate(), vo.getStatus(), vo.getReceiptId()});
+			dm.addRow(new Object[]{false, vo.getName(), vo.getDate(), vo.getStatus()});
 		}
 	}
 

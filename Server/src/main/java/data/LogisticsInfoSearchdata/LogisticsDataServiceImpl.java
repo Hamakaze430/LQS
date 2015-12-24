@@ -86,6 +86,73 @@ public class LogisticsDataServiceImpl extends UnicastRemoteObject implements Log
 		} 
 		return false;
 	}
+
+	public boolean addState(List<String> orders, String state) throws RemoteException {
+		// TODO Auto-generated method stub
+		try {
+			List<LogisticsPO> list = findAll();
+			
+			for (String order: orders){
+				int index = -1;
+				for (int i = 0; i < list.size(); i++){
+					if (list.get(i).getId().equals(order)){
+						index = i;
+						break;
+					}
+				}	
+				if (index != -1) {
+					LogisticsPO po =list.remove(index);
+					po.addState(state);
+					list.add(po);
+				}
+			}
+			
+            FileOutputStream fileOut = new FileOutputStream("src/main/java/ser/logistics.ser");
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(list);
+			objectOut.close();
+            return true;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return false;
+	}
+
+	public boolean addState(String order, String state) throws RemoteException {
+		// TODO Auto-generated method stub
+		try{
+			List<LogisticsPO> list = findAll();	
+			int index = -1;
+			for (int i = 0; i < list.size(); i++){
+				if (list.get(i).getId().equals(order)){
+					index = i;
+					break;
+				}
+			}
+			
+			if (index != -1) {
+				LogisticsPO po =list.remove(index);
+				po.addState(state);
+				list.add(po);
+			}
+			FileOutputStream fileOut = new FileOutputStream("src/main/java/ser/logistics.ser");
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(list);
+			objectOut.close();
+	        return true;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return false;
+	}
 	
 
 }

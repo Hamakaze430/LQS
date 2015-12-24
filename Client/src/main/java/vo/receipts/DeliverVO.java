@@ -16,6 +16,13 @@ public class DeliverVO extends ReceiptVO {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public  DeliverVO(DeliverPO po) {
+		super(FormType.派件单.name(), po.getName(), po.getCreator(), po.getCreateDate());
+		this.deliverer = po.getDeliverer();
+		this.order = po.getOrder();
+		// TODO Auto-generated constructor stub
+	}
+	
 	public String getDeliverer(){
 		return deliverer;
 	}

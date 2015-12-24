@@ -41,7 +41,11 @@ public class ReceiptVO implements Serializable{
     	createdate=date;
     }
     
-    public String getName(){
+    public ReceiptVO(ReceiptPO po) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getName(){
     	return this.name;
     }
     

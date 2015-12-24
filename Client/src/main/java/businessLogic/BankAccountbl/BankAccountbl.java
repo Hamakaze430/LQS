@@ -103,5 +103,15 @@ public class BankAccountbl implements BankAccountblService, BankAccountInfo{
 		
 		return null;
 	}
+
+	public void incMoney(String amount) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void decMoney(String account, String amount) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

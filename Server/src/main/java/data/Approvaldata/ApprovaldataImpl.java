@@ -63,13 +63,13 @@ public class ApprovaldataImpl extends UnicastRemoteObject implements  Approvalda
 		return false;
 	}
 	
-	public boolean delete(List<ApprovalPO> poList) throws RemoteException {
+	public boolean delete(List<Long> poList) throws RemoteException {
 		try {
 			List<ApprovalPO> list = findAll();
-			for (ApprovalPO po : poList){
+			for (long po : poList){
 				int index = -1;
 				for (int i = 0; i < list.size(); i++){
-					if (list.get(i).getHashId()==po.getHashId()){
+					if (list.get(i).getHashId()== po){
 						index = i;
 						break;
 					}
@@ -91,7 +91,7 @@ public class ApprovaldataImpl extends UnicastRemoteObject implements  Approvalda
 		return false;
 	}
 	
-	public boolean delete(ApprovalPO po) throws RemoteException {
+	public boolean delete(long id) throws RemoteException {
 		try {
 			List<ApprovalPO> list = findAll();
 //			for (HallPO one : list){
@@ -101,7 +101,7 @@ public class ApprovaldataImpl extends UnicastRemoteObject implements  Approvalda
 //			}
 			int index = -1;
 			for (int i = 0; i < list.size(); i++){
-				if (list.get(i).getHashId()==po.getHashId()){
+				if (list.get(i).getHashId() == id){
 					index = i;
 					break;
 				}

@@ -14,13 +14,16 @@ import init.Client;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
+import businessLogicService.BankAccountblService.BankAccountblService;
 import presentation.Userui.changeOrgnization;
 import presentation.mainui.PictureButton;
 import presentation.mainui.PictureLabel;
+import vo.BankAccountVO;
 
 
 public class addAccount extends JDialog {
@@ -29,9 +32,10 @@ public class addAccount extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public addAccount(){
+	BankAccountblService bl;
+	public addAccount(BankAccountblService bl){
 		super(Client.frame,"新建银行账户",true);
-//		this.bl = bl;
+		this.bl = bl;
 //		this.defaultModel = defaultModel;
 		this.setSize(500, 220);
 		this.setContentPane(new initPanel());
@@ -144,6 +148,9 @@ public class addAccount extends JDialog {
 
 				public void mouseClicked(MouseEvent e) {
 					// TODO Auto-generated method stub
+					BankAccountVO vo = new BankAccountVO(number.getText(),name.getText(),account.getText());
+					bl.addBankAccount(vo);
+					JOptionPane.showMessageDialog(null, "保存成功^_^","", JOptionPane.CLOSED_OPTION);
 					
 				}
 

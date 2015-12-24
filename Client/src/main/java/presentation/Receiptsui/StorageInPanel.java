@@ -156,12 +156,12 @@ public class StorageInPanel extends JPanel {
 					return;
 				}
 		 		
-				if (!judge(destination,"目标城市")) return;
-				if (!judge(place,"目标地点")) return;
-				if (!judge(c1,"区号")) return;
-				if (!judge(c2,"排号")) return;
-				if (!judge(c3,"架号")) return;
-				if (!judge(c4,"位号")) return;
+//				if (!judge(destination,"目标城市")) return;
+//				if (!judge(place,"目标地点")) return;
+//				if (!judge(c1,"区号")) return;
+//				if (!judge(c2,"排号")) return;
+//				if (!judge(c3,"架号")) return;
+//				if (!judge(c4,"位号")) return;
 				
 				int n = JOptionPane.showConfirmDialog(null, "确定提交?", "确认框",JOptionPane.YES_NO_OPTION);
 				if (n == 1) {

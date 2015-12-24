@@ -27,5 +27,6 @@ public interface ReceiptsblService {
 	public double getTransferCost(String string, String hallPlace, String endPlace);
 	public ReceiptVO getLoadingOrTransferVO(String id);
 	public String getHallName(String hallId);
-	public double getSendCost(String expresstype, String start, String end, String weight, String volume);	
+	public double getSendCost(String expresstype, String start, String end, String weight, String volume);
+	public boolean pass(long receiptId);	
 }

@@ -10,7 +10,7 @@ public interface ApprovaldataService extends Remote{
 
 	boolean insert(ApprovalPO po);
 	public List<ApprovalPO> findAll();
-	public boolean delete(List<ApprovalPO> poList);
-	public boolean delete(ApprovalPO po);
+	public boolean delete(List<Long> poList);
+	public boolean delete(long id);
 
 }

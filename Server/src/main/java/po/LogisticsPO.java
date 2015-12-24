@@ -38,6 +38,7 @@ public class LogisticsPO implements Serializable {
 	
 	public void addState(String state){
 		this.state.add(state);
+		this.currentState = state;
 	}
 	
 

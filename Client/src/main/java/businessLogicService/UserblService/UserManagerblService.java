@@ -17,4 +17,6 @@ public interface UserManagerblService {
 	public int getCount(String id);
 	
 	public UserVO findUser(String userID);
+	
+	public UserVO findUserByName(String userName);
 }

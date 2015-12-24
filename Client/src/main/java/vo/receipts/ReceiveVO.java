@@ -16,18 +16,28 @@ public class ReceiveVO extends ReceiptVO{
 	private static final long serialVersionUID = 1L;
 	public final String id;
 	public final String receiver;
-	public final String date;
 	
-	public ReceiveVO(String formname, String creator, String id, String receiver, String date){
+	public ReceiveVO(String formname, String creator,String date, String id, String receiver ){
 		super(FormType.收件单.name(),formname,creator,date);
 		this.id = id;
 		this.receiver = receiver;
-		this.date = date;
-	}	
+	}
+	
+	public ReceiveVO(ReceivePO po){
+		super(FormType.收件单.name(),po.getName(),po.getCreator(),po.getCreateDate());
+		this.id = po.getId();
+		this.receiver = po.getReceiver();
+	}
 
+	public String getId(){
+		return id;
+	}
+	public String getReceiver(){
+		return receiver;
+	}
 	
 	public ReceivePO toPO(long receiptId){
-		return new ReceivePO(receiptId,getName(),getCreator(),id,receiver,date);
+		return new ReceivePO(receiptId,getName(),getCreator(),getDate(),id,receiver);
 	}
 	
 	

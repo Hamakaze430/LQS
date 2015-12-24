@@ -15,6 +15,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import businessLogic.BankAccountbl.BankAccountbl;
+import businessLogicService.BankAccountblService.BankAccountblService;
 import presentation.mainui.PictureButton;
 import vo.BankAccountVO;
 
@@ -32,7 +34,9 @@ public class AccountPanel extends JPanel {
 	JButton newaccount;
 	JButton delete;
 	JButton back;
+	BankAccountblService bl;
 	public AccountPanel(){
+		bl = new BankAccountbl();
 		this.setLayout(null);
 		this.setBorder(null);
 		this.setOpaque(false);
@@ -90,7 +94,7 @@ public class AccountPanel extends JPanel {
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				new addAccount().setVisible(true);;
+				new addAccount(bl).setVisible(true);;
 			}
 
 			public void mousePressed(MouseEvent e) {

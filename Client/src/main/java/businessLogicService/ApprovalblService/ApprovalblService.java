@@ -11,4 +11,6 @@ public interface ApprovalblService {
 
 	public List<ApprovalVO> findAll();
 
+	public boolean getPassed(ApprovalVO vo);
+
 }

@@ -136,14 +136,14 @@ public class StorageOutPanel extends JPanel{
 		car.setLayout(null);
 		car.setOpaque(false);
 		
-		JLabel numberlabel = new JLabel("· 汽运编号：");
+		JLabel numberlabel = new JLabel("· 汽运编号/中转单编号：");
 		numberlabel.setFont(font);
 		numberlabel.setBounds(padding, 60+4*(labelheight+padding), labelwidth, labelheight);
 		
 		number = new JTextField();
 		number.setFont(font);
 		number.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
-		number.setBounds(padding+120, 60+4*(labelheight+padding), textwidth, textheight);
+		number.setBounds(padding+220, 60+4*(labelheight+padding), textwidth, textheight);
 		number.setOpaque(false);
 		
 		submit = new JButton();
@@ -177,14 +177,14 @@ public class StorageOutPanel extends JPanel{
 					return;
 				}
 		 		
-		 		if(destination.getSelectedIndex() == 0){
-		 			JOptionPane.showMessageDialog(null, "请选择目标城市！","", JOptionPane.ERROR_MESSAGE);
-					return;
-		 		}
-		 		if(place.getSelectedIndex() == 0){
-		 			JOptionPane.showMessageDialog(null, "请选择目标地点！","", JOptionPane.ERROR_MESSAGE);
-					return;
-		 		}
+//		 		if(destination.getSelectedIndex() == 0){
+//		 			JOptionPane.showMessageDialog(null, "请选择目标城市！","", JOptionPane.ERROR_MESSAGE);
+//					return;
+//		 		}
+//		 		if(place.getSelectedIndex() == 0){
+//		 			JOptionPane.showMessageDialog(null, "请选择目标地点！","", JOptionPane.ERROR_MESSAGE);
+//					return;
+//		 		}
 		 		if (number.getText().equals("")){
 		 			JOptionPane.showMessageDialog(null, "请输入中转单编号/汽运编号！","", JOptionPane.ERROR_MESSAGE);
 		 			return;
@@ -198,11 +198,11 @@ public class StorageOutPanel extends JPanel{
 		 			return;
 		 		}
 		 		
-		 		ReceiptVO form = bl.getLoadingOrTransferVO(number.getText());
-		 		if (form == null){
-					JOptionPane.showMessageDialog(null, "请输入正确的中转单编号/汽运编号！","", JOptionPane.ERROR_MESSAGE);
-					return;
-		 		}
+//		 		ReceiptVO form = bl.getLoadingOrTransferVO(number.getText());
+//		 		if (form == null){
+//					JOptionPane.showMessageDialog(null, "请输入正确的中转单编号/汽运编号！","", JOptionPane.ERROR_MESSAGE);
+//					return;
+//		 		}
 		 		
 		 		int n = JOptionPane.showConfirmDialog(null, "确定提交?", "确认框",JOptionPane.YES_NO_OPTION);
 				if (n == 1) {

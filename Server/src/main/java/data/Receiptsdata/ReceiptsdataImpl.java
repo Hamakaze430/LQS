@@ -36,12 +36,6 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	public String getReceipt(String type) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public long getLastId(String foreId) throws RemoteException {
 		File file = new File("src/main/java/ser/receiptsNum.txt");
@@ -122,10 +116,6 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 		return list;
 	}
 
-	public ReceiptPO getReceiptbyDate(String date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public ArrayList<ReceiptPO> getforSales(String start, String end) throws RemoteException{
 		List<ReceiptPO> all = findAll();
@@ -238,6 +228,11 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 			}
 			return null;
 		}
+		return null;
+	}
+
+	public String getReceipt(String type) throws RemoteException {
+		// TODO Auto-generated method stub
 		return null;
 	}	
 

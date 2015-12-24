@@ -4,6 +4,7 @@ import javax.swing.JOptionPane;
 
 import businessLogic.BankAccountbl.BankAccountbl;
 import businessLogic.CarAndDriverbl.CarAndDriverbl;
+import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogic.Userbl.Userbl;
 import businessLogic.Userbl.stub.UserblStub;
 import businessLogicService.BankAccountblService.BankAccountblService;
@@ -42,7 +43,7 @@ public class Client {
 //			BankAccountblService bank = new BankAccountbl();
 //			bank.addBankAccount(new BankAccountVO ("123456","bgydvsf",1000));
 			frame = new MainFrame();
-			UserblService bl = new Userbl("00000001001");
+			UserblService bl = new Userbl("00000000000");
 			MainPanel panel = new MainPanel(bl);
 			frame.add(panel);
 			

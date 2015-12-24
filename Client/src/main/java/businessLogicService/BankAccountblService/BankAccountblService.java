@@ -16,5 +16,9 @@ public interface BankAccountblService {
 	public ArrayList<BankAccountVO> showBankAccount(String subName);
 
 	public BankAccountVO find(String accountId);
+
+	public void incMoney(String amount);
+
+	public void decMoney(String account, String amount);
 	
 }
