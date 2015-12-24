@@ -5,6 +5,7 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
+import dataService.ApprovaldataService.ApprovaldataService;
 import dataService.BankAccountdataService.BankAccountdataService;
 import dataService.CarAndDriverdataService.CarAndDriverdataService;
 import dataService.CostBenefitdataService.CostBenefitdataService;
@@ -47,6 +48,8 @@ public class RMIHelper {
 	private static CostBenefitdataService costBenefitData;
 	
 	private static SalesdataService salesData;
+	
+	private static ApprovaldataService approvalData;
 
     public synchronized static void init() throws ClientInitException {
         if (inited) {
@@ -72,9 +75,15 @@ public class RMIHelper {
     	salesData = (SalesdataService) Naming.lookup(urlPrefix + "salesData-Server");
     	costBenefitData = (CostBenefitdataService) Naming.lookup(urlPrefix + "costBenefitData-Server");
     	salaryData = (SalarydataService) Naming.lookup(urlPrefix + "salaryData-Server");
-    	
+    	bankaccountData = (BankAccountdataService) Naming.lookup(urlPrefix + "bankaccountData-Server");
+    	approvalData = (ApprovaldataService) Naming.lookup(urlPrefix + "approvalData-Server");
+    	 
+    
     }
-
+    
+    public static ApprovaldataService getApprovalData(){
+    	return approvalData;
+    };
     
     public static ApartmentDataService getApartmentData() {
 		return apartmentData;

@@ -1,11 +1,15 @@
 package presentation.Approvalui;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 import java.util.Vector;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -13,15 +17,21 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 
+import businessLogic.Approvalbl.Approvalbl;
+import businessLogicService.ApprovalblService.ApprovalblService;
 import presentation.Userui.ApartmentManagerPanel;
 import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
@@ -43,10 +53,13 @@ public class ApprovalPanel extends JPanel {
 	JTable table;
 	JButton back;
 	JButton pass;
+	boolean flag = false;
 	int rowEditable = -1;
 	int columnEditable = -1;
 	int padding =10;
+	private ApprovalblService bl;
 	public ApprovalPanel (int buttonNum){
+		bl = new Approvalbl();
 		this.buttonNum=buttonNum;
 		this.setBorder(null);
 		this.setOpaque(false);
@@ -59,14 +72,34 @@ public class ApprovalPanel extends JPanel {
 
 		dm = new DefaultTableModel();  
         dm.setDataVector(new Object[][]{},  
-                new Object[]{"全选", "单据类型","提交部门","提交时间","单据状态"});  
+                new Object[]{"全选", "单据名称","提交时间","单据状态"});  
   
-        JTable table = new JTable(dm){		
+        table = new JTable(dm){		
 			private static final long serialVersionUID = 1L;
 			public boolean isCellEditable(int row, int column){
-				return false;
+				return true;
 			}
 		};
+		
+		
+		
+		table.getColumn("全选").setCellRenderer(new CheckRenderer());  
+		table.getColumn("全选").setCellEditor(new CheckEditor(new JTextField()));  
+		table.getColumnModel().getColumn(0).setHeaderRenderer(new CheckRenderer("全选"));
+		table.getTableHeader().addMouseListener(new MouseAdapter(){
+			   public void mouseClicked(MouseEvent e) {
+			    int colIndex = table.getColumnModel().getColumnIndexAtX(e.getX());
+			    if( colIndex==0 )
+			    {
+			     flag = !flag;
+			     table.getColumnModel().getColumn(0).setHeaderValue(flag);
+			     for (int i = 0; i < dm.getRowCount(); i++)
+			    	 dm.setValueAt(flag, i, 0);
+//			     header.repaint();
+			    }
+			   }
+			  });
+		
 		
 		table.setRowHeight(35);
 		//table.getColumnModel().getColumn(1).setCellEditor((TableCellEditor) new DefaultCellEditor(new JCheckBox()));
@@ -76,10 +109,15 @@ public class ApprovalPanel extends JPanel {
 		table.getTableHeader().setReorderingAllowed(false);
 		table.setOpaque(false);
 		table.setRowSorter(new TableRowSorter<DefaultTableModel>(dm));  
-		setUpSelectedColumn(table, table.getColumnModel().getColumn(0));
 		DefaultTableCellRenderer r = new DefaultTableCellRenderer();  
 	    r.setHorizontalAlignment(JLabel.CENTER); 
 	    table.setDefaultRenderer(Object.class, r);
+	    table.getColumnModel().getColumn(0).setWidth(10);
+	    
+	    initTable();
+	    dm.addRow(new Object[]{false, "fsd","gre","gsvd","fesgh"});
+	    
+	    System.out.println();
 	    
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(padding, padding, 884, 480);
@@ -168,16 +206,90 @@ public class ApprovalPanel extends JPanel {
 		this.add(pass);
 	}
 	
-	public void setUpSelectedColumn(JTable table, TableColumn selectedColumn) {
-        // Set up the editor for the sport cells.
-        JCheckBox box = new JCheckBox();
-        selectedColumn.setCellEditor(new DefaultCellEditor(box));
-        DefaultTableCellRenderer renderer =  new DefaultTableCellRenderer(){
-        	public void setValue(Object value){
-        		
-        	}
-        };
-//        renderer.setHorizontalAlignment(JLabel.CENTER); 
-//        passwordColumn.setCellRenderer(renderer);
-    }
+	private void initTable() {
+		// TODO Auto-generated method stub
+		List<ApprovalVO> list = bl.findAll();
+		dm.setRowCount(0);
+		if (list == null) return;
+		for (ApprovalVO vo : list) {
+			dm.addRow(new Object[]{false, vo.getName(), vo.getDate(), vo.getStatus(), vo.getReceiptId()});
+		}
+	}
+
+	class CheckEditor extends DefaultCellEditor{  
+		  
+		private JCheckBox cb;
+		private JPanel panel;
+		
+	    public CheckEditor(JTextField checkBox) {  
+	        super(checkBox);  
+	        this.setClickCountToStart(1); 
+	        cb = new JCheckBox();
+	    	cb.setSelected(false);
+	    	cb.setFocusPainted(false);
+	    	cb.setOpaque(false);
+	    	panel = new JPanel();
+//	    	panel.setOpaque(false);
+	    	
+	    	panel.add(cb);
+	    }  
+	  
+	    public Component getTableCellEditorComponent(final JTable table, Object value,  
+	            boolean isSelected,int row, int column) { 	 
+	    	panel.setForeground(table.getSelectionForeground());  
+	    	panel.setBackground(table.getSelectionBackground()); 
+	    	return panel;
+	    }   
+	       
+	    public Object getCellEditorValue() {  
+			 if(cb.isSelected()) return true;
+			 else return false;
+	    } 
+	  
+	    public boolean stopCellEditing() {  
+	        return super.stopCellEditing();  
+	    }  
+
+	}  
+	  
+	class CheckRenderer extends JPanel implements TableCellRenderer {  
+	  
+		private JCheckBox cb;
+		
+	    public CheckRenderer(String s) {  
+	    	cb = new JCheckBox(s);
+	    	cb.setSelected(false);
+	    	cb.setFocusPainted(false);
+	    	cb.setOpaque(false);
+	    	this.add(cb);
+	    	this.setOpaque(false);  
+	    } 
+	    public CheckRenderer() {  
+	    	cb = new JCheckBox();
+	    	cb.setSelected(false);
+	    	cb.setFocusPainted(false);
+	    	cb.setOpaque(false);
+	    	this.add(cb);
+//	    	this.setOpaque(false);  
+	    } 
+	  
+	    public Component getTableCellRendererComponent(JTable table, Object value,  
+	            boolean isSelected, boolean hasFocus, int row, int column) {  
+	        if (isSelected) {  
+	            setForeground(table.getSelectionForeground());  
+	            setBackground(table.getSelectionBackground());  
+	        } else {  
+	            setForeground(table.getForeground());  
+	            setBackground(UIManager.getColor("UIManager"));  
+	        }   
+	        if (value.equals(true)) cb.setSelected(true);
+	        else cb.setSelected(false);
+	        return this;  
+	    }  
+	}
+
+	
+	
+	
+	
 }

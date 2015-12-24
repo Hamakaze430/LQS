@@ -7,7 +7,7 @@ import vo.BankAccountVO;
 
 public interface BankAccountblService {
 	
-	public void addBankAccount(String name);
+	public void addBankAccount(BankAccountVO vo);
 	
 	public ResultMessage removeBankAccount(String name);
 	

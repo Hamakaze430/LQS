@@ -198,7 +198,7 @@ public class ArrivalPanel extends JPanel {
 						JOptionPane.showMessageDialog(null, "对应装车单的目的地不是本单位！","", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
-					startplace.setText(bl.getHallName(((LoadingVO)vo).getHallId()));
+					startplacename.setText(bl.getHallName(((LoadingVO)vo).getHallId()));
 					List<String> list = ((LoadingVO)vo).getOrder();
 					for (String s : list){
 						dm.addRow(new Object[]{s,""});
@@ -209,7 +209,7 @@ public class ArrivalPanel extends JPanel {
 						JOptionPane.showMessageDialog(null, "对应中转单的目的地不是本单位！","", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
-					startplace.setText(((TransferVO)vo).getStartplace());
+					startplacename.setText(((TransferVO)vo).getStartplace());
 					List<String> list = ((TransferVO)vo).getOrders();
 					for (String s : list){
 						dm.addRow(new Object[]{s,"完整"});
@@ -321,7 +321,7 @@ public class ArrivalPanel extends JPanel {
 	        super(checkBox);  
 	        this.setClickCountToStart(1); 
 	        panel = new JPanel();
-	        panel.setOpaque(false);
+//	        panel.setOpaque(false);
 	        bg = new ButtonGroup();
 	    	good = new JRadioButton("完整",true);
 	    	good.setOpaque(false);
@@ -335,13 +335,16 @@ public class ArrivalPanel extends JPanel {
 	    	bg.add(good);
 	    	bg.add(bad);
 	    	bg.add(lost); 	 
+	    	
 	    	panel.add(good);
 	    	panel.add(bad);
 	    	panel.add(lost);
 	    }  
 	  
 	    public Component getTableCellEditorComponent(final JTable table, Object value,  
-	            boolean isSelected,int row, int column) { 
+	            boolean isSelected,int row, int column) {  
+	    	panel.setForeground(table.getSelectionForeground());  
+	    	panel.setBackground(table.getSelectionBackground()); 
 	    	return panel;
 	    }   
 	       
@@ -377,7 +380,7 @@ public class ArrivalPanel extends JPanel {
 	    	this.add(good);
 	    	this.add(bad);
 	    	this.add(lost);
-	      //  this.setOpaque(false);  
+//	        this.setOpaque(false);  
 	    }  
 	  
 	    public Component getTableCellRendererComponent(JTable table, Object value,  

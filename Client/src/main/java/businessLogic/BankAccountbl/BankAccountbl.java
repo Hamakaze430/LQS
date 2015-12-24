@@ -1,11 +1,11 @@
 package businessLogic.BankAccountbl;
 
 import init.RMIHelper;
+import po.BankAccountPO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-import po.BankAccountPO;
 import dataService.ResultMessage;
 import dataService.BankAccountdataService.BankAccountdataService;
 import vo.BankAccountVO;
@@ -19,23 +19,18 @@ public class BankAccountbl implements BankAccountblService, BankAccountInfo{
 		bankaccountDataService = RMIHelper.getBankAccountdataService();
 	}
 
-	public void addBankAccount(String name) {	
-		try {
-			bankaccountDataService.addAccount(name);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+	public void addBankAccount(BankAccountVO vo) {	
+		
+			bankaccountDataService.addAccount(new BankAccountPO(vo.getAccount(),vo.getName(),vo.getMoney()));
+		
 		
 	}
 
 	public ResultMessage removeBankAccount(String name) {
 		ResultMessage result = ResultMessage.FAILURE;
 		
-		try {
-			result = bankaccountDataService.removeAccount(name);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+		result = bankaccountDataService.removeAccount(name);
+		
 		
 		return result;
 		
@@ -45,11 +40,8 @@ public class BankAccountbl implements BankAccountblService, BankAccountInfo{
 		
 		ResultMessage result = ResultMessage.FAILURE;
 		
-		try {
-			result = bankaccountDataService.modifyName(newName, name);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+		result = bankaccountDataService.modifyName(newName, name);
+		
 		
 		return result;
 	}
@@ -57,72 +49,58 @@ public class BankAccountbl implements BankAccountblService, BankAccountInfo{
 
 	public ArrayList<BankAccountVO> showBankAccount(String subName) {
 		
-		try {
-			ArrayList<BankAccountPO> poList = bankaccountDataService.getAccount();
-			ArrayList<BankAccountVO> voList = new ArrayList<BankAccountVO>();
-			for(int i=0;i<poList.size();i++){
-				BankAccountPO tempo = poList.get(i);
-				String name = tempo.getName();
-				if(name.contains(subName)){
-					voList.add(new BankAccountVO(name,tempo.getMoney()));
-				}
+		ArrayList<BankAccountPO> poList = bankaccountDataService.getAccount();
+		ArrayList<BankAccountVO> voList = new ArrayList<BankAccountVO>();
+		for(int i=0;i<poList.size();i++){
+			BankAccountPO tempo = poList.get(i);
+			String name = tempo.getName();
+			if(name.contains(subName)){
+				voList.add(new BankAccountVO(tempo.getAccount(),name,tempo.getMoney()));
 			}
-			return voList;
-		} catch (RemoteException e) {
-			e.printStackTrace();
 		}
+		return voList;
 		
-		return null;
+		
 	}
 	
     public void modify(int modify,String name) {
-    		
-    	try {
-		    if(modify>=0)
-				bankaccountDataService.income(name, modify);
-			else
-		    	bankaccountDataService.expend(name, -modify);
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
+    	if(modify>=0)
+			bankaccountDataService.income(name, modify);
+		else
+	    	bankaccountDataService.expend(name, -modify);		
 		
 	}	
 	
 	public int getMoney(String name){
 			
 		double result = -1;
-		
-		try {
-			ArrayList<BankAccountPO> accountList = bankaccountDataService.getAccount();
-			for(int i=0;i<accountList.size();i++)
-				if(accountList.get(i).getName().equals(name))
-					result = accountList.get(i).getMoney();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		
+		ArrayList<BankAccountPO> accountList = bankaccountDataService.getAccount();
+		for(int i=0;i<accountList.size();i++)
+			if(accountList.get(i).getName().equals(name))
+				result = accountList.get(i).getMoney();
+	
 		return (int) result;
+			
 
     }
 
 	public ArrayList<BankAccountVO> getAllAccounts() {
-		
-		try {
-			ArrayList<BankAccountPO>  poList = bankaccountDataService.getAccount();
-			ArrayList<BankAccountVO> voList = new ArrayList<BankAccountVO>();
-			for(int i=0;i<poList.size();i++){
-				voList.add(new BankAccountVO(poList.get(i).getName(), poList.get(i).getMoney()));
-			}
-			return voList;
-		} catch (RemoteException e) {
-			e.printStackTrace();
+		ArrayList<BankAccountPO>  poList = bankaccountDataService.getAccount();
+		ArrayList<BankAccountVO> voList = new ArrayList<BankAccountVO>();
+		for(int i=0;i<poList.size();i++){
+			voList.add(new BankAccountVO(poList.get(i).getName(), poList.get(i).getMoney()));
 		}
+		return voList;
 		
-		return null;
 	}
 
 	public BankAccountVO find(String accountId) {
-		// TODO Auto-generated method stub
+		ArrayList<BankAccountPO> poList = bankaccountDataService.getAccount();
+		for (BankAccountPO po : poList){
+			if (po.getAccount().equals(accountId))
+				return new BankAccountVO(po.getName(), po.getMoney());
+		}
+		
 		return null;
 	}
 	

@@ -55,6 +55,7 @@ public class SalesdataImpl extends UnicastRemoteObject implements SalesdataServi
 		try {
 			rdi = new ReceiptsdataImpl();
 			ArrayList<ReceiptPO> receipts=rdi.getforSales(start, end);
+			System.out.println(receipts.size());
 			for(int i=0;i<receipts.size();i++){
 				if(receipts.get(i).getClass().equals(PaymentPO.class)){
 					payment.add((PaymentPO)receipts.get(i));

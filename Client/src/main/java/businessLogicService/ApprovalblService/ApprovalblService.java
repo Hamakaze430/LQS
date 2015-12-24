@@ -1,10 +1,14 @@
 package businessLogicService.ApprovalblService;
 
+import java.util.List;
+
 import po.ApprovalPO;
+import vo.ApprovalVO;
 
 public interface ApprovalblService {
 
-	public boolean insert(ApprovalPO app);
+	public boolean insert(ApprovalPO po);
 
+	public List<ApprovalVO> findAll();
 
 }

@@ -5,31 +5,37 @@ import java.util.Vector;
 /**
  * Created by admin on 15/10/25.
  */
-public class ApprovalVO extends Vector<String> {
+public class ApprovalVO{
 	
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public ApprovalVO(String type,String number, String apartment, String status){
-		this.add(type);
-		this.add(number);
-		this.add(apartment);
-		this.add(status);
+	private String name;
+	private String date;
+	private String status;
+	private long receiptId;
+	public ApprovalVO(String name,String date, String status, long receiptId){
+		this.name = name;
+		this.date = date;
+		this.status = status;
+		this.receiptId = receiptId;
 	}
 	
-	public String getType(){
-		return get(0);
+	public String getName(){
+		return name;
 	}
-	public String getNumber(){
-		return get(1);
+	public String getDate(){
+		return date;
 	}
-	public String getApartment(){
-		return get(2);
-	}
+	
 	public String getStatus(){
-		return get(3);
+		return status;
 	}
+	public long getReceiptId(){
+		return receiptId;
+	}
+	
 }
 

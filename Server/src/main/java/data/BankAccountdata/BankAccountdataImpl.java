@@ -37,10 +37,10 @@ public class BankAccountdataImpl extends UnicastRemoteObject implements BankAcco
 		return bankaccountDAO.modify(newName, name);
 	}
 
-	public void addAccount(String name) throws RemoteException {
+	public void addAccount(BankAccountPO po) throws RemoteException {
 		// TODO Auto-generated method stub
 		
-		bankaccountDAO.add(new BankAccountPO(name, 0));
+		bankaccountDAO.add(po);
 		
 	}
 

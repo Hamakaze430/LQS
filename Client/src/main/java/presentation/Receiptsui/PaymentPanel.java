@@ -95,7 +95,7 @@ public class PaymentPanel extends JPanel {
 		account.setFont(font);
 		account.setBounds(50,220,300,50);
 		
-		JLabel ps = new JLabel("· 备        注：");
+		JLabel ps = new JLabel("· 备    注：");
 		ps.setFont(font);
 		ps.setBounds(50,260,300,50);
 		

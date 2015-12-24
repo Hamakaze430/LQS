@@ -4,7 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 
 import po.BankAccountPO;
@@ -33,10 +36,13 @@ public class ReportGenerator {
 		ArrayList<ReceiptPO> receipt=sales.getAll();
 		
 		try {
+			Date current = new Date();
+			DateFormat formatter2 = new SimpleDateFormat("yyyyMMdd");
+			String filename = "src/main/java/ser/sales"+formatter2.format(current)+".xls";
 			WritableWorkbook workBook=Workbook.createWorkbook(
-					new File("src/ser/report.xls"));
+					new File(filename));
 			WritableSheet sheet=workBook.createSheet("First sheet",0);
-			Label type=new Label(0,0,"但据类型");
+			Label type=new Label(0,0,"单据类型");
 			sheet.addCell(type);
 			Label date=new Label(1,0,"建单日期");
 			sheet.addCell(date);
@@ -44,13 +50,12 @@ public class ReportGenerator {
 			sheet.addCell(creator);
 			Label amount=new Label(3,0,"金额");
 			sheet.addCell(amount);
-			
 			for(int i=0;i<receipt.size();i++){
-				ReceiptPO temp=income.get(i);
-				Label in_type=new Label(i+1,0,temp.getType());
-				Label in_date=new Label(i+1,1,temp.getCreateDate());
-				Label in_creator=new Label(i+1,2,temp.getCreator());
-				Label in_amount=new Label(i+1,3,String.valueOf(temp.getAmount()));
+				ReceiptPO temp=receipt.get(i);
+				Label in_type=new Label(0,i+1,temp.getType());
+				Label in_date=new Label(1,i+1,temp.getCreateDate());
+				Label in_creator=new Label(2,i+1,temp.getCreator());
+				Label in_amount=new Label(3,i+1,String.valueOf(temp.getAmount()));
 				sheet.addCell(in_type);
 				sheet.addCell(in_date);
 				sheet.addCell(in_creator);
@@ -61,19 +66,23 @@ public class ReportGenerator {
 			
 			return true;
 		} catch (WriteException e) {
+		
+			e.printStackTrace();
 			return false;
-			//e.printStackTrace();
 		} catch (IOException e) {
+			
+			e.printStackTrace();
 			return false;
-			//e.printStackTrace();
 		}
 	}
 	
 	public boolean createCostBenefitReport(CostBenefitPO cb){
 		try {
-			
+			Date current = new Date();
+			DateFormat formatter2 = new SimpleDateFormat("yyyyMMdd");
+			String filename = "src/main/java/ser/CostBenefit"+formatter2.format(current)+".xls";
 			WritableWorkbook workBook=Workbook.createWorkbook(
-					new File("src/ser/costbenefit.xls"));
+					new File(filename));
 			
 			System.out.println("in creating report");
 
@@ -86,7 +95,7 @@ public class ReportGenerator {
 			sheet.addCell(in);
 			Label out=new Label(0,2,"总支出");
 			sheet.addCell(out);
-			Label bene=new Label(0,2,"总利润");
+			Label bene=new Label(0,3,"总利润");
 			sheet.addCell(bene);
 			
 			Label in_data=new Label(1,1, String.valueOf(cb.getTotalIncome()));
@@ -102,11 +111,14 @@ public class ReportGenerator {
 			System.out.println("report generated");
 			return true;
 		} catch (WriteException e){
+			
+			e.printStackTrace();
 			return false;
-			//e.printStackTrace();
+			
 		} catch (IOException e) {
+			
+			e.printStackTrace();
 			return false;
-			//e.printStackTrace();
 		}
 	}
 	
@@ -119,8 +131,11 @@ public class ReportGenerator {
 	    ArrayList<BankAccountPO> accountlist=bm.getAccounts();
 		
 		try {
+			Date current = new Date();
+			DateFormat formatter2 = new SimpleDateFormat("yyyyMMdd");
+			String filename = "src/main/java/ser/billmanagement"+formatter2.format(current)+".xls";
 			WritableWorkbook workBook=Workbook.createWorkbook(
-					new File("src/ser/billmanagement.xls"));
+					new File(filename));
 			WritableSheet employees=workBook.createSheet("人员", 0);
 			WritableSheet cars=workBook.createSheet("车辆", 1);
 			WritableSheet commos=workBook.createSheet("库存", 2);
@@ -181,11 +196,13 @@ public class ReportGenerator {
 			}
 			return true;
 		} catch(WriteException e){
+			
+			e.printStackTrace();
 			return false;
-			//e.printStackTrace();
 		} catch (IOException e) {
+			e.printStackTrace();
 			return false;
-			//e.printStackTrace();
+			
 		}
 	}
 	

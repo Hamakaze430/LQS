@@ -2,14 +2,14 @@ package po;
 
 import java.io.Serializable;
 
-public class BankAccountPO   implements Serializable{
+public class BankAccountPO  extends PersistentObj implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private String account;
 	private String name;
 	private double money;
 	
-	public BankAccountPO(String name,double money){
-		
+	public BankAccountPO(String account, String name,double money){
+		this.account = account;
 		this.name = name;
 		this.money = money;	
 	}
