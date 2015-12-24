@@ -45,6 +45,11 @@ public class IncomeVO extends ReceiptVO{
 	public String getAmount(){
 		return amount;
 	}
+	
+	public IncomePO toPO(long receiptId){
+		return new IncomePO(receiptId, getName(),getCreator(),
+				getDate(),amount, deliverer, orders);
+	}
 
 
 }

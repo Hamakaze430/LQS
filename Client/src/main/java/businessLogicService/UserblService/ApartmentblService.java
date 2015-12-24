@@ -9,7 +9,7 @@ public interface ApartmentblService {
 	
 	String getName(String hallId);
 
-	List<String> getHallNameListByAddress(String string);
+	List<String> getHallNameListByAddress(String type, String string);
 
 	HallVO getVOByName(String hallName);
 

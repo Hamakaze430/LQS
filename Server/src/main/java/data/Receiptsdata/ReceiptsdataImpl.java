@@ -16,13 +16,18 @@ import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import Miscellaneous.FormType;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import po.HallPO;
 import po.ReceiptPO;
 import po.receipts.IncomePO;
+import po.receipts.LoadingPO;
 import po.receipts.PaymentPO;
+import po.receipts.TransferPO;
 import dataService.ReceiptsdataService.ReceiptsdataService;
 
 public class ReceiptsdataImpl extends UnicastRemoteObject implements ReceiptsdataService{
@@ -225,6 +230,19 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 			for (ReceiptPO po : list){
 				if (po.getReceiptId() == id){
 					return po;
+				}
+			}
+			return null;
+		}
+		if (known.equals("LoadingOrTransferId")){
+			for (ReceiptPO po : list){
+				if (po.getType().equals(FormType.装车单.name())){
+						if(((LoadingPO)po).getId().equals(info))
+							return po;
+				}
+				if (po.getType().equals(FormType.中转单.name())){	
+					if (((TransferPO)po).getId().equals(info))
+						return po;
 				}
 			}
 			return null;

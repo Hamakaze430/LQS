@@ -52,4 +52,9 @@ public class PaymentVO extends ReceiptVO implements Serializable{
 		return memo;
 	}
 	
+	public PaymentPO toPO(long receiptId){
+		return new PaymentPO(receiptId, getName(), getCreator(), getDate(), 
+					account, amount, item, memo);
+	}
+	
 }

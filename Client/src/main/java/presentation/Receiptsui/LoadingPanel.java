@@ -220,7 +220,7 @@ public class LoadingPanel extends JPanel{
 		place.setFont(font);
 		place.addItem("请选择地点");
 		place.setSelectedIndex(0);
-		List<String> list = bl.getHallNameListByAddress(province.getSelectedItem().toString());
+		List<String> list = bl.getHallNameListByAddress("all",province.getSelectedItem().toString());
 		for (String s : list){
 			if  (!s.equals(bl.getHallName())) place.addItem(s);
 		}
@@ -557,9 +557,8 @@ public class LoadingPanel extends JPanel{
 			String HallId = hallId.getText();
 			String Id = id.getText();
 			String Destination = place.getSelectedItem().toString();
-		 	double Cost = cost_double;
 		 	ReceiptVO vo = new LoadingVO(Name,Creator,
-		 			Date, HallId, Id, Destination, CarId, Supervisor, Driver, Order, Cost);
+		 			Date, HallId, Id, Destination, CarId, Supervisor, Driver, Order, cost.getText());
 		 	
 		 	bl.addReceipt(vo);
 		 	

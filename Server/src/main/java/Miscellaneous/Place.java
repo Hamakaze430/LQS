@@ -16,12 +16,7 @@ public enum Place implements Serializable {
 		return id;
 	}
 	
-	public static Place value(String s) {
-		Place[] es = Place.values();
-		for (Place p : es)
-			if (p.name().equals(s)) return p;
-		return null;
-	}
+	
 	public static Place fromId(String s) {
 		Place[] es = Place.values();
 		for (Place p : es)

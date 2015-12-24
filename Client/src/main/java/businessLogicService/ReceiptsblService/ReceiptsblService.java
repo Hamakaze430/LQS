@@ -14,7 +14,7 @@ public interface ReceiptsblService {
 	public String getHallId();
 	public String getCurrentTime();
 	public String changeDateFormat(String date);
-	public List<String> getHallNameListByAddress(String string);
+	public List<String> getHallNameListByAddress(String type,String string);
 	public String getHallPlace();
 	public String getHallName();
 	public ReceiptVO getReceiptById(long receiptId);	
@@ -23,5 +23,8 @@ public interface ReceiptsblService {
 	public UserVO findUser(String userName);
 	public boolean findLogistics(String s);
 	public double getLoadingCost();
-	public boolean findAccount(String s);	
+	public boolean findAccount(String s);
+	public double getTransferCost(String string, String hallPlace, String endPlace);
+	public ReceiptVO getLoadingOrTransferVO(String id);
+	public String getHallName(String hallId);	
 }

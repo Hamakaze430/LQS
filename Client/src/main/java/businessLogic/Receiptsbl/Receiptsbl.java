@@ -31,11 +31,13 @@ import po.ApprovalPO;
 import po.HallPO;
 import po.ReceiptPO;
 import po.receipts.LoadingPO;
+import po.receipts.TransferPO;
 import vo.BankAccountVO;
 import vo.LogisticsVO;
 import vo.ReceiptVO;
 import vo.UserVO;
 import vo.receipts.LoadingVO;
+import vo.receipts.TransferVO;
 
 public class Receiptsbl implements ReceiptsblService {
 	private UserblService user;
@@ -56,9 +58,9 @@ public class Receiptsbl implements ReceiptsblService {
 		account = new BankAccountbl();
 	}
 	
-	public List<String> getHallNameListByAddress(String string) {
+	public List<String> getHallNameListByAddress(String type, String string) {
 		// TODO Auto-generated method stub
-		return apartment.getHallNameListByAddress(string);
+		return apartment.getHallNameListByAddress(type,string);
 	}
 	
 	
@@ -73,7 +75,8 @@ public class Receiptsbl implements ReceiptsblService {
 	public String getLastId(String foreId) {
 		// TODO Auto-generated method stub
 		long num = dataFactory.getReceiptsdataService().getLastId(foreId);
-		return String.format("%05d", num);
+		if (foreId.length() == 15) return String.format("%05d", num);
+		else return String.format("%07d", num);
 	}
 	
 	public String getHallId() {
@@ -161,6 +164,30 @@ public class Receiptsbl implements ReceiptsblService {
 		BankAccountVO vo = account.find(s);
 		if (vo == null) return false;
 		return true;
+	}
+
+	public double getTransferCost(String traffic, String hallPlace, String endPlace) {
+		// TODO Auto-generated method stub
+		if (traffic.equals("plane")) return 100;
+		else if (traffic.equals("railway")) return 50;
+		return 10;
+	}
+
+	public ReceiptVO getLoadingOrTransferVO(String id) {
+		// TODO Auto-generated method stub
+		ReceiptPO po = dataFactory.getReceiptsdataService().find("LoadingOrTransferId", id);
+		if (po == null) return null;
+		if (po.getType().equals("装车单")){
+			return new LoadingVO((LoadingPO)po);
+		}
+		if (po.getType().equals("中转单")){
+			return new TransferVO((TransferPO)po);
+		}
+		return null;
+	}
+
+	public String getHallName(String hallId) {
+		return apartment.getName(hallId);
 	}
 
 

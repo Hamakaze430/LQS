@@ -458,7 +458,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.中转单)) {
-			JPanel transfer = new TransferPanel(user);
+			JPanel transfer = new TransferPanel(user,i);
 			cardPanel.add(transfer, "9");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/transfer_unselected.png");			
