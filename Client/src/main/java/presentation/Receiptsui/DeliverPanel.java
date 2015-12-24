@@ -167,6 +167,7 @@ public class DeliverPanel extends JPanel{
 		 		date.setText(bl.getCurrentTime());
 		 		name.setText("");
 		 		id.setText("");
+		 		JOptionPane.showMessageDialog(null, "提交成功^_^","", JOptionPane.CLOSED_OPTION);
 			}
 
 			public void mousePressed(MouseEvent e) {}

@@ -322,6 +322,7 @@ public class CreatUserDialog extends JDialog {
 					UserVO vo = new UserVO(Id,Password,Identity,Name,Sex,Job,Place);
 					defaultModel.addRow(vo);
 					userbl.addUser(vo);
+					JOptionPane.showMessageDialog(null, "增加成功^_^","", JOptionPane.CLOSED_OPTION);
 				}
 				
 			});

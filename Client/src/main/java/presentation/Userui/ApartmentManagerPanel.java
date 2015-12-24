@@ -211,7 +211,7 @@ public class ApartmentManagerPanel extends JPanel {
 				HallVO vo = (HallVO)defaultModel.getDataVector().elementAt(index);
 				bl.delete(vo);
 				defaultModel.removeRow(index);
-				
+				JOptionPane.showMessageDialog(null, "删除成功^_^","", JOptionPane.CLOSED_OPTION);
 				
 			}
 			

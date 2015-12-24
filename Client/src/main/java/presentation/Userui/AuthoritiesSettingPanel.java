@@ -147,6 +147,7 @@ public class AuthoritiesSettingPanel extends JPanel {
 					boxs[i].setSelected(false);
 				}
 				AuthoritiesSettingPanel.this.repaint();
+				JOptionPane.showMessageDialog(null, "保存成功^_^","", JOptionPane.CLOSED_OPTION);
 			}
 			
 		});

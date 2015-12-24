@@ -212,7 +212,7 @@ public class ArrivalPanel extends JPanel {
 					startplace.setText(((TransferVO)vo).getStartplace());
 					List<String> list = ((TransferVO)vo).getOrders();
 					for (String s : list){
-						dm.addRow(new Object[]{s,""});
+						dm.addRow(new Object[]{s,"完整"});
 					}
 				}
 				flag = true;
@@ -426,6 +426,7 @@ public class ArrivalPanel extends JPanel {
 			state.setVisible(false);
 			scrollPane.setVisible(false);
 			flag = false;
+			JOptionPane.showMessageDialog(null, "提交成功^_^","", JOptionPane.CLOSED_OPTION);
 		 	
 		}
 	

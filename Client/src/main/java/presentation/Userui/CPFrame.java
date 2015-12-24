@@ -96,6 +96,14 @@ public class CPFrame extends JFrame{
 					JOptionPane.showMessageDialog(null, "新密码不相同！","", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
+				if (newPassword.getPassword().toString().length()<6){
+					JOptionPane.showMessageDialog(null, "密码过短！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+				if (newPassword.getPassword().toString().length()>20){
+					JOptionPane.showMessageDialog(null, "密码过长！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 				userbl.changePassword(String.valueOf(newPassword.getPassword()));
 				JOptionPane.showMessageDialog(null, "密码修改成功！","", JOptionPane.INFORMATION_MESSAGE);
 				oldPassword.setText("");

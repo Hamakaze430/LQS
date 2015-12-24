@@ -39,7 +39,7 @@ public class ApprovalPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	int buttonNum;
-	DefaultTableModel defaultModel;
+	DefaultTableModel dm;
 	JTable table;
 	JButton back;
 	JButton pass;
@@ -56,24 +56,18 @@ public class ApprovalPanel extends JPanel {
 	private void initAPanel() {
 		// TODO Auto-generated method stub
 		Font font = new Font("黑体",Font.PLAIN,16);
-		Vector<String> name = new Vector<String>();
-		name.add("全选");
-		name.add("单据类型");
-		name.add("单据编号");
-		name.add("提交部门");
-		name.add("单据状态");
-		Vector<ApprovalVO> data = new Vector<ApprovalVO>();		
-		
-//		Object[] a = {}
-		defaultModel = new DefaultTableModel(data,name);	
-		
-		table = new JTable(defaultModel){		
+
+		dm = new DefaultTableModel();  
+        dm.setDataVector(new Object[][]{},  
+                new Object[]{"全选", "单据类型","提交部门","提交时间","单据状态"});  
+  
+        JTable table = new JTable(dm){		
 			private static final long serialVersionUID = 1L;
 			public boolean isCellEditable(int row, int column){
-				if (row == rowEditable && column == columnEditable) return true;
 				return false;
 			}
 		};
+		
 		table.setRowHeight(35);
 		//table.getColumnModel().getColumn(1).setCellEditor((TableCellEditor) new DefaultCellEditor(new JCheckBox()));
 		table.getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -81,7 +75,7 @@ public class ApprovalPanel extends JPanel {
 		table.setBackground(new Color(255,255,255,100));
 		table.getTableHeader().setReorderingAllowed(false);
 		table.setOpaque(false);
-		table.setRowSorter(new TableRowSorter<DefaultTableModel>(defaultModel));  
+		table.setRowSorter(new TableRowSorter<DefaultTableModel>(dm));  
 		setUpSelectedColumn(table, table.getColumnModel().getColumn(0));
 		DefaultTableCellRenderer r = new DefaultTableCellRenderer();  
 	    r.setHorizontalAlignment(JLabel.CENTER); 

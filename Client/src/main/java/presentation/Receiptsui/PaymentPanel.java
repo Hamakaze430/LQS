@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -106,7 +108,20 @@ public class PaymentPanel extends JPanel {
 		cost.setBounds(200, 100, 160, 40);
 		cost.setBorder(new MatteBorder(0,0,1,0,Color.black));
 		cost.setOpaque(false);
-		
+		cost.addFocusListener(new FocusListener(){
+
+			public void focusGained(FocusEvent e) {
+
+			}
+
+			public void focusLost(FocusEvent e) {
+				// TODO Auto-generated method stub
+				if (cost.getText().equals("")) return;
+				double money_double = Double.parseDouble(cost.getText());
+				cost.setText(String.format("%.2f", money_double));
+			}
+			
+		});
 		bg = new ButtonGroup();
 		cost.addKeyListener(new KeyListener(){
 
@@ -375,6 +390,7 @@ public class PaymentPanel extends JPanel {
 		 	cost.setText("");
 		 	bg.clearSelection();
 		 	psarea.setText("");
+		 	JOptionPane.showMessageDialog(null, "提交成功^_^","", JOptionPane.CLOSED_OPTION);
 		}
 	}
 }

@@ -573,6 +573,7 @@ public class LoadingPanel extends JPanel{
 			drivername.setText("");
 			spyname.setText("");
 			orders.setText("");
+			JOptionPane.showMessageDialog(null, "提交成功^_^","", JOptionPane.CLOSED_OPTION);
 		}
 	
 	}

@@ -190,6 +190,11 @@ public class Receiptsbl implements ReceiptsblService {
 		return apartment.getName(hallId);
 	}
 
+	public double getSendCost(String expresstype, String start, String end, String weight, String volume) {
+		// TODO Auto-generated method stub
+		return 100;
+	}
+
 
 }
 

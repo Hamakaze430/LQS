@@ -205,7 +205,7 @@ public class UserManagerPanel extends JPanel {
 				UserVO vo = (UserVO)defaultModel.getDataVector().elementAt(index);
 				bl.delete(vo);
 				defaultModel.removeRow(index);
-				
+				JOptionPane.showMessageDialog(null, "删除成功^_^","", JOptionPane.CLOSED_OPTION);
 				
 			}
 			

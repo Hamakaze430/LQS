@@ -6,11 +6,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -25,17 +28,24 @@ import java.awt.event.MouseListener;
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.plaf.ComboBoxUI;
+import javax.swing.plaf.basic.BasicComboBoxUI;
 
+import Miscellaneous.Place;
 import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
+import vo.receipts.SendVO;
 import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
 import businessLogicService.UserblService.UserblService;
@@ -50,6 +60,7 @@ public class SendPanel extends JPanel{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	JLabel title;
 	JButton submit;
 	JButton back;
 	JTextField order;
@@ -61,6 +72,7 @@ public class SendPanel extends JPanel{
 	JTextField receivertel;
 	JTextField senderphone;
 	JTextField goodstype;
+	JRadioButton finan,fast,st;
 	private ReceiptsblService bl;
 	private UserblService user;
 	int padding = 10;
@@ -82,6 +94,11 @@ public class SendPanel extends JPanel{
 	JTextField initNumber;
 	JTextField trueweight;
 	JTextField volume;
+	JTextField cost;
+	JTextField allcost;
+	
+	JComboBox senderPlace;
+	JComboBox receiverPlace;
 	public SendPanel(UserblService user, int buttonNum){
 		this.user=user;
 		bl = new Receiptsbl(user);
@@ -95,7 +112,7 @@ public class SendPanel extends JPanel{
 	private void init() {
 		// TODO Auto-generated method stub
 		Font font = new Font("黑体",Font.PLAIN,16);
-		JLabel title = new JLabel(user.getHallName()+"寄件单",JLabel.CENTER);
+		title = new JLabel(user.getHallName()+"寄件单",JLabel.CENTER);
 		title.setFont(font);
 		title.setBounds(150, 10, 600, 30);	
 		text1 = new JLabel();
@@ -105,11 +122,11 @@ public class SendPanel extends JPanel{
 		text1.setBorder(tb);
 		text1.setOpaque(false);	
 		
-		JLabel sendernameLabel = new JLabel("· 寄件人姓名：");
+		JLabel sendernameLabel = new JLabel("*  寄件人姓名：");
 		sendernameLabel.setFont(font);
 		sendernameLabel.setBounds(padding, padding*2, label_width, label_height);
 		
-		JLabel senderphoneLabel = new JLabel("· 寄件人手机：");
+		JLabel senderphoneLabel = new JLabel("*  寄件人手机：");
 		senderphoneLabel.setFont(font);
 		senderphoneLabel.setBounds(padding, padding*3+label_height, label_width, label_height);	
 
@@ -122,7 +139,7 @@ public class SendPanel extends JPanel{
 		sendertelLabel.setFont(font);
 	
 		sendertelLabel.setBounds(padding*2+interval+label_width, padding*3+label_height, label_width, label_height);		
-		JLabel senderaddrLabel = new JLabel("· 寄件人住址：");
+		JLabel senderaddrLabel = new JLabel("*  寄件人住址：");
 		senderaddrLabel.setFont(font);
 		senderaddrLabel.setBounds(padding, padding*4+label_height*2, label_width, label_height);
 
@@ -232,12 +249,12 @@ public class SendPanel extends JPanel{
 			}
 			
 		});
-		
+					
 		senderaddr = new JTextField(20);
 		senderaddr.setFont(font);
 		senderaddr.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		senderaddr.setOpaque(false);
-		senderaddr.setBounds(padding+interval, padding*4+label_height*2, label_width*3, label_height);	
+		senderaddr.setBounds(padding+interval+110, padding*4+label_height*2, label_width*2, label_height);	
 		senderaddr.addKeyListener(new KeyListener(){
 
 			public void keyTyped(KeyEvent e) {
@@ -260,12 +277,12 @@ public class SendPanel extends JPanel{
 			
 		});
 		
-		JLabel receivernameLabel = new JLabel("· 收件人姓名：");
+		JLabel receivernameLabel = new JLabel("*  收件人姓名：");
 		receivernameLabel.setFont(font);
 		receivernameLabel.setBounds(padding, padding*2, label_width, label_height);
 		
 
-		JLabel receiverphoneLabel = new JLabel("· 收件人手机：");
+		JLabel receiverphoneLabel = new JLabel("*  收件人手机：");
 		receiverphoneLabel.setFont(font);
 		receiverphoneLabel.setBounds(padding, padding*3+label_height, label_width, label_height);	
 		
@@ -277,7 +294,7 @@ public class SendPanel extends JPanel{
 		receivertelLabel.setFont(font);
 		receivertelLabel.setBounds(padding*2+interval+label_width, padding*3+label_height, label_width, label_height);
 				
-		JLabel receiveraddrLabel = new JLabel("· 收件人住址：");
+		JLabel receiveraddrLabel = new JLabel("*  收件人住址：");
 		receiveraddrLabel.setFont(font);
 		receiveraddrLabel.setBounds(padding, padding*4+label_height*2, label_width, label_height);
 
@@ -389,12 +406,29 @@ public class SendPanel extends JPanel{
 			}
 			
 		});
+
+//		 UIManager.put("ComboBox.background", new Color(255,255,255,0));
+		 
+		senderPlace = new JComboBox();
+		senderPlace.setFont(font);
+		senderPlace.addItem(user.getHallPlace());
+		senderPlace.setSelectedIndex(0);
+//		senderPlace.setOpaque(false);
+		senderPlace.setBounds(padding+interval, padding*4+label_height*2, 100, label_height);
 		
+		receiverPlace = new JComboBox();
+		receiverPlace.setFont(font);
+		receiverPlace.addItem("请选择城市");
+		for(Place p : Place.values()) receiverPlace.addItem(p.name());
+		receiverPlace.setSelectedIndex(0);
+//		receiverPlace.setOpaque(false);
+		receiverPlace.setBounds(padding+interval, padding*4+label_height*2, 120, label_height);	
+	
 		receiveraddr = new JTextField(20);
 		receiveraddr.setFont(font);
 		receiveraddr.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		receiveraddr.setOpaque(false);
-		receiveraddr.setBounds(padding+interval, padding*4+label_height*2, label_width*3, label_height);
+		receiveraddr.setBounds(padding+interval+130, padding*4+label_height*2, label_width*2, label_height);
 		receiveraddr.addKeyListener(new KeyListener(){
 
 			public void keyTyped(KeyEvent e) {
@@ -434,47 +468,47 @@ public class SendPanel extends JPanel{
 		text3.setBorder(tb3);
 		text3.setOpaque(false);
 		
-		JLabel initNumberLabel = new JLabel("· 原 件 数：");
+		JLabel initNumberLabel = new JLabel("*  原  件  数 ：");
 		initNumberLabel.setFont(font);
 		initNumberLabel.setBounds(padding, padding*2, label_width, label_height);
 		
-		JLabel trueweightLabel = new JLabel("· 实际重量：");
+		JLabel trueweightLabel = new JLabel("*  实际重量(g)：");
 		trueweightLabel.setFont(font);
 		trueweightLabel.setBounds(padding, padding*3+label_height, label_width, label_height);
 		
-		JLabel volumeLabel = new JLabel("· 体    积：");
+		JLabel volumeLabel = new JLabel("*  体  积 (ml)：");
 		volumeLabel.setFont(font);
 		volumeLabel.setBounds(padding, padding*4+label_height*2, label_width, label_height);
 		
-		JLabel goodstypeLabel = new JLabel("· 内件品名：");
+		JLabel goodstypeLabel = new JLabel("· 内 件 品 名：");
 		goodstypeLabel.setFont(font);
 		goodstypeLabel.setBounds(padding, padding*5+label_height*3, label_width, label_height);
 		
-		JLabel transtypeLabel = new JLabel("· 快递类型：");
+		JLabel transtypeLabel = new JLabel("*  快 递 类 型：");
 		transtypeLabel.setFont(font);
 		transtypeLabel.setBounds(padding, padding*6+label_height*4, label_width, label_height);
 		
-		JLabel costLabel = new JLabel("· 包 装 费：");
+		JLabel costLabel = new JLabel("*  包  装  费 ：");
 		costLabel.setFont(font);
 		costLabel.setBounds(padding, padding*7+label_height*5, label_width, label_height);
 		
 		JLabel costLabel2 = new JLabel("(纸箱(5元)、木箱(10元)、快递袋(1元))");
 		costLabel2.setFont(font);
-		costLabel2.setBounds(padding, padding*7+label_height*6, 500, label_height);
+		costLabel2.setBounds(padding+interval, padding*7+label_height*6, 500, label_height);
 		
-		JLabel allcostLabel = new JLabel("· 费用合计：");
+		JLabel allcostLabel = new JLabel("· 费 用 合 计：");
 		allcostLabel.setFont(font);
 		allcostLabel.setBounds(padding, padding*8+label_height*7, label_width, label_height);
 		
-		JLabel orderLabel = new JLabel("· 订单条形码号：");
-		orderLabel.setFont(font);
+		JLabel orderLabel = new JLabel("*  订单条形码号：");
+		orderLabel.setFont(font); 
 		orderLabel.setBounds(padding, padding*9+label_height*8, label_width, label_height);
 		
 		initNumber = new JTextField(20);
 		initNumber.setFont(font);
 		initNumber.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		initNumber.setOpaque(false);
-		initNumber.setBounds(padding*2+interval, padding*2, label_width, label_height);
+		initNumber.setBounds(padding*2+interval+15, padding*2, label_width, label_height);
 		initNumber.addKeyListener(new KeyListener(){
 
 			public void keyTyped(KeyEvent e) {
@@ -501,7 +535,7 @@ public class SendPanel extends JPanel{
 		trueweight.setFont(font);
 		trueweight.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		trueweight.setOpaque(false);
-		trueweight.setBounds(padding*2+interval, padding*3+label_height*1, label_width, label_height);
+		trueweight.setBounds(padding*2+interval+15, padding*3+label_height*1, label_width, label_height);
 		trueweight.addKeyListener(new KeyListener(){
 
 			public void keyTyped(KeyEvent e) {
@@ -528,7 +562,7 @@ public class SendPanel extends JPanel{
 		volume.setFont(font);
 		volume.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		volume.setOpaque(false);
-		volume.setBounds(padding*2+interval,  padding*4+label_height*2, label_width, label_height);
+		volume.setBounds(padding*2+interval+15,  padding*4+label_height*2, label_width, label_height);
 		volume.addKeyListener(new KeyListener(){
 
 			public void keyTyped(KeyEvent e) {
@@ -555,7 +589,7 @@ public class SendPanel extends JPanel{
 		goodstype.setFont(font);
 		goodstype.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		goodstype.setOpaque(false);
-		goodstype.setBounds(padding*2+interval, padding*5+label_height*3, label_width, label_height);
+		goodstype.setBounds(padding*2+interval+15, padding*5+label_height*3, label_width, label_height);
 		goodstype.addKeyListener(new KeyListener(){
 
 			public void keyTyped(KeyEvent e) {
@@ -580,37 +614,80 @@ public class SendPanel extends JPanel{
 		
 		ButtonGroup g = new ButtonGroup();
 		
-		JRadioButton finan = new JRadioButton("经济快递",true);
+		finan = new JRadioButton("经济快递");
 		finan.setFont(font);
 		finan.setBorder(null);
-		finan.setBounds(padding*2+interval,padding*6+label_height*4, box_width, box_height);
+		finan.setBounds(padding*2+interval+15,padding*6+label_height*4, box_width, box_height);
 		finan.setOpaque(false);
 		
-		JRadioButton st = new JRadioButton("标准快递");
+		st = new JRadioButton("标准快递",true);
 		st.setFont(font);
 		st.setBorder(null);
-		st.setBounds(padding*2+interval*2,padding*6+label_height*4, box_width, box_height);
+		st.setBounds(padding*2+interval*2+15,padding*6+label_height*4, box_width, box_height);
 		st.setOpaque(false);
 		
-		JRadioButton fast = new JRadioButton("特快");
+		fast = new JRadioButton("特快");
 		fast.setFont(font);
 		fast.setBorder(null);
-		fast.setBounds(padding*2+interval*3,padding*6+label_height*4, box_width, box_height);
+		fast.setBounds(padding*2+interval*3+15,padding*6+label_height*4, box_width, box_height);
 		fast.setOpaque(false);
 		
-		JTextField cost = new JTextField(20);
+		cost = new JTextField(20);
 		cost.setFont(font);
 		cost.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		cost.setOpaque(false);
-		cost.setBounds(padding*2+interval,  padding*6+label_height*5, label_width, label_height);
+		cost.setBounds(padding*2+interval+15,  padding*6+label_height*5, label_width, label_height);
+		cost.addFocusListener(new FocusListener(){
+
+			public void focusGained(FocusEvent e) {
+
+			}
+
+			public void focusLost(FocusEvent e) {
+				// TODO Auto-generated method stub
+				if (cost.getText().equals("")) return;
+				int co = Integer.parseInt(cost.getText());
+				cost.setText(String.format("%d", co));
+			}
+			
+		});
 		
-		JTextField allcost = new JTextField(20);
+		
+		allcost = new JTextField(20);
 		allcost.setFont(font);
-		allcost.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
+		allcost.setBorder(null);
 		allcost.setOpaque(false);
-		allcost.setBounds(padding*2+interval,  padding*8+label_height*7, label_width, label_height);
+		allcost.setBounds(padding*2+interval+15,  padding*8+label_height*7, label_width, label_height);
 		//allcost.setText(t);
 		allcost.setEditable(false);
+		
+		ActionListener listener = new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (receiverPlace.getSelectedIndex() == 0) return;
+				if (trueweight.getText().equals("")) return;
+				if (volume.getText().equals("")) return;
+				if (cost.getText().equals("")) return;
+				String expresstype = "";
+				if (st.isSelected()) expresstype = st.getText();
+				else if (finan.isSelected()) expresstype = finan.getText();
+				else if (fast.isSelected()) expresstype = fast.getText();
+				double ans = bl.getSendCost(expresstype,user.getHallPlace(),receiverPlace.getSelectedItem().toString(),trueweight.getText(),volume.getText());
+				ans += Double.valueOf(cost.getText());
+				allcost.setText(String.format("%.2f", ans));
+			}
+			
+		};
+		
+		receiverPlace.addActionListener(listener);
+		st.addActionListener(listener);
+		fast.addActionListener(listener);
+		finan.addActionListener(listener);
+		cost.addActionListener(listener);
+		trueweight.addActionListener(listener);
+		volume.addActionListener(listener);
+		
 		
 		order = new JTextField(20);
 		order.setFont(font);
@@ -633,6 +710,7 @@ public class SendPanel extends JPanel{
 		text1.add(sendertelLabel);
 		text1.add(senderphoneLabel);
 		text1.add(sendername);
+		text1.add(senderPlace);
 		text1.add(senderaddr);
 		text1.add(sendercomp);
 		text1.add(sendertel);
@@ -644,6 +722,7 @@ public class SendPanel extends JPanel{
 		text2.add(receivertelLabel);
 		text2.add(receiverphoneLabel);
 		text2.add(receivername);
+		text2.add(receiverPlace);
 		text2.add(receiveraddr);
 		text2.add(receivercomp);
 		text2.add(receivertel);
@@ -666,6 +745,7 @@ public class SendPanel extends JPanel{
 		text3.add(fast);
 		text3.add(finan);
 		text3.add(cost);
+		text3.add(allcost);
 		text3.add(order);
 		g.add(finan);
 		g.add(fast);
@@ -745,7 +825,91 @@ public class SendPanel extends JPanel{
 
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
+
+			if (!judgeInput(sendername, "寄件人姓名")) return;
+			if (!judgeInputNumber(senderphone, "寄件人手机")) return;
+			if (!judgeInput(senderaddr, "寄件人地址")) return;
+			if (!judgeInput(receivername, "收件人姓名")) return;
+			if (!judgeInputNumber(receiverphone, "收件人手机")) return;
+			if (receiverPlace.getSelectedIndex()==0){
+				JOptionPane.showMessageDialog(null, "请选择城市","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			if (!judgeInput(receiveraddr, "收件人地址")) return;
 			
+			if (!judgeInputNumber(initNumber, "原件数")) return;
+			if (!judgeInputNumber(trueweight, "实际重量")) return;
+			if (!judgeInputNumber(volume, "体积")) return;
+			if (!judgeInputNumber(order, "订单条形码号")) return;
+					
+			
+			int n = JOptionPane.showConfirmDialog(null, "确定提交?", "确认框",JOptionPane.YES_NO_OPTION);
+			if (n == 1) {
+				return;
+			}
+			
+			String expresstype = "";
+			if (st.isSelected()) expresstype = st.getText();
+			else if (finan.isSelected()) expresstype = finan.getText();
+			else if (fast.isSelected()) expresstype = fast.getText();
+			
+			SendVO vo = new SendVO(title.getText(),user.getUserName(),bl.getCurrentTime(),
+					sendername.getText(),	sendercomp.getText(),	senderphone.getText(), sendertel.getText(),	senderaddr.getText(),
+					receivername.getText(), receivercomp.getText(), receiverphone.getText(), receivertel.getText(), receiveraddr.getText(),
+					initNumber.getText(), trueweight.getText(), volume.getText(), goodstype.getText(), expresstype, cost.getText(), allcost.getText(), order.getText());
+			
+			bl.addReceipt(vo);
+			
+			sendername.setText("");	
+			sendercomp.setText("");	
+			senderphone.setText(""); 
+			sendertel.setText("");	
+			senderaddr.setText("");
+			
+			receivername.setText(""); 
+			receivercomp.setText(""); 
+			receiverphone.setText(""); 
+			receivertel.setText(""); 
+			receiveraddr.setText("");
+			
+			initNumber.setText(""); 
+			trueweight.setText(""); 
+			volume.setText(""); 
+			goodstype.setText(""); 
+			
+			receiverPlace.setSelectedItem(0);
+			
+			st.setSelected(true);
+
+			cost.setText(""); 
+			allcost.setText(""); 
+			order.setText("");
+			JOptionPane.showMessageDialog(null, "提交成功^_^","", JOptionPane.CLOSED_OPTION);
+			
+			
+		}
+		
+		private boolean judgeInput(JTextField tf, String s){
+			if (tf.getText().equals("")){
+				JOptionPane.showMessageDialog(null, "请输入"+s+"！","", JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+			return true;
+		}
+		
+		private boolean judgeInputNumber(JTextField tf, String s){
+			if (tf.getText().equals("")){
+				JOptionPane.showMessageDialog(null, "请输入"+s+"！","", JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+			try{
+				long id = Long.parseLong(tf.getText());
+			}catch(NumberFormatException e1){
+				//输入编号不是数字
+				JOptionPane.showMessageDialog(null, "请输入正确的"+s+"！","", JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+			return true;
 		}
 		
 	}
