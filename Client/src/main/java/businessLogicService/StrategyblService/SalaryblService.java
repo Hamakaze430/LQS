@@ -1,15 +1,20 @@
 package businessLogicService.StrategyblService;
 
+import businessLogic.Strategybl.Role;
 import vo.SalaryVO;
 import dataService.ResultMessage;
 
 public interface SalaryblService {
-    public  ResultMessage setClerkSalary(double salary);
+//    public  ResultMessage setClerkSalary(double salary);
+//	
+//	public ResultMessage setDriverWage(double wage);
+//	
+//	public ResultMessage setPostmanWage(double wage);
+//	
+	public SalaryVO getSalary(Role role);
 	
-	public ResultMessage setDriverWage(double wage);
+	public void setSalary(Role role, String newSum, double rate);
 	
-	public ResultMessage setPostmanWage(double wage);
-	
-	public SalaryVO getSalary();
+//	public void setSalary(Role role, double rate);
 
 }

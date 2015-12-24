@@ -24,77 +24,76 @@ public class SalaryFileDAO  implements SalaryDAO{
 		salaryPO = read();
 	}
 
-	@Override
 	public void setClerkSalary(double salary) {
 		// TODO Auto-generated method stub
-		salaryPO.setClerkSalary(salary);
+		//salaryPO.setClerkSalary(salary);
 	}
 
-	@Override
 	public void setDriverWage(double wage) {
 		// TODO Auto-generated method stub
-		salaryPO.setDriverWage(wage);
+		//salaryPO.setDriverWage(wage);
 	}
 
-	@Override
 	public void setPostmanWage(double wage) {
 		// TODO Auto-generated method stub
-		salaryPO.setPostmanWage(wage);
+		//salaryPO.setPostmanWage(wage);
 	}
 
-	@Override
 	public double getClerkSalary() {
 		// TODO Auto-generated method stub
-		return salaryPO.getClerkSalary();
+		//return salaryPO.getClerkSalary();
+		return 0.0;
+
 	}
 
-	@Override
 	public double getDriverWage() {
 		// TODO Auto-generated method stub
-		return salaryPO.getDriverWage();
+		//return salaryPO.getDriverWage();
+		return 0.0;
+
 	}
 
-	@Override
 	public double getPostmanWage() {
 		// TODO Auto-generated method stub
-		return salaryPO.getPostmanWage();
+		//return salaryPO.getPostmanWage();
+		return 0.0;
+
 	}
 
-	@Override
 	public SalaryPO read() {
 		// TODO Auto-generated method stub
-		ObjectInputStream is = null;
-
-		File file = new File(path);
-		if (!file.exists()) {
-			try {
-				file.createNewFile();
-				return new SalaryPO(2000, 500, 0.15);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		try {
-			is = new ObjectInputStream(new FileInputStream(file));
-			while (true) {
-				
-				SalaryPO temp = (SalaryPO) is.readObject();
-				salaryPO = temp;
-			}
-		} catch (Exception ex) {
-			try {
-				
-				if(is!=null)
-				is.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-
-		return salaryPO;
+//		ObjectInputStream is = null;
+//
+//		File file = new File(path);
+//		if (!file.exists()) {
+//			try {
+//				file.createNewFile();
+//				return new SalaryPO(2000, 500, 0.15);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		try {
+//			is = new ObjectInputStream(new FileInputStream(file));
+//			while (true) {
+//				
+//				SalaryPO temp = (SalaryPO) is.readObject();
+//				salaryPO = temp;
+//			}
+//		} catch (Exception ex) {
+//			try {
+//				
+//				if(is!=null)
+//				is.close();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//
+//		return salaryPO;
+		return null;
 	}
 
-	@Override
 	public void flush() {
 		// TODO Auto-generated method stub
 		try {
