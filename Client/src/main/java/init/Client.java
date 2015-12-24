@@ -37,7 +37,7 @@ public class Client {
 			//02500011000中转中心业务员
 			
 			frame = new MainFrame();
-			UserblService bl = new Userbl("02500010000");
+			UserblService bl = new Userbl("00000001000");
 			MainPanel panel = new MainPanel(bl);
 			frame.add(panel);
 			

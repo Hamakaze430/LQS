@@ -198,7 +198,7 @@ public class ArrivalPanel extends JPanel {
 						JOptionPane.showMessageDialog(null, "对应装车单的目的地不是本单位！","", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
-					startplace.setText(bl.getHallName(((LoadingVO)vo).getHallId()));
+					startplacename.setText(bl.getHallName(((LoadingVO)vo).getHallId()));
 					List<String> list = ((LoadingVO)vo).getOrder();
 					for (String s : list){
 						dm.addRow(new Object[]{s,""});
@@ -209,7 +209,7 @@ public class ArrivalPanel extends JPanel {
 						JOptionPane.showMessageDialog(null, "对应中转单的目的地不是本单位！","", JOptionPane.ERROR_MESSAGE);
 						return;
 					}
-					startplace.setText(((TransferVO)vo).getStartplace());
+					startplacename.setText(((TransferVO)vo).getStartplace());
 					List<String> list = ((TransferVO)vo).getOrders();
 					for (String s : list){
 						dm.addRow(new Object[]{s,"完整"});
