@@ -53,11 +53,11 @@ public class CreatUserDialog extends JDialog {
 	 */
 	private static final long serialVersionUID = 1L;
 	JTextField name;
-	JComboBox<String> place;
-	JComboBox<String> job;
+	JComboBox place;
+	JComboBox job;
 	JTextField id;
 	JPasswordField password;
-	JComboBox<String> identity;
+	JComboBox identity;
 	UserManagerblService userbl;
 	DefaultTableModel defaultModel;
 	ButtonGroup bg;
@@ -134,7 +134,7 @@ public class CreatUserDialog extends JDialog {
 			JLabel identityLabel = new JLabel("用户权限: ");
 			identityLabel.setFont(font);
 			identityLabel.setBounds(padding*3+100+text_width*2, padding*2, label_width, label_height);
-			identity = new JComboBox<String>();
+			identity = new JComboBox();
 			identity.setFont(font);
 			identity.setBounds(padding*3+120+60+text_width*2, padding*2, 180, text_height);
 			identity.addItem("-请设置用户权限-");
@@ -187,7 +187,7 @@ public class CreatUserDialog extends JDialog {
 			JLabel jobLabel = new JLabel("职 位: ");
 			jobLabel.setFont(font);
 			jobLabel.setBounds(padding, padding*3+label_height, label_width, label_height);
-			job = new JComboBox<String>();
+			job = new JComboBox();
 			job.setFont(font);
 			job.setBounds(padding+60, padding*3+label_height, text_width, text_height);
 			job.addItem("-请选择职位-");
@@ -199,7 +199,7 @@ public class CreatUserDialog extends JDialog {
 			JLabel placeLabel = new JLabel("工作单位: ");
 			placeLabel.setFont(font);
 			placeLabel.setBounds(padding*2+60+text_width, padding*3+label_height, label_width, label_height);
-			place = new JComboBox<String>();
+			place = new JComboBox();
 			place.addItem("-请选择工作单位-");
 			place.setFont(font);
 			place.setBounds(padding*3+60*2+text_width, padding*3+label_height, text_width+30, text_height);
