@@ -536,7 +536,7 @@ public class TransferPanel extends JPanel {
 			spyername.setText("");
 			orders.setText("");
 			cost.setText("");
-			
+			JOptionPane.showMessageDialog(null, "提交成功^_^","", JOptionPane.CLOSED_OPTION);
 		}
 		
 	}

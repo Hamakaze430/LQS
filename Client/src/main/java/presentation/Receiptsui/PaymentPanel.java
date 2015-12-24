@@ -390,6 +390,7 @@ public class PaymentPanel extends JPanel {
 		 	cost.setText("");
 		 	bg.clearSelection();
 		 	psarea.setText("");
+		 	JOptionPane.showMessageDialog(null, "提交成功^_^","", JOptionPane.CLOSED_OPTION);
 		}
 	}
 }

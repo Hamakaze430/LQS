@@ -352,6 +352,7 @@ public class VoucherPanel extends JPanel{
 		 	money_double = -1;
 		 	name.setText("");
 		 	orders.setText("");
+		 	JOptionPane.showMessageDialog(null, "提交成功^_^","", JOptionPane.CLOSED_OPTION);
 		}
 		
 	}

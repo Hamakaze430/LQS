@@ -157,6 +157,7 @@ public class DriverPanel extends JPanel {
 				DriverVO vo = (DriverVO)defaultModel.getDataVector().elementAt(index);
 				bl.deleteDriverInfo(vo);
 				defaultModel.removeRow(index);
+				JOptionPane.showMessageDialog(null, "删除成功^_^","", JOptionPane.CLOSED_OPTION);
 			}
 
 			public void mousePressed(MouseEvent e) {

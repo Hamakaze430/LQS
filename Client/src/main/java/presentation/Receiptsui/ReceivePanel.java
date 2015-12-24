@@ -255,6 +255,7 @@ public class ReceivePanel extends JPanel{
 		 	id.setText("");
 		 	name.setText("");
 		 	date.setText(bl.getCurrentTime());
+		 	JOptionPane.showMessageDialog(null, "提交成功^_^","", JOptionPane.CLOSED_OPTION);
 		}
 		
 	}

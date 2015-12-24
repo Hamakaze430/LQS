@@ -426,6 +426,7 @@ public class ArrivalPanel extends JPanel {
 			state.setVisible(false);
 			scrollPane.setVisible(false);
 			flag = false;
+			JOptionPane.showMessageDialog(null, "提交成功^_^","", JOptionPane.CLOSED_OPTION);
 		 	
 		}
 	

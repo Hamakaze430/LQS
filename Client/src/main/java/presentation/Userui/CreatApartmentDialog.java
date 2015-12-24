@@ -202,6 +202,7 @@ public class CreatApartmentDialog extends JDialog {
 					HallVO vo = new HallVO(Name, Id, Place);
 					defaultModel.addRow(vo);
 					bl.insert(vo,type);
+					JOptionPane.showMessageDialog(null, "增加成功^_^","", JOptionPane.CLOSED_OPTION);
 				}
 				
 			});

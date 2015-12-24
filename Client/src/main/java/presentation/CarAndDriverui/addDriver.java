@@ -276,6 +276,7 @@ public class addDriver extends JDialog{
 					month_limi.setText("");
 					day_limi.setText("");
 					id.setText(user.getHallId()+bl.getLastId("driver", user.getHallId()));
+					JOptionPane.showMessageDialog(null, "增加成功^_^","", JOptionPane.CLOSED_OPTION);
 				}
 
 				public void mousePressed(MouseEvent e) {

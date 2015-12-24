@@ -150,6 +150,7 @@ public class CarPanel extends JPanel {
 				CarVO vo = (CarVO)defaultModel.getDataVector().elementAt(index);
 				bl.deleteCarInfo(vo);
 				defaultModel.removeRow(index);
+				JOptionPane.showMessageDialog(null, "删除成功^_^","", JOptionPane.CLOSED_OPTION);
 			}
 
 			public void mousePressed(MouseEvent e) {

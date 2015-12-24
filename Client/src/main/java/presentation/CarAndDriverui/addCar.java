@@ -117,6 +117,7 @@ public class addCar extends JDialog{
 					defaultModel.addRow(vo);
 					license.setText("");
 					id.setText(user.getHallId()+bl.getLastId("car", user.getHallId()));
+					JOptionPane.showMessageDialog(null, "增加成功^_^","", JOptionPane.CLOSED_OPTION);
 				}
 
 				public void mousePressed(MouseEvent e) {

@@ -884,6 +884,7 @@ public class SendPanel extends JPanel{
 			cost.setText(""); 
 			allcost.setText(""); 
 			order.setText("");
+			JOptionPane.showMessageDialog(null, "提交成功^_^","", JOptionPane.CLOSED_OPTION);
 			
 			
 		}
