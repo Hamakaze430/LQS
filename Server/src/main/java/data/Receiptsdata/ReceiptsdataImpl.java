@@ -37,6 +37,11 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 		// TODO Auto-generated constructor stub
 	}
 
+//	public static void main(String[] args) throws RemoteException{
+//		ReceiptsdataImpl a = new ReceiptsdataImpl();
+//		a.delete(13);
+//	}
+	
 	public long getLastId(String foreId) throws RemoteException {
 		File file = new File("src/main/java/ser/receiptsNum.txt");
 		try{
@@ -82,6 +87,7 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 		try{
 			comp = df.parse(date);
 			for (ReceiptPO temp : all){
+//				System.out.println(temp.getReceiptId());
 				tmpDate=df.parse(temp.getCreateDate());
 				if(tmpDate.before(comp)||tmpDate.equals(comp)){
 							list.add(temp);
@@ -229,6 +235,33 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 			return null;
 		}
 		return null;
+	}
+	
+	
+	public boolean delete(long receiptId) throws RemoteException {
+		try {
+			List<ReceiptPO>  list = findAll();
+			int index = -1;
+			for (int i = 0; i < list.size(); i++){
+				if (list.get(i).getReceiptId()== receiptId){
+					index = i;
+					break;
+				}
+			}
+			list.remove(index);
+            FileOutputStream fileOut = new FileOutputStream("src/main/java/ser/receipts.ser");
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(list);
+			objectOut.close();
+            return true;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return false;
 	}
 
 	public String getReceipt(String type) throws RemoteException {
