@@ -31,6 +31,13 @@ public class UserManagerbl implements UserManagerblService{
 		String hallName = apartmentbl.getName(po.getHallId());
 		return new UserVO(po.getID(),po.getPassword(),po.getAuthority(),po.getName(),po.getSex(),po.getJob(),hallName);
 	}
+	
+	public UserVO findUserByName(String userName) {
+		UserPO po = dataFactory.getUserdataService().find("name",userName);
+		if (po == null) return null;
+		String hallName = apartmentbl.getName(po.getHallId());
+		return new UserVO(po.getID(),po.getPassword(),po.getAuthority(),po.getName(),po.getSex(),po.getJob(),hallName);
+	}
 
 	public boolean addUser(UserVO vo) {
 		String hallId = apartmentbl.getId(vo.getHall());

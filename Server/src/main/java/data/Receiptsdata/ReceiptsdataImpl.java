@@ -36,13 +36,12 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	public String getReceipt(String type) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+//	public static void main(String[] args) throws RemoteException{
+//		ReceiptsdataImpl a = new ReceiptsdataImpl();
+//		a.delete(13);
+//	}
+	
 	public long getLastId(String foreId) throws RemoteException {
 		File file = new File("src/main/java/ser/receiptsNum.txt");
 		try{
@@ -88,6 +87,10 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 		try{
 			comp = df.parse(date);
 			for (ReceiptPO temp : all){
+<<<<<<< HEAD
+=======
+//				System.out.println(temp.getReceiptId());
+>>>>>>> 1308c02f8ef1117282572129df3883e55e37571b
 				tmpDate=df.parse(temp.getCreateDate());
 				if(tmpDate.before(comp)||tmpDate.equals(comp)){
 							list.add(temp);
@@ -122,10 +125,6 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 		return list;
 	}
 
-	public ReceiptPO getReceiptbyDate(String date) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public ArrayList<ReceiptPO> getforSales(String start, String end) throws RemoteException{
 		List<ReceiptPO> all = findAll();
@@ -238,6 +237,38 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 			}
 			return null;
 		}
+		return null;
+	}
+	
+	
+	public boolean delete(long receiptId) throws RemoteException {
+		try {
+			List<ReceiptPO>  list = findAll();
+			int index = -1;
+			for (int i = 0; i < list.size(); i++){
+				if (list.get(i).getReceiptId()== receiptId){
+					index = i;
+					break;
+				}
+			}
+			list.remove(index);
+            FileOutputStream fileOut = new FileOutputStream("src/main/java/ser/receipts.ser");
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(list);
+			objectOut.close();
+            return true;
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		return false;
+	}
+
+	public String getReceipt(String type) throws RemoteException {
+		// TODO Auto-generated method stub
 		return null;
 	}	
 

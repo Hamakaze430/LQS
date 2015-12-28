@@ -249,7 +249,7 @@ public class ReceivePanel extends JPanel{
 				return;
 			}
 			
-			ReceiptVO vo = new ReceiveVO(title.getText(),user.getUserName(),Id,Name,Date);
+			ReceiptVO vo = new ReceiveVO(title.getText(),user.getUserName(),Date,Id,Name);
 		 	bl.addReceipt(vo);
 		 	
 		 	id.setText("");

@@ -1,6 +1,8 @@
 package businessLogicService.LogisticsInfoSearchblService;
 
+import po.ReceiptPO;
 import vo.LogisticsVO;
+import vo.ReceiptVO;
 
 public interface LogisticsInfoSearchblService {
 	/**
@@ -9,4 +11,8 @@ public interface LogisticsInfoSearchblService {
 	 * @return
 	 */
 	public LogisticsVO search(String id);
+
+	public void newLogisticsInfo(ReceiptVO vo);
+
+	public void addState(ReceiptVO vo);
 }

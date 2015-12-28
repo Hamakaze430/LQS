@@ -233,7 +233,11 @@ public class LogisticsPanel extends JPanel {
 	    bg.setBackground(new Color(255,255,255,60));
 	    bg.setBounds(2*LEFT_PADDING, 
 				  TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION,
+<<<<<<< HEAD
 				 500,
+=======
+				  500,
+>>>>>>> 1308c02f8ef1117282572129df3883e55e37571b
 				  this.getHeight() - (TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION) - BUTTOM_PADDING
 	    		);
 	    bg.setVisible(true);

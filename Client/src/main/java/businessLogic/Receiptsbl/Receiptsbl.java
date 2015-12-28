@@ -29,14 +29,31 @@ import dataService.ReceiptsdataService.ReceiptsdataService;
 import init.Client;
 import po.ApprovalPO;
 import po.HallPO;
+import po.LogisticsPO;
 import po.ReceiptPO;
+import po.receipts.ArrivalPO;
+import po.receipts.DeliverPO;
+import po.receipts.IncomePO;
 import po.receipts.LoadingPO;
+import po.receipts.PaymentPO;
+import po.receipts.ReceivePO;
+import po.receipts.SendPO;
+import po.receipts.StorageInPO;
+import po.receipts.StorageOutPO;
 import po.receipts.TransferPO;
 import vo.BankAccountVO;
 import vo.LogisticsVO;
 import vo.ReceiptVO;
 import vo.UserVO;
+import vo.receipts.ArrivalVO;
+import vo.receipts.DeliverVO;
+import vo.receipts.IncomeVO;
 import vo.receipts.LoadingVO;
+import vo.receipts.PaymentVO;
+import vo.receipts.ReceiveVO;
+import vo.receipts.SendVO;
+import vo.receipts.StorageInVO;
+import vo.receipts.StorageOutVO;
 import vo.receipts.TransferVO;
 
 public class Receiptsbl implements ReceiptsblService {
@@ -53,8 +70,12 @@ public class Receiptsbl implements ReceiptsblService {
 		carAndDriver = new CarAndDriverbl();
 		apartment = new Apartmentbl();
 		approval = new Approvalbl();
-		logistics = new LogisticsInfoSearchbl();
 		dataFactory = Client.dataFactory;
+		logistics = new LogisticsInfoSearchbl();
+	}
+	public Receiptsbl(){
+		dataFactory = Client.dataFactory;
+		logistics = new LogisticsInfoSearchbl();
 		account = new BankAccountbl();
 	}
 	
@@ -75,7 +96,7 @@ public class Receiptsbl implements ReceiptsblService {
 	public String getLastId(String foreId) {
 		// TODO Auto-generated method stub
 		long num = dataFactory.getReceiptsdataService().getLastId(foreId);
-		if (foreId.length() == 15) return String.format("%05d", num);
+		if (foreId.length() == 14) return String.format("%05d", num);
 		else return String.format("%07d", num);
 	}
 	
@@ -135,9 +156,12 @@ public class Receiptsbl implements ReceiptsblService {
 	 * @return
 	 */
 	private boolean approvalInsert(ReceiptPO po){
-		return false;
-//		ApprovalPO app = new ApprovalPO(po.getName(),po.getCreator(),ReceiptState.未审批,po.getReceiptId());
-//		return approval.insert(app);
+		Date date = new Date();
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		System.out.println(df.format(date));
+		ApprovalPO app = new ApprovalPO(po.getName(),df.format(date),ReceiptState.未审批,po.getReceiptId());
+		return approval.insert(app);
+//		
 	}
 
 	public boolean findCarAndDriver(String type, String known) {
@@ -193,6 +217,45 @@ public class Receiptsbl implements ReceiptsblService {
 	public double getSendCost(String expresstype, String start, String end, String weight, String volume) {
 		// TODO Auto-generated method stub
 		return 100;
+	}
+	public boolean pass(long receiptId) {
+		ReceiptPO po = dataFactory.getReceiptsdataService().find("receiptId", String.valueOf(receiptId));
+		ReceiptVO vo = poToVO(po);
+		String s = po.getType();
+		if (s.equals("寄件单")) logistics.newLogisticsInfo(vo);
+		else logistics.addState(vo);
+		
+		if (s.equals("入库单")){}
+		if (s.equals("出库单")){}
+		
+		if (s.equals("收款单")){account.incMoney(((IncomeVO)vo).getAmount());}
+		if (s.equals("付款单")){account.decMoney(((PaymentVO)vo).getAccount(),((PaymentVO)vo).getAmount());}
+		
+		return true;
+	}
+	/*寄件单,
+	装车单,
+	到达单,
+	中转单,
+	出库单,
+	入库单,
+	收款单,
+	付款单,
+	派件单,
+	收件单,*/
+	private ReceiptVO poToVO(ReceiptPO po) {
+		String s = po.getType();
+		if (s.equals("寄件单")) return new SendVO((SendPO)po);
+		if (s.equals("装车单")) return new LoadingVO((LoadingPO)po);
+		if (s.equals("到达单")) return new ArrivalVO((ArrivalPO)po);
+		if (s.equals("中转单")) return new TransferVO((TransferPO)po);	
+		if (s.equals("出库单")) return new StorageOutVO((StorageOutPO)po);
+		if (s.equals("入库单")) return new StorageInVO((StorageInPO)po);
+		if (s.equals("收款单")) return new IncomeVO((IncomePO)po);
+		if (s.equals("付款单")) return new PaymentVO((PaymentPO)po);
+		if (s.equals("派件单")) return new DeliverVO((DeliverPO)po);
+		if (s.equals("收件单")) return new ReceiveVO((ReceivePO)po);	
+		return null;
 	}
 
 
