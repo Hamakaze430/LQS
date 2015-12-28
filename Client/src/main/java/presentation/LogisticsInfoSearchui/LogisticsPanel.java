@@ -223,9 +223,9 @@ public class LogisticsPanel extends JPanel {
 	    display = new JPanel();
 	    display.setOpaque(false);
 	   // display.setBackground(new Color(255,255,255,0));
-	    display.setBounds(2*LEFT_PADDING, 
+	    display.setBounds(2*LEFT_PADDING+10, 
 	    				  TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION,
-	    				  400,
+	    				  490,
 	    				  this.getHeight() - (TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION) - BUTTOM_PADDING
 	    );
 	    
@@ -233,7 +233,7 @@ public class LogisticsPanel extends JPanel {
 	    bg.setBackground(new Color(255,255,255,60));
 	    bg.setBounds(2*LEFT_PADDING, 
 				  TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION,
-				  400,
+				 500,
 				  this.getHeight() - (TOP_PADDING + BUTTON_HEIGHT + PADDING_HORIZATION) - BUTTOM_PADDING
 	    		);
 	    bg.setVisible(true);

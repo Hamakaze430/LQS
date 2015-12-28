@@ -71,7 +71,7 @@ public class SalaryStrategyPanel extends JPanel {
 		
 		ButtonGroup bg = new ButtonGroup();
 		
-		final JRadioButton j1 = new JRadioButton("按月");
+		final JRadioButton j1 = new JRadioButton("按月",true);
 		j1.setFont(font);
 		j1.setBounds(220, 60, 80, 30);
 		j1.setOpaque(false);
@@ -100,7 +100,7 @@ public class SalaryStrategyPanel extends JPanel {
 		
 		final JTextField salt = new JTextField(20);
 		salt.setFont(font);
-		salt.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
+		salt.setBorder(null);
 		salt.setBounds(250, 160, 100, 30);
 		salt.setOpaque(false);
 		

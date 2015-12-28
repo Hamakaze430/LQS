@@ -52,6 +52,7 @@ public class ApprovalPanel extends JPanel {
 	DefaultTableModel dm;
 	JTable table;
 	JButton back;
+	JButton refresh;
 	JButton pass;
 	boolean flag = false;
 	int rowEditable = -1;
@@ -125,6 +126,43 @@ public class ApprovalPanel extends JPanel {
 		scrollPane.setBorder(null);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
+		
+		refresh = new JButton();
+		refresh.setFont(font);
+		refresh.setBorder(null);
+		refresh.setOpaque(false);
+		refresh.setFocusPainted(false);
+		refresh.setContentAreaFilled(false);
+		refresh.setBounds(660, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/refresh_unclicked.png",refresh);
+		refresh.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/refresh_clicked.png",refresh);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/refresh_unclicked.png",refresh);
+			}
+			
+		});
 		
 		pass = new JButton();
 		pass.setFont(font);
@@ -204,6 +242,7 @@ public class ApprovalPanel extends JPanel {
 		this.add(scrollPane);
 		this.add(back);
 		this.add(pass);
+		this.add(refresh);
 	}
 	
 	private void initTable() {

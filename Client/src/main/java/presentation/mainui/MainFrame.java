@@ -10,6 +10,8 @@ import javax.swing.UIManager;
 import javax.swing.WindowConstants;
 import javax.swing.plaf.FontUIResource;
 
+import Extra.simpleWelcomePanel;
+
 
 
 public class MainFrame extends JFrame {
@@ -55,6 +57,9 @@ public class MainFrame extends JFrame {
 		}
 		public void addWelcomePanel(){
 			this.getContentPane().add(new WelcomePanel());
+		}
+		public void addsimpleWelcomePanel(){
+			this.getContentPane().add(new simpleWelcomePanel());
 		}
 
 }

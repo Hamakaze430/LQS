@@ -1,51 +1,40 @@
-package presentation.Userui;
+package Extra;
 
 import init.Client;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
-import presentation.mainui.PictureButton;
+import presentation.Userui.MainPanel;
 import presentation.mainui.PictureLabel;
-import presentation.mainui.WelcomePanel;
 import vo.UserVO;
+import businessLogic.Receiptsbl.Receiptsbl;
 import businessLogic.Userbl.UserManagerbl;
 import businessLogic.Userbl.Userbl;
+import businessLogicService.ReceiptsblService.ReceiptsblService;
 import businessLogicService.UserblService.UserManagerblService;
 import businessLogicService.UserblService.UserblService;
 
-public class LoginPanel extends JPanel{
-	
-
-	/**
-	 * 
-	 */
+public class simpleLoginPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private UserManagerblService bl;
 
-	private JLabel bg;
-	private JLabel IDbg;
 	private JLabel UserID;
-	private JLabel Passwordbg;
 	private JLabel Password;
 	
 	private JTextField id;
@@ -53,37 +42,30 @@ public class LoginPanel extends JPanel{
 	
 	private JButton login;
 	private JButton exit;
-	private ImageIcon im;
 	
-	public LoginPanel(){
+	private Font font1;
+	private Font font2;
+	public simpleLoginPanel(){
 		this.setSize(1024, 768);
 		this.setLayout(null);
 		bl = new UserManagerbl();
-		im = new ImageIcon("src/main/java/image/background.jpg");
-		initLoginPanel();
+		initsimpleLoginPanel();
 		this.setVisible(true);
 		this.validate();
 		
 	}
-
-	private void initLoginPanel() {
-		JLabel bg = new PictureLabel("src/main/java/image/background.jpg");
+	private void initsimpleLoginPanel() {
+		// TODO Auto-generated method stub
+		font1 = new Font("黑体",Font.PLAIN,18);
+		font2 = new Font("黑体",Font.BOLD,18);
+		JLabel bg = new PictureLabel("src/main/java/image/3.jpg");
 		bg.setBounds(0,0,this.getWidth(),this.getHeight());
 		
-		IDbg = new PictureLabel("src/main/java/image/input.png");
-		IDbg.setBounds(311, 200, 350, 80);
-
-		Passwordbg = new PictureLabel("src/main/java/image/input.png");
-		Passwordbg.setBounds(311, 315, 350, 80);
-			
 		UserID = new JLabel("用 户 名：",JLabel.LEFT);
-		UserID.setForeground(Color.lightGray);
 		UserID.setFont(new Font("华文细黑",Font.PLAIN,18));
-		UserID.setBounds(330, 200, 130, 80);
+		UserID.setBounds(330, 230, 130, 80);
 		id = new JTextField(20);
-		id.setBounds(408, 200, 230, 80);
-		id.setBorder(new EmptyBorder(0,0,0,0));
-		id.setOpaque(false);
+		id.setBounds(408, 250, 230, 40);
 		id.addKeyListener(new KeyListener(){
 
 			public void keyTyped(KeyEvent e) {
@@ -107,24 +89,21 @@ public class LoginPanel extends JPanel{
 		});
 		
 		Password = new JLabel("密      码：",JLabel.LEFT);
-		Password.setForeground(Color.lightGray);
 		Password.setFont(new Font("华文细黑",Font.PLAIN,18));
 		Password.setBounds(330, 312, 130, 80);
 		
 		key = new JPasswordField(20);
-		key.setBounds(408, 310, 230, 80);
-		key.setBorder(new EmptyBorder(0,0,0,0));
-		key.setOpaque(false);
+		key.setBounds(408, 330, 230, 40);
 		key.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				login();
 			}			
-		});		
-		login = new JButton();
-		login.setBounds(590, 420, 50, 50);
-		PictureButton.setIcon("src/main/java/image/login.png",login);
-		login.setBorder(null);
+		});	
+		
+		login = new JButton("登录");
+		login.setFont(font1);
+		login.setBounds(550, 420, 80, 40);
 		login.setFocusPainted(false);
 		login.setContentAreaFilled(false);
 		login.addMouseListener(new MouseListener(){
@@ -136,68 +115,60 @@ public class LoginPanel extends JPanel{
 
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				login.setBounds(585, 417, 60, 60);
-				PictureButton.setIcon("src/main/java/image/login_pressed.png",login);
+
+				
 			}
 
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
-				login.setBounds(585, 415, 60, 60);
-				PictureButton.setIcon("src/main/java/image/login.png",login);
+				
 			}
 
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-				login.setBounds(585, 415, 60, 60);
-				PictureButton.setIcon("src/main/java/image/login.png",login);
+				login.setFont(font2);
 			}
 
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				login.setBounds(590, 420, 50, 50);
-				PictureButton.setIcon("src/main/java/image/login.png",login);
+				login.setFont(font1);
 			}
 			
 		});
 			
-		exit = new JButton();
-		exit.setBounds(330, 420, 50, 50);
-		PictureButton.setIcon("src/main/java/image/exit.png",exit);	
-		exit.setBorder(null);
+		exit = new JButton("取消");
+		exit.setFont(font1);
+		exit.setBounds(408, 420, 80, 40);
 		exit.setFocusPainted(false);
 		exit.setContentAreaFilled(false);
 		exit.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				LoginPanel.this.setVisible(false);	
-				Client.frame.remove(LoginPanel.this);
-				Client.frame.add(new WelcomePanel());
+				simpleLoginPanel.this.setVisible(false);	
+				Client.frame.remove(simpleLoginPanel.this);
+				Client.frame.add(new simpleWelcomePanel());
 				Client.frame.repaint();
 			}
 
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				exit.setBounds(325, 417, 60, 60);
-				PictureButton.setIcon("src/main/java/image/exit_pressed.png",exit);
+				
 			}
 
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
-				exit.setBounds(325, 415, 60, 60);
-				PictureButton.setIcon("src/main/java/image/exit.png",exit);
+				
 			}
 
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-				exit.setBounds(325, 415, 60, 60);
-				PictureButton.setIcon("src/main/java/image/exit.png",exit);
+				exit.setFont(font2);
 			}
 
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				exit.setBounds(330, 420, 50, 50);
-				PictureButton.setIcon("src/main/java/image/exit.png",exit);
+				exit.setFont(font1);
 			}
 			
 		});
@@ -207,12 +178,9 @@ public class LoginPanel extends JPanel{
 		this.add(key);
 		this.add(UserID);
 		this.add(Password);
-		this.add(IDbg);
-		this.add(Passwordbg);
 		this.add(bg);
-		
 	}
-
+	
 	protected boolean login() {
 		// TODO Auto-generated method stub
 		String Id = id.getText();
@@ -233,18 +201,14 @@ public class LoginPanel extends JPanel{
 			return false;
 		}
 		
-		LoginPanel.this.setVisible(false);
-		UserblService bl = new Userbl(Id);
-		Client.frame.add(new MainPanel(bl));
+		simpleLoginPanel.this.setVisible(false);
+		UserblService user2 = new Userbl(Id);
+		ReceiptsblService bl = new Receiptsbl(user2);
+		Client.frame.add(new simpleMainPanel(user2,bl));
 		Client.frame.repaint();
 		
 		return true;
 		
 	}
 
-	protected void paintComponent(Graphics g) {  
-		g.drawImage(im.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);   
-	}
-	
-	
 }
