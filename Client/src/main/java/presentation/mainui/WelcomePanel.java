@@ -34,6 +34,7 @@ public class WelcomePanel extends JPanel {
 	
 	private void init() {
 		JLabel bg = new PictureLabel("src/main/java/image/WelcomeBG.png");
+		
 		bg.setBounds(0,0,this.getWidth(),this.getHeight());
 		
 		login = new JButton();		

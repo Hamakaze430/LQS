@@ -13,6 +13,10 @@ public class PictureLabel extends JLabel {
 		this.im = new ImageIcon(s);  
 	}
 	
+	public PictureLabel(ImageIcon im){
+		this.im = im;  
+	}
+	
 	protected void paintComponent(Graphics g) {  
 		g.drawImage(im.getImage(), 0, 0, this.getWidth(), this.getHeight(), this);   
 	}
