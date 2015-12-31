@@ -77,7 +77,7 @@ public class RMIHelper {
     	salaryData = (SalarydataService) Naming.lookup(urlPrefix + "salaryData-Server");
     	bankaccountData = (BankAccountdataService) Naming.lookup(urlPrefix + "bankaccountData-Server");
     	approvalData = (ApprovaldataService) Naming.lookup(urlPrefix + "approvalData-Server");
-    	 
+    	constantData = (ConstantdataService) Naming.lookup(urlPrefix + "constantData-Server");
     
     }
     

@@ -2,8 +2,10 @@ package presentation.Strategyui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.TextField;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,8 +13,12 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
+import javax.swing.table.DefaultTableCellRenderer;
 
+import businessLogic.Strategybl.Constantbl.Constantbl;
+import businessLogicService.StrategyblService.ConstantblService;
 import presentation.mainui.PictureButton;
+import vo.ConstantVO;
 /**
  * 价格策略
  * @author TOSHIBA
@@ -26,7 +32,9 @@ public class PricePanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	JButton back;
 	JButton save;
+	ConstantblService constant;
 	public PricePanel(){
+		constant = new Constantbl();
 		this.setLayout(null);
 		this.setBorder(null);
 		this.setOpaque(false);
@@ -34,6 +42,8 @@ public class PricePanel extends JPanel {
 	}
 	private void initPPanel() {
 		// TODO Auto-generated method stub
+		ConstantVO vo = constant.getConstant();
+		
 		Font font = new Font("黑体",Font.PLAIN,18);
 		JLabel l1 = new JLabel("· 请设置各运送方式价格：");
 		l1.setFont(font);
@@ -64,6 +74,12 @@ public class PricePanel extends JPanel {
 		car.setOpaque(false);
 		train.setOpaque(false);
 		plane.setOpaque(false);
+		car.setHorizontalAlignment(JTextField.CENTER);
+		train.setHorizontalAlignment(JTextField.CENTER);
+		plane.setHorizontalAlignment(JTextField.CENTER);
+		car.setText(vo.getVanCost());
+		train.setText(vo.getRailwayCost());
+		plane.setText(vo.getAirplaneCost());
 		
 		JLabel l2 = new JLabel("· 请设置经济快递、标准快递、次晨特快价格比：         ：        ：        ");
 		l2.setFont(font);
@@ -85,6 +101,17 @@ public class PricePanel extends JPanel {
 		type2.setOpaque(false);
 		type3.setOpaque(false);
 		
+		type1.setHorizontalAlignment(JTextField.CENTER);
+		type2.setHorizontalAlignment(JTextField.CENTER);
+		type3.setHorizontalAlignment(JTextField.CENTER);
+		type1.setText("18");
+		type2.setText("23");
+		type3.setText("25");
+		
+		type1.setEditable(false);
+		type2.setEditable(false);
+		type3.setEditable(false);
+		
 		JLabel l3 = new JLabel("· 请设置标准快递价格：        元每公斤");
 		l3.setFont(font);
 		l3.setBounds(10, 130, 800, 30);
@@ -94,6 +121,8 @@ public class PricePanel extends JPanel {
 		stPrice.setBounds(210, 130, 80, 30);
 		stPrice.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		stPrice.setOpaque(false);
+		stPrice.setHorizontalAlignment(JTextField.CENTER);
+		stPrice.setText(vo.getPriceStandard());
 		
 		JLabel l4 = new JLabel("· 请设置城市间距离：");
 		l4.setFont(font);
@@ -112,6 +141,12 @@ public class PricePanel extends JPanel {
 		table.setRowHeight(30);
 		table.setBackground(new Color(255,255,255,100));
 		table.setOpaque(false);
+		List<String> dis = vo.getCityDistance();
+		for (int i = 1; i < 5; i++){
+			String[] split = dis.get(i-1).split(" ");
+			for (int j = 1; j < 5; j++)
+				table.setValueAt(split[j-1], i, j);
+		}
 		
 		
 		save = new JButton();

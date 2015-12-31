@@ -23,7 +23,6 @@ public class ConstantFileDAO implements ConstantDAO {
 		constantPO = read();
 	}
 	
-	@Override
 	public void flush() {
 		// TODO Auto-generated method stub
 		try {
@@ -103,19 +102,16 @@ public class ConstantFileDAO implements ConstantDAO {
 		return constantPO;
 	}
 
-	@Override
 	public void setPrice(double price) {
 		// TODO Auto-generated method stub
 		constantPO.setPrice(price);
 	}
 
-	@Override
 	public double getPrice() {
 		// TODO Auto-generated method stub
 		return constantPO.getPrice();
 	}
 
-	@Override
 	public void setVehicleCost(double van, double railway, double airplane) {
 		// TODO Auto-generated method stub
 		constantPO.setVanCost(van);
@@ -123,7 +119,6 @@ public class ConstantFileDAO implements ConstantDAO {
 		constantPO.setAirplaneCost(airplane);
 	}
 
-	@Override
 	public double[] getVehicleCost() {
 		// TODO Auto-generated method stub
 		double[] temp = {constantPO.getVanCost(),constantPO.getRailwayCost(),constantPO.getAirplaneCost()};
@@ -131,7 +126,6 @@ public class ConstantFileDAO implements ConstantDAO {
 		return temp;
 	}
 
-	@Override
 	public void setVehicleLoad(int van, int railway, int airplane) {
 		// TODO Auto-generated method stub
 		constantPO.setVanLoad(van);
@@ -139,7 +133,6 @@ public class ConstantFileDAO implements ConstantDAO {
 		constantPO.setAirplaneLoad(airplane);
 	}
 
-	@Override
 	public int[] getVehicleLoad() {
 		// TODO Auto-generated method stub
 		
@@ -162,19 +155,16 @@ public class ConstantFileDAO implements ConstantDAO {
 		}
 }
 
-	@Override
 	public ArrayList<String> getCityList() {
 		// TODO Auto-generated method stub
 		return constantPO.getCityList();
 	}
 
-	@Override
 	public ArrayList<String> getCityDistance() {
 		// TODO Auto-generated method stub
 		return constantPO.getCityDistance();
 	}
 
-	@Override
 	public void addCity(String CityID) {
 		// TODO Auto-generated method stub
 		ArrayList<String> cityList = constantPO.getCityList();
@@ -193,7 +183,6 @@ public class ConstantFileDAO implements ConstantDAO {
 	}
 
 
-	@Override
 	public void setCityDistance(String CityID1, String CityID2, double distance) {
 		// TODO Auto-generated method stub
 

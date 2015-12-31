@@ -1,10 +1,11 @@
 package dataService.StrategydataService.ConstantdataService;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public interface ConstantdataService {
-public void flush() throws RemoteException;
+public interface ConstantdataService extends Remote {
+	public void flush() throws RemoteException;
 	
 	public void setPrice(double price) throws RemoteException;
 	
