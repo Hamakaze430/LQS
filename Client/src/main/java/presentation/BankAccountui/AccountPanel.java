@@ -37,7 +37,6 @@ public class AccountPanel extends JPanel {
 	JButton newaccount;
 	JButton delete;
 	JButton back;
-<<<<<<< HEAD
 	JButton search;
 	int button_width = 50;
 	int button_height =30;
@@ -46,9 +45,7 @@ public class AccountPanel extends JPanel {
 	int label_width = 200;
 	int label_height = 30;
 	int interval =140;
-=======
 	BankAccountblService bl;
->>>>>>> 1308c02f8ef1117282572129df3883e55e37571b
 	public AccountPanel(){
 		bl = new BankAccountbl();
 		this.setLayout(null);

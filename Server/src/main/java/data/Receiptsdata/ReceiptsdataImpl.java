@@ -87,10 +87,6 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 		try{
 			comp = df.parse(date);
 			for (ReceiptPO temp : all){
-<<<<<<< HEAD
-=======
-//				System.out.println(temp.getReceiptId());
->>>>>>> 1308c02f8ef1117282572129df3883e55e37571b
 				tmpDate=df.parse(temp.getCreateDate());
 				if(tmpDate.before(comp)||tmpDate.equals(comp)){
 							list.add(temp);
