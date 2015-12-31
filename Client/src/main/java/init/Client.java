@@ -38,7 +38,6 @@ public class Client {
 //			UserblService bl = new Userbl("00000000000");
 //			MainPanel panel = new MainPanel(bl);
 //			frame.add(panel);
-			
 			frame.addWelcomePanel();
 			frame.setVisible(true);
 		} catch (ClientInitException e) {

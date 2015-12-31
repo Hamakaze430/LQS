@@ -8,10 +8,13 @@ import java.util.Vector;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -34,7 +37,18 @@ public class AccountPanel extends JPanel {
 	JButton newaccount;
 	JButton delete;
 	JButton back;
+<<<<<<< HEAD
+	JButton search;
+	int button_width = 50;
+	int button_height =30;
+	JTextField key;
+	int padding = 10;
+	int label_width = 200;
+	int label_height = 30;
+	int interval =140;
+=======
 	BankAccountblService bl;
+>>>>>>> 1308c02f8ef1117282572129df3883e55e37571b
 	public AccountPanel(){
 		bl = new BankAccountbl();
 		this.setLayout(null);
@@ -44,7 +58,54 @@ public class AccountPanel extends JPanel {
 	}
 	private void initAPanel() {
 		// TODO Auto-generated method stub
-		Font font = new Font("黑体",Font.PLAIN,18);
+		Font font = new Font("黑体",Font.PLAIN,16);
+		
+		JLabel notice = new JLabel("· 请输入关键字：");
+		notice.setFont(font);
+		notice.setBounds(padding, padding, label_width, label_height);
+		
+		key = new JTextField(20);
+		key.setFont(font);
+		key.setOpaque(false);
+		key.setBounds(padding+interval, padding, label_width, label_height);
+		key.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
+		
+		search = new JButton("查询");
+		search.setFont(new Font("微软雅黑",Font.PLAIN,18));
+		search.setBorder(null);
+		search.setOpaque(false);
+		search.setFocusPainted(false);
+		search.setContentAreaFilled(false);
+		search.setBounds(padding*2+interval+label_width, padding, button_width, button_height);
+		search.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				((JButton)e.getSource()).setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				((JButton)e.getSource()).setBorder(null);
+			}
+			
+		});
+	
 		Vector<String> name = new Vector<String>();
 		name.add("账号");
 		name.add("名称");
@@ -68,7 +129,7 @@ public class AccountPanel extends JPanel {
 		table.setRowSorter(new TableRowSorter<DefaultTableModel>(defaultModel));
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 0, 884, 480);
+		scrollPane.setBounds(padding, padding*2+label_height, 884, 450);
 	//	scrollPane.add(table.getTableHeader());
 		scrollPane.getViewport().add(table);
 		scrollPane.setBorder(null);
@@ -187,7 +248,9 @@ public class AccountPanel extends JPanel {
 			}
 			
 		});
-		
+		this.add(notice);
+		this.add(key);
+		this.add(search);
 		this.add(scrollPane);
 		this.add(newaccount);
 		this.add(back);

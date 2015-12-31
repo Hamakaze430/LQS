@@ -6,7 +6,10 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+<<<<<<< HEAD
+=======
 import java.util.ArrayList;
+>>>>>>> 1308c02f8ef1117282572129df3883e55e37571b
 import java.util.List;
 import java.util.Vector;
 
@@ -54,13 +57,17 @@ public class ApprovalPanel extends JPanel {
 	DefaultTableModel dm;
 	JTable table;
 	JButton back;
+	JButton refresh;
 	JButton pass;
 	boolean flag = false;
 	int rowEditable = -1;
 	int columnEditable = -1;
 	int padding =10;
 	private ApprovalblService bl;
+<<<<<<< HEAD
+=======
 	private List<ApprovalVO>  list;
+>>>>>>> 1308c02f8ef1117282572129df3883e55e37571b
 	public ApprovalPanel (int buttonNum){
 		bl = new Approvalbl();
 		this.buttonNum=buttonNum;
@@ -118,6 +125,12 @@ public class ApprovalPanel extends JPanel {
 	    table.getColumnModel().getColumn(0).setWidth(10);
 	    
 	    initTable();
+<<<<<<< HEAD
+	    dm.addRow(new Object[]{false, "fsd","gre","gsvd","fesgh"});
+	    
+	    System.out.println();
+=======
+>>>>>>> 1308c02f8ef1117282572129df3883e55e37571b
 	    
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(padding, padding, 884, 480);
@@ -125,6 +138,43 @@ public class ApprovalPanel extends JPanel {
 		scrollPane.setBorder(null);
 		scrollPane.getViewport().setOpaque(false);
 		scrollPane.setOpaque(false);
+		
+		refresh = new JButton();
+		refresh.setFont(font);
+		refresh.setBorder(null);
+		refresh.setOpaque(false);
+		refresh.setFocusPainted(false);
+		refresh.setContentAreaFilled(false);
+		refresh.setBounds(660, 510, 70, 30);
+		PictureButton.setIcon("src/main/java/image/refresh_unclicked.png",refresh);
+		refresh.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/refresh_clicked.png",refresh);
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				PictureButton.setIcon("src/main/java/image/refresh_unclicked.png",refresh);
+			}
+			
+		});
 		
 		pass = new JButton();
 		pass.setFont(font);
@@ -232,8 +282,97 @@ public class ApprovalPanel extends JPanel {
 		this.add(scrollPane);
 		this.add(back);
 		this.add(pass);
+		this.add(refresh);
 	}
 	
+	private void initTable() {
+		// TODO Auto-generated method stub
+		List<ApprovalVO> list = bl.findAll();
+		dm.setRowCount(0);
+		if (list == null) return;
+		for (ApprovalVO vo : list) {
+			dm.addRow(new Object[]{false, vo.getName(), vo.getDate(), vo.getStatus(), vo.getReceiptId()});
+		}
+	}
+
+	class CheckEditor extends DefaultCellEditor{  
+		  
+		private JCheckBox cb;
+		private JPanel panel;
+		
+	    public CheckEditor(JTextField checkBox) {  
+	        super(checkBox);  
+	        this.setClickCountToStart(1); 
+	        cb = new JCheckBox();
+	    	cb.setSelected(false);
+	    	cb.setFocusPainted(false);
+	    	cb.setOpaque(false);
+	    	panel = new JPanel();
+//	    	panel.setOpaque(false);
+	    	
+	    	panel.add(cb);
+	    }  
+	  
+	    public Component getTableCellEditorComponent(final JTable table, Object value,  
+	            boolean isSelected,int row, int column) { 	 
+	    	panel.setForeground(table.getSelectionForeground());  
+	    	panel.setBackground(table.getSelectionBackground()); 
+	    	return panel;
+	    }   
+	       
+	    public Object getCellEditorValue() {  
+			 if(cb.isSelected()) return true;
+			 else return false;
+	    } 
+	  
+	    public boolean stopCellEditing() {  
+	        return super.stopCellEditing();  
+	    }  
+
+	}  
+	  
+	class CheckRenderer extends JPanel implements TableCellRenderer {  
+	  
+		private JCheckBox cb;
+		
+	    public CheckRenderer(String s) {  
+	    	cb = new JCheckBox(s);
+	    	cb.setSelected(false);
+	    	cb.setFocusPainted(false);
+	    	cb.setOpaque(false);
+	    	this.add(cb);
+	    	this.setOpaque(false);  
+	    } 
+	    public CheckRenderer() {  
+	    	cb = new JCheckBox();
+	    	cb.setSelected(false);
+	    	cb.setFocusPainted(false);
+	    	cb.setOpaque(false);
+	    	this.add(cb);
+//	    	this.setOpaque(false);  
+	    } 
+	  
+	    public Component getTableCellRendererComponent(JTable table, Object value,  
+	            boolean isSelected, boolean hasFocus, int row, int column) {  
+	        if (isSelected) {  
+	            setForeground(table.getSelectionForeground());  
+	            setBackground(table.getSelectionBackground());  
+	        } else {  
+	            setForeground(table.getForeground());  
+	            setBackground(UIManager.getColor("UIManager"));  
+	        }   
+	        if (value.equals(true)) cb.setSelected(true);
+	        else cb.setSelected(false);
+	        return this;  
+	    }  
+	}
+
+	
+	
+	
+	
+<<<<<<< HEAD
+=======
 	private void initTable() {
 		// TODO Auto-generated method stub
 		list = bl.findAll();
@@ -320,4 +459,5 @@ public class ApprovalPanel extends JPanel {
 	
 	
 	
+>>>>>>> 1308c02f8ef1117282572129df3883e55e37571b
 }

@@ -72,6 +72,7 @@ public class SendPanel extends JPanel{
 	JTextField receivertel;
 	JTextField senderphone;
 	JTextField goodstype;
+	JTextField time;
 	JRadioButton finan,fast,st;
 	private ReceiptsblService bl;
 	private UserblService user;
@@ -464,7 +465,7 @@ public class SendPanel extends JPanel{
 		text3= new JLabel();
 		TitledBorder tb3 = BorderFactory.createTitledBorder("货物信息");
 		tb3.setTitleJustification(TitledBorder.LEFT);
-		text3.setBounds(padding,padding*14+label_height*6, 820, padding*11+label_height*9);
+		text3.setBounds(padding,padding*14+label_height*6, 820, padding*12+label_height*10);
 		text3.setBorder(tb3);
 		text3.setOpaque(false);
 		
@@ -500,9 +501,13 @@ public class SendPanel extends JPanel{
 		allcostLabel.setFont(font);
 		allcostLabel.setBounds(padding, padding*8+label_height*7, label_width, label_height);
 		
+		JLabel timeLabel = new JLabel("· 预计到达时间：");
+		timeLabel.setFont(font);
+		timeLabel.setBounds(padding, padding*9+label_height*8, label_width, label_height);
+		
 		JLabel orderLabel = new JLabel("*  订单条形码号：");
 		orderLabel.setFont(font); 
-		orderLabel.setBounds(padding, padding*9+label_height*8, label_width, label_height);
+		orderLabel.setBounds(padding, padding*10+label_height*9, label_width, label_height);
 		
 		initNumber = new JTextField(20);
 		initNumber.setFont(font);
@@ -661,6 +666,14 @@ public class SendPanel extends JPanel{
 		//allcost.setText(t);
 		allcost.setEditable(false);
 		
+		time = new JTextField(20);
+		time.setFont(font);
+		time.setBorder(null);
+		time.setOpaque(false);
+		time.setBounds(padding*2+interval+15,  padding*9+label_height*8, label_width, label_height);
+		//allcost.setText(t);
+		time.setEditable(false);
+		
 		ActionListener listener = new ActionListener(){
 
 			public void actionPerformed(ActionEvent e) {
@@ -680,6 +693,7 @@ public class SendPanel extends JPanel{
 			
 		};
 		
+		
 		receiverPlace.addActionListener(listener);
 		st.addActionListener(listener);
 		fast.addActionListener(listener);
@@ -693,7 +707,7 @@ public class SendPanel extends JPanel{
 		order.setFont(font);
 		order.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
 		order.setOpaque(false);
-		order.setBounds(padding*2+interval+15,  padding*9+label_height*8, label_width, label_height);
+		order.setBounds(padding*2+interval+15,  padding*10+label_height*9, label_width, label_height);
 		
 		info = new JPanel();
 		info.setPreferredSize(new Dimension(880,text1.getHeight()+text2.getHeight()+text3.getHeight()+padding*5));
@@ -747,6 +761,8 @@ public class SendPanel extends JPanel{
 		text3.add(cost);
 		text3.add(allcost);
 		text3.add(order);
+		text3.add(timeLabel);
+		text3.add(time);
 		g.add(finan);
 		g.add(fast);
 		g.add(st);
