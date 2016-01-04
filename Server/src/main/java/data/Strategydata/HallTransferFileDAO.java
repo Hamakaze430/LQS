@@ -17,7 +17,6 @@ public class HallTransferFileDAO extends CommonData<HallTransferReceiptPO> imple
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public void approveTransferReceipt(ArrayList<HallTransferReceiptPO> list) {
 		// TODO Auto-generated method stub
 		for(HallTransferReceiptPO transferpo : list){

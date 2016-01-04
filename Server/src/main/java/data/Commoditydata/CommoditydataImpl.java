@@ -28,7 +28,6 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		
 	}
 
-	@Override
 	public ArrayList<ComGoodsPO> getComGoods(String comID)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -36,21 +35,18 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		return po.getComGoodsList();
 	}
 
-	@Override
 	public String getLocation(String comID) throws RemoteException {
 		// TODO Auto-generated method stub
 		ComInfoPO po = comInfoDAO.find(comID);
 		return po.getLocation();
 	}
 
-	@Override
 	public ComZonePO getZone(String comID) throws RemoteException {
 		// TODO Auto-generated method stub
 		ComInfoPO po = comInfoDAO.find(comID);
 		return po.getZone();
 	}
 
-	@Override
 	public ResultMessage modifyZone(String comID, int[] space)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -99,7 +95,6 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 	}
 
 
-	@Override
 	public ResultMessage initZone(String comID) throws RemoteException {
 		// TODO Auto-generated method stub
 		
@@ -108,21 +103,18 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		return modifyZone(comID,po.getSpace());
 	}
 
-	@Override
 	public void addGoods(String comID, StorageInReceiptPO po)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		comInfoDAO.addGoods(comID, po.getGoods());
 	}
 
-	@Override
 	public void removeGoods(String comID, StorageOutReceiptPO po)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		comInfoDAO.removeGoods(comID, po.getGoods());
 	}
 
-	@Override
 	public ComGoodsPO getGoods(String comID, String orderID)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -133,7 +125,6 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		return null;
 	}
 
-	@Override
 	public void moveGoods(String comID, Object[][] data) {
 		// TODO Auto-generated method stub
 		ComInfoPO po = comInfoDAO.find(comID);
@@ -182,7 +173,6 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		
 	}
 
-	@Override
 	public void addCommodity(String location, int totalSpace)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -192,7 +182,6 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		
 	}
 
-	@Override
 	public void removeCommodity(String comID) throws RemoteException {
 		// TODO Auto-generated method stub
 		
@@ -200,13 +189,11 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		
 	}
 
-	@Override
 	public ArrayList<ComInfoPO> getCommodity() throws RemoteException {
 		// TODO Auto-generated method stub
 		return comInfoDAO.getAll();
 	}
 
-	@Override
 	public void addStorageInReceipt(StorageInReceiptPO po)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -215,14 +202,12 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		
 	}
 
-	@Override
 	public String getNextStorageInID(String comID) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageinDAO.nextID(comID);
 	}
 
-	@Override
 	public ArrayList<StorageInReceiptPO> getStorageInReceipt(String comID)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -230,28 +215,24 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		return storageinDAO.showAllReceipt(comID);
 	}
 
-	@Override
 	public ArrayList<StorageInReceiptPO> getStorageInReceipt() throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageinDAO.showAllReceipt();
 	}
 
-	@Override
 	public ArrayList<StorageInReceiptPO> getSummitStorageIn() throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageinDAO.showAllSummit();
 	}
 
-	@Override
 	public ResultMessage approveStorageInReceipt(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageinDAO.approve(id);
 	}
 
-	@Override
 	public void addStorageOutReceipt(StorageOutReceiptPO po)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -260,14 +241,12 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		
 	}
 
-	@Override
 	public String getNextStorageOutID(String comID) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageoutDAO.nextID(comID);
 	}
 
-	@Override
 	public ArrayList<StorageOutReceiptPO> getStorageOutReceipt(String comID)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -275,21 +254,18 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		return storageoutDAO.showAllReceipt(comID);
 	}
 
-	@Override
 	public ArrayList<StorageOutReceiptPO> getStorageOutReceipt() throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageoutDAO.showAllReceipt();
 	}
 
-	@Override
 	public ArrayList<StorageOutReceiptPO> getSummitStorageOut() throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageoutDAO.showAllSummit();
 	}
 
-	@Override
 	public ResultMessage approveStorageOutReceipt(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		

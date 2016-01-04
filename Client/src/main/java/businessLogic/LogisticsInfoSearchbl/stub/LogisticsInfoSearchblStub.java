@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Miscellaneous.LogisticsState;
 import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
 import vo.LogisticsVO;
+import vo.ReceiptVO;
 
 public class LogisticsInfoSearchblStub implements LogisticsInfoSearchblService {
 
@@ -16,6 +17,16 @@ public class LogisticsInfoSearchblStub implements LogisticsInfoSearchblService {
 			return null;
 		}
 		return null;
+	}
+
+	public void newLogisticsInfo(ReceiptVO vo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addState(ReceiptVO vo) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

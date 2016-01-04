@@ -25,17 +25,6 @@ public class Client {
 		try {
 			RMIHelper.init();
 			dataFactory = new DataFactory();
-//			CarVO vo = new CarVO("025001000","苏A 12345","一年");
-//			CarAndDriverbl car = new CarAndDriverbl();
-//			car.addCarInfo(vo);
-//			CarVO vo = new CarVO("0250000001","苏A 00000","1年");
-//			DriverVO vo = new DriverVO("025000001","张三","男","2015.10.30","320582201510301111","18260065397","一年");
-//			CarAndDriverbl car = new CarAndDriverbl();
-//			car.addCarInfo("2014-6-1", vo);
-//			car.addDriverInfo(vo);
-//			BankAccountblService bank = new BankAccountbl();
-//			bank.addBankAccount(new BankAccountVO ("123456","bgydvsf",1000));
-
 			//02500001000 营业厅业务员
 			//02500000000快递员
 			//00000001001低级财务人员
@@ -49,11 +38,6 @@ public class Client {
 //			UserblService bl = new Userbl("00000000000");
 //			MainPanel panel = new MainPanel(bl);
 //			frame.add(panel);
-<<<<<<< HEAD
-
-=======
-			
->>>>>>> 1308c02f8ef1117282572129df3883e55e37571b
 			frame.addWelcomePanel();
 			frame.setVisible(true);
 		} catch (ClientInitException e) {

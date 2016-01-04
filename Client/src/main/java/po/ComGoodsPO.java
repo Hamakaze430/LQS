@@ -55,6 +55,11 @@ private static final long serialVersionUID = 1L;
     public void setCell(int cell){
     	this.cell = cell;
     }
+
+	public String getId() {
+		// TODO Auto-generated method stub
+		return id;
+	}
 	
 
 }

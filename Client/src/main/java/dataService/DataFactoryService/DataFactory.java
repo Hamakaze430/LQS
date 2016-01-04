@@ -10,6 +10,7 @@ import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
 import dataService.ReceiptsdataService.ReceiptsdataService;
 import dataService.SalesdataService.SalesdataService;
 import dataService.StrategydataService.StrategydataService;
+import dataService.StrategydataService.ConstantdataService.ConstantdataService;
 import dataService.UserdataService.ApartmentDataService;
 import dataService.UserdataService.AuthoritiesSettingDataService;
 import dataService.UserdataService.UserdataService;
@@ -27,6 +28,7 @@ public class DataFactory implements DataFactoryService {
 
 	private static CostBenefitdataService costBenefitData;
 	private static SalesdataService salesData;
+	private static ConstantdataService constantData;
 	
 	public LogisticsDataService getLogisticsDataService() {
 		logisticsData = RMIHelper.getLogisticsData();
@@ -110,6 +112,11 @@ public class DataFactory implements DataFactoryService {
 	public AuthoritiesSettingDataService getAuthoritiesData() {
 		authorities = RMIHelper.getAuthoritiesData();
 		return authorities;
+	}
+
+	public ConstantdataService getConstantdataService() {
+		constantData = RMIHelper.getConstantDataService();
+		return constantData;
 	}
 
 }

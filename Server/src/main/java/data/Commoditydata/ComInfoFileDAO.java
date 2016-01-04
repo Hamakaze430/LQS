@@ -18,25 +18,21 @@ public class ComInfoFileDAO extends CommonData<ComInfoPO> implements ComInfoDAO{
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
 	public void add(ComInfoPO po) {
 		// TODO Auto-generated method stub
 		insert(po);
 	}
 
-	@Override
 	public void remove(String comID) {
 		// TODO Auto-generated method stub
 		delete(comID);
 	}
 
-	@Override
 	public void modify(String comID, ComInfoPO po) {
 		// TODO Auto-generated method stub
 		update(comID,po);
 	}
 
-	@Override
 	public String nextID() {
 		// TODO Auto-generated method stub
 		ArrayList<ComInfoPO> list = this.showAll();
@@ -44,7 +40,6 @@ public class ComInfoFileDAO extends CommonData<ComInfoPO> implements ComInfoDAO{
 		return id+1+"";
 	}
 
-	@Override
 	public void addGoods(String comID, ArrayList<ComGoodsPO> list) {
 		// TODO Auto-generated method stub
 		ComInfoPO po = this.find(comID);
@@ -53,7 +48,6 @@ public class ComInfoFileDAO extends CommonData<ComInfoPO> implements ComInfoDAO{
 		this.update(comID, po);
 	}
 
-	@Override
 	public void removeGoods(String comID, ArrayList<ComGoodsPO> list) {
 		// TODO Auto-generated method stub
 		ComInfoPO po = this.find(comID);

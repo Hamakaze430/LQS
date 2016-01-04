@@ -11,6 +11,7 @@ import java.util.Map.Entry;
 import data.Approvaldata.ApprovaldataImpl;
 import data.BankAccountdata.BankAccountdataImpl;
 import data.CarAndDriverdata.CarAndDriverDataServiceImpl;
+import data.Constantdata.ConstantdataServiceImpl;
 import data.CostBenefitdata.CostBenefitdataImpl;
 import data.LogisticsInfoSearchdata.LogisticsDataServiceImpl;
 import data.Receiptsdata.ReceiptsdataImpl;
@@ -41,6 +42,7 @@ public class RMIHelper {
         NAMING_MAP.put("salaryData-Server", SalarydataServiceImpl.class);
         NAMING_MAP.put("bankaccountData-Server", BankAccountdataImpl.class);
         NAMING_MAP.put("approvalData-Server", ApprovaldataImpl.class);
+        NAMING_MAP.put("constantData-Server", ConstantdataServiceImpl.class);
     }
 
     public synchronized static void init() throws ServerInitException {

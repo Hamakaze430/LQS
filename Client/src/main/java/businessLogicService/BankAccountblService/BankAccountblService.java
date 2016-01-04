@@ -17,8 +17,8 @@ public interface BankAccountblService {
 
 	public BankAccountVO find(String accountId);
 
-	public void incMoney(String amount);
-
 	public void decMoney(String account, String amount);
+
+	public void incMoney(String amount);
 	
 }
