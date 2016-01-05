@@ -10,11 +10,7 @@ import java.io.Serializable;
  * Created by admin on 15/10/25.
  */
 public class BillManagementPO implements Serializable {
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	String date;
+    String date;
     String name;
     ArrayList<UserPO> users;
     ArrayList<CarPO> cars;

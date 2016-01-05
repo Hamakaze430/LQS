@@ -26,6 +26,11 @@ public class SalaryPO implements Serializable{
 	public double getSum(){
 		return sum;
 	}
+
+	public void setJob(String job) {
+		// TODO Auto-generated method stub
+		this.job = job;
+	}
 	
 //	private double clerkSalary;
 //	

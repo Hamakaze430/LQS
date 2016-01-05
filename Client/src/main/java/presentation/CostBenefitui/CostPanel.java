@@ -101,6 +101,7 @@ public class CostPanel extends JPanel {
 		 * */
 		cb.setDate();
 		CostBenefitVO cbVO=cb.getVO();
+//		System.out.println(cbVO.getProfit());
 		defaultModel.addRow(cbVO);
 		
 		//defaultModel.addRow(new CostBenefitVO("10.00","10.00","10.00"));

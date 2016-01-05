@@ -2,7 +2,7 @@ package po;
 
 import java.io.Serializable;
 
-public class HallPO extends PersistentObj implements Serializable {
+public class HallPO extends PersistentObj implements Serializable{
 	/**
 	 * 
 	 */

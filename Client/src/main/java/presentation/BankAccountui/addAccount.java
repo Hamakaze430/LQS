@@ -150,6 +150,9 @@ public class addAccount extends JDialog {
 					// TODO Auto-generated method stub
 					BankAccountVO vo = new BankAccountVO(number.getText(),name.getText(),account.getText());
 					bl.addBankAccount(vo);
+					number.setText("");
+					name.setText("");
+					account.setText("");
 					JOptionPane.showMessageDialog(null, "保存成功^_^","", JOptionPane.CLOSED_OPTION);
 					
 				}

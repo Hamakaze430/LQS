@@ -14,6 +14,7 @@ import businessLogicService.StrategyblService.SalaryblService;
 import businessLogicService.UserblService.UserblService;
 import dataService.DataFactoryService.DataFactory;
 import dataService.DataFactoryService.DataFactoryService;
+import po.BankAccountPO;
 import presentation.Userui.MainPanel;
 import presentation.mainui.MainFrame;
 import vo.BankAccountVO;
@@ -32,6 +33,9 @@ public class Client {
 //			UserblService user = new Userbl("02500001000");
 //			MainPanel panel = new MainPanel(user);
 //			frame.add(panel);
+//			BankAccountVO ba=new BankAccountVO("0001", "公司银行账户01", "1000");
+//			BankAccountblService babl=new BankAccountbl();
+//			babl.addBankAccount(ba);
 			frame.addWelcomePanel();
 			frame.setVisible(true);
 		} catch (ClientInitException e) {

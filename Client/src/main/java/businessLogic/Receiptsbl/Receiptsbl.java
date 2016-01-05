@@ -76,6 +76,7 @@ public class Receiptsbl implements ReceiptsblService {
 		dataFactory = Client.dataFactory;
 		logistics = new LogisticsInfoSearchbl();
 		constant = new Constantbl();
+		account = new BankAccountbl();
 	}
 	public Receiptsbl(){
 		dataFactory = Client.dataFactory;

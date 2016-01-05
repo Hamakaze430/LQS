@@ -11,7 +11,7 @@ public class LogisticsPO implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String id;//快递单号
+	private String id;//快递单号]
 	private String currentState;
 	private List<String> state;
 	
@@ -38,7 +38,6 @@ public class LogisticsPO implements Serializable {
 	
 	public void addState(String state){
 		this.state.add(state);
-		this.currentState = state;
 	}
 	
 

@@ -11,19 +11,20 @@ public class BankAccountVO extends Vector<String>{
 
 	private String account;
 	private String name;
-	private double cost;
+	private String cost;
 	private double money;
 	
 	public BankAccountVO(BankAccountPO po){
 		account=po.getAccount();
 		name=po.getName();
-		cost=po.getMoney();
+		money=po.getMoney();
 	}
 
 	public BankAccountVO(String account, String name, String cost){
 		this.add(account);
 		this.add(name);
 		this.add(cost);	
+		money = Double.parseDouble(cost);
 	}
 	
 	public String getAccount(){

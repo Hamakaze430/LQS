@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.BoxLayout;
@@ -22,6 +23,7 @@ import businessLogic.BankAccountbl.BankAccountbl;
 import businessLogicService.BankAccountblService.BankAccountblService;
 import presentation.mainui.PictureButton;
 import vo.BankAccountVO;
+import vo.CarVO;
 
 /**
  * 账户管理
@@ -46,6 +48,7 @@ public class AccountPanel extends JPanel {
 	int label_height = 30;
 	int interval =140;
 	BankAccountblService bl;
+	DefaultTableModel defaultModel;
 	public AccountPanel(){
 		bl = new BankAccountbl();
 		this.setLayout(null);
@@ -78,7 +81,11 @@ public class AccountPanel extends JPanel {
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+				defaultModel.setRowCount(0);
+				List<BankAccountVO> volist=bl.showBankAccount(key.getText());
+				for (BankAccountVO vo : volist){
+					defaultModel.addRow(vo);
+				}
 			}
 
 			public void mousePressed(MouseEvent e) {
@@ -109,7 +116,7 @@ public class AccountPanel extends JPanel {
 		name.add("金额");
 		
 		Vector<BankAccountVO> data = new Vector<BankAccountVO>();		
-		DefaultTableModel defaultModel = new DefaultTableModel(data,name);
+		defaultModel = new DefaultTableModel(data,name);
 		JTable table = new JTable(defaultModel){		
 			private static final long serialVersionUID = 1L;
 			public boolean isCellEditable(int row, int column){

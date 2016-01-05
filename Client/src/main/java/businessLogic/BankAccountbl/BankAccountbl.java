@@ -55,7 +55,7 @@ public class BankAccountbl implements BankAccountblService, BankAccountInfo{
 			BankAccountPO tempo = poList.get(i);
 			String name = tempo.getName();
 			if(name.contains(subName)){
-				voList.add(new BankAccountVO(tempo.getAccount(),name,tempo.getMoney()));
+				voList.add(new BankAccountVO(tempo.getAccount(),name,String.valueOf(tempo.getMoney())));
 			}
 		}
 		return voList;
