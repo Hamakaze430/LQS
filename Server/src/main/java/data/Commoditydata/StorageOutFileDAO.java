@@ -19,15 +19,27 @@ public class StorageOutFileDAO extends CommonData< StorageOutReceiptPO> implemen
 		// TODO Auto-generated constructor stub
 	}
 	
+
+	
+
+
 	public void add( StorageOutReceiptPO po) {
 		// TODO Auto-generated method stub
 		insert(po);
 	}
 
+
+	
+
+
 	public ArrayList< StorageOutReceiptPO> showAllReceipt() {
 		// TODO Auto-generated method stub
 		return showAll();
 	}
+
+
+	
+
 
 	public ArrayList< StorageOutReceiptPO> showAllReceipt(String comID) {
 		// TODO Auto-generated method stub
@@ -39,6 +51,10 @@ public class StorageOutFileDAO extends CommonData< StorageOutReceiptPO> implemen
 		return newlist;
 	}
 
+
+	
+
+
 	public ArrayList< StorageOutReceiptPO> showAllSummit() {
 		// TODO Auto-generated method stub
 		ArrayList< StorageOutReceiptPO> list = this.showAll();
@@ -49,12 +65,20 @@ public class StorageOutFileDAO extends CommonData< StorageOutReceiptPO> implemen
 		return newlist;
 	}
 
+
+	
+
+
 	public ResultMessage approve(String id) {
 		// TODO Auto-generated method stub
 		 StorageOutReceiptPO po = find(id);
 		po.approve();
 		return update(id,po);
 	}
+
+
+	
+
 
 	public String nextID(String comID) {
 		// TODO Auto-generated method stub
