@@ -23,15 +23,18 @@ public class ComInfoFileDAO extends CommonData<ComInfoPO> implements ComInfoDAO{
 		insert(po);
 	}
 
+	
 	public void remove(String comID) {
 		// TODO Auto-generated method stub
 		delete(comID);
 	}
 
+
 	public void modify(String comID, ComInfoPO po) {
 		// TODO Auto-generated method stub
 		update(comID,po);
 	}
+
 
 	public String nextID() {
 		// TODO Auto-generated method stub

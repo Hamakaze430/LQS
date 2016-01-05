@@ -273,7 +273,7 @@ public class ApprovalPanel extends JPanel {
 		this.add(refresh);
 	}
 	
-	
+
 	private void initTable() {
 		// TODO Auto-generated method stub
 		list = bl.findAll();
