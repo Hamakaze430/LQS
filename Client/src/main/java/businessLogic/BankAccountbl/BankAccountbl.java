@@ -89,6 +89,7 @@ public class BankAccountbl implements BankAccountblService, BankAccountInfo{
 		ArrayList<BankAccountVO> voList = new ArrayList<BankAccountVO>();
 		for(int i=0;i<poList.size();i++){
 			voList.add(new BankAccountVO(poList.get(i).getName(), poList.get(i).getMoney()));
+
 		}
 		return voList;
 		
