@@ -141,6 +141,10 @@ public class SendVO extends ReceiptVO {
 		return  order; 
 	}
 	
+	public double maxWeight(){
+		return Double.max(Double.parseDouble(trueweight)/1000, Double.parseDouble(volume)/5000000);
+	}
+	
 	public SendPO toPO(long receiptId){
 		return new SendPO(receiptId, getName(), getCreator(), getDate(),	
 				sendername,	sendercomp,	senderphone, sendertel,	senderaddr,

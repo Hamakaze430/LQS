@@ -4,21 +4,27 @@ import java.util.Vector;
 
 import po.SalaryPO;
 
-public class SalaryVO extends Vector<String> {
+public class SalaryVO {
 	
-	private String sum;
+	private String job;
+	private double sum;
 	
-	public SalaryVO(SalaryPO po){
-		if(!po.getJob().equals("司机")){
-			this.add(String.valueOf(po.getSum()+"元/每月"));
-		}
-		else {
-			this.add(String.valueOf(po.getSum()+"元/次"));
-		}
+	public SalaryVO(SalaryPO po){	
+		this.job = po.getJob();
+		this.sum = po.getSum();
 	}
 	
 	public String getText(){
-		return this.get(0);
+		if(job.equals("快递员")){
+			return (int)(sum*100)+"%";
+		}
+		
+		if(!job.equals("司机")){
+			return sum+"元/月";
+		}
+		
+		return sum+"元/次";
+		
 	}
 	
 //	   private double clerkSalary;

@@ -14,9 +14,13 @@ import java.util.List;
 
 import dataService.ApprovaldataService.ApprovaldataService;
 import po.ApprovalPO;
-import po.HallPO;
 
 public class ApprovaldataImpl extends UnicastRemoteObject implements  ApprovaldataService {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	public ApprovaldataImpl() throws RemoteException {
 		super();

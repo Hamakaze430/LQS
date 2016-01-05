@@ -7,6 +7,7 @@ import Miscellaneous.FormType;
 import vo.CarVO;
 import vo.ReceiptVO;
 import vo.UserVO;
+import vo.receipts.SendVO;
 
 public interface ReceiptsblService {
 	
@@ -22,11 +23,12 @@ public interface ReceiptsblService {
 	public boolean findCarAndDriver(String type, String known);
 	public UserVO findUser(String userName);
 	public boolean findLogistics(String s);
-	public double getLoadingCost();
+	public double getLoadingCost(double v);
 	public boolean findAccount(String s);
 	public double getTransferCost(String string, String hallPlace, String endPlace);
 	public ReceiptVO getLoadingOrTransferVO(String id);
 	public String getHallName(String hallId);
 	public double getSendCost(String expresstype, String start, String end, String weight, String volume);
-	public boolean pass(long receiptId);	
+	public boolean pass(long receiptId);
+	public ReceiptVO getSendVO(String s);	
 }

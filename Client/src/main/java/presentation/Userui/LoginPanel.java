@@ -228,7 +228,6 @@ public class LoginPanel extends JPanel{
 		}
 		
 		if (! user.getPassword().equals(String.valueOf(key.getPassword()))){
-			System.out.println(user.getPassword());
 			JOptionPane.showMessageDialog(null, "密码错误！","", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}

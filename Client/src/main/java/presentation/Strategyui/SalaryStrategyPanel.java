@@ -2,6 +2,8 @@ package presentation.Strategyui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -12,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
 
@@ -19,6 +22,7 @@ import businessLogic.Strategybl.Role;
 import businessLogic.Strategybl.Salarybl.Salarybl;
 import businessLogicService.UserblService.UserblService;
 import po.SalaryPO;
+import presentation.Userui.MainPanel;
 import presentation.mainui.PictureButton;
 import vo.SalaryVO;
 /**
@@ -35,11 +39,14 @@ public class SalaryStrategyPanel extends JPanel {
 	
 	private UserblService user;
 	private Salarybl salary = new Salarybl();
-
-	
+	ButtonGroup bg;
+	JRadioButton j1,j2,j3;
 	JButton back;
 	JButton save;
-	public SalaryStrategyPanel(){
+	JTextArea salt;
+	int buttonNum;
+	public SalaryStrategyPanel(int buttonNum){
+		this.buttonNum = buttonNum;
 		this.setLayout(null);
 		this.setBorder(null);
 		this.setOpaque(false);
@@ -59,30 +66,35 @@ public class SalaryStrategyPanel extends JPanel {
 		c.addItem("营业厅业务员");
 		c.addItem("中转中心业务员");
 		c.addItem("中转中心仓库管理员");
-		c.addItem("营业厅业务员");
+		c.addItem("总经理");
 		c.addItem("快递员");
 		c.addItem("司机");
+		c.addItem("管理员");
 		c.setFont(font);
 		c.setBounds(150, 15, 200, 30);
+		
+		
 		
 		JLabel l2 = new JLabel("· 请选择薪水结算方式：");
 		l2.setFont(font);
 		l2.setBounds(10, 60, 250, 30);
 		
-		ButtonGroup bg = new ButtonGroup();
+		bg = new ButtonGroup();
 		
-		final JRadioButton j1 = new JRadioButton("按月",true);
+		j1 = new JRadioButton("按月");
 		j1.setFont(font);
 		j1.setBounds(220, 60, 80, 30);
 		j1.setOpaque(false);
-		final JRadioButton j2 = new JRadioButton("按次");
+		j2 = new JRadioButton("按次");
 		j2.setFont(font);
 		j2.setBounds(320, 60, 80, 30);
 		j2.setOpaque(false);
-		final JRadioButton j3 = new JRadioButton("提成");
+		j3 = new JRadioButton("提成");
 		j3.setFont(font);
 		j3.setBounds(420, 60, 80, 30);
 		j3.setOpaque(false);
+		
+		
 		
 		JLabel l3 = new JLabel("· 请输入薪水或提成比例：");
 		l3.setFont(font);
@@ -98,11 +110,35 @@ public class SalaryStrategyPanel extends JPanel {
 		l4.setFont(font);
 		l4.setBounds(10, 160, 200, 30);
 		
-		final JTextField salt = new JTextField(20);
+		salt = new JTextArea();
 		salt.setFont(font);
 		salt.setBorder(null);
-		salt.setBounds(250, 160, 100, 30);
+		salt.setBounds(50, 200, 400, 400);
 		salt.setOpaque(false);
+		salt.setEditable(false);
+		
+		initSalt();
+		
+		c.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				/*
+				 * added logic.....
+				 * */
+				if(c.getSelectedIndex()==0){bg.clearSelection();}
+				else if (c.getSelectedItem().toString().equals("司机")){
+					j2.setSelected(true);
+				}
+				else if (c.getSelectedItem().toString().equals("快递员")){
+					j3.setSelected(true);
+				}
+				else j1.setSelected(true);
+				
+			}
+			
+		});
+		
 		
 		save = new JButton();
 		save.setFont(font);
@@ -116,35 +152,47 @@ public class SalaryStrategyPanel extends JPanel {
 		save.addMouseListener(new MouseListener(){
 
 			public void mouseClicked(MouseEvent e) {
-				Role role = Enum.valueOf(Role.class, (String) c.getSelectedItem());
+				Role role = Role.getRole(c.getSelectedItem().toString());
 				SalaryVO vo = salary.getSalary(role);
-				salt.setText(vo.getText());
+				if (vo != null) salt.setText(vo.getText());
 				double rate = 0.0;
 				String newSum = "";
+				if (c.getSelectedIndex() == 0){
+					JOptionPane.showMessageDialog(null, "请选择要修改的职位(´･_･`)","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 				
-				if((j1.isSelected()||j2.isSelected()||j3.isSelected())
-						&&t.getText()!=null){
-					if(Double.parseDouble(t.getText())<=0.0){
-						JOptionPane.showMessageDialog(null, "系统认为输入可能有误(´･_･`)","", JOptionPane.INFORMATION_MESSAGE);
+				if (t.getText().equals("")){
+					JOptionPane.showMessageDialog(null, "系统认为输入可能有误(´･_･`)","", JOptionPane.INFORMATION_MESSAGE);
+					return;
+				}
+				
+				if(t.getText().contains("%")){				
+					rate = Double.parseDouble(t.getText().replace("%", ""))/100;
+				}
+				else{
+					try{
+						Double temp = Double.parseDouble(t.getText());
+					}catch(NumberFormatException e1){
+						JOptionPane.showMessageDialog(null, "系统认为输入可能有误(´･_･`)","", JOptionPane.ERROR_MESSAGE);
+						return;
 					}
 					
-					else if(t.getText().contains("%")||Double.parseDouble(t.getText())<1.0){
-						String s_temp=t.getText();
-						if(s_temp.contains("%")){
-							rate = Double.parseDouble(s_temp.replace("%", ""));
-						}
-						if(Double.parseDouble(s_temp)<1.0){
-							rate = Double.parseDouble(s_temp);
-						}
+					if(Double.parseDouble(t.getText())<1.0){
+						rate = Double.parseDouble(t.getText());
 					}
-					else{
-						newSum = t.getText();
-					}
-					salary.setSalary(role, newSum, rate);
+					else newSum = t.getText();
+				}
 					
-					vo = salary.getSalary(role);
-					salt.setText(vo.getText());
-				}				
+				salary.setSalary(role, newSum, rate);
+				t.setText("");
+				vo = salary.getSalary(role);
+				
+				initSalt();
+				
+				c.setSelectedIndex(0);
+				JOptionPane.showMessageDialog(null, "设置成功(*￣▽￣)y ","", JOptionPane.INFORMATION_MESSAGE);
+							
 			}
 
 			public void mousePressed(MouseEvent e) {
@@ -182,7 +230,8 @@ public class SalaryStrategyPanel extends JPanel {
 
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+				SalaryStrategyPanel.this.setVisible(false);
+				MainPanel.closeButton(buttonNum);
 			}
 
 			public void mousePressed(MouseEvent e) {
@@ -225,20 +274,14 @@ public class SalaryStrategyPanel extends JPanel {
 		this.add(back);
 		
 		
-	
-		
-		/*
-		 * added logic.....
-		 * */
-		if(c.getSelectedIndex()!=0){
-			Role role = Enum.valueOf(Role.class, (String) c.getSelectedItem());
-			SalaryVO vo = salary.getSalary(role);
-			salt.setText(vo.getText());
-			
+	}
+	private void initSalt() {
+		// TODO Auto-generated method stub
+		salt.setText("");
+		for (Role r : Role.values()){
+			if (r.equals(Role.ACCOUNTANT)) continue;
+			SalaryVO vo = salary.getSalary(r);
+			salt.append(r.getName()+": "+vo.getText()+"\n");
 		}
-		
-		
-		
-		
 	}
 }
