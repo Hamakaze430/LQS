@@ -96,11 +96,12 @@ public class CPFrame extends JFrame{
 					JOptionPane.showMessageDialog(null, "新密码不相同！","", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				if (newPassword.getPassword().toString().length()<6){
+				System.out.println(newPassword.getPassword().toString());
+				if (String.valueOf(newPassword.getPassword()).length()<6){
 					JOptionPane.showMessageDialog(null, "密码过短！","", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
-				if (newPassword.getPassword().toString().length()>20){
+				if (String.valueOf(newPassword.getPassword()).length()>20){
 					JOptionPane.showMessageDialog(null, "密码过长！","", JOptionPane.ERROR_MESSAGE);
 					return;
 				}

@@ -19,6 +19,10 @@ public class SalaryPO implements Serializable{
 		sum = newSum;
 	}
 	
+	public void setJob(String job){
+		this.job = job;
+	}
+	
 	public String getJob(){
 		return job;
 	}

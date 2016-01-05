@@ -16,26 +16,21 @@ public class Salarybl implements SalaryblService{
 
 	public SalaryVO getSalary(Role role) {
 		// TODO Auto-generated method stub
-		SalaryPO po = new SalaryPO();
 		try {
-			po = salaryData.getPO(role.getName());
+			SalaryPO po = salaryData.getPO(role.getName());
+			return new SalaryVO(po);
 		} catch (RemoteException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new SalaryVO(po);
+		return null;
 	}
 
 
 	public void setSalary(Role role, String newSum, double rate) {
-		// TODO Auto-generated method stub
-		try {
-			SalaryPO po = salaryData.getPO(role.getName());
-		} catch (RemoteException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+		// TODO Auto-generated method stub		
 		switch(role){
+		case MANAGER:
 		case CLERK_STATION:
 		case CLERK_HALL:
 		case STOREKEEPER:

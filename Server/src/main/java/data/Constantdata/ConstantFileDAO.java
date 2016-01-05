@@ -68,10 +68,10 @@ public class ConstantFileDAO implements ConstantDAO {
 				  int railwayLoad = 2000;
 				  int airplaneLoad = 50;
 				
-				  cityList.add("BeiJing");
-				  cityList.add("ShangHai");
-				  cityList.add("GuangZhou");
-				  cityList.add("NanJing");
+				  cityList.add("北京市");
+				  cityList.add("上海市");
+				  cityList.add("广州市");
+				  cityList.add("南京市");
 				
 				  cityDistance.add("0 1064.7 1888.8 900");
 				  cityDistance.add("1064.7 0 1213 266");
