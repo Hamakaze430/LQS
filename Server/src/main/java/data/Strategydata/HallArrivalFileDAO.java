@@ -17,6 +17,7 @@ public class HallArrivalFileDAO extends CommonData<ArrivalReceiptPO> implements 
 		// TODO Auto-generated constructor stub
 	}
 
+
 	public void approveArrivalReceipt(ArrayList<ArrivalReceiptPO> list) {
 		// TODO Auto-generated method stub
 		for(ArrivalReceiptPO arrivalpo:list){
