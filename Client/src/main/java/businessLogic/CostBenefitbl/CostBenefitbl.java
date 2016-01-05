@@ -15,14 +15,14 @@ import dataService.CostBenefitdataService.CostBenefitdataService;
 import dataService.DataFactoryService.DataFactoryService;
 import businessLogicService.CostBenefitblService.CostBenefitblService;
 
-public class CostBenefit implements CostBenefitblService{
+public class CostBenefitbl implements CostBenefitblService{
 	
 	private DataFactoryService dataFactory;
 	private CostBenefitdataService cbImpl;
 	private String date;
 	
 	
-	public CostBenefit(){
+	public CostBenefitbl(){
 		dataFactory = Client.dataFactory;
 		cbImpl=dataFactory.getCostBenefitdataService();
 //		if(cbImpl!= null){

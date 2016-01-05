@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.ButtonGroup;
@@ -21,6 +22,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
+import businessLogic.Receiptsbl.Receiptsbl;
+import businessLogicService.ReceiptsblService.ReceiptsblService;
 import presentation.mainui.PictureButton;
 import vo.HallVO;
 import vo.VoucherSearchVO;
@@ -40,11 +43,16 @@ public class VoucherSearchPanel extends JPanel {
 	JComboBox<String> year = new JComboBox<String>();
 	JComboBox<String> month = new JComboBox<String>();
 	JComboBox<String> day = new JComboBox<String>();
-	
+	JComboBox<String> hall = new JComboBox<String>();
+	JRadioButton j1,j2;
+	JPanel choice1,choice2;
+	ReceiptsblService bl;
 	public VoucherSearchPanel(){
+		bl = new Receiptsbl();
 		this.setLayout(null);
 		this.setBorder(null);
 		this.setOpaque(false);
+		
 		initVSPanel();
 	}
 	private void initVSPanel() {
@@ -56,28 +64,56 @@ public class VoucherSearchPanel extends JPanel {
 		
 		ButtonGroup bg = new ButtonGroup();
 		
-		JRadioButton j1 = new JRadioButton("按天查询",true);
+		j1 = new JRadioButton("按天查询",true);
 		j1.setFont(font);
 		j1.setBounds(160, 5, 100, 40);
 		j1.setOpaque(false);
-		j1.setBorder(null);
+		j1.setBorder(null);		
 		
-		JRadioButton j2 = new JRadioButton("按营业厅查询",true);
+		j2 = new JRadioButton("按营业厅查询",true);
 		j2.setFont(font);
 		j2.setBounds(280, 5, 130, 40);
 		j2.setOpaque(false);
 		j2.setBorder(null);
+
+		choice1 = new JPanel();
+		choice1.setLayout(null);
+		choice1.setBounds(5, 40, 800, 50);
+		choice1.setBorder(null);
+		choice1.setOpaque(false);
+		
+		JLabel hallLabel = new JLabel("· 请选择要查询的营业厅：");
+		hallLabel.setFont(font);
+		hallLabel.setBounds(0, 0, 180, 40);
+		
+		hall.setBounds(180, 5, 180, 24);
+		hall.setFont(font);
+		hall.addItem("请选择营业厅");
+		List<String> list11 = bl.getHallNameListByAddress("营业厅", null);
+		for (String s: list11){
+			hall.addItem(s);
+		}
+		
+		choice1.add(hall);
+		choice1.add(hallLabel);
+		choice1.setVisible(false);
+		
+		choice2 = new JPanel();
+		choice2.setLayout(null);
+		choice2.setBounds(5, 40, 800, 50);
+		choice2.setBorder(null);
+		choice2.setOpaque(false);
 		
 		JLabel l2 = new JLabel("· 请选择要查询的日期：");
 		l2.setFont(font);
-		l2.setBounds(5, 40, 180, 40);
+		l2.setBounds(0, 0, 180, 40);
 		
 		day.addItem("请选择日期");
 		for(int i = 1;i<=28;i++){
 			day.addItem(i+"");
 		}		
 		day.setSelectedItem("请选择日期");
-		day.setBounds(400, 48, 100, 24);
+		day.setBounds(400, 8, 100, 24);
 		day.setFont(font);
 		
 		year.addItem("请选择年份");
@@ -86,7 +122,7 @@ public class VoucherSearchPanel extends JPanel {
 			year.addItem(i+"");
 		}
 		year.setSelectedItem("请选择年份");
-		year.setBounds(160, 48, 100, 24);
+		year.setBounds(160, 8, 100, 24);
 		year.setFont(font);
 		
 		
@@ -95,7 +131,7 @@ public class VoucherSearchPanel extends JPanel {
 			month.addItem(i+"");
 		}
 		month.setSelectedItem("请选择月份");
-		month.setBounds(280, 48, 100, 24);
+		month.setBounds(280, 8, 100, 24);
 		month.setFont(font);
 		month.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
@@ -119,6 +155,30 @@ public class VoucherSearchPanel extends JPanel {
 			}	
 		});
 	
+		choice2.add(l2);
+		choice2.add(year);
+		choice2.add(month);
+		choice2.add(day);
+		
+		ActionListener l = new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (j1.isSelected()){
+					choice2.setVisible(true);
+					choice1.setVisible(false);
+				}
+				if (j2.isSelected()){
+					choice1.setVisible(true);
+					choice2.setVisible(false);
+				}
+			}
+			
+		};
+		
+		j1.addActionListener(l);
+		j2.addActionListener(l);
+		
 		Vector<String> name = new Vector<String>();
 		name.add("营业厅编号");
 		name.add("收款日期");
@@ -241,10 +301,8 @@ public class VoucherSearchPanel extends JPanel {
 		this.add(cost);
 //		this.add(confirm);
 		this.add(back);
-		this.add(l2);
-		this.add(year);
-		this.add(month);
-		this.add(day);
+		this.add(choice1);
+		this.add(choice2);
 		//this.add(table);
 		this.add(scrollPane);
 		

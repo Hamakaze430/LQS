@@ -2,6 +2,8 @@ package presentation.CarAndDriverui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Date;
@@ -15,7 +17,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.border.MatteBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
@@ -39,13 +43,16 @@ public class CarPanel extends JPanel {
 	JButton add;
 	JButton delete;
 	JButton back;
+	JButton search;
 	JTable table;
+	JTextField searchid;
 	private CarAndDriverblService bl;
 	private DefaultTableModel defaultModel;
 	private UserblService user;
 	private int buttonNum;
+	int interval = 220;
 	int padding = 10;
-	int label_width = 200;
+	int label_width = 250;
 	int label_height = 30;
 	int box_width = 120;
 	int box_height = 30;
@@ -64,6 +71,66 @@ public class CarPanel extends JPanel {
 	private void init() {
 		// TODO Auto-generated method stub
 		Font font = new Font("黑体",Font.PLAIN,16);
+		
+		JLabel searchLabel = new JLabel("· 请输入要查询的车辆代号：");
+		searchLabel.setFont(font);
+		searchLabel.setBounds(padding, padding, label_width, label_height);
+		
+		searchid = new JTextField(20);
+		searchid.setFont(font);
+		searchid.setBorder(new MatteBorder(0,0,1,0,Color.BLACK));
+		searchid.setBounds(padding+interval, padding, 150, label_height);
+		searchid.setOpaque(false);
+		searchid.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				searchCar(searchid.getText());
+			}
+			
+		});
+		
+		search = new JButton("查询");
+		search.setFont(new Font("微软雅黑",Font.PLAIN,18));
+		search.setBounds(padding*2+interval+150, padding, 40, button_height);
+		search.setForeground(Color.black);
+		search.setContentAreaFilled(false);
+		search.setOpaque(false);
+		search.setBorder(null);
+		search.addMouseListener(new MouseListener(){
+
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				searchCar(searchid.getText());
+			}
+
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+				((JButton)e.getSource()).setBorder(new MatteBorder(0, 0, 1, 0, Color.black));
+			}
+
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+				((JButton)e.getSource()).setBorder(null);
+			}
+			
+		});
+		
+		
+		
+		
 		Vector<String> name = new Vector<String>();
 		name.add("车辆代号");
 		name.add("车牌号");
@@ -86,7 +153,7 @@ public class CarPanel extends JPanel {
 		table.setRowSorter(new TableRowSorter<DefaultTableModel>(defaultModel));
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(padding, padding, 884, 490);
+		scrollPane.setBounds(padding, padding*2+label_height, 884, 440);
 		scrollPane.getViewport().add(table);
 		scrollPane.setBorder(null);
 		scrollPane.getViewport().setOpaque(false);
@@ -215,6 +282,32 @@ public class CarPanel extends JPanel {
 		this.add(add);
 		this.add(back);
 		this.add(delete);
+		this.add(searchLabel);
+		this.add(searchid);
+		this.add(search);
+	}
+
+	protected void searchCar(String s) {
+		// TODO Auto-generated method stub
+		
+		searchid.setText("");
+		int index = -1;
+		for (int i = 0; i < table.getRowCount(); i++){
+			if (table.getValueAt(i, 0).toString().equals(s)){
+				index = i; 
+				break;
+			}
+		}
+		if (index == -1){
+			JOptionPane.showMessageDialog(null, "找不到对应的车辆信息！","", JOptionPane.ERROR_MESSAGE);
+			initTable();
+			return;
+		}
+		index = table.convertRowIndexToModel(index);
+		CarVO vo = (CarVO)defaultModel.getDataVector().elementAt(index);
+		defaultModel.setRowCount(0);
+		defaultModel.addRow(vo);
+		
 	}
 
 	public void setValue(CarVO info) {
@@ -224,6 +317,7 @@ public class CarPanel extends JPanel {
 	
 	private void initTable() {
 		// TODO Auto-generated method stub
+		defaultModel.setRowCount(0);
 		List<CarVO> list = bl.findAllCarInfo(user.getHallId());
 		for (CarVO vo : list) defaultModel.addRow(vo);
 	}

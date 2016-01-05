@@ -44,6 +44,10 @@ public class ApartmentDataServiceImpl extends UnicastRemoteObject implements Apa
 		List<HallPO>  list = findAll();
 		List<HallPO> ans = new ArrayList<HallPO>();
 		if (known.equals("PlaceName")){
+			if (hallInfo == null){
+				ans = list;
+				return ans;
+			}
 			for (HallPO po : list){
 				if (po.getLocation().contains(hallInfo)) ans.add(po);
 			}

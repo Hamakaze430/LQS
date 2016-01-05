@@ -259,13 +259,30 @@ public class LogisticsPanel extends JPanel {
 		}catch(NumberFormatException e){
 			//输入数量不是整数
 			JOptionPane.showMessageDialog(null, "请输入正确的订单条形码号","", JOptionPane.ERROR_MESSAGE);
+			orderNumber.setText("");
 			return;
 		}
+		
+		if(order.length()<10){
+			//System.out.println("找不到");
+			JOptionPane.showMessageDialog(null, "输入的条形码号过短，请重新输入！","", JOptionPane.ERROR_MESSAGE);
+			orderNumber.setText("");
+			return;
+		}
+		
+		if(order.length()>10){
+			//System.out.println("找不到");
+			JOptionPane.showMessageDialog(null, "输入的条形码号过长，请重新输入！","", JOptionPane.ERROR_MESSAGE);
+			orderNumber.setText("");
+			return;
+		}
+		
 		LogisticsVO logistics = bl.search(order);
 		//查无商品
 		if(logistics == null){
 			//System.out.println("找不到");
 			JOptionPane.showMessageDialog(null, "找不到对应的订单信息","", JOptionPane.ERROR_MESSAGE);
+			orderNumber.setText("");
 			return;
 		}
 		//清空输入

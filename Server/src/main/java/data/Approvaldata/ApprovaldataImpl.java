@@ -18,6 +18,11 @@ import po.HallPO;
 
 public class ApprovaldataImpl extends UnicastRemoteObject implements  ApprovaldataService {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public ApprovaldataImpl() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub

@@ -74,9 +74,10 @@ public class Receiptsbl implements ReceiptsblService {
 		logistics = new LogisticsInfoSearchbl();
 	}
 	public Receiptsbl(){
+		carAndDriver = new CarAndDriverbl();
+		apartment = new Apartmentbl();
 		dataFactory = Client.dataFactory;
 		logistics = new LogisticsInfoSearchbl();
-		account = new BankAccountbl();
 	}
 	
 	public List<String> getHallNameListByAddress(String type, String string) {
