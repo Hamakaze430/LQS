@@ -28,7 +28,10 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ArrayList<ComGoodsPO> getComGoods(String comID)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -36,21 +39,30 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		return po.getComGoodsList();
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public String getLocation(String comID) throws RemoteException {
 		// TODO Auto-generated method stub
 		ComInfoPO po = comInfoDAO.find(comID);
 		return po.getLocation();
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ComZonePO getZone(String comID) throws RemoteException {
 		// TODO Auto-generated method stub
 		ComInfoPO po = comInfoDAO.find(comID);
 		return po.getZone();
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ResultMessage modifyZone(String comID, int[] space)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -99,7 +111,10 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 	}
 
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ResultMessage initZone(String comID) throws RemoteException {
 		// TODO Auto-generated method stub
 		
@@ -108,21 +123,30 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		return modifyZone(comID,po.getSpace());
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public void addGoods(String comID, StorageInReceiptPO po)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		comInfoDAO.addGoods(comID, po.getGoods());
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public void removeGoods(String comID, StorageOutReceiptPO po)
 			throws RemoteException {
 		// TODO Auto-generated method stub
 		comInfoDAO.removeGoods(comID, po.getGoods());
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ComGoodsPO getGoods(String comID, String orderID)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -133,7 +157,10 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		return null;
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public void moveGoods(String comID, Object[][] data) {
 		// TODO Auto-generated method stub
 		ComInfoPO po = comInfoDAO.find(comID);
@@ -182,7 +209,10 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public void addCommodity(String location, int totalSpace)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -192,7 +222,10 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public void removeCommodity(String comID) throws RemoteException {
 		// TODO Auto-generated method stub
 		
@@ -200,13 +233,19 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ArrayList<ComInfoPO> getCommodity() throws RemoteException {
 		// TODO Auto-generated method stub
 		return comInfoDAO.getAll();
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public void addStorageInReceipt(StorageInReceiptPO po)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -215,14 +254,20 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public String getNextStorageInID(String comID) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageinDAO.nextID(comID);
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ArrayList<StorageInReceiptPO> getStorageInReceipt(String comID)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -230,28 +275,40 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		return storageinDAO.showAllReceipt(comID);
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ArrayList<StorageInReceiptPO> getStorageInReceipt() throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageinDAO.showAllReceipt();
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ArrayList<StorageInReceiptPO> getSummitStorageIn() throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageinDAO.showAllSummit();
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ResultMessage approveStorageInReceipt(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageinDAO.approve(id);
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public void addStorageOutReceipt(StorageOutReceiptPO po)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -260,14 +317,20 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public String getNextStorageOutID(String comID) throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageoutDAO.nextID(comID);
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ArrayList<StorageOutReceiptPO> getStorageOutReceipt(String comID)
 			throws RemoteException {
 		// TODO Auto-generated method stub
@@ -275,21 +338,30 @@ public class CommoditydataImpl extends UnicastRemoteObject implements Commodityd
 		return storageoutDAO.showAllReceipt(comID);
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ArrayList<StorageOutReceiptPO> getStorageOutReceipt() throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageoutDAO.showAllReceipt();
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ArrayList<StorageOutReceiptPO> getSummitStorageOut() throws RemoteException {
 		// TODO Auto-generated method stub
 		
 		return storageoutDAO.showAllSummit();
 	}
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public ResultMessage approveStorageOutReceipt(String id) throws RemoteException {
 		// TODO Auto-generated method stub
 		

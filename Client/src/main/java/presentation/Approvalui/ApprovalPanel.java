@@ -273,6 +273,7 @@ public class ApprovalPanel extends JPanel {
 		this.add(refresh);
 	}
 	
+<<<<<<< HEAD
 	private void initTable() {
 		// TODO Auto-generated method stub
 		List<ApprovalVO> list = bl.findAll();
@@ -280,6 +281,16 @@ public class ApprovalPanel extends JPanel {
 		if (list == null) return;
 		for (ApprovalVO vo : list) {
 			dm.addRow(new Object[]{false, vo.getName(), vo.getDate(), vo.getStatus(), vo.getReceiptId()});
+=======
+	
+	private void initTable() {
+		// TODO Auto-generated method stub
+		list = bl.findAll();
+		dm.setRowCount(0);
+		if (list == null) return;
+		for (ApprovalVO vo : list) {
+			dm.addRow(new Object[]{false, vo.getName(), vo.getDate(), vo.getStatus()});
+>>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 		}
 	}
 

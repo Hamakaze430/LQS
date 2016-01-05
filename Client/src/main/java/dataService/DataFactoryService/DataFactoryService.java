@@ -12,6 +12,7 @@ import dataService.LogisticsInfoSearchdataService.LogisticsDataService;
 import dataService.ReceiptsdataService.ReceiptsdataService;
 import dataService.SalesdataService.SalesdataService;
 import dataService.StrategydataService.StrategydataService;
+import dataService.StrategydataService.ConstantdataService.ConstantdataService;
 import dataService.UserdataService.ApartmentDataService;
 import dataService.UserdataService.AuthoritiesSettingDataService;
 import dataService.UserdataService.UserdataService;
@@ -33,5 +34,6 @@ public interface DataFactoryService extends Remote {
 //	WareHousedataService getWareHousedataService();
 	ApartmentDataService getApartmentDataService();
 	AuthoritiesSettingDataService getAuthoritiesData();
+	ConstantdataService getConstantdataService();
 }
 
