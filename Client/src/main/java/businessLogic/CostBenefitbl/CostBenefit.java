@@ -13,11 +13,13 @@ import java.util.Date;
 
 import dataService.CostBenefitdataService.CostBenefitdataService;
 import dataService.DataFactoryService.DataFactoryService;
+import businessLogic.ReportGenerator.ReportGenerator;
 import businessLogicService.CostBenefitblService.CostBenefitblService;
 
 public class CostBenefit implements CostBenefitblService{
 	
 	private DataFactoryService dataFactory;
+	private ReportGenerator rg;
 	private CostBenefitdataService cbImpl;
 	private String date;
 	
@@ -80,6 +82,8 @@ public class CostBenefit implements CostBenefitblService{
     
     public boolean getReport(){
     	return cbImpl.getReport(cbImpl.getCostBenefitPO(date));
+    	//System.out.println("in getting report");
+    	//return rg.createCostBenefitReport(cbImpl.getCostBenefitPO(date));
     	//return false;
     }
 

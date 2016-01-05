@@ -48,13 +48,13 @@ public class DivisionPanel extends JPanel {
 		l2.setFont(font);
 		l2.setBounds(padding, 2*padding+label_height, label_width, label_height);
 		
-		JComboBox<String> line = new JComboBox<String>();
+		JComboBox line = new JComboBox();
 		line.setFont(font);
 		line.setBounds(padding+200, padding, box_width, box_height);
 		line.addItem("请选择排号");
 		line.setSelectedItem("请选择排号");
 		
-		JComboBox<String> area = new JComboBox<String>();
+		JComboBox area = new JComboBox();
 		area.setFont(font);
 		area.setBounds(padding+200, padding*2+box_height, box_width, box_height);
 		area.addItem("请选择分区");

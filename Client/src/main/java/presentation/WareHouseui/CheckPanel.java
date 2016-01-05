@@ -34,12 +34,12 @@ public class CheckPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	JComboBox<String> year = new JComboBox<String>();
-	JComboBox<String> month = new JComboBox<String>();
-	JComboBox<String> day = new JComboBox<String>();
-	JComboBox<String> year1 = new JComboBox<String>();
-	JComboBox<String> month1 = new JComboBox<String>();
-	JComboBox<String> day1 = new JComboBox<String>();
+	JComboBox year = new JComboBox();
+	JComboBox month = new JComboBox();
+	JComboBox day = new JComboBox();
+	JComboBox year1 = new JComboBox();
+	JComboBox month1 = new JComboBox();
+	JComboBox day1 = new JComboBox();
 	JButton back;
 	int padding = 10;
 	int label_width = 200;
