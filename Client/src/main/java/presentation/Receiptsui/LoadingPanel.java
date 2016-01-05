@@ -28,6 +28,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.MatteBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import presentation.mainui.PictureButton;
 import Miscellaneous.Place;
@@ -43,6 +45,7 @@ import vo.LogisticsVO;
 import vo.ReceiptVO;
 import vo.UserVO;
 import vo.receipts.LoadingVO;
+import vo.receipts.SendVO;
 
 
 /**
@@ -341,15 +344,22 @@ public class LoadingPanel extends JPanel{
 		
 		JLabel costLabel = new JLabel("· 运    费：");
 		costLabel.setFont(font);
-		costLabel.setBounds(padding, padding*10+label_height*12, label_width, label_height);
+		costLabel.setBounds(padding, padding*10+label_height*12, 110, label_height);
+		
+		JButton button = new JButton();
+		button.setFont(font);
+		button.setBorder(null);
+		button.setOpaque(false);
+		button.setFocusPainted(false);
+		button.setContentAreaFilled(false);
+		button.setBounds(600, 10, 300, 500);
+		button.addActionListener(new CostListener());
 		
 		cost = new JTextField();
 		cost.setFont(font);
 		cost.setBorder(null);
 		cost.setBounds(padding+labelWidth, padding*10+label_height*12, label_width, label_height);
 		cost.setOpaque(false);
-		cost_double = bl.getLoadingCost();
-		cost.setText(String.format("%.2f", cost_double));
 		cost.setEditable(false);
 		
 		submit = new JButton();
@@ -459,6 +469,7 @@ public class LoadingPanel extends JPanel{
 		this.add(cost);
 		this.add(submit);
 		this.add(back);
+		this.add(button);
 	}
 	
 	/*  String date, String hallId, 
@@ -530,19 +541,19 @@ public class LoadingPanel extends JPanel{
 		 	List<String> Order = new ArrayList<String>();
 		 	String[] split = str.split("\n");
 		 	for (String s : split) {
-		 		try{
-					long id = Long.parseLong(s);
-				}catch(NumberFormatException e1){
-					//输入编号不是数字
-					JOptionPane.showMessageDialog(null, "请输入正确的快递单号！","", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
-		 		if(! bl.findLogistics(s)){
-					//System.out.println("找不到");
-		 			
-					JOptionPane.showMessageDialog(null, "不存在快递单号为"+s+"的货物！","", JOptionPane.ERROR_MESSAGE);
-					return;
-				}
+//		 		try{
+//					long id = Long.parseLong(s);
+//				}catch(NumberFormatException e1){
+//					//输入编号不是数字
+//					JOptionPane.showMessageDialog(null, "请输入正确的快递单号！","", JOptionPane.ERROR_MESSAGE);
+//					return;
+//				}
+//		 		if(! bl.findLogistics(s)){
+//					//System.out.println("找不到");
+//		 			
+//					JOptionPane.showMessageDialog(null, "不存在快递单号为"+s+"的货物！","", JOptionPane.ERROR_MESSAGE);
+//					return;
+//				}
 		 		Order.add(s);
 		 	}
 			
@@ -572,7 +583,9 @@ public class LoadingPanel extends JPanel{
 			drivername.setText("");
 			spyname.setText("");
 			orders.setText("");
+			cost.setText("");
 			JOptionPane.showMessageDialog(null, "提交成功^_^","", JOptionPane.CLOSED_OPTION);
+			
 		}
 	
 	}
@@ -589,6 +602,41 @@ public class LoadingPanel extends JPanel{
 			this.setOpaque(false);
 			this.setFont(new Font("宋体",Font.PLAIN,10));
 		}
+	}
+	
+	class CostListener implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		//	System.out.println("fsgd");
+			double weight = 0;
+			String str = orders.getText();
+			if (str.equals("")){
+				JOptionPane.showMessageDialog(null, "请输入相应的快递单号！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			List<String> Order = new ArrayList<String>();
+		 	String[] split = str.split("\n");
+		 	for (String s : split) {
+		 		try{
+					long id = Long.parseLong(s);
+				}catch(NumberFormatException e1){
+					//输入编号不是数字
+					JOptionPane.showMessageDialog(null, "请输入正确的快递单号！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+		 		if(! bl.findLogistics(s)){
+					//System.out.println("找不到");
+					JOptionPane.showMessageDialog(null, "不存在快递单号为"+s+"的货物！","", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
+		 		weight += ((SendVO)(bl.getSendVO(s))).maxWeight();
+		 	//	System.out.println(weight);
+		 	}
+		 	cost_double = bl.getLoadingCost(weight);
+			cost.setText(String.format("%.2f", cost_double));
+		}
+		
 	}
 
 }

@@ -14,6 +14,7 @@ import businessLogic.BankAccountbl.BankAccountbl;
 import businessLogic.CarAndDriverbl.CarAndDriverbl;
 import businessLogic.LogisticsInfoSearchbl.LogisticsInfoSearchbl;
 import businessLogic.Receiptsbl.MockTest.MockCarAndDriver;
+import businessLogic.Strategybl.Constantbl.Constantbl;
 import businessLogic.Userbl.Apartmentbl;
 import businessLogic.Userbl.Userbl;
 import businessLogicService.ApprovalblService.ApprovalblService;
@@ -21,6 +22,7 @@ import businessLogicService.BankAccountblService.BankAccountblService;
 import businessLogicService.CarAndDriverblService.CarAndDriverblService;
 import businessLogicService.LogisticsInfoSearchblService.LogisticsInfoSearchblService;
 import businessLogicService.ReceiptsblService.ReceiptsblService;
+import businessLogicService.StrategyblService.ConstantblService;
 import businessLogicService.UserblService.ApartmentblService;
 import businessLogicService.UserblService.UserblService;
 import dataService.DataFactoryService.DataFactory;
@@ -42,6 +44,7 @@ import po.receipts.StorageInPO;
 import po.receipts.StorageOutPO;
 import po.receipts.TransferPO;
 import vo.BankAccountVO;
+import vo.ConstantVO;
 import vo.LogisticsVO;
 import vo.ReceiptVO;
 import vo.UserVO;
@@ -64,7 +67,7 @@ public class Receiptsbl implements ReceiptsblService {
 	private ApprovalblService approval;
 	private LogisticsInfoSearchblService logistics;
 	private BankAccountblService account;
-	
+	private ConstantblService constant;
 	public Receiptsbl(UserblService user){
 		this.user = user;
 		carAndDriver = new CarAndDriverbl();
@@ -72,6 +75,7 @@ public class Receiptsbl implements ReceiptsblService {
 		approval = new Approvalbl();
 		dataFactory = Client.dataFactory;
 		logistics = new LogisticsInfoSearchbl();
+		constant = new Constantbl();
 	}
 	public Receiptsbl(){
 		carAndDriver = new CarAndDriverbl();
@@ -180,9 +184,10 @@ public class Receiptsbl implements ReceiptsblService {
 		return true;
 	}
 
-	public double getLoadingCost() {
+	public double getLoadingCost(double v) {
 		// TODO Auto-generated method stub
-		return 20;
+		ConstantVO vo = constant.getConstant();
+		return Double.parseDouble(vo.getVanCost())*30*v/1000;
 	}
 
 	public boolean findAccount(String s) {
@@ -217,7 +222,25 @@ public class Receiptsbl implements ReceiptsblService {
 
 	public double getSendCost(String expresstype, String start, String end, String weight, String volume) {
 		// TODO Auto-generated method stub
-		return 100;
+		double ans= Double.max(Double.parseDouble(weight)/1000, Double.parseDouble(volume)/5000000);
+		//System.out.println(ans);
+		ConstantVO vo = constant.getConstant();
+		if (expresstype.equals("经济快递")){ans *= Double.parseDouble(vo.getPriceLow());}
+		else if (expresstype.equals("标准快递")){ans *= Double.parseDouble(vo.getPriceStandard());}
+		else if (expresstype.equals("特快")){ans *= Double.parseDouble(vo.getPriceHigh());}
+	//	System.out.println(ans);
+		List<String> cities = vo.getCityList();
+		int i = 0, j = 0;
+		for (int k = 0; k < cities.size(); k++){
+			if (cities.get(k).equals(start)) i = k;
+			if (cities.get(k).equals(end)) j = k;
+		}
+		//System.out.println(i+" "+ j);
+		String temp = vo.getCityDistance().get(i);
+		String[] split = temp.split(" ");
+		//System.out.println(split[j]);
+		ans *= Double.parseDouble(split[j])/1000;
+		return ans;
 	}
 	public boolean pass(long receiptId) {
 		ReceiptPO po = dataFactory.getReceiptsdataService().find("receiptId", String.valueOf(receiptId));
@@ -257,6 +280,11 @@ public class Receiptsbl implements ReceiptsblService {
 		if (s.equals("派件单")) return new DeliverVO((DeliverPO)po);
 		if (s.equals("收件单")) return new ReceiveVO((ReceivePO)po);	
 		return null;
+	}
+	public ReceiptVO getSendVO(String s) {
+		ReceiptPO po = dataFactory.getReceiptsdataService().find("send", s);
+		if (po == null) return null;
+		return poToVO(po);
 	}
 
 
