@@ -63,10 +63,6 @@ public class ApprovaldataImpl extends UnicastRemoteObject implements  Approvalda
 		return false;
 	}
 	
-<<<<<<< HEAD
-=======
-
->>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public boolean delete(List<Long> poList) throws RemoteException {
 		try {
 			List<ApprovalPO> list = findAll();

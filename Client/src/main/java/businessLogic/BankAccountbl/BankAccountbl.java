@@ -89,27 +89,11 @@ public class BankAccountbl implements BankAccountblService, BankAccountInfo{
 		ArrayList<BankAccountVO> voList = new ArrayList<BankAccountVO>();
 		for(int i=0;i<poList.size();i++){
 			voList.add(new BankAccountVO(poList.get(i).getName(), poList.get(i).getMoney()));
-<<<<<<< HEAD
 		}
 		return voList;
 		
 	}
 
-	public BankAccountVO find(String accountId) {
-		ArrayList<BankAccountPO> poList = bankaccountDataService.getAccount();
-		for (BankAccountPO po : poList){
-			if (po.getAccount().equals(accountId))
-				return new BankAccountVO(po.getName(), po.getMoney());
-=======
-
->>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
-		}
-		return null;
-		
-	}
-
-<<<<<<< HEAD
-=======
 
 	public BankAccountVO find(String accountId) {
 		ArrayList<BankAccountPO> poList = bankaccountDataService.getAccount();
@@ -121,7 +105,6 @@ public class BankAccountbl implements BankAccountblService, BankAccountInfo{
 		return null;
 	}
 	
->>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	public void incMoney(String amount) {
 		// TODO Auto-generated method stub
 		
@@ -129,10 +112,6 @@ public class BankAccountbl implements BankAccountblService, BankAccountInfo{
 
 	public void decMoney(String account, String amount) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-		
-=======
->>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
 	}
 	
 }

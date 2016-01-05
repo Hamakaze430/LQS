@@ -19,28 +19,28 @@ public class StorageOutFileDAO extends CommonData< StorageOutReceiptPO> implemen
 		// TODO Auto-generated constructor stub
 	}
 	
-<<<<<<< HEAD
+
 	
-=======
->>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
+
+
 	public void add( StorageOutReceiptPO po) {
 		// TODO Auto-generated method stub
 		insert(po);
 	}
 
-<<<<<<< HEAD
+
 	
-=======
->>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
+
+
 	public ArrayList< StorageOutReceiptPO> showAllReceipt() {
 		// TODO Auto-generated method stub
 		return showAll();
 	}
 
-<<<<<<< HEAD
+
 	
-=======
->>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
+
+
 	public ArrayList< StorageOutReceiptPO> showAllReceipt(String comID) {
 		// TODO Auto-generated method stub
 		ArrayList< StorageOutReceiptPO> list = showAll();
@@ -51,10 +51,10 @@ public class StorageOutFileDAO extends CommonData< StorageOutReceiptPO> implemen
 		return newlist;
 	}
 
-<<<<<<< HEAD
+
 	
-=======
->>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
+
+
 	public ArrayList< StorageOutReceiptPO> showAllSummit() {
 		// TODO Auto-generated method stub
 		ArrayList< StorageOutReceiptPO> list = this.showAll();
@@ -65,10 +65,10 @@ public class StorageOutFileDAO extends CommonData< StorageOutReceiptPO> implemen
 		return newlist;
 	}
 
-<<<<<<< HEAD
+
 	
-=======
->>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
+
+
 	public ResultMessage approve(String id) {
 		// TODO Auto-generated method stub
 		 StorageOutReceiptPO po = find(id);
@@ -76,10 +76,10 @@ public class StorageOutFileDAO extends CommonData< StorageOutReceiptPO> implemen
 		return update(id,po);
 	}
 
-<<<<<<< HEAD
+
 	
-=======
->>>>>>> 414ed55d4f228c7197815790e8c5d0e655ad716f
+
+
 	public String nextID(String comID) {
 		// TODO Auto-generated method stub
 		ArrayList< StorageOutReceiptPO> list = showAllReceipt(comID);
