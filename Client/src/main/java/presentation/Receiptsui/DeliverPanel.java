@@ -149,6 +149,7 @@ public class DeliverPanel extends JPanel{
 					JOptionPane.showMessageDialog(null, "请输入正确的快递单号！","", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
+				
 		 		if(! bl.findLogistics(s)){
 					//System.out.println("找不到");
 		 			

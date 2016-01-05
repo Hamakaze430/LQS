@@ -50,7 +50,6 @@ import vo.receipts.SendVO;
 
 /**
  * 装车单
- * 写完惹【还剩bl.getLoadingCost();
  * @author TOSHIBA
  *
  */

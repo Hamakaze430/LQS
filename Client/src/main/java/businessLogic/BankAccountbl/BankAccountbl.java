@@ -23,7 +23,6 @@ public class BankAccountbl implements BankAccountblService, BankAccountInfo{
 		
 			bankaccountDataService.addAccount(new BankAccountPO(vo.getAccount(),vo.getName(),vo.getMoney()));
 		
-		
 	}
 
 	public ResultMessage removeBankAccount(String name) {

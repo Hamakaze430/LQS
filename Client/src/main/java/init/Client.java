@@ -30,12 +30,9 @@ public class Client {
 			RMIHelper.init();
 			dataFactory = new DataFactory();
 			frame = new MainFrame();
-//			UserblService user = new Userbl("02500001000");
-//			MainPanel panel = new MainPanel(user);
+//			UserblService bl = new Userbl("00000000000");
+//			MainPanel panel = new MainPanel(bl);
 //			frame.add(panel);
-//			BankAccountVO ba=new BankAccountVO("0001", "公司银行账户01", "1000");
-//			BankAccountblService babl=new BankAccountbl();
-//			babl.addBankAccount(ba);
 			frame.addWelcomePanel();
 			frame.setVisible(true);
 		} catch (ClientInitException e) {

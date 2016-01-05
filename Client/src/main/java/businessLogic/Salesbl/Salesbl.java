@@ -11,7 +11,7 @@ import businessLogicService.SalesblService.SalesblService;
 import po.*;
 import vo.SalesVO;
 
-public class Sales implements SalesblService{
+public class Salesbl implements SalesblService{
 	
 	private DataFactoryService dataFactory;
 	private SalesdataService salesDataImpl;
@@ -22,7 +22,7 @@ public class Sales implements SalesblService{
     private ArrayList<IncomePO> income;
     private ArrayList<PaymentPO> payment; 
     
-    public Sales(){
+    public Salesbl(){
     	dataFactory=Client.dataFactory;
     	salesDataImpl=dataFactory.getSalesdataService();
     }
@@ -53,10 +53,6 @@ public class Sales implements SalesblService{
 		return vo;
 	}
 
-	public String cancelReport() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public void exit() {
 		// TODO Auto-generated method stub
@@ -65,5 +61,10 @@ public class Sales implements SalesblService{
 
 	public void save(SalesPO po) {
 		salesDataImpl.save(po);
+	}
+
+	public String cancelReport() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -28,7 +28,7 @@ import presentation.mainui.PictureButton;
 import presentation.mainui.WelcomePanel;
 import vo.CostBenefitVO;
 import vo.HallVO;
-import businessLogic.CostBenefitbl.CostBenefit;
+import businessLogic.CostBenefitbl.CostBenefitbl;
 import businessLogicService.CostBenefitblService.CostBenefitblService;
 import businessLogicService.UserblService.UserblService;
 /**
@@ -43,7 +43,7 @@ public class CostPanel extends JPanel {
 	 */
 	private static final long serialVersionUID = 1L;
 	private UserblService user;
-	private CostBenefit cb=new CostBenefit();
+	private CostBenefitbl cb=new CostBenefitbl();
 	JButton back;
 	JButton importButton;
 	int buttonNum;

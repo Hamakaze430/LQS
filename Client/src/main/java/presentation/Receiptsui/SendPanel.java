@@ -857,7 +857,14 @@ public class SendPanel extends JPanel{
 			if (!judgeInputNumber(trueweight, "实际重量")) return;
 			if (!judgeInputNumber(volume, "体积")) return;
 			if (!judgeInputNumber(order, "订单条形码号")) return;
-					
+			if (order.getText().length()<10) {
+				JOptionPane.showMessageDialog(null, "输入的订单编号少于10位！请重新输入！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			if (order.getText().length()>10) {
+				JOptionPane.showMessageDialog(null, "输入的订单编号多于10位！请重新输入！","", JOptionPane.ERROR_MESSAGE);
+				return;
+			}
 			
 			int n = JOptionPane.showConfirmDialog(null, "确定提交?", "确认框",JOptionPane.YES_NO_OPTION);
 			if (n == 1) {

@@ -37,7 +37,7 @@ import vo.receipts.IncomeVO;
 import vo.receipts.PassIncomeVO;
 import vo.receipts.PassPaymentVO;
 import vo.receipts.PaymentVO;
-import businessLogic.Salesbl.Sales;
+import businessLogic.Salesbl.Salesbl;
 import businessLogicService.UserblService.UserblService;
 /**
  * 经营情况
@@ -54,7 +54,7 @@ public class SalesPanel extends JPanel{
 	JButton importButton;
 	JButton confirm;
 	private UserblService user;
-	private Sales sales=new Sales();
+	private Salesbl sales=new Salesbl();
 	private String startDate;
 	private String endDate;
 	
