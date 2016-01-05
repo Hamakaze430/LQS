@@ -11,7 +11,6 @@ import dataService.VoucherSearchdataService.VoucherSearchdataService;
 
 public class VoucherSearchdata implements VoucherSearchdataService{
 
-	@Override
 	public ArrayList<IncomePO> getbyDate(String date) {
 		// TODO Auto-generated method stub
 		try {
@@ -27,7 +26,6 @@ public class VoucherSearchdata implements VoucherSearchdataService{
 		return null;
 	}
 
-	@Override
 	public ArrayList<IncomePO> getbyHall(String hall) {
 		// TODO Auto-generated method stub
 		return null;

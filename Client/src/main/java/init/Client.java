@@ -46,15 +46,10 @@ public class Client {
 //			BankAccountblService bank = new BankAccountbl();
 //			bank.addBankAccount(new BankAccountVO ("123456","bgydvsf",1000));
 			frame = new MainFrame();
-//			UserblService bl = new Userbl("00000000000");
-//			MainPanel panel = new MainPanel(bl);
-//			frame.add(panel);
-<<<<<<< HEAD
-
-=======
-			
->>>>>>> 1308c02f8ef1117282572129df3883e55e37571b
-			frame.addWelcomePanel();
+			UserblService bl = new Userbl("00000001000");
+			MainPanel panel = new MainPanel(bl);
+			frame.add(panel);
+//			frame.addWelcomePanel();
 			frame.setVisible(true);
 		} catch (ClientInitException e) {
 			 e.printStackTrace();

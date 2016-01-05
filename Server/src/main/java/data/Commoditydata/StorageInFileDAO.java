@@ -19,19 +19,19 @@ public class StorageInFileDAO extends CommonData<StorageInReceiptPO> implements 
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
+	
 	public void add(StorageInReceiptPO po) {
 		// TODO Auto-generated method stub
 		insert(po);
 	}
 	
-	@Override
+	
 	public ArrayList<StorageInReceiptPO> showAllReceipt() {
 		// TODO Auto-generated method stub
 		return showAll();
 	}
 
-	@Override
+	
 	public ArrayList<StorageInReceiptPO> showAllReceipt(String comID) {
 		// TODO Auto-generated method stub
 		ArrayList<StorageInReceiptPO> list = showAll();
@@ -42,7 +42,7 @@ public class StorageInFileDAO extends CommonData<StorageInReceiptPO> implements 
 		return newlist;
 	}
 
-	@Override
+	
 	public ArrayList<StorageInReceiptPO> showAllSummit() {
 		// TODO Auto-generated method stub
 		ArrayList<StorageInReceiptPO> list = this.showAll();
@@ -53,7 +53,7 @@ public class StorageInFileDAO extends CommonData<StorageInReceiptPO> implements 
 		return newlist;
 	}
 
-	@Override
+	
 	public ResultMessage approve(String id) {
 		// TODO Auto-generated method stub
 		StorageInReceiptPO po = find(id);
@@ -61,7 +61,7 @@ public class StorageInFileDAO extends CommonData<StorageInReceiptPO> implements 
 		return update(id,po);
 	}
 
-	@Override
+	
 	public String nextID(String comID) {
 		// TODO Auto-generated method stub
 		ArrayList<StorageInReceiptPO> list = showAllReceipt(comID);
