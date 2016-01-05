@@ -27,6 +27,7 @@ import po.ReceiptPO;
 import po.receipts.IncomePO;
 import po.receipts.LoadingPO;
 import po.receipts.PaymentPO;
+import po.receipts.SendPO;
 import po.receipts.TransferPO;
 import dataService.ReceiptsdataService.ReceiptsdataService;
 
@@ -39,7 +40,7 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 
 //	public static void main(String[] args) throws RemoteException{
 //		ReceiptsdataImpl a = new ReceiptsdataImpl();
-//		a.delete(13);
+//		a.find("send", "1234567895");
 //	}
 	
 	public long getLastId(String foreId) throws RemoteException {
@@ -216,6 +217,18 @@ public class ReceiptsdataImpl extends UnicastRemoteObject implements Receiptsdat
 			for (ReceiptPO po : list){
 				if (po.getReceiptId() == id){
 					return po;
+				}
+			}
+			return null;
+		}
+		if (known.equals("send")){
+			for (ReceiptPO po : list){
+			//	System.out.println(po.getType());
+				if (po.getType().equals(FormType.寄件单.name())){
+//					System.out.println("true");
+//					System.out.println(((SendPO)po).getOrder());
+					if (((SendPO)po).getOrder().equals(info))
+						return po;		
 				}
 			}
 			return null;

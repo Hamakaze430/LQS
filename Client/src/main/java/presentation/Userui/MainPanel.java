@@ -990,7 +990,7 @@ public class MainPanel extends JPanel {
 			i++;
 		}
 		if (user.hasTheAuthority(Authorities.薪水策略)) {
-			JPanel salaryStrategy = new SalaryStrategyPanel();
+			JPanel salaryStrategy = new SalaryStrategyPanel(i);
 			cardPanel.add(salaryStrategy, "23");			
 			button = new JButton();
 			button = new InitButton(i,"src/main/java/image/salaryStrategy_unselected.png");			

@@ -25,6 +25,7 @@ public class ConstantdataServiceImpl extends UnicastRemoteObject implements Cons
 		// TODO Auto-generated constructor stub
 	
 		constantDAO = new ConstantFileDAO("constant");
+		//constantDAO.flush();
 	
 	}
 
